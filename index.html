@@ -1,222 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sora Kim</title>
 
-<title>Sora Kim</title>
+  <!-- Font: similar vibe to the screenshot (mono, clean) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-<!-- IBM Plex Mono -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #fbfaf7;
+      --ink: #111111;
+      --muted: #444;
+      --card: rgba(255,255,255,.78);
+      --border: rgba(17,17,17,.16);
+      --shadow: rgba(0,0,0,.12);
+      --accent: #00c853; /* green underline */
+      --accent2: #7c4dff; /* mz-ish purple pop */
+      --accent3: #ff3d00; /* tiny warm hit */
+      --radius: 18px;
+    }
 
-<style>
-:root{
-  --ink:#111;
-  --accent:#3aa657;
-  --border:#111;
-}
+    *{ box-sizing: border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x:hidden;
+    }
 
-body{
-  margin:0;
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  color:var(--ink);
-  background:
-    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)),
-    url("assets/bg.png");
-  background-size: cover;
-  background-position: center;
-  min-height:100vh;
-}
+    /* Subtle memorable background: gradient + tiny noise */
+    .bg{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(900px 600px at 15% 20%, rgba(124,77,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 80% 30%, rgba(0,200,83,.10), transparent 55%),
+        radial-gradient(700px 500px at 60% 85%, rgba(255,61,0,.08), transparent 55%),
+        linear-gradient(180deg, #fbfaf7 0%, #f7f5f0 100%);
+    }
+    .noise{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events:none;
+      opacity:.06;
+      background-image: url("assets/noise.png");
+      background-size: 300px 300px;
+      mix-blend-mode: multiply;
+    }
 
-.wrapper{
-  max-width:1100px;
-  margin:60px auto;
-  padding:20px;
-  display:grid;
-  grid-template-columns: 420px 1fr;
-  gap:60px;
-  align-items:start;
-}
+    .wrap{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 20px 40px;
+    }
 
-/* ===== CARD ===== */
+    .grid{
+      display:grid;
+      grid-template-columns: 380px 1fr;
+      gap: 42px;
+      align-items:start;
+    }
 
-.card{
-  background:#fff;
-  border:4px solid var(--border);
-  box-shadow:10px 10px 0 rgba(0,0,0,.15);
-  padding:36px 28px 30px;
-  text-align:center;
-  position:relative;
-}
+    /* Left profile card */
+    .card{
+      position: relative;
+      background: var(--card);
+      border: 3px solid var(--ink);
+      border-radius: var(--radius);
+      padding: 26px 26px 22px;
+      box-shadow: 14px 14px 0 rgba(0,0,0,.08);
+      backdrop-filter: blur(8px);
+    }
 
-.avatar{
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  border:3px solid #ccc;
-  margin:0 auto 18px;
-  background:url("assets/profile.jpg") center/cover;
-}
+    .card:after{
+      content:"";
+      position:absolute;
+      left: 50%;
+      bottom: -14px;
+      width: 0;
+      height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-top: 14px solid var(--ink);
+      transform: translateX(-50%);
+      filter: drop-shadow(3px 3px 0 rgba(0,0,0,.08));
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      left: 50%;
+      bottom: -10px;
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-top: 11px solid var(--card);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
 
-h1{
-  margin:0;
-  font-size:24px;
-}
+    .avatar{
+      width: 210px;
+      height: 210px;
+      border-radius: 999px;
+      border: 3px solid rgba(0,0,0,.20);
+      display:block;
+      margin: 0 auto 18px;
+      object-fit: cover;
+      background: rgba(255,255,255,.55);
+    }
 
-.bar{
-  width:60px;
-  height:4px;
-  background:var(--accent);
-  margin:12px auto 18px;
-}
+    .name{
+      text-align:center;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 8px 0 10px;
+      letter-spacing: -0.3px;
+    }
 
-.icons{
-  margin-bottom:16px;
-}
+    .underline{
+      width: 58px;
+      height: 5px;
+      background: var(--accent);
+      margin: 0 auto 18px;
+      border-radius: 999px;
+    }
 
-.icons a{
-  text-decoration:none;
-  color:#000;
-  margin:0 6px;
-}
+    .contact{
+      text-align:center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
 
-.email{
-  font-size:14px;
-  letter-spacing:2px;
-  color:#444;
-}
+    .contact a{
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,0,0,.35);
+    }
+    .contact a:hover{
+      border-bottom-style: solid;
+    }
 
-.card::after{
-  content:"";
-  position:absolute;
-  bottom:-18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:0;
-  height:0;
-  border-left:14px solid transparent;
-  border-right:14px solid transparent;
-  border-top:18px solid #111;
-}
+    /* Right content */
+    .hello{
+      font-size: 74px;
+      line-height: 0.95;
+      margin: 0 0 14px;
+      letter-spacing: -1px;
+    }
 
-/* ===== RIGHT ===== */
+    .intro{
+      max-width: 560px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #222;
+      margin: 0 0 18px;
+    }
 
-.hello{
-  font-size:60px;
-  margin:0 0 16px;
-}
+    /* Buttons */
+    .btnrow{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 18px 0 26px;
+    }
 
-.intro{
-  font-size:18px;
-  line-height:1.7;
-  margin-bottom:26px;
-  max-width:560px;
-}
+    .btn{
+      appearance:none;
+      border: 2px solid var(--ink);
+      background: rgba(255,255,255,.78);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 700;
+      letter-spacing: .6px;
+      cursor:pointer;
+      box-shadow: 6px 6px 0 rgba(0,0,0,.10);
+      text-decoration:none;
+      color: var(--ink);
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      user-select:none;
+    }
 
-.buttons{
-  display:flex;
-  gap:14px;
-  margin-bottom:28px;
-}
+    .btn:hover{
+      transform: translate(-2px, -2px);
+      box-shadow: 9px 9px 0 rgba(0,0,0,.12);
+      background: rgba(255,255,255,.92);
+    }
 
-.btn{
-  border:3px solid #111;
-  padding:10px 18px;
-  text-decoration:none;
-  color:#111;
-  font-weight:600;
-  box-shadow:4px 4px 0 rgba(0,0,0,.15);
-  background:#fff;
-}
+    .btn:active{
+      transform: translate(0,0);
+      box-shadow: 6px 6px 0 rgba(0,0,0,.10);
+    }
 
-.btn:hover{
-  transform:translate(-2px,-2px);
-  box-shadow:6px 6px 0 rgba(0,0,0,.2);
-}
+    /* Make one button pop (mz 기억 포인트) */
+    .btn.primary{
+      border-color: rgba(0,0,0,.85);
+      position: relative;
+      overflow:hidden;
+    }
+    .btn.primary:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(90deg, rgba(124,77,255,.35), rgba(0,200,83,.30), rgba(255,61,0,.22));
+      opacity:.35;
+      z-index:0;
+    }
+    .btn.primary span{ position: relative; z-index:1; }
 
-/* ===== CODE BOX ===== */
+    /* Code-style profile box */
+    .codebox{
+      border: 2px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.65);
+      border-radius: 14px;
+      padding: 16px 18px;
+      max-width: 640px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+    }
+    .codebox .tag{
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .codebox .line{
+      display:block;
+      line-height: 1.7;
+      font-size: 14px;
+      color:#111;
+    }
+    .codebox .key{ color:#222; }
+    .codebox .eq{ color:#666; padding: 0 6px; }
+    .codebox .val{ color:#000; }
 
-.mini{
-  border:2px solid #ddd;
-  padding:16px 18px;
-  background:#fafafa;
-  max-width:520px;
-  font-size:15px;
-  line-height:1.6;
-}
+    /* Sections below */
+    .section{
+      margin-top: 36px;
+    }
+    .section h2{
+      font-size: 18px;
+      margin: 0 0 10px;
+      letter-spacing: .3px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .section h2:after{
+      content:"";
+      height: 1px;
+      flex: 1;
+      background: rgba(0,0,0,.16);
+    }
 
-.k{
-  color:#1aa34a;
-  font-weight:600;
-}
+    .preprint{
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.65);
+      margin-bottom: 10px;
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .preprint:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0,0,0,.22);
+    }
+    .preprint .t{
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 6px;
+    }
+    .preprint .m{
+      font-size: 13px;
+      color: #333;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .preprint a{
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,0,0,.35);
+    }
+    .preprint a:hover{
+      border-bottom-style: solid;
+    }
 
-.footer{
-  margin-top:40px;
-  font-size:13px;
-  color:#666;
-}
+    footer{
+      margin-top: 34px;
+      font-size: 12px;
+      color: #555;
+      text-align:center;
+      opacity:.9;
+    }
 
-/* ===== MOBILE ===== */
-
-@media (max-width:900px){
-  .wrapper{
-    grid-template-columns:1fr;
-    gap:40px;
-    margin:40px auto;
-  }
-}
-</style>
+    /* Responsive */
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      .hello{ font-size: 58px; }
+      .card{ max-width: 420px; }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="bg"></div>
+  <!-- optional noise; if you don't want it, delete the next div and the CSS .noise -->
+  <div class="noise"></div>
 
-<div class="wrapper">
+  <main class="wrap">
+    <div class="grid">
+      <!-- LEFT -->
+      <aside class="card">
+        <img class="avatar" src="assets/profile.jpg" alt="Profile photo" />
+        <div class="name">Sora Kim</div>
+        <div class="underline"></div>
 
-  <!-- LEFT CARD -->
-  <div class="card">
-    <div class="avatar"></div>
-    <h1>Sora Kim</h1>
-    <div class="bar"></div>
+        <div class="contact">
+          <div><a href="mailto:sorakim.phd@gmail.com">sorakim.phd@gmail.com</a></div>
+        </div>
+      </aside>
 
-    <div class="icons">
-      <a href="https://github.com/sorakim-phd" target="_blank">github</a>
+      <!-- RIGHT -->
+      <section>
+        <h1 class="hello">Hello!</h1>
+        <p class="intro">
+          This is Sora Kim. I study how responsibility and accountability are structurally produced, anticipated,
+          and stabilized in high-stakes sociotechnical organizational systems—through procedural infrastructures,
+          investigative routines, and AI-mediated representations.
+        </p>
+
+        <div class="btnrow">
+          <!-- CV: put cv.pdf in repo root, or change href -->
+          <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener"><span>CV</span></a>
+          <!-- Preprints: scroll to section -->
+          <a class="btn" href="#preprints">PREPRINTS</a>
+        </div>
+
+        <div class="codebox" aria-label="profile box">
+          <div class="tag"># profile</div>
+          <span class="line"><span class="key">name</span><span class="eq">=</span><span class="val">Sora Kim</span></span>
+          <span class="line"><span class="key">location</span><span class="eq">=</span><span class="val">South Korea</span></span>
+          <span class="line"><span class="key">research</span><span class="eq">=</span><span class="val">responsibility &amp; accountability</span></span>
+          <span class="line"><span class="key">domain</span><span class="eq">=</span><span class="val">sociotechnical systems</span></span>
+        </div>
+
+        <!-- PREPRINTS SECTION -->
+        <div class="section" id="preprints">
+          <h2>Preprints</h2>
+
+          <!-- Replace href with your SocArXiv/DOI links when available -->
+          <div class="preprint">
+            <p class="t"><a href="#" target="_blank" rel="noopener">Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts</a></p>
+            <p class="m">SocArXiv preprint • 2026</p>
+          </div>
+
+          <div class="preprint">
+            <p class="t"><a href="#" target="_blank" rel="noopener">Responsibility Convergence in Organizational Investigations: Structural Dynamics of Blame in Root Cause Analysis</a></p>
+            <p class="m">SocArXiv preprint • 2026</p>
+          </div>
+
+          <div class="preprint">
+            <p class="t"><a href="#" target="_blank" rel="noopener">Anticipated Accountability Convergence: Structuring Responsibility Before Action in Regulated Sociotechnical Systems</a></p>
+            <p class="m">SocArXiv preprint • 2026</p>
+          </div>
+
+          <div class="preprint">
+            <p class="t"><a href="#" target="_blank" rel="noopener">AI-Mediated Responsibility: Structuring, Translating, and Stabilizing Accountability in Sociotechnical Organizations</a></p>
+            <p class="m">SocArXiv preprint • 2026</p>
+          </div>
+        </div>
+
+        <footer>
+          Best viewed on desktop • Designed by Sora Kim © 2026
+        </footer>
+      </section>
     </div>
-
-    <div class="email">sorakim.phd@gmail.com</div>
-  </div>
-
-  <!-- RIGHT -->
-  <div>
-
-    <div class="hello">Hello!</div>
-
-    <div class="intro">
-      This is Sora Kim. I study how responsibility and accountability are structurally produced, anticipated, and stabilized in high-stakes sociotechnical organizational systems—through procedural infrastructures, investigative routines, and AI-mediated representations.
-    </div>
-
-    <div class="buttons">
-      <a class="btn" href="cv.pdf">CV</a>
-      <a class="btn" href="#">PREPRINTS</a>
-      <a class="btn" href="#">PROJECTS</a>
-    </div>
-
-    <div class="mini">
-      <div><span class="k"># profile</span></div>
-      <div>name = Sora Kim</div>
-      <div>location = South Korea</div>
-      <div>research = responsibility & accountability</div>
-      <div>domain = sociotechnical systems</div>
-    </div>
-
-    <div class="footer">
-      Best viewed on desktop · Designed by Sora Kim © 2026
-    </div>
-
-  </div>
-
-</div>
-
+  </main>
 </body>
 </html>
