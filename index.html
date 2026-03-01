@@ -1,409 +1,247 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sora Kim</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font: IBM Plex Mono (similar vibe to your example) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Sora Kim</title>
 
-  <style>
-    :root{
-      --ink:#111;
-      --muted:#5b5b5b;
-      --card:#ffffffcc;
-      --line:#d9d9d9;
-      --shadow: 10px 10px 0 rgba(0,0,0,.10);
-      --accent:#21c55d; /* neon-ish green */
-      --bg1:#fbf7f2;
-      --bg2:#f5fbf7;
-      --radius:16px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 700px at 20% 15%, rgba(33,197,93,.12), transparent 55%),
-        radial-gradient(900px 600px at 85% 20%, rgba(0,0,0,.06), transparent 55%),
-        linear-gradient(135deg, var(--bg1), var(--bg2));
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Space Mono', monospace;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e9efe9 100%);
+    color: #111;
+}
 
-    a{ color:inherit; text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+.container {
+    max-width: 1100px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 60px;
+    align-items: start;
+}
 
-    .wrap{
-      max-width: 1040px;
-      margin: 40px auto 24px;
-      padding: 0 20px;
-    }
+/* Profile card */
+.profile-card {
+    background: #f2f2f2;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 36px 28px 30px 28px;
+    text-align: center;
+    position: relative;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.08);
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns: 360px 1fr;
-      gap: 28px;
-      align-items:start;
-    }
+.profile-card:after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 14px 14px 0 14px;
+    border-style: solid;
+    border-color: #111 transparent transparent transparent;
+}
 
-    /* Left profile card */
-    .profile{
-      position: sticky;
-      top: 24px;
-    }
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #bbb;
+    margin-bottom: 18px;
+}
 
-    .card{
-      background: var(--card);
-      border: 2px solid var(--ink);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(6px);
-    }
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 
-    .profile-card{
-      padding: 22px;
-      text-align:center;
-      position: relative;
-    }
+.green-line {
+    width: 40px;
+    height: 4px;
+    background: #39b36b;
+    margin: 10px auto 16px auto;
+    border-radius: 2px;
+}
 
-    /* tiny "speech-tail" */
-    .profile-card:after{
-      content:"";
-      position:absolute;
-      bottom:-14px;
-      left:50%;
-      transform: translateX(-50%);
-      width:0;height:0;
-      border-left: 16px solid transparent;
-      border-right:16px solid transparent;
-      border-top: 16px solid var(--ink);
-      filter: drop-shadow(6px 6px 0 rgba(0,0,0,.10));
-    }
-    .profile-card:before{
-      content:"";
-      position:absolute;
-      bottom:-12px;
-      left:50%;
-      transform: translateX(-50%);
-      width:0;height:0;
-      border-left: 14px solid transparent;
-      border-right:14px solid transparent;
-      border-top: 14px solid var(--card);
-      z-index:1;
-    }
+.email {
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-top: 12px;
+}
 
-    .avatar{
-      width: 170px;
-      height: 170px;
-      border-radius: 999px;
-      border: 2px solid var(--line);
-      object-fit: cover;
-      background:#f1f1f1;
-      display:block;
-      margin: 6px auto 14px;
-    }
+/* Right side */
+.hello {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
 
-    .name{
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: .2px;
-      margin: 6px 0 6px;
-    }
-    .underline{
-      width: 64px;
-      height: 4px;
-      background: var(--accent);
-      margin: 8px auto 14px;
-      border-radius: 999px;
-    }
+.bio {
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin-bottom: 26px;
+}
 
-    .contact{
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 10px;
-      display:flex;
-      flex-direction:column;
-      gap: 8px;
-      align-items:center;
-    }
+/* Buttons */
+.buttons {
+    margin-bottom: 30px;
+}
 
-    .pill{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.65);
-    }
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 2px solid #111;
+    border-radius: 8px;
+    margin-right: 12px;
+    text-decoration: none;
+    color: #111;
+    font-size: 13px;
+    background: #f7f7f7;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    transition: 0.15s;
+}
 
-    .dot{
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(33,197,93,.15);
-    }
+.btn:hover {
+    transform: translateY(-2px);
+}
 
-    /* Right content */
-    .hero{
-      padding-top: 10px;
-    }
+/* Profile box */
+.codebox {
+    background: #f0f0f0;
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 14px;
+    margin-bottom: 36px;
+}
 
-    .hello{
-      font-size: 64px;
-      line-height: 1;
-      margin: 6px 0 14px;
-      letter-spacing: -1px;
-    }
+.codebox b {
+    color: #0aa35c;
+}
 
-    .intro{
-      max-width: 720px;
-      font-size: 15.5px;
-      line-height: 1.9;
-      color: #1d1d1d;
-      margin: 0 0 16px;
-    }
+/* Preprints */
+.section-title {
+    font-weight: 700;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+}
 
-    .cta-row{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin: 10px 0 18px;
-    }
+.paper {
+    background: #f7f7f7;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding: 10px 14px;
-      border: 2px solid var(--ink);
-      border-radius: 12px;
-      background: rgba(255,255,255,.7);
-      box-shadow: 4px 4px 0 rgba(0,0,0,.10);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: .2px;
-      text-transform: uppercase;
-    }
-    .btn:hover{
-      transform: translate(-1px,-1px);
-      box-shadow: 6px 6px 0 rgba(0,0,0,.10);
-      text-decoration:none;
-    }
+.paper-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
 
-    .codebox{
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255,255,255,.65);
-      margin: 10px 0 22px;
-    }
-    .codebox .hash{ color: var(--accent); font-weight:700; }
-    .codebox pre{
-      margin: 0;
-      white-space: pre-wrap;
-      line-height: 1.75;
-      font-size: 14px;
-      color:#222;
-    }
+.paper-links a {
+    font-size: 12px;
+    margin-right: 12px;
+    text-decoration: none;
+    color: #333;
+}
 
-    .section-title{
-      margin: 18px 0 10px;
-      font-size: 14px;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-      color:#222;
-    }
-
-    .preprints{
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-    }
-
-    .paper{
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255,255,255,.65);
-    }
-    .paper a{
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-    .paper-title{
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 1.55;
-      margin: 0 0 6px;
-    }
-    .paper-meta{
-      font-size: 12.5px;
-      color: var(--muted);
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .footer{
-      margin-top: 22px;
-      font-size: 12px;
-      color: var(--muted);
-      text-align:center;
-      padding: 14px 0 6px;
-    }
-
-    /* Responsive */
-    @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-      .profile{ position: static; }
-      .hello{ font-size: 52px; }
-    }
-  </style>
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    margin: 50px 0 30px 0;
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="grid">
-      <!-- LEFT -->
-      <aside class="profile">
-        <div class="card profile-card">
-          <!-- Put your profile image in the repo as: assets/profile.jpg -->
-          <img class="avatar" src="assets/profile.jpg" alt="Profile photo" />
 
-          <div class="name">Sora Kim</div>
-          <div class="underline"></div>
+<div class="container">
 
-          <div class="contact">
-            <div class="pill">
-              <span class="dot"></span>
-              <span>Independent researcher</span>
-            </div>
+<!-- LEFT -->
+<div class="profile-card">
+<img src="assets/SoraKim_Profile.jpg" class="profile-img">
 
-            <!-- Email -->
-            <div class="pill">
-              <span>✉</span>
-              <a href="mailto:sorakim.phd@gmail.com">sorakim.phd@gmail.com</a>
-            </div>
+<div class="name">Sora Kim</div>
+<div class="green-line"></div>
 
-            <!-- Optional: remove if you truly don’t want GitHub visible -->
-            <!--
-            <div class="pill">
-              <span>↗</span>
-              <a href="https://github.com/sorakim-phd" target="_blank" rel="noreferrer">github.com/sorakim-phd</a>
-            </div>
-            -->
-          </div>
-        </div>
-      </aside>
+<div class="email">sorakim.phd@gmail.com</div>
+</div>
 
-      <!-- RIGHT -->
-      <main class="hero">
-        <div class="hello">Hello!</div>
+<!-- RIGHT -->
+<div>
 
-        <p class="intro">
-          This is Sora Kim. I study how responsibility and accountability are structurally produced,
-          anticipated, and stabilized in high-stakes sociotechnical organizational systems—through
-          procedural infrastructures, investigative routines, and AI-mediated representations.
-          <br><br>
-          I am preparing applications for PhD programs in sociotechnical and organizational research.
-        </p>
+<div class="hello">Hello!</div>
 
-        <div class="cta-row">
-          <!-- Put your CV PDF in the repo as: assets/SoraKim_CV.pdf -->
-          <a class="btn" href="assets/SoraKim_CV.pdf" target="_blank" rel="noreferrer">CV</a>
-          <a class="btn" href="#preprints">Preprints</a>
-          <!-- Optional: if you later want a “contact” button -->
-          <a class="btn" href="mailto:sorakim.phd@gmail.com">Email</a>
-        </div>
+<div class="bio">
+This is Sora Kim. I study how responsibility and accountability are structurally produced, anticipated, and stabilized in high-stakes sociotechnical organizational systems—through procedural infrastructures, investigative routines, and AI-mediated representations. I am applying to interdisciplinary PhD programs in sociotechnical and organizational research (Fall 2027).
+</div>
 
-        <div class="codebox">
-          <pre><span class="hash"># profile</span>
-name = Sora Kim
-location = South Korea
-focus = responsibility &amp; accountability
+<div class="buttons">
+<a class="btn" href="assets/SoraKim_CV.pdf" target="_blank">CV</a>
+</div>
+
+<div class="codebox">
+<b># profile</b><br>
+name = Sora Kim<br>
+location = South Korea<br>
+research = responsibility & accountability<br>
 domain = sociotechnical systems
-status = PhD applicant (2026–2027 cycle)</pre>
-        </div>
+</div>
 
-        <div id="preprints" class="section-title">Preprints</div>
+<div class="section-title">Preprints</div>
 
-        <div class="preprints">
-          <!-- Replace href with your actual SocArXiv URLs once they are public -->
-          <div class="paper">
-            <div class="paper-title">
-              <a href="#" target="_blank" rel="noreferrer">
-                Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts
-              </a>
-            </div>
-            <div class="paper-meta">
-              <span>SocArXiv preprint</span>
-              <span>•</span>
-              <span>2026</span>
-              <span>•</span>
-              <span>DOI: (pending)</span>
-            </div>
-          </div>
+<div class="paper">
+<div class="paper-title">Structuring Judgment and Stabilizing Responsibility: Cognitive Friction in Procedural Texts</div>
+SocArXiv preprint · 2026<br>
+<div class="paper-links">
+<a href="assets/Kim_2026_Cognitive_Friction_in_Procedural_Texts.pdf" target="_blank">open</a>
+<a href="assets/Kim_2026_Cognitive_Friction_in_Procedural_Texts.pdf" download>pdf</a>
+</div>
+</div>
 
-          <div class="paper">
-            <div class="paper-title">
-              <a href="#" target="_blank" rel="noreferrer">
-                Responsibility Convergence in Organizational Investigations: Structural Dynamics of Blame in Root Cause Analysis
-              </a>
-            </div>
-            <div class="paper-meta">
-              <span>SocArXiv preprint</span>
-              <span>•</span>
-              <span>2026</span>
-              <span>•</span>
-              <span>DOI: (pending)</span>
-            </div>
-          </div>
+<div class="paper">
+<div class="paper-title">Responsibility Convergence in Organizational Investigations: Structural Dynamics of Blame in Root Cause Analysis</div>
+SocArXiv preprint · 2026<br>
+<div class="paper-links">
+<a href="assets/Kim_2026_Responsibility_Convergence_in_Organizational_Investigations.pdf" target="_blank">open</a>
+<a href="assets/Kim_2026_Responsibility_Convergence_in_Organizational_Investigations.pdf" download>pdf</a>
+</div>
+</div>
 
-          <div class="paper">
-            <div class="paper-title">
-              <a href="#" target="_blank" rel="noreferrer">
-                Anticipated Accountability Convergence: Structuring Responsibility Before Action in Regulated Sociotechnical Systems
-              </a>
-            </div>
-            <div class="paper-meta">
-              <span>SocArXiv preprint</span>
-              <span>•</span>
-              <span>2026</span>
-              <span>•</span>
-              <span>DOI: (pending)</span>
-            </div>
-          </div>
+<div class="paper">
+<div class="paper-title">Anticipated Accountability Convergence: Structuring Responsibility Before Action in Regulated Sociotechnical Systems</div>
+SocArXiv preprint · 2026<br>
+<div class="paper-links">
+<a href="assets/Kim_2026_Anticipated_Accountability_Convergence.pdf" target="_blank">open</a>
+<a href="assets/Kim_2026_Anticipated_Accountability_Convergence.pdf" download>pdf</a>
+</div>
+</div>
 
-          <div class="paper">
-            <div class="paper-title">
-              <a href="#" target="_blank" rel="noreferrer">
-                AI-Mediated Responsibility: Structuring, Translating, and Stabilizing Accountability in Sociotechnical Organizations
-              </a>
-            </div>
-            <div class="paper-meta">
-              <span>SocArXiv preprint</span>
-              <span>•</span>
-              <span>2026</span>
-              <span>•</span>
-              <span>DOI: (pending)</span>
-            </div>
-          </div>
-        </div>
+<div class="paper">
+<div class="paper-title">AI-Mediated Responsibility: Structuring, Translating, and Stabilizing Accountability in Sociotechnical Organizations</div>
+SocArXiv preprint · 2026<br>
+<div class="paper-links">
+<a href="assets/Kim_2026_AI_Mediated_Responsibility.pdf" target="_blank">open</a>
+<a href="assets/Kim_2026_AI_Mediated_Responsibility.pdf" download>pdf</a>
+</div>
+</div>
 
-        <div class="footer">
-          Best viewed on desktop · Designed by Sora Kim © 2026
-        </div>
-      </main>
-    </div>
-  </div>
+</div>
+</div>
+
+<footer>
+Best viewed on desktop · Designed by Sora Kim © 2026
+</footer>
+
 </body>
 </html>
