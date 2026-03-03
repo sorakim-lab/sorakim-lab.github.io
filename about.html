@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About · Sora Kim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0f1014;--text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.72);--line:rgba(255,255,255,.14);--radius:22px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui;line-height:1.8}
+    nav{position:fixed;top:18px;right:18px;z-index:50;display:flex;gap:10px;padding:10px;border:1px solid var(--line);background:rgba(15,16,20,.62);backdrop-filter:blur(10px);border-radius:999px}
+    nav a{text-decoration:none;color:var(--muted);font-size:14px;padding:8px 12px;border-radius:999px;border:1px solid transparent}
+    nav a:hover{color:var(--text);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.10)}
+    nav a.active{color:var(--text);background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.12)}
+    .wrap{max-width:980px;margin:0 auto;padding:110px 22px 80px}
+    h1{font-family:"Space Grotesk",Inter,sans-serif;font-size:44px;letter-spacing:-.03em;margin:0 0 14px}
+    .card{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:var(--radius);padding:18px}
+    p{margin:0 0 14px;color:rgba(255,255,255,.78)}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="papers.html">Papers</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
+  </nav>
+
+  <div class="wrap">
+    <h1>About</h1>
+    <div class="card">
+      <p>
+        I’m an independent researcher working at the intersection of organizational accountability, procedural infrastructures,
+        and high-stakes decision environments.
+      </p>
+      <p>
+        My empirical grounding comes from pharmaceutical quality systems, where documentation, investigation routines,
+        and compliance pressures continuously shape how responsibility is produced, stabilized, and made legible.
+      </p>
+      <p>
+        I develop frameworks that connect stages across the responsibility lifecycle: anticipatory alignment (AAC),
+        procedural judgment structuring (Cognitive Friction), investigative stabilization (Responsibility Convergence),
+        and computational acceleration (AI-Mediated Responsibility / PAC).
+      </p>
+    </div>
+  </div>
+</body>
+</html>
