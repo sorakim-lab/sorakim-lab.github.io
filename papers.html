@@ -320,6 +320,38 @@ nav a.active{
   transform:translateY(-1px);
 }
 
+/* added only for abstract toggle */
+.abstract-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.62);
+  color:var(--text);
+  text-decoration:none;
+  transition:all .18s ease;
+  white-space:nowrap;
+  box-shadow:var(--shadow-soft);
+  font-size:13px;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.abstract-toggle:hover{
+  background:rgba(255,255,255,0.86);
+  transform:translateY(-1px);
+}
+
+.abstract-content{
+  display:none;
+}
+
+.abstract-content.open{
+  display:block;
+}
+
 .footer{
   margin-top:28px;
   padding-top:16px;
@@ -409,20 +441,23 @@ nav a.active{
       <h2 class="paper-title">Anticipated Accountability Convergence: How Organizational Infrastructures Align Interpretations of Defensible Action</h2>
       <p class="paper-tagline">before action / interpretive expectations / prospective structuring</p>
 
-      <p class="abstract">
-        Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
-      </p>
-
-      <ul class="meta">
-        <li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
-        <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
-        <li>Contribution: theorizes accountability as a prospective organizational condition rather than a purely retrospective evaluative event.</li>
-      </ul>
-
-      <div class="concept-line">before action → interpretive expectations are prospectively aligned</div>
-
       <div class="links">
+        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
         <a href="assets/kim-2026-aac.pdf" target="_blank">PDF</a>
+      </div>
+
+      <div class="abstract-content">
+        <p class="abstract">
+          Develops a structural theory of how accountability expectations become aligned before action through the convergence of procedural rules, documentation regimes, and evaluative infrastructures.
+        </p>
+
+        <ul class="meta">
+          <li>Focus: how organizations preconfigure what counts as accountable conduct before execution.</li>
+          <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
+          <li>Contribution: theorizes accountability as a prospective organizational condition rather than a purely retrospective evaluative event.</li>
+        </ul>
+
+        <div class="concept-line">before action → interpretive expectations are prospectively aligned</div>
       </div>
     </article>
 
@@ -437,24 +472,27 @@ nav a.active{
       <h2 class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</h2>
       <p class="paper-tagline">during execution / procedural language / localized judgment demands</p>
 
-      <p class="abstract">
-        Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
-      </p>
-
-      <ul class="meta">
-        <li>Empirical pilot: 500 procedurally realistic sentences derived from public regulatory and safety documentation.</li>
-        <li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentence architecture.</li>
-        <li>Contribution: shows how responsibility-relevant judgment is embedded in procedural documentation itself.</li>
-      </ul>
-
-      <div class="concept-line">during execution → sentence structure shapes interpretive burden and attributable judgment</div>
-
-      <div class="progress">
-        Expanded empirical version in progress, including corpus enlargement, feature co-occurrence analysis, and annotation reliability testing.
+      <div class="links">
+        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
+        <a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
       </div>
 
-      <div class="links">
-        <a href="assets/kim-2026-cf.pdf" target="_blank">PDF</a>
+      <div class="abstract-content">
+        <p class="abstract">
+          Examines how procedural language structures localized judgment demands during execution and how document architecture distributes interpretive burden while preserving individual accountability.
+        </p>
+
+        <ul class="meta">
+          <li>Empirical pilot: 500 procedurally realistic sentences derived from public regulatory and safety documentation.</li>
+          <li>Operationalization: conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentence architecture.</li>
+          <li>Contribution: shows how responsibility-relevant judgment is embedded in procedural documentation itself.</li>
+        </ul>
+
+        <div class="concept-line">during execution → sentence structure shapes interpretive burden and attributable judgment</div>
+
+        <div class="progress">
+          Expanded empirical version in progress, including corpus enlargement, feature co-occurrence analysis, and annotation reliability testing.
+        </div>
       </div>
     </article>
 
@@ -469,20 +507,23 @@ nav a.active{
       <h2 class="paper-title">Responsibility Convergence in Organizational Investigations: Structural Dynamics of Blame in Root Cause Analysis</h2>
       <p class="paper-tagline">after events / investigative closure / administratively legible attribution</p>
 
-      <p class="abstract">
-        Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
-      </p>
-
-      <ul class="meta">
-        <li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
-        <li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
-        <li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures rather than a simple individual bias.</li>
-      </ul>
-
-      <div class="concept-line">after events → causal ambiguity is translated into administratively actionable responsibility</div>
-
       <div class="links">
+        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
         <a href="assets/kim-2026-rc.pdf" target="_blank">PDF</a>
+      </div>
+
+      <div class="abstract-content">
+        <p class="abstract">
+          Explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems.
+        </p>
+
+        <ul class="meta">
+          <li>Core mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
+          <li>Focus: why system-oriented investigations still generate actor-centered accountability outcomes.</li>
+          <li>Contribution: reframes blame as a structural outcome of investigative accountability infrastructures rather than a simple individual bias.</li>
+        </ul>
+
+        <div class="concept-line">after events → causal ambiguity is translated into administratively actionable responsibility</div>
       </div>
     </article>
 
@@ -497,24 +538,27 @@ nav a.active{
       <h2 class="paper-title">Premature Accountability Convergence: AI and the Acceleration of Responsibility in Sociotechnical Organizations</h2>
       <p class="paper-tagline">under AI mediation / representational compression / temporal contraction</p>
 
-      <p class="abstract">
-        Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
-      </p>
-
-      <ul class="meta">
-        <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
-        <li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
-        <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
-      </ul>
-
-      <div class="concept-line">under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined</div>
-
-      <div class="progress">
-        Empirical extension underway: qualitative analysis of FDA Warning Letters and Form 483 observations tracing responsibility convergence in regulatory investigations, providing empirical grounding for the PAC framework through RC-linked document patterns.
+      <div class="links">
+        <button class="abstract-toggle" type="button" aria-expanded="false">Abstract</button>
+        <a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
       </div>
 
-      <div class="links">
-        <a href="assets/kim-2026-pac.pdf" target="_blank">PDF</a>
+      <div class="abstract-content">
+        <p class="abstract">
+          Analyzes how AI-mediated representations reshape the timing and scope of responsibility stabilization by compressing interpretive space and accelerating convergence within accountability infrastructures.
+        </p>
+
+        <ul class="meta">
+          <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
+          <li>Focus: not only who becomes responsible, but how quickly accountability stabilizes.</li>
+          <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
+        </ul>
+
+        <div class="concept-line">under AI mediation → convergence may accelerate before ambiguity has been meaningfully examined</div>
+
+        <div class="progress">
+          Empirical extension underway: qualitative analysis of FDA Warning Letters and Form 483 observations tracing responsibility convergence in regulatory investigations, providing empirical grounding for the PAC framework through RC-linked document patterns.
+        </div>
       </div>
     </article>
 
@@ -531,6 +575,17 @@ nav a.active{
 
   <div class="site-credit">© 2026 Sora Kim</div>
 </div>
+
+<script>
+document.querySelectorAll('.abstract-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const content = button.parentElement.nextElementSibling;
+    const isOpen = content.classList.toggle('open');
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    button.textContent = isOpen ? 'Hide abstract' : 'Abstract';
+  });
+});
+</script>
 
 </body>
 </html>
