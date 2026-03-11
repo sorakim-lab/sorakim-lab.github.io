@@ -18,382 +18,573 @@ content="Research on responsibility, documentation, and sociotechnical accountab
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
---bg:#f5f5f7;
---panel:#ffffff;
---panel2:#fafafa;
---text:#1d1d1f;
---muted:#6e6e73;
---line:#e5e5e7;
---radius:20px;
---mono:'JetBrains Mono', monospace;
+  --bg:#f5f5f7;
+  --bg2:#efeff2;
+  --panel:rgba(255,255,255,0.84);
+  --panel-solid:#ffffff;
+  --panel-soft:#fafafc;
+  --text:#121316;
+  --muted:#6e6e73;
+  --muted-strong:#4d4f57;
+  --line:rgba(17,17,17,0.08);
+  --line-strong:rgba(17,17,17,0.12);
+  --radius-xl:30px;
+  --radius-lg:24px;
+  --radius-md:18px;
+  --shadow:0 18px 50px rgba(15,23,42,0.08);
+  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+  --mono:'JetBrains Mono', monospace;
 }
 
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.7;
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+  color:var(--text);
+  line-height:1.65;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
+    radial-gradient(circle at 84% 22%, rgba(255,255,255,0.7) 0, transparent 34%),
+    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
 }
 
 nav{
-position:fixed;
-top:18px;
-right:18px;
-z-index:60;
-display:flex;
-gap:10px;
-padding:10px;
-border:1px solid var(--line);
-background:rgba(255,255,255,0.75);
-backdrop-filter:blur(16px);
-border-radius:999px;
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:60;
+  display:flex;
+  gap:8px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.58);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
 
 nav a{
-text-decoration:none;
-color:var(--muted);
-font-size:14px;
-padding:8px 12px;
-border-radius:999px;
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:500;
+  padding:8px 12px;
+  border-radius:999px;
+  transition:all .22s ease;
+}
+
+nav a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,0.7);
 }
 
 nav a.active{
-color:var(--text);
-background:rgba(0,0,0,0.06);
+  color:var(--text);
+  background:rgba(255,255,255,0.82);
+  box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
 }
 
 .wrap{
-max-width:1120px;
-margin:0 auto;
-padding:110px 22px 90px;
+  max-width:1240px;
+  margin:0 auto;
+  padding:112px 28px 92px;
 }
 
 .hero{
-display:grid;
-grid-template-columns:1.25fr 1fr;
-gap:44px;
-align-items:center;
+  display:grid;
+  grid-template-columns:minmax(420px, 1.05fr) minmax(420px, 0.95fr);
+  gap:38px;
+  align-items:center;
+  min-height:calc(100vh - 180px);
+}
+
+.card,
+.panel,
+.callout{
+  border:1px solid var(--line);
+  background:var(--panel);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:var(--shadow);
 }
 
 .card{
-border:1px solid var(--line);
-background:rgba(255,255,255,0.9);
-border-radius:var(--radius);
-box-shadow:0 12px 36px rgba(0,0,0,0.06);
-padding:28px;
-position:relative;
+  border-radius:var(--radius-xl);
+  padding:30px;
+  position:relative;
+  overflow:hidden;
 }
 
 .card::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-right:0;
-height:40px;
-border-bottom:1px solid var(--line);
-background:#f3f3f3;
-border-top-left-radius:20px;
-border-top-right-radius:20px;
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:52px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  right:-90px;
+  bottom:-120px;
+  background:radial-gradient(circle, rgba(255,255,255,0.75) 0, rgba(255,255,255,0) 70%);
+  pointer-events:none;
 }
 
 .window-dots{
-position:absolute;
-top:12px;
-left:16px;
-display:flex;
-gap:6px;
+  position:absolute;
+  top:16px;
+  left:18px;
+  display:flex;
+  gap:7px;
+  z-index:2;
 }
 
 .dot{
-width:10px;
-height:10px;
-border-radius:50%;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
 }
 
-.dot:nth-child(1){background:#ff6b6b}
-.dot:nth-child(2){background:#ffd166}
-.dot:nth-child(3){background:#6ee7b7}
+.dot:nth-child(1){background:#ff5f57}
+.dot:nth-child(2){background:#febc2e}
+.dot:nth-child(3){background:#28c840}
 
 .profile{
-display:grid;
-grid-template-columns:210px 1fr;
-gap:26px;
-align-items:center;
-margin-top:38px;
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:28px;
+  align-items:center;
+  margin-top:44px;
+}
+
+.avatar-wrap{
+  position:relative;
+  width:220px;
+  height:220px;
+}
+
+.avatar-wrap::before{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(243,243,246,0.4));
+  z-index:0;
+  filter:blur(3px);
 }
 
 .avatar{
-width:210px;
-height:210px;
-border-radius:999px;
-object-fit:cover;
-box-shadow:0 10px 26px rgba(0,0,0,0.08);
+  position:relative;
+  z-index:1;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 14px 34px rgba(15,23,42,0.14);
+  border:1px solid rgba(255,255,255,0.72);
+}
+
+.identity-kicker{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.02em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
 }
 
 .name{
-font-family:'Sora',sans-serif;
-font-size:42px;
-font-weight:700;
-margin-bottom:8px;
+  font-family:'Sora',sans-serif;
+  font-size:46px;
+  font-weight:700;
+  letter-spacing:-0.05em;
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.bio-mini{
+  margin:0 0 14px 0;
+  font-size:15px;
+  color:var(--muted-strong);
+  max-width:440px;
 }
 
 .mini{
-font-family:var(--mono);
-font-size:12px;
-color:var(--muted);
-display:flex;
-gap:10px;
-flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 .chip{
-padding:6px 12px;
-border-radius:999px;
-border:1px solid var(--line);
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.68);
 }
 
 .links{
-display:flex;
-gap:12px;
-margin-top:14px;
-flex-wrap:nowrap;
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+  flex-wrap:wrap;
 }
 
 .btn{
-padding:10px 16px;
-border-radius:12px;
-border:1px solid var(--line);
-background:#fafafa;
-text-decoration:none;
-color:var(--text);
-font-size:14px;
-white-space:nowrap;
+  padding:10px 15px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.72);
+  text-decoration:none;
+  color:var(--text);
+  font-size:13px;
+  font-weight:500;
+  white-space:nowrap;
+  box-shadow:var(--shadow-soft);
+  transition:transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,0.9);
+  border-color:var(--line-strong);
 }
 
 .right{
-max-width:560px;
+  max-width:620px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,0.64);
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:18px;
+  box-shadow:var(--shadow-soft);
 }
 
 .h1{
-font-family:'Sora',sans-serif;
-font-size:72px;
-font-weight:700;
-letter-spacing:-0.05em;
-line-height:1.0;
-margin-bottom:12px;
+  font-family:'Sora',sans-serif;
+  font-size:78px;
+  font-weight:800;
+  letter-spacing:-0.07em;
+  line-height:0.92;
+  margin:0 0 16px 0;
+  text-wrap:balance;
 }
 
 .hi{
-display:block;
-margin-bottom:6px;
+  display:block;
+  font-size:0.92em;
+  margin-bottom:8px;
+}
+
+.gradient-word{
+  background:linear-gradient(180deg, #17181b 0%, #2d3748 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .lead{
-font-size:16px;
-color:rgba(29,29,31,0.8);
-margin-bottom:8px;
+  font-size:16px;
+  color:rgba(29,29,31,0.82);
+  margin:0 0 16px 0;
+  max-width:570px;
 }
 
 .callout{
-border:1px solid var(--line);
-background:var(--panel2);
-border-radius:18px;
-padding:18px;
-font-family:var(--mono);
-font-size:13px;
-white-space:pre-line;
-margin-top:0;
+  position:relative;
+  border-radius:22px;
+  padding:18px 18px 18px 18px;
+  font-family:var(--mono);
+  font-size:12px;
+  white-space:pre-line;
+  margin-top:16px;
+  line-height:1.8;
+  background:linear-gradient(180deg, rgba(255,255,255,0.78), rgba(250,250,252,0.92));
+}
+
+.callout-label{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.7);
+  color:var(--muted);
 }
 
 .section{
-margin-top:26px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:1.12fr 0.88fr;
+  gap:14px;
+}
+
+.column{
+  display:grid;
+  gap:14px;
 }
 
 .panel{
-border:1px solid var(--line);
-background:#fff;
-border-radius:16px;
-padding:16px;
+  border-radius:20px;
+  padding:18px 18px 16px;
+  transition:transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.panel:hover{
+  transform:translateY(-2px);
+  border-color:var(--line-strong);
+  background:rgba(255,255,255,0.92);
+}
+
+.panel.featured{
+  min-height:180px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,248,251,0.9));
+}
+
+.panel-label{
+  font-family:var(--mono);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  margin-bottom:10px;
 }
 
 .panel h2{
-font-family:'Sora',sans-serif;
-font-size:18px;
-margin:0 0 6px 0;
+  font-family:'Sora',sans-serif;
+  font-size:19px;
+  letter-spacing:-0.04em;
+  line-height:1.1;
+  margin:0 0 8px 0;
 }
 
 .panel p{
-margin:0;
-font-size:14px;
-color:#444;
+  margin:0;
+  font-size:14px;
+  color:#3f4148;
 }
 
 .footer{
-margin-top:70px;
-border-top:1px solid var(--line);
-padding-top:18px;
-font-size:13px;
-color:var(--muted);
+  margin-top:32px;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  font-size:13px;
+  color:var(--muted);
 }
 
 .credit-note{
-margin-top:12px;
-font-size:12px;
-color:var(--muted);
-line-height:1.65;
-max-width:760px;
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.65;
 }
 
-@media (max-width:920px){
-.hero{
-grid-template-columns:1fr;
-}
-.profile{
-grid-template-columns:150px 1fr;
-}
-.avatar{
-width:150px;
-height:150px;
-}
-.links{
-flex-wrap:wrap;
-}
+@media (max-width:1080px){
+  .hero{
+    grid-template-columns:1fr;
+    min-height:auto;
+  }
+  .right{
+    max-width:none;
+  }
 }
 
+@media (max-width:760px){
+  nav{
+    left:14px;
+    right:14px;
+    justify-content:center;
+    overflow:auto;
+  }
+
+  .wrap{
+    padding:98px 18px 70px;
+  }
+
+  .card{
+    padding:24px 20px;
+  }
+
+  .profile{
+    grid-template-columns:1fr;
+    text-align:left;
+    margin-top:42px;
+  }
+
+  .avatar-wrap,
+  .avatar{
+    width:160px;
+    height:160px;
+  }
+
+  .h1{
+    font-size:54px;
+  }
+
+  .section{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <nav>
-<a class="active" href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="research.html">Research</a>
-<a href="papers.html">Papers</a>
-<a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+  <a class="active" href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="research.html">Research</a>
+  <a href="papers.html">Papers</a>
+  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
 </nav>
 
 <div class="wrap">
+  <div class="hero">
 
-<div class="hero">
+    <div class="card">
+      <div class="window-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
 
-<div class="card">
+      <div class="profile">
+        <div class="avatar-wrap">
+          <img class="avatar" src="assets/sora-kim-headshot-1024.jpg" alt="Sora Kim headshot">
+        </div>
 
-<div class="window-dots">
-<span class="dot"></span>
-<span class="dot"></span>
-<span class="dot"></span>
-</div>
+        <div>
+          <div class="identity-kicker">Sora Kim / independent researcher</div>
+          <div class="name">Sora Kim</div>
 
-<div class="profile">
+          <p class="bio-mini">
+            Studying how responsibility becomes legible, actionable, and prematurely settled across documents, investigations, and computational systems.
+          </p>
 
-<img class="avatar" src="assets/sora-kim-headshot-1024.jpg" alt="Sora Kim headshot">
+          <div class="mini">
+            <span class="chip">organization theory × STS × informatics</span>
+            <span class="chip">responsibility / accountability</span>
+            <span class="chip">regulated sociotechnical systems</span>
+          </div>
 
-<div>
+          <div class="links">
+            <a class="btn" href="papers.html">selected manuscripts</a>
+            <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank">cv (pdf)</a>
+            <a class="btn" href="mailto:sorakim.phd@gmail.com">email</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="name">Sora Kim</div>
+    <div class="right">
+      <div class="eyebrow">research program / responsibility in high-stakes systems</div>
 
-<div class="mini">
-<span class="chip">independent researcher</span>
-<span class="chip">organization theory • STS • informatics</span>
-<span class="chip">responsibility / accountability</span>
-</div>
+      <h1 class="h1">
+        <span class="hi">Hi 🙌</span>
+        I map how <span class="gradient-word">responsibility</span><br>
+        gets made.
+      </h1>
 
-<div class="links">
-<a class="btn" href="papers.html">read manuscripts</a>
-<a class="btn" href="assets/sora-kim-cv.pdf" target="_blank">cv (pdf)</a>
-<a class="btn" href="mailto:sorakim.phd@gmail.com">email</a>
-</div>
+      <p class="lead">
+        I study how responsibility is structured, made legible, and stabilized in regulated sociotechnical systems. My work traces the role of procedural documents, investigative routines, and computational mediation in shaping accountability.
+      </p>
 
-</div>
+      <div class="callout">
+        <span class="callout-label">research snapshot</span>
+focus
+responsibility-making in regulated organizations
 
-</div>
-
-</div>
-
-<div class="right">
-
-<div class="h1">
-<span class="hi">Hi 🙌</span>
-I map how responsibility gets made.
-</div>
-
-<p class="lead">
-I study how responsibility becomes structured, stabilized, and accelerated in high-stakes sociotechnical organizations through procedural documentation, investigative routines, and AI-mediated representations in regulated systems.
-</p>
-
-<div class="callout">
-# quick spec
-focus: responsibility-making in regulated organizations
-
-research program:
+program
 AAC → CF → RC → PAC
 
-methods:
-theory + procedural text corpora + qualitative document analysis
+methods
+conceptual modeling + procedural text analysis + qualitative document analysis
 
-empirical tracks:
+now building
 1) CF corpus expansion + annotation reliability testing
-2) RC pattern analysis in FDA Warning Letters / Form 483 to extend PAC
-</div>
+2) responsibility convergence analysis across FDA Form 483 observations and Warning Letters
+      </div>
 
-<div class="section">
+      <div class="section">
+        <div class="column">
+          <div class="panel featured">
+            <div class="panel-label">current obsession</div>
+            <h2>How accountability becomes actionable before ambiguity has finished unfolding.</h2>
+            <p>
+              I am especially interested in the pressures that make responsibility appear settled too early: procedural closure, investigation routines, and the demand for administratively usable explanations.
+            </p>
+          </div>
 
-<div class="panel">
-<h2>Current obsession</h2>
-<p>
-How accountability becomes legible, actionable, and prematurely stabilized under procedural and investigative closure pressure.
-</p>
-</div>
+          <div class="panel">
+            <div class="panel-label">empirical grounding</div>
+            <h2>Pharmaceutical quality systems as responsibility infrastructures</h2>
+            <p>
+              SOP documentation, deviations, CAPA/RCA investigations, release processes, and inspection-facing records provide the empirical setting through which I study how accountability is organized.
+            </p>
+          </div>
+        </div>
 
-<div class="panel">
-<h2>Empirical grounding</h2>
-<p>
-Pharmaceutical quality systems and regulatory infrastructures (SOP documentation, deviations, CAPA/RCA investigations, and audit or inspection-facing records).
-</p>
-</div>
+        <div class="column">
+          <div class="panel">
+            <div class="panel-label">CF empirical extension</div>
+            <h2>Scaling the procedural text corpus</h2>
+            <p>
+              Expanding the Cognitive Friction study through a larger corpus of procedural and regulatory texts, with annotation reliability testing and feature co-occurrence analysis in progress.
+            </p>
+          </div>
 
-<div class="panel">
-<h2>CF empirical extension</h2>
-<p>
-Expanding the Cognitive Friction study through a larger corpus of procedural and regulatory texts, with annotation reliability testing and feature co-occurrence analysis in progress.
-</p>
-</div>
+          <div class="panel">
+            <div class="panel-label">current FDA trace</div>
+            <h2>Responsibility convergence across Form 483s and Warning Letters</h2>
+            <p>
+              A document analysis tracing how responsibility becomes stabilized in regulatory investigations through FDA Form 483 observations and Warning Letters.
+            </p>
+          </div>
+        </div>
+      </div>
 
-<div class="panel">
-<h2>PAC empirical extension</h2>
-<p>
-Analyzing responsibility convergence patterns in FDA Warning Letters and Form 483 materials to extend the PAC framework through regulatory document analysis.
-</p>
-</div>
+      <div class="footer">
+        Independent researcher · Responsibility & accountability in regulated systems · PhD applicant (Fall 2027)
+      </div>
 
-</div>
-
-<div class="footer">
-Independent researcher · Responsibility & accountability in regulated systems · PhD applicant (Fall 2027)
-</div>
-
-<div class="credit-note">
-Concept, design, and code by Sora Kim.
-</div>
-
-</div>
-
-</div>
-
+      <div class="credit-note">
+        Concept, design, and code by Sora Kim.
+      </div>
+    </div>
+  </div>
 </div>
 
 </body>
