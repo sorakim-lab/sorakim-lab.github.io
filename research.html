@@ -1,371 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Research · Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>Research · Sora Kim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Research program by Sora Kim on responsibility, accountability, documentation, investigations, and AI-mediated sociotechnical systems."
+  />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Research Program — Sora Kim">
+  <meta
+    property="og:description"
+    content="Research on responsibility, documentation, investigations, and AI-mediated accountability in regulated sociotechnical systems."
+  >
+  <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
+  <meta property="og:url" content="https://sorakim-phd.github.io/research.html">
+  <meta property="og:site_name" content="Sora Kim">
 
-<meta name="description"
-content="Research program by Sora Kim on responsibility, accountability, documentation, investigations, and AI-mediated sociotechnical systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --panel:rgba(255,255,255,0.84);
+      --panel-strong:rgba(255,255,255,0.92);
+      --panel-soft:rgba(250,250,252,0.82);
+      --text:#121316;
+      --muted:#6e6e73;
+      --muted-strong:#4a4d55;
+      --line:rgba(17,17,17,0.08);
+      --line-strong:rgba(17,17,17,0.12);
+      --radius-xl:30px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --shadow:0 18px 50px rgba(15,23,42,0.08);
+      --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+      --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --blue:#4da3ff;
+      --pink:#ff6786;
+      --purple:#b987ff;
+      --green:#55d38a;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+      color:var(--text);
+      line-height:1.68;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.74) 18%, transparent 40%),
+        radial-gradient(circle at 84% 14%, rgba(255,255,255,0.68) 0, transparent 34%),
+        linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
+      overflow-x:hidden;
+    }
 
-<style>
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
+    }
 
-:root{
---bg:#f5f5f7;
---panel:#ffffff;
---panel-soft:#fafafa;
---text:#1d1d1f;
---muted:#6e6e73;
---line:#e5e5e7;
---radius:20px;
---shadow:0 10px 34px rgba(0,0,0,0.06);
---mono:'JetBrains Mono', monospace;
---blue:#4da3ff;
---pink:#ff6786;
---purple:#c182ff;
---green:#64d98b;
-}
+    nav{
+      position:fixed;
+      top:18px;
+      right:18px;
+      z-index:60;
+      display:flex;
+      gap:8px;
+      padding:8px;
+      border:1px solid rgba(255,255,255,0.6);
+      background:rgba(255,255,255,0.58);
+      backdrop-filter:blur(20px) saturate(160%);
+      -webkit-backdrop-filter:blur(20px) saturate(160%);
+      border-radius:999px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
 
-*{box-sizing:border-box}
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:500;
+      padding:8px 12px;
+      border-radius:999px;
+      transition:all .22s ease;
+      white-space:nowrap;
+    }
 
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-background:
-radial-gradient(900px 700px at 14% 10%, rgba(77,163,255,0.12), transparent 55%),
-radial-gradient(900px 700px at 88% 18%, rgba(255,103,134,0.10), transparent 58%),
-radial-gradient(900px 700px at 68% 95%, rgba(193,130,255,0.08), transparent 60%),
-var(--bg);
-color:var(--text);
-line-height:1.7;
-}
+    nav a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,0.7);
+    }
 
-nav{
-position:fixed;
-top:18px;
-right:18px;
-z-index:60;
-display:flex;
-gap:10px;
-padding:10px;
-border:1px solid var(--line);
-background: rgba(255,255,255,0.72);
-backdrop-filter: blur(16px);
-border-radius:999px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-}
+    nav a.active{
+      color:var(--text);
+      background:rgba(255,255,255,0.82);
+      box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
+    }
 
-nav a{
-text-decoration:none;
-color:var(--muted);
-font-size:14px;
-padding:8px 12px;
-border-radius:999px;
-}
+    .wrap{
+      max-width:1240px;
+      margin:0 auto;
+      padding:118px 24px 88px;
+    }
 
-nav a.active{
-color:var(--text);
-background: rgba(0,0,0,0.06);
-}
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0, 1.06fr) minmax(320px, 0.94fr);
+      gap:18px;
+      align-items:start;
+      margin-bottom:18px;
+    }
 
-.wrap{
-max-width:1120px;
-margin:0 auto;
-padding:110px 22px 90px;
-}
+    .card{
+      border:1px solid var(--line);
+      background:var(--panel);
+      backdrop-filter:blur(20px) saturate(150%);
+      -webkit-backdrop-filter:blur(20px) saturate(150%);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius-xl);
+    }
 
-.title{
-font-family:'Sora',sans-serif;
-font-size:56px;
-font-weight:700;
-letter-spacing:-0.05em;
-margin-bottom:12px;
-}
+    .hero-card{
+      padding:22px 22px 24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
+    }
 
-.lede{
-color:#444;
-font-size:15px;
-max-width:65ch;
-}
+    .meta-card{
+      padding:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,248,251,0.84));
+    }
 
-.card{
-border:1px solid var(--line);
-background:#fff;
-border-radius:var(--radius);
-box-shadow:var(--shadow);
-padding:20px;
-margin-top:22px;
-}
+    .kicker,
+    .chip,
+    .hint,
+    .section-tag,
+    .tagline{
+      font-family:var(--mono);
+    }
 
-.arc-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,0.7);
+      box-shadow:var(--shadow-soft);
+      font-size:11px;
+      color:var(--muted);
+      margin-bottom:14px;
+    }
 
-.stage-card{
-border:1px solid var(--line);
-border-radius:18px;
-padding:16px;
-background:#fafafa;
-}
+    .title{
+      margin:0 0 14px 0;
+      font-family:'Sora',sans-serif;
+      font-size:60px;
+      line-height:0.94;
+      letter-spacing:-0.065em;
+      font-weight:800;
+      max-width:10ch;
+    }
 
-.stage-top{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:6px;
-}
+    .lede{
+      margin:0;
+      font-size:15.5px;
+      color:rgba(18,19,22,0.84);
+      max-width:68ch;
+    }
 
-.dot{
-width:10px;
-height:10px;
-border-radius:50%;
-}
+    .meta-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
 
-.dot-blue{background:var(--blue)}
-.dot-pink{background:var(--pink)}
-.dot-purple{background:var(--purple)}
-.dot-green{background:var(--green)}
+    .chip{
+      font-size:11px;
+      color:var(--muted);
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,0.62);
+    }
 
-.abbr{
-font-family:'Sora',sans-serif;
-font-size:24px;
-font-weight:700;
-}
+    .meta-card p{
+      margin:0 0 9px 0;
+      font-size:13px;
+      color:var(--muted-strong);
+    }
 
-.stage-sub{
-font-family:var(--mono);
-font-size:11px;
-color:var(--muted);
-margin-bottom:6px;
-}
+    .meta-card p:last-child{ margin-bottom:0; }
 
-.stage-p{
-font-size:13px;
-color:#444;
-}
+    .section-card{
+      padding:20px;
+      margin-top:16px;
+    }
 
-.current-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-}
+    .section-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
 
-.paper-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-}
+    .h2{
+      margin:0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.08;
+      letter-spacing:-0.045em;
+    }
 
-.paper{
-border:1px solid var(--line);
-border-radius:18px;
-padding:18px;
-background:#fff;
-}
+    .hint{
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
 
-.h3{
-font-family:'Sora',sans-serif;
-font-size:20px;
-margin-bottom:6px;
-}
+    .arc-box{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:var(--panel-soft);
+      padding:18px;
+      overflow:auto;
+    }
 
-.abs{
-font-size:14px;
-color:#444;
-}
+    .arc-grid{
+      min-width:920px;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:18px;
+      align-items:start;
+    }
 
-.bullets{
-padding-left:18px;
-font-size:13px;
-color:#444;
-}
+    .stage{ position:relative; }
 
-.status{
-margin-top:12px;
-border:1px solid var(--line);
-background:#eef6ff;
-border-radius:14px;
-padding:10px;
-font-size:12px;
-}
+    .stage:not(:last-child)::after{
+      content:"";
+      position:absolute;
+      top:74px;
+      right:-12px;
+      width:24px;
+      height:2px;
+      background:#d6d6db;
+    }
 
-.footer{
-margin-top:40px;
-border-top:1px solid var(--line);
-padding-top:16px;
-font-size:13px;
-color:var(--muted);
-}
+    .stage-label{
+      margin-bottom:8px;
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
 
-</style>
+    .stage-card{
+      min-height:168px;
+      padding:15px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,0.92);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .stage-top{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      flex:0 0 auto;
+    }
+
+    .dot-blue{ background:var(--blue); }
+    .dot-pink{ background:var(--pink); }
+    .dot-purple{ background:var(--purple); }
+    .dot-green{ background:var(--green); }
+
+    .abbr{
+      font-family:'Sora',sans-serif;
+      font-size:24px;
+      font-weight:700;
+      letter-spacing:-0.03em;
+      line-height:1;
+    }
+
+    .stage-sub{
+      margin-bottom:8px;
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .stage-p{
+      margin:0;
+      font-size:13px;
+      color:#43464d;
+      line-height:1.6;
+    }
+
+    .stage-mini{
+      margin-top:12px;
+      font-size:11px;
+      color:var(--muted);
+      font-family:var(--mono);
+      border-top:1px solid var(--line);
+      padding-top:10px;
+    }
+
+    .current-grid{
+      display:grid;
+      grid-template-columns:1.06fr 0.94fr;
+      gap:16px;
+    }
+
+    .current-block{
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,0.72);
+      padding:16px;
+    }
+
+    .current-block h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      line-height:1.1;
+      letter-spacing:-0.04em;
+    }
+
+    .current-block p{
+      margin:0 0 12px 0;
+      font-size:13.5px;
+      color:#41444b;
+    }
+
+    .current-block p:last-child{ margin-bottom:0; }
+
+    .subtle-line{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.62);
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .method-list,
+    .bullets{
+      margin:0;
+      padding-left:18px;
+      color:#44484f;
+      font-size:13px;
+    }
+
+    .method-list li,
+    .bullets li{
+      margin:6px 0;
+    }
+
+    .works{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+
+    .paper{
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
+    }
+
+    .paper-top{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
+
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.62);
+      white-space:nowrap;
+    }
+
+    .h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:-0.04em;
+      line-height:1.16;
+    }
+
+    .abs{
+      margin:0 0 12px 0;
+      font-size:14px;
+      color:rgba(18,19,22,0.82);
+    }
+
+    .tagline{
+      margin:0 0 12px 0;
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+
+    .concept-line,
+    .status{
+      margin-top:14px;
+      padding:11px 13px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      font-size:12px;
+    }
+
+    .concept-line{
+      background:rgba(255,255,255,0.64);
+      color:var(--muted);
+      font-family:var(--mono);
+    }
+
+    .status{
+      background:linear-gradient(180deg, rgba(238,246,255,0.9), rgba(245,249,255,0.96));
+      color:#3e4a59;
+    }
+
+    .footer{
+      margin-top:28px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.62);
+      color:var(--text);
+      text-decoration:none;
+      transition:all .18s ease;
+      white-space:nowrap;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .btn:hover{
+      background:rgba(255,255,255,0.86);
+      transform:translateY(-1px);
+    }
+
+    .site-credit{
+      margin-top:16px;
+      font-size:12px;
+      color:var(--muted);
+      text-align:right;
+    }
+
+    @media (max-width:980px){
+      nav{
+        left:14px;
+        right:14px;
+        justify-content:center;
+        overflow:auto;
+      }
+
+      .hero,
+      .current-grid,
+      .works{
+        grid-template-columns:1fr;
+      }
+
+      .title{ max-width:none; }
+    }
+
+    @media (max-width:700px){
+      .wrap{ padding:100px 18px 76px; }
+      .title{ font-size:46px; }
+    }
+  </style>
 </head>
 
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a class="active" href="research.html">Research</a>
+    <a href="papers.html">Papers</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
+  </nav>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a class="active" href="research.html">Research</a>
-<a href="papers.html">Papers</a>
-<a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
-</nav>
+  <div class="wrap">
+    <div class="hero">
+      <section class="card hero-card">
+        <div class="kicker">research / responsibility systems / documents + investigations</div>
+        <h1 class="title">Research Program</h1>
+        <p class="lede">
+          A connected research program on how responsibility becomes prospectively aligned, procedurally embedded, investigatively stabilized, and computationally accelerated in regulated sociotechnical systems.
+        </p>
+      </section>
 
-<div class="wrap">
+      <aside class="card meta-card">
+        <div class="meta-row">
+          <span class="chip">STS</span>
+          <span class="chip">accountability</span>
+          <span class="chip">documentation</span>
+          <span class="chip">regulated systems</span>
+        </div>
+        <p>Program arc: AAC → CF → RC → PAC</p>
+        <p>Core themes: interpretive alignment, procedural burden, investigative closure, accountability legibility, and AI-mediated representation.</p>
+        <p>Current empirical work: expanded CF corpus and annotation reliability testing; qualitative document analysis of FDA Warning Letters and Form 483 observations examining responsibility convergence in regulatory investigations and providing empirical grounding for the PAC framework.</p>
+      </aside>
+    </div>
 
-<h1 class="title">Research Program</h1>
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">Conceptual arc</h2>
+        <div class="hint">before action → during execution → after events → under AI mediation</div>
+      </div>
 
-<p class="lede">
-My research examines how responsibility becomes structured and stabilized in regulated sociotechnical systems through documentation, procedural infrastructures, investigative routines, and computational mediation.
-</p>
+      <div class="arc-box">
+        <div class="arc-grid">
+          <div class="stage">
+            <div class="stage-label">Before action</div>
+            <div class="stage-card">
+              <div class="stage-top">
+                <span class="dot dot-blue"></span>
+                <div class="abbr">AAC</div>
+              </div>
+              <div class="stage-sub">anticipatory alignment</div>
+              <p class="stage-p">
+                Accountability expectations become aligned across procedures, documentation regimes, and evaluative infrastructures before work is performed.
+              </p>
+              <div class="stage-mini">anticipation structures accountability before action</div>
+            </div>
+          </div>
 
-<div class="card">
+          <div class="stage">
+            <div class="stage-label">During execution</div>
+            <div class="stage-card">
+              <div class="stage-top">
+                <span class="dot dot-pink"></span>
+                <div class="abbr">CF</div>
+              </div>
+              <div class="stage-sub">procedural embedding</div>
+              <p class="stage-p">
+                Procedural sentence structure creates localized judgment demands that actors must resolve while remaining individually accountable.
+              </p>
+              <div class="stage-mini">procedural text distributes interpretive burden</div>
+            </div>
+          </div>
 
-<h2>Conceptual arc</h2>
+          <div class="stage">
+            <div class="stage-label">After events</div>
+            <div class="stage-card">
+              <div class="stage-top">
+                <span class="dot dot-purple"></span>
+                <div class="abbr">RC</div>
+              </div>
+              <div class="stage-sub">investigative stabilization</div>
+              <p class="stage-p">
+                Under ambiguity and closure pressure, investigations converge accountability on administratively legible actors rather than distributed conditions.
+              </p>
+              <div class="stage-mini">investigations translate ambiguity into responsibility</div>
+            </div>
+          </div>
 
-<div class="arc-grid">
+          <div class="stage">
+            <div class="stage-label">Under AI mediation</div>
+            <div class="stage-card">
+              <div class="stage-top">
+                <span class="dot dot-green"></span>
+                <div class="abbr">PAC</div>
+              </div>
+              <div class="stage-sub">computational acceleration</div>
+              <p class="stage-p">
+                AI-mediated representations can compress interpretive space and accelerate responsibility stabilization before causal ambiguity is meaningfully examined.
+              </p>
+              <div class="stage-mini">AI compresses the tempo of accountability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="stage-card">
-<div class="stage-top"><span class="dot dot-blue"></span><div class="abbr">AAC</div></div>
-<div class="stage-sub">anticipatory alignment</div>
-<p class="stage-p">
-Accountability expectations become aligned across procedures and documentation regimes before work is performed.
-</p>
-</div>
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">Current work</h2>
+        <div class="hint">empirical extensions in progress</div>
+      </div>
 
-<div class="stage-card">
-<div class="stage-top"><span class="dot dot-pink"></span><div class="abbr">CF</div></div>
-<div class="stage-sub">procedural embedding</div>
-<p class="stage-p">
-Procedural sentence structure generates localized judgment demands during execution.
-</p>
-</div>
+      <div class="current-grid">
+        <div class="current-block">
+          <h3>FDA document analysis</h3>
+          <p>
+            My current empirical project examines how responsibility becomes stabilized within regulatory investigation documents. The study focuses on FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections.  These materials provide a rare public record of how regulatory agencies articulate responsibility, enforcement reasoning, and corrective action expectations in response to observed violations. By analyzing how responsibility is attributed within these texts, the project traces patterns of responsibility convergence in regulatory investigations. The study focuses on FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections.
+          </p>
+          <p>
+            These materials provide a rare public record of how responsibility, enforcement reasoning, and corrective action expectations are articulated in regulatory investigations. I use them to trace patterns of responsibility convergence in real-world document settings.
+          </p>
+          <div class="subtle-line">why this project: to show how accountability is made administratively legible through document infrastructures, not simply assigned after the fact</div>
+        </div>
 
-<div class="stage-card">
-<div class="stage-top"><span class="dot dot-purple"></span><div class="abbr">RC</div></div>
-<div class="stage-sub">investigative stabilization</div>
-<p class="stage-p">
-Investigations converge responsibility onto administratively legible actors under ambiguity and closure pressure.
-</p>
-</div>
+        <div class="current-block">
+          <h3>Method and analytic focus</h3>
+          <ul class="method-list">
+            <li>Dataset: FDA Warning Letters (drug manufacturing inspections) with matched Form 483 observations when available</li>
+            <li>Unit of analysis: violation / observation blocks within inspection documents</li>
+            <li>Approach: qualitative document analysis combining close reading and structured coding</li>
+            <li>Coding focus: responsibility attribution, procedural framing, corrective action language, and convergence patterns in regulatory reasoning</li>
+          </ul>
+          <div class="subtle-line">empirical aim: ground the broader responsibility program in observable regulatory texts while extending the PAC framework through document-based evidence</div>
+        </div>
+      </div>
+    </section>
 
-<div class="stage-card">
-<div class="stage-top"><span class="dot dot-green"></span><div class="abbr">PAC</div></div>
-<div class="stage-sub">computational acceleration</div>
-<p class="stage-p">
-AI-mediated representations can compress interpretive space and accelerate responsibility stabilization.
-</p>
-</div>
+    <section class="works">
+      <article class="card paper">
+        <div class="paper-top">
+          <span class="dot dot-blue"></span>
+          <span class="pill">AAC</span>
+          <span class="pill">anticipatory accountability</span>
+          <span class="pill">organizational infrastructures</span>
+        </div>
 
-</div>
+        <h3 class="h3">Anticipated Accountability Convergence (AAC)</h3>
+        <p class="tagline">before action / interpretive expectations / prospective structuring</p>
+        <p class="abs">
+          AAC theorizes accountability as a prospective structuring condition rather than a purely retrospective evaluative event. The framework explains how procedural structuring, documentation regimes, and evaluative anticipation converge to stabilize defensible interpretation before action unfolds.
+        </p>
 
-</div>
+        <ul class="bullets">
+          <li>Focus: how organizations preconfigure what will count as accountable conduct before execution.</li>
+          <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
+          <li>Core argument: what converges is not behavior itself, but interpretive expectations of defensible action.</li>
+          <li>Extension: calibrated convergence as a curvilinear relationship between convergence intensity and organizational effectiveness.</li>
+        </ul>
 
-<div class="card">
+        <div class="concept-line">before action: interpretive expectations become prospectively aligned</div>
+        <div class="status">Full-paper manuscript in preparation for submission to the National Communication Association (NCA).</div>
+      </article>
 
-<h2>Current work</h2>
+      <article class="card paper">
+        <div class="paper-top">
+          <span class="dot dot-pink"></span>
+          <span class="pill">CF</span>
+          <span class="pill">procedural texts</span>
+          <span class="pill">document architecture</span>
+        </div>
 
-<div class="current-grid">
+        <h3 class="h3">Cognitive Friction in Procedural Texts (CF)</h3>
+        <p class="tagline">during execution / procedural language / localized judgment demands</p>
+        <p class="abs">
+          CF examines how procedural language structures localized judgment demands during execution. It conceptualizes cognitive friction as the co-occurrence of conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentences.
+        </p>
 
-<div>
+        <ul class="bullets">
+          <li>Focus: how documentation distributes interpretive work and localizes responsibility during execution.</li>
+          <li>Empirical pilot: 500 procedurally realistic sentences drawn from public regulatory and safety materials.</li>
+          <li>Operationalization: rule-based annotation of structural features within sentence-level procedural text.</li>
+          <li>Core claim: responsibility-relevant judgment demands are embedded in document architecture, not only in human error or post-hoc evaluation.</li>
+        </ul>
 
-<h3 class="h3">Regulatory document analysis</h3>
+        <div class="concept-line">during execution: sentence structure shapes interpretive burden and attributable judgment</div>
+        <div class="status">Expanded empirical version in progress, including corpus enlargement, feature co-occurrence analysis, and annotation reliability testing.</div>
+      </article>
 
-<p class="abs">
-Current empirical work analyzes FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections. These regulatory documents provide a rare public record of how responsibility is articulated and stabilized within formal investigation narratives.
-</p>
+      <article class="card paper">
+        <div class="paper-top">
+          <span class="dot dot-purple"></span>
+          <span class="pill">RC</span>
+          <span class="pill">investigations</span>
+          <span class="pill">closure pressure</span>
+        </div>
 
-<p class="abs">
-The study examines how responsibility convergence emerges in regulatory enforcement texts and how investigative reasoning translates complex sociotechnical failures into administratively actionable accountability.
-</p>
+        <h3 class="h3">Responsibility Convergence (RC)</h3>
+        <p class="tagline">after events / investigative closure / administratively legible attribution</p>
+        <p class="abs">
+          RC explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems. The paper specifies a structural convergence dynamic rather than a purely psychological bias account.
+        </p>
 
-</div>
+        <ul class="bullets">
+          <li>Focus: why investigative systems designed for systemic explanation still produce administratively legible accountability outcomes.</li>
+          <li>Mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
+          <li>Core claim: accountability converges because organizations require interpretable and actionable attribution anchors under investigative pressure.</li>
+          <li>Contribution: reframes blame as a structural output of accountability infrastructures rather than a simple individual bias.</li>
+        </ul>
 
-<div>
+        <div class="concept-line">after events: causal ambiguity is translated into administratively actionable responsibility</div>
+      </article>
 
-<h3 class="h3">Method</h3>
+      <article class="card paper">
+        <div class="paper-top">
+          <span class="dot dot-green"></span>
+          <span class="pill">PAC</span>
+          <span class="pill">AI mediation</span>
+          <span class="pill">temporal accountability</span>
+        </div>
 
-<ul class="bullets">
-<li>Dataset: FDA Warning Letters (drug manufacturing)</li>
-<li>Supplementary documents: matched Form 483 observations</li>
-<li>Unit of analysis: violation / observation blocks</li>
-<li>Approach: qualitative document analysis and structured coding</li>
-<li>Focus: responsibility attribution, procedural framing, corrective action language</li>
-</ul>
+        <h3 class="h3">Premature Accountability Convergence (PAC)</h3>
+        <p class="tagline">under AI mediation / representational compression / temporal contraction</p>
+        <p class="abs">
+          PAC analyzes how AI systems reshape the timing and scope of responsibility stabilization in organizational settings. Rather than treating AI as an autonomous decision-maker, the paper conceptualizes computational systems as representational accelerators within existing accountability infrastructures.
+        </p>
 
-</div>
+        <ul class="bullets">
+          <li>Focus: when and how responsibility converges too early under computational mediation.</li>
+          <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
+          <li>Core claim: AI may not determine who is responsible, but it can alter how quickly and how narrowly responsibility becomes actionable.</li>
+          <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
+        </ul>
 
-</div>
+        <div class="concept-line">under AI mediation: convergence can accelerate before ambiguity has been meaningfully examined</div>
+        <div class="status">Abstract in preparation for submission to the Society for Social Studies of Science (4S). Current empirical work analyzes FDA Warning Letters and Form 483 observations to examine responsibility convergence patterns in regulatory investigations, providing empirical grounding for the PAC framework. Empirical extension in progress through FDA regulatory document analysis.</div>
+      </article>
+    </section>
 
-</div>
+    <div class="footer">
+      <div>
+        Current emphasis: responsibility, documentation, investigations, and AI-mediated accountability in regulated sociotechnical systems.
+      </div>
 
-<div class="paper-grid">
+      <div class="btns">
+        <a class="btn" href="papers.html">Selected manuscripts</a>
+        <a class="btn" href="about.html">About this program</a>
+        <a class="btn" href="mailto:sorakim.phd@gmail.com">Email</a>
+      </div>
+    </div>
 
-<div class="paper">
-
-<h3 class="h3">Anticipated Accountability Convergence (AAC)</h3>
-
-<p class="abs">
-AAC conceptualizes accountability as a prospective structuring condition in organizational systems. The framework explains how procedural infrastructures and documentation regimes align interpretive expectations before action occurs.
-</p>
-
-<div class="status">
-Full paper manuscript in preparation for submission to the National Communication Association (NCA).
-</div>
-
-</div>
-
-<div class="paper">
-
-<h3 class="h3">Cognitive Friction in Procedural Texts (CF)</h3>
-
-<p class="abs">
-CF examines how procedural language structures judgment demands during execution. The project studies how documentation architecture distributes interpretive burden across actors performing regulated work.
-</p>
-
-<div class="status">
-Expanded empirical corpus and annotation reliability testing currently in progress.
-</div>
-
-</div>
-
-<div class="paper">
-
-<h3 class="h3">Responsibility Convergence (RC)</h3>
-
-<p class="abs">
-RC explains why investigations recurrently stabilize responsibility at identifiable actors even when failures are distributed across sociotechnical systems.
-</p>
-
-</div>
-
-<div class="paper">
-
-<h3 class="h3">Premature Accountability Convergence (PAC)</h3>
-
-<p class="abs">
-PAC analyzes how AI-mediated systems reshape the timing of accountability stabilization by compressing interpretive space in organizational investigations.
-</p>
-
-<div class="status">
-Abstract in preparation for submission to the Society for Social Studies of Science (4S).
-</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-© 2026 Sora Kim
-</div>
-
-</div>
-
+    <div class="site-credit">© 2026 Sora Kim</div>
+  </div>
 </body>
 </html>
