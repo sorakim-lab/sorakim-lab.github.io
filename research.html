@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="A research program on how responsibility becomes structured across anticipatory alignment, procedural execution, investigative stabilization, and AI-mediated representation."
+    content="Research program by Sora Kim on responsibility, accountability, documentation, investigations, and AI-mediated sociotechnical systems."
   />
   <meta property="og:type" content="website">
   <meta property="og:title" content="Research Program — Sora Kim">
@@ -21,41 +21,53 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet"
   >
 
   <style>
     :root{
       --bg:#f5f5f7;
-      --panel:#ffffff;
-      --panel-soft:#fafafa;
-      --text:#1d1d1f;
+      --panel:rgba(255,255,255,0.84);
+      --panel-strong:rgba(255,255,255,0.92);
+      --panel-soft:rgba(250,250,252,0.82);
+      --text:#121316;
       --muted:#6e6e73;
-      --line:#e5e5e7;
-      --radius:20px;
+      --muted-strong:#4a4d55;
+      --line:rgba(17,17,17,0.08);
+      --line-strong:rgba(17,17,17,0.12);
+      --radius-xl:30px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --shadow:0 18px 50px rgba(15,23,42,0.08);
+      --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
       --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-      --shadow:0 10px 34px rgba(0,0,0,0.06);
       --blue:#4da3ff;
       --pink:#ff6786;
-      --purple:#c182ff;
-      --green:#64d98b;
+      --purple:#b987ff;
+      --green:#55d38a;
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-      background:
-        radial-gradient(900px 700px at 14% 10%, rgba(77,163,255,0.12), transparent 55%),
-        radial-gradient(900px 700px at 88% 18%, rgba(255,103,134,0.10), transparent 58%),
-        radial-gradient(900px 700px at 68% 95%, rgba(193,130,255,0.08), transparent 60%),
-        var(--bg);
       color:var(--text);
-      line-height:1.7;
+      line-height:1.68;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.74) 18%, transparent 40%),
+        radial-gradient(circle at 84% 14%, rgba(255,255,255,0.68) 0, transparent 34%),
+        linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
       overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
     }
 
     nav{
@@ -64,79 +76,108 @@
       right:18px;
       z-index:60;
       display:flex;
-      gap:10px;
-      padding:10px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(16px);
+      gap:8px;
+      padding:8px;
+      border:1px solid rgba(255,255,255,0.6);
+      background:rgba(255,255,255,0.58);
+      backdrop-filter:blur(20px) saturate(160%);
+      -webkit-backdrop-filter:blur(20px) saturate(160%);
       border-radius:999px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
     }
 
     nav a{
       text-decoration:none;
       color:var(--muted);
-      font-size:14px;
+      font-size:13px;
+      font-weight:500;
       padding:8px 12px;
       border-radius:999px;
-      transition:160ms ease;
+      transition:all .22s ease;
       white-space:nowrap;
     }
 
     nav a:hover{
       color:var(--text);
-      background: rgba(0,0,0,0.04);
+      background:rgba(255,255,255,0.7);
     }
 
     nav a.active{
       color:var(--text);
-      background: rgba(0,0,0,0.06);
+      background:rgba(255,255,255,0.82);
+      box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
     }
 
     .wrap{
-      max-width:1120px;
+      max-width:1240px;
       margin:0 auto;
-      padding:110px 22px 90px;
+      padding:118px 24px 88px;
     }
 
-    .top{
+    .hero{
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:20px;
+      grid-template-columns:minmax(0, 1.06fr) minmax(320px, 0.94fr);
+      gap:18px;
       align-items:start;
       margin-bottom:18px;
     }
 
-    .crumb{
+    .card{
+      border:1px solid var(--line);
+      background:var(--panel);
+      backdrop-filter:blur(20px) saturate(150%);
+      -webkit-backdrop-filter:blur(20px) saturate(150%);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius-xl);
+    }
+
+    .hero-card{
+      padding:22px 22px 24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
+    }
+
+    .meta-card{
+      padding:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(248,248,251,0.84));
+    }
+
+    .kicker,
+    .chip,
+    .hint,
+    .section-tag,
+    .tagline{
       font-family:var(--mono);
-      font-size:12px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,0.7);
+      box-shadow:var(--shadow-soft);
+      font-size:11px;
       color:var(--muted);
-      margin-bottom:10px;
+      margin-bottom:14px;
     }
 
     .title{
+      margin:0 0 14px 0;
       font-family:'Sora',sans-serif;
-      font-size:56px;
-      font-weight:700;
-      letter-spacing:-0.05em;
-      line-height:1.03;
-      margin:0 0 12px 0;
-      max-width:12ch;
+      font-size:60px;
+      line-height:0.94;
+      letter-spacing:-0.065em;
+      font-weight:800;
+      max-width:10ch;
     }
 
     .lede{
       margin:0;
-      color:rgba(29,29,31,0.84);
-      font-size:15px;
-      max-width:70ch;
-    }
-
-    .meta{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.66);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
+      font-size:15.5px;
+      color:rgba(18,19,22,0.84);
+      max-width:68ch;
     }
 
     .meta-row{
@@ -147,106 +188,95 @@
     }
 
     .chip{
-      font-family:var(--mono);
-      font-size:12px;
+      font-size:11px;
       color:var(--muted);
       padding:6px 10px;
       border:1px solid var(--line);
       border-radius:999px;
-      background:rgba(0,0,0,0.02);
+      background:rgba(255,255,255,0.62);
     }
 
-    .meta p{
-      margin:0 0 8px 0;
-      color:rgba(29,29,31,0.74);
+    .meta-card p{
+      margin:0 0 9px 0;
       font-size:13px;
+      color:var(--muted-strong);
     }
 
-    .meta p:last-child{
-      margin-bottom:0;
+    .meta-card p:last-child{ margin-bottom:0; }
+
+    .section-card{
+      padding:20px;
+      margin-top:16px;
     }
 
-    .card{
-      border:1px solid var(--line);
-      background:var(--panel);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-
-    .arc{
-      padding:18px;
-      margin:18px 0 18px;
-    }
-
-    .arc-head{
+    .section-head{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
       margin-bottom:12px;
+      flex-wrap:wrap;
     }
 
     .h2{
-      font-family:'Sora',sans-serif;
-      font-size:18px;
-      font-weight:700;
-      letter-spacing:-0.02em;
       margin:0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.08;
+      letter-spacing:-0.045em;
     }
 
     .hint{
-      font-family:var(--mono);
-      font-size:12px;
+      font-size:11px;
       color:var(--muted);
-      white-space:nowrap;
+      text-transform:uppercase;
+      letter-spacing:0.04em;
     }
 
     .arc-box{
       border:1px solid var(--line);
-      border-radius:18px;
+      border-radius:22px;
       background:var(--panel-soft);
-      padding:16px;
+      padding:18px;
       overflow:auto;
     }
 
     .arc-grid{
-      min-width:880px;
+      min-width:920px;
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns:repeat(4, 1fr);
       gap:18px;
       align-items:start;
     }
 
-    .stage{
-      position:relative;
-    }
+    .stage{ position:relative; }
 
     .stage:not(:last-child)::after{
       content:"";
       position:absolute;
-      top:68px;
-      right:-11px;
-      width:22px;
+      top:74px;
+      right:-12px;
+      width:24px;
       height:2px;
-      background:#d1d1d6;
+      background:#d6d6db;
     }
 
     .stage-label{
+      margin-bottom:8px;
       font-family:var(--mono);
       font-size:11px;
       color:var(--muted);
-      margin-bottom:8px;
       text-transform:uppercase;
-      letter-spacing:0.03em;
+      letter-spacing:0.04em;
     }
 
     .stage-card{
-      background:#fff;
+      min-height:168px;
+      padding:15px;
       border:1px solid var(--line);
-      border-radius:18px;
-      padding:14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      min-height:138px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.92);
+      box-shadow:var(--shadow-soft);
     }
 
     .stage-top{
@@ -277,22 +307,84 @@
     }
 
     .stage-sub{
+      margin-bottom:8px;
       font-family:var(--mono);
       font-size:11px;
       color:var(--muted);
-      margin-bottom:8px;
     }
 
     .stage-p{
       margin:0;
       font-size:13px;
-      color:#444;
+      color:#43464d;
       line-height:1.6;
     }
 
-    .grid{
+    .stage-mini{
+      margin-top:12px;
+      font-size:11px;
+      color:var(--muted);
+      font-family:var(--mono);
+      border-top:1px solid var(--line);
+      padding-top:10px;
+    }
+
+    .current-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1.06fr 0.94fr;
+      gap:16px;
+    }
+
+    .current-block{
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,0.72);
+      padding:16px;
+    }
+
+    .current-block h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      line-height:1.1;
+      letter-spacing:-0.04em;
+    }
+
+    .current-block p{
+      margin:0 0 12px 0;
+      font-size:13.5px;
+      color:#41444b;
+    }
+
+    .current-block p:last-child{ margin-bottom:0; }
+
+    .subtle-line{
+      margin-top:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.62);
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    .method-list,
+    .bullets{
+      margin:0;
+      padding-left:18px;
+      color:#44484f;
+      font-size:13px;
+    }
+
+    .method-list li,
+    .bullets li{
+      margin:6px 0;
+    }
+
+    .works{
+      display:grid;
+      grid-template-columns:1fr 1fr;
       gap:16px;
       margin-top:16px;
     }
@@ -301,6 +393,7 @@
       padding:18px;
       position:relative;
       overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.84));
     }
 
     .paper-top{
@@ -310,76 +403,74 @@
       flex-wrap:wrap;
       margin-bottom:10px;
       font-family:var(--mono);
-      font-size:12px;
+      font-size:11px;
       color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
     }
 
     .pill{
       padding:6px 10px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(0,0,0,0.02);
+      background:rgba(255,255,255,0.62);
       white-space:nowrap;
     }
 
     .h3{
-      font-family:'Sora',sans-serif;
-      font-size:21px;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      line-height:1.2;
       margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      font-weight:700;
+      letter-spacing:-0.04em;
+      line-height:1.16;
     }
 
     .abs{
       margin:0 0 12px 0;
-      color:rgba(29,29,31,0.82);
       font-size:14px;
+      color:rgba(18,19,22,0.82);
     }
 
-    .bullets{
-      margin:0;
-      padding-left:18px;
-      color:rgba(29,29,31,0.76);
-      font-size:13px;
+    .tagline{
+      margin:0 0 12px 0;
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.05em;
     }
 
-    .bullets li{
-      margin:6px 0;
+    .concept-line,
+    .status{
+      margin-top:14px;
+      padding:11px 13px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      font-size:12px;
     }
 
     .concept-line{
-      margin-top:14px;
-      padding:10px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:#fafafa;
-      font-family:var(--mono);
-      font-size:12px;
+      background:rgba(255,255,255,0.64);
       color:var(--muted);
+      font-family:var(--mono);
     }
 
     .status{
-      margin-top:12px;
-      border:1px solid var(--line);
-      background:#eef6ff;
-      border-radius:14px;
-      padding:12px;
-      font-size:12.5px;
-      color:#3f4b59;
+      background:linear-gradient(180deg, rgba(238,246,255,0.9), rgba(245,249,255,0.96));
+      color:#3e4a59;
     }
 
     .footer{
-      margin-top:24px;
+      margin-top:28px;
+      padding-top:16px;
       border-top:1px solid var(--line);
-      padding-top:18px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
       color:var(--muted);
-      font-size:13px;
+      font-size:12px;
     }
 
     .btns{
@@ -395,45 +486,46 @@
       padding:10px 14px;
       border-radius:14px;
       border:1px solid var(--line);
-      background:rgba(0,0,0,0.02);
+      background:rgba(255,255,255,0.62);
       color:var(--text);
       text-decoration:none;
-      transition:160ms ease;
+      transition:all .18s ease;
       white-space:nowrap;
+      box-shadow:var(--shadow-soft);
     }
 
     .btn:hover{
-      background:rgba(0,0,0,0.06);
+      background:rgba(255,255,255,0.86);
       transform:translateY(-1px);
     }
 
     .site-credit{
-      margin-top:40px;
+      margin-top:16px;
       font-size:12px;
       color:var(--muted);
-      text-align:center;
-      opacity:0.75;
+      text-align:right;
     }
 
-    @media (max-width: 960px){
+    @media (max-width:980px){
       nav{
         left:14px;
         right:14px;
         justify-content:center;
+        overflow:auto;
       }
 
-      .top{
+      .hero,
+      .current-grid,
+      .works{
         grid-template-columns:1fr;
       }
 
-      .grid{
-        grid-template-columns:1fr;
-      }
+      .title{ max-width:none; }
     }
 
-    @media (max-width: 560px){
-      .wrap{ padding:96px 16px 70px; }
-      .title{ font-size:40px; max-width:none; }
+    @media (max-width:700px){
+      .wrap{ padding:100px 18px 76px; }
+      .title{ font-size:46px; }
     }
   </style>
 </head>
@@ -448,36 +540,30 @@
   </nav>
 
   <div class="wrap">
-    <div class="top">
-      <div>
-        <div class="crumb">/ research</div>
-        <h1 class="title">Research</h1>
+    <div class="hero">
+      <section class="card hero-card">
+        <div class="kicker">research / responsibility systems / documents + investigations</div>
+        <h1 class="title">Research Program</h1>
         <p class="lede">
           A connected research program on how responsibility becomes prospectively aligned, procedurally embedded, investigatively stabilized, and computationally accelerated in regulated sociotechnical systems.
         </p>
-      </div>
+      </section>
 
-      <div class="meta">
+      <aside class="card meta-card">
         <div class="meta-row">
           <span class="chip">STS</span>
           <span class="chip">accountability</span>
           <span class="chip">documentation</span>
           <span class="chip">regulated systems</span>
         </div>
-        <p>
-          Program arc: AAC → CF → RC → PAC
-        </p>
-        <p>
-          Core themes: documentation, interpretive alignment, investigative closure, accountability legibility, and AI-mediated representation.
-        </p>
-        <p>
-          Current empirical work: expanded CF corpus + annotation reliability testing; regulatory document analysis of FDA Warning Letters and Form 483 materials examining RC-like responsibility convergence patterns informing PAC.
-        </p>
-      </div>
+        <p>Program arc: AAC → CF → RC → PAC</p>
+        <p>Core themes: interpretive alignment, procedural burden, investigative closure, accountability legibility, and AI-mediated representation.</p>
+        <p>Current empirical work: expanded CF corpus + annotation reliability testing; FDA document analysis tracing responsibility convergence in Warning Letters and Form 483 observations.</p>
+      </aside>
     </div>
 
-    <section class="card arc">
-      <div class="arc-head">
+    <section class="card section-card">
+      <div class="section-head">
         <h2 class="h2">Conceptual arc</h2>
         <div class="hint">before action → during execution → after events → under AI mediation</div>
       </div>
@@ -495,6 +581,7 @@
               <p class="stage-p">
                 Accountability expectations become aligned across procedures, documentation regimes, and evaluative infrastructures before work is performed.
               </p>
+              <div class="stage-mini">anticipation structures accountability before action</div>
             </div>
           </div>
 
@@ -509,6 +596,7 @@
               <p class="stage-p">
                 Procedural sentence structure creates localized judgment demands that actors must resolve while remaining individually accountable.
               </p>
+              <div class="stage-mini">procedural text distributes interpretive burden</div>
             </div>
           </div>
 
@@ -523,6 +611,7 @@
               <p class="stage-p">
                 Under ambiguity and closure pressure, investigations converge accountability on administratively legible actors rather than distributed conditions.
               </p>
+              <div class="stage-mini">investigations translate ambiguity into responsibility</div>
             </div>
           </div>
 
@@ -537,13 +626,45 @@
               <p class="stage-p">
                 AI-mediated representations can compress interpretive space and accelerate responsibility stabilization before causal ambiguity is meaningfully examined.
               </p>
+              <div class="stage-mini">AI compresses the tempo of accountability</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="grid">
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">Current work</h2>
+        <div class="hint">empirical extensions in progress</div>
+      </div>
+
+      <div class="current-grid">
+        <div class="current-block">
+          <h3>FDA document analysis</h3>
+          <p>
+            My current empirical project examines how responsibility becomes stabilized in regulatory enforcement documentation. The study focuses on FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections.
+          </p>
+          <p>
+            These materials provide a rare public record of how responsibility, enforcement reasoning, and corrective action expectations are articulated in regulatory investigations. I use them to trace patterns of responsibility convergence in real-world document settings.
+          </p>
+          <div class="subtle-line">why this project: to show how accountability is made administratively legible through document infrastructures, not simply assigned after the fact</div>
+        </div>
+
+        <div class="current-block">
+          <h3>Method and analytic focus</h3>
+          <ul class="method-list">
+            <li>Dataset: FDA Warning Letters in drug manufacturing, with matched Form 483 observations when available</li>
+            <li>Unit of analysis: violation / observation blocks within inspection documents</li>
+            <li>Approach: qualitative document analysis, close reading, and structured coding</li>
+            <li>Primary coding dimensions: responsibility attribution, procedural framing, corrective action language, and patterns of convergence</li>
+          </ul>
+          <div class="subtle-line">empirical aim: ground the broader responsibility program in observable regulatory texts while extending the PAC framework through document-based evidence</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="works">
       <article class="card paper">
         <div class="paper-top">
           <span class="dot dot-blue"></span>
@@ -553,6 +674,7 @@
         </div>
 
         <h3 class="h3">Anticipated Accountability Convergence (AAC)</h3>
+        <p class="tagline">before action / interpretive expectations / prospective structuring</p>
         <p class="abs">
           AAC theorizes accountability as a prospective structuring condition rather than a purely retrospective evaluative event. The framework explains how procedural structuring, documentation regimes, and evaluative anticipation converge to stabilize defensible interpretation before action unfolds.
         </p>
@@ -565,6 +687,7 @@
         </ul>
 
         <div class="concept-line">before action: interpretive expectations become prospectively aligned</div>
+        <div class="status">Full-paper manuscript in preparation for submission to the National Communication Association (NCA).</div>
       </article>
 
       <article class="card paper">
@@ -576,6 +699,7 @@
         </div>
 
         <h3 class="h3">Cognitive Friction in Procedural Texts (CF)</h3>
+        <p class="tagline">during execution / procedural language / localized judgment demands</p>
         <p class="abs">
           CF examines how procedural language structures localized judgment demands during execution. It conceptualizes cognitive friction as the co-occurrence of conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentences.
         </p>
@@ -588,10 +712,7 @@
         </ul>
 
         <div class="concept-line">during execution: sentence structure shapes interpretive burden and attributable judgment</div>
-
-        <div class="status">
-          Expanded empirical version in progress, including corpus enlargement and annotation reliability testing.
-        </div>
+        <div class="status">Expanded empirical version in progress, including corpus enlargement, feature co-occurrence analysis, and annotation reliability testing.</div>
       </article>
 
       <article class="card paper">
@@ -599,10 +720,11 @@
           <span class="dot dot-purple"></span>
           <span class="pill">RC</span>
           <span class="pill">investigations</span>
-          <span class="pill">blame / closure</span>
+          <span class="pill">closure pressure</span>
         </div>
 
         <h3 class="h3">Responsibility Convergence (RC)</h3>
+        <p class="tagline">after events / investigative closure / administratively legible attribution</p>
         <p class="abs">
           RC explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems. The paper specifies a structural convergence dynamic rather than a purely psychological bias account.
         </p>
@@ -622,10 +744,11 @@
           <span class="dot dot-green"></span>
           <span class="pill">PAC</span>
           <span class="pill">AI mediation</span>
-          <span class="pill">algorithmic accountability</span>
+          <span class="pill">temporal accountability</span>
         </div>
 
         <h3 class="h3">Premature Accountability Convergence (PAC)</h3>
+        <p class="tagline">under AI mediation / representational compression / temporal contraction</p>
         <p class="abs">
           PAC analyzes how AI systems reshape the timing and scope of responsibility stabilization in organizational settings. Rather than treating AI as an autonomous decision-maker, the paper conceptualizes computational systems as representational accelerators within existing accountability infrastructures.
         </p>
@@ -638,10 +761,7 @@
         </ul>
 
         <div class="concept-line">under AI mediation: convergence can accelerate before ambiguity has been meaningfully examined</div>
-
-        <div class="status">
-          Empirical extension in progress: analysis of FDA Warning Letters and Form 483 materials tracing RC-like responsibility convergence patterns in regulatory texts to extend the PAC framework beyond explicitly computational settings.
-        </div>
+        <div class="status">Abstract in preparation for submission to the Society for Social Studies of Science (4S). Empirical extension in progress through FDA regulatory document analysis.</div>
       </article>
     </section>
 
@@ -651,15 +771,13 @@
       </div>
 
       <div class="btns">
-        <a class="btn" href="papers.html">Read manuscripts</a>
+        <a class="btn" href="papers.html">Selected manuscripts</a>
         <a class="btn" href="about.html">About this program</a>
         <a class="btn" href="mailto:sorakim.phd@gmail.com">Email</a>
       </div>
     </div>
 
-    <div class="site-credit">
-      © 2026 Sora Kim
-    </div>
+    <div class="site-credit">© 2026 Sora Kim</div>
   </div>
 </body>
 </html>
