@@ -270,6 +270,77 @@ nav a.active{
   background:linear-gradient(180deg, rgba(233,238,249,0.9), rgba(255,255,255,0.9));
 }
 
+.contact-card{
+  margin-top:8px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(180deg, rgba(240,244,252,0.72), rgba(255,255,255,0.90));
+  padding:18px;
+  box-shadow:var(--shadow-soft);
+}
+
+.contact-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.contact-label{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+}
+
+.contact-status{
+  font-family:var(--mono);
+  font-size:11px;
+  color:#4b5b7a;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(77,96,132,0.10);
+  background:rgba(255,255,255,0.72);
+}
+
+.imessage{
+  display:grid;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.bubble{
+  max-width:88%;
+  padding:11px 13px;
+  border-radius:18px;
+  font-size:13px;
+  line-height:1.55;
+  box-shadow:var(--shadow-soft);
+}
+
+.bubble.left{
+  background:rgba(255,255,255,0.92);
+  border:1px solid var(--line);
+  color:#353840;
+  border-bottom-left-radius:8px;
+}
+
+.bubble.right{
+  margin-left:auto;
+  background:linear-gradient(180deg, rgba(218,229,251,0.95), rgba(232,238,249,0.96));
+  border:1px solid rgba(120,144,190,0.10);
+  color:#243047;
+  border-bottom-right-radius:8px;
+}
+
+.contact-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
 .hero-right{
   display:grid;
   gap:14px;
@@ -627,6 +698,11 @@ nav a.active{
     flex-direction:column;
     align-items:flex-start;
   }
+
+  .contact-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
@@ -674,6 +750,25 @@ nav a.active{
             <a class="btn primary" href="projects.html">view projects</a>
             <a class="btn" href="research.html">current research</a>
             <a class="btn" href="papers.html">selected papers</a>
+            <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank">cv (pdf)</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-top">
+            <div class="contact-label">contact / say hi</div>
+            <div class="contact-status">open to conversation</div>
+          </div>
+
+          <div class="imessage">
+            <div class="bubble left">Hi Sora — loved your work on human-centered systems for regulated environments.</div>
+            <div class="bubble right">Thank you! Feel free to reach out by email ✨</div>
+            <div class="bubble left">Research, collaboration, or just a thoughtful hello?</div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn primary" href="mailto:sorakim.phd@gmail.com">email me</a>
+            <a class="btn" href="papers.html">read papers</a>
             <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank">cv (pdf)</a>
           </div>
         </div>
