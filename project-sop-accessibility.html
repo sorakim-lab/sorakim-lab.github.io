@@ -491,6 +491,16 @@ tr:last-child td{
   border-bottom:none;
 }
 
+.quote-line{
+  margin-top:10px;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,0.68);
+  font-size:13px;
+  color:#41444c;
+}
+
 .footer{
   margin-top:34px;
   border-top:1px solid var(--line);
@@ -551,7 +561,7 @@ tr:last-child td{
 
     <div class="hero-inner">
       <div>
-        <span class="eyebrow">case study / document UX / regulated environments</span>
+        <span class="eyebrow">📘 case study / document UX / regulated environments</span>
         <h1 class="title">SOP Accessibility System</h1>
         <p class="lead">
           A human-centered document UX project focused on improving searchability, keyword pathways, and information access in scanned GMP SOP archives without altering validated files.
@@ -575,7 +585,7 @@ tr:last-child td{
 
       <div class="hero-side">
         <div class="note">
-          <h3>Core design question</h3>
+          <h3>🎯 Core design question</h3>
           <p>
             How can SOP retrievability be improved in a validated GMP environment where the source files themselves cannot be modified?
           </p>
@@ -587,7 +597,7 @@ tr:last-child td{
         </div>
 
         <div class="note">
-          <h3>Project role in the portfolio</h3>
+          <h3>📝 Project role in the portfolio</h3>
           <p>
             This project anchors the accessibility and document-navigation side of my HCI work, and is also being developed into a paper on document usability and compliance-constrained design in regulated systems.
           </p>
@@ -623,20 +633,23 @@ tr:last-child td{
 
   <section class="section-card blue">
     <div class="section-head">
-      <h2 class="section-title">Overview</h2>
+      <h2 class="section-title">🧩 Background</h2>
       <span class="section-tag">problem framing</span>
     </div>
     <p>
-      In GMP environments, Standard Operating Procedures are tightly controlled documents. Digital copies are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. In practice, analysts may rely on file titles, memory, and manual scrolling to find relevant information.
+      In <strong>Good Manufacturing Practice (GMP)</strong> environments, all <strong>Standard Operating Procedures (SOPs)</strong> are tightly controlled. SOPs are the formal documents that tell analysts and operators exactly how regulated work should be performed, recorded, and reviewed.
     </p>
     <p>
-      This project explored how a separate accessibility layer could improve information retrieval while fully respecting validation and document-control constraints.
+      In practice, these documents are essential to quality and compliance — but they are not always easy to use. Digital versions are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. As a result, users may rely on file titles, memory, and manual scrolling just to find the right procedure.
     </p>
+    <div class="quote-line">
+      💬 Usability is often invisible in compliance-heavy systems, yet it strongly shapes efficiency, confidence, and error risk in everyday work.
+    </div>
   </section>
 
   <section class="section-card sand">
     <div class="section-head">
-      <h2 class="section-title">Problem</h2>
+      <h2 class="section-title">⚠️ Problem</h2>
       <span class="section-tag">document friction</span>
     </div>
 
@@ -652,9 +665,9 @@ tr:last-child td{
       </div>
 
       <div class="card-block">
-        <h3>Design constraint</h3>
+        <h3>Why this was difficult</h3>
         <p>
-          Because GMP environments are validation-sensitive, the SOP source files themselves could not be re-authored, restructured, or directly transformed into a new interactive system for real deployment. Any intervention had to remain external to the validated archive.
+          In a validated GMP environment, the source files themselves cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not “replace the system,” but rather “improve usability without touching the validated archive.”
         </p>
       </div>
     </div>
@@ -662,7 +675,7 @@ tr:last-child td{
 
   <section class="section-card lilac">
     <div class="section-head">
-      <h2 class="section-title">Design question</h2>
+      <h2 class="section-title">🎯 Design question</h2>
       <span class="section-tag">HCI framing</span>
     </div>
     <p>
@@ -672,13 +685,13 @@ tr:last-child td{
 
   <section class="section-card green">
     <div class="section-head">
-      <h2 class="section-title">Method</h2>
+      <h2 class="section-title">🧠 Method</h2>
       <span class="section-tag">low-code + mixed methods</span>
     </div>
 
     <div class="method-list">
       <div class="method-item">
-        <h3>1. Keyword mapping</h3>
+        <h3>1. Excel-based keyword mapping</h3>
         <p>
           Reviewed approximately 500 SOPs and extracted representative keywords, document identifiers, page references, and related process categories to build a searchable metadata index.
         </p>
@@ -701,7 +714,7 @@ tr:last-child td{
       <div class="method-item">
         <h3>4. Prototype-based usability testing</h3>
         <p>
-          Conducted usability testing with actual QC users using the prototype artifact. The artifact was not deployed as a live GMP production tool, because validated environments require controlled systems only; instead, it was used as a testable representation of a compliance-safe accessibility layer.
+          Conducted usability testing with QC users using the prototype artifact. The artifact was not deployed as a live GMP production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer.
         </p>
       </div>
     </div>
@@ -709,7 +722,7 @@ tr:last-child td{
 
   <section class="section-card lilac">
     <div class="section-head">
-      <h2 class="section-title">Usability testing</h2>
+      <h2 class="section-title">🧪 Usability testing</h2>
       <span class="section-tag">prototype evaluation</span>
     </div>
 
@@ -717,7 +730,7 @@ tr:last-child td{
       <div class="card-block">
         <h3>Testing setup</h3>
         <p>
-          Because validated GMP environments cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live controlled system. QC users were asked to complete retrieval tasks using the prototype artifact as a simulated accessibility layer.
+          Because validated GMP environments cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live controlled system. Users were asked to complete retrieval tasks using the prototype artifact as a simulated accessibility layer.
         </p>
         <div class="flow-mini">
           <span>prototype artifact</span>
@@ -747,7 +760,7 @@ tr:last-child td{
 
   <section class="section-card blue">
     <div class="section-head">
-      <h2 class="section-title">Results</h2>
+      <h2 class="section-title">📊 Results & impact</h2>
       <span class="section-tag">evidence</span>
     </div>
 
@@ -791,7 +804,7 @@ tr:last-child td{
     </div>
 
     <div class="note" style="margin-top:16px;">
-      <h3>User response</h3>
+      <h3>💬 User response</h3>
       <p>
         A representative reaction from testing was essentially: “Now I know where to look first.” That shift mattered because the intervention did not simplify the SOP content itself; it improved how users approached the archive.
       </p>
@@ -800,7 +813,7 @@ tr:last-child td{
 
   <section class="section-card sand">
     <div class="section-head">
-      <h2 class="section-title">Paper in progress</h2>
+      <h2 class="section-title">📄 Paper in progress</h2>
       <span class="section-tag">research output</span>
     </div>
     <p>
@@ -813,7 +826,7 @@ tr:last-child td{
 
   <section class="section-card lilac">
     <div class="section-head">
-      <h2 class="section-title">Reflection</h2>
+      <h2 class="section-title">💬 Reflection</h2>
       <span class="section-tag">why it is HCI</span>
     </div>
     <p>
@@ -826,7 +839,7 @@ tr:last-child td{
 
   <section class="section-card green">
     <div class="section-head">
-      <h2 class="section-title">Tools & skills</h2>
+      <h2 class="section-title">🛠 Tools & skills</h2>
       <span class="section-tag">methods + implementation</span>
     </div>
 
@@ -855,7 +868,7 @@ tr:last-child td{
 
   <section class="section-card blue">
     <div class="section-head">
-      <h2 class="section-title">One-line summary</h2>
+      <h2 class="section-title">✨ One-line summary</h2>
       <span class="section-tag">project takeaway</span>
     </div>
     <p>
