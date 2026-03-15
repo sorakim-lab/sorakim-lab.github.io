@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Research program by Sora Kim on responsibility, accountability, documentation, investigations, and AI-mediated sociotechnical systems."
+    content="Research program by Sora Kim on human-centered systems, regulatory UX, cognition, documentation, and decision support in GMP environments."
   />
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Research Program — Sora Kim">
+  <meta property="og:title" content="Research — Sora Kim">
   <meta
     property="og:description"
-    content="Research on responsibility, documentation, investigations, and AI-mediated accountability in regulated sociotechnical systems."
+    content="Research directions in human-centered systems, regulatory UX, procedural cognition, and decision support for regulated environments."
   >
   <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
   <meta property="og:url" content="https://sorakim-phd.github.io/research.html">
@@ -144,8 +144,9 @@
     .kicker,
     .chip,
     .hint,
-    .section-tag,
-    .tagline{
+    .tagline,
+    .mini-label,
+    .section-tag{
       font-family:var(--mono);
     }
 
@@ -170,7 +171,7 @@
       line-height:0.94;
       letter-spacing:-0.065em;
       font-weight:800;
-      max-width:10ch;
+      max-width:11ch;
     }
 
     .lede{
@@ -233,6 +234,43 @@
       letter-spacing:0.04em;
     }
 
+    .focus-grid,
+    .question-grid,
+    .methods-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+    }
+
+    .mini-card{
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(255,255,255,0.72);
+      padding:16px;
+    }
+
+    .mini-label{
+      margin:0 0 8px 0;
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
+
+    .mini-card h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      line-height:1.1;
+      letter-spacing:-0.04em;
+    }
+
+    .mini-card p{
+      margin:0;
+      font-size:13.5px;
+      color:#41444b;
+    }
+
     .arc-box{
       border:1px solid var(--line);
       border-radius:22px;
@@ -271,7 +309,7 @@
     }
 
     .stage-card{
-      min-height:168px;
+      min-height:172px;
       padding:15px;
       border:1px solid var(--line);
       border-radius:20px;
@@ -516,7 +554,10 @@
 
       .hero,
       .current-grid,
-      .works{
+      .works,
+      .focus-grid,
+      .question-grid,
+      .methods-grid{
         grid-template-columns:1fr;
       }
 
@@ -533,39 +574,147 @@
 <body>
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
     <a class="active" href="research.html">Research</a>
     <a href="papers.html">Papers</a>
+    <a href="about.html">About</a>
     <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener">CV</a>
   </nav>
 
   <div class="wrap">
     <div class="hero">
       <section class="card hero-card">
-        <div class="kicker">research / responsibility systems / documents + investigations</div>
-        <h1 class="title">Research Program</h1>
+        <div class="kicker">research / human-centered systems / regulated environments</div>
+        <h1 class="title">Research Direction</h1>
         <p class="lede">
-          A connected research program on how responsibility becomes prospectively aligned, procedurally embedded, investigatively stabilized, and computationally accelerated in regulated sociotechnical systems.
+          I study how documentation systems, procedural environments, and support tools shape human judgment in high-stakes regulated work. My research focuses on usability, cognition, traceability, and decision support in settings where compliance requirements and human reasoning must coexist.
         </p>
       </section>
 
       <aside class="card meta-card">
         <div class="meta-row">
-          <span class="chip">STS</span>
-          <span class="chip">accountability</span>
-          <span class="chip">documentation</span>
-          <span class="chip">regulated systems</span>
+          <span class="chip">HCI</span>
+          <span class="chip">regulatory UX</span>
+          <span class="chip">procedural cognition</span>
+          <span class="chip">decision support</span>
         </div>
-        <p>Program arc: AAC → CF → RC → PAC</p>
-        <p>Core themes: interpretive alignment, procedural burden, investigative closure, accountability legibility, and AI-mediated representation.</p>
-        <p>Current empirical work: expanded CF corpus and annotation reliability testing; qualitative document analysis of FDA Warning Letters and Form 483 observations examining responsibility convergence in regulatory investigations and providing empirical grounding for the PAC framework.</p>
+        <p>Main domain: GMP documentation, investigations, review workflows, and inspection-facing records.</p>
+        <p>Research interest: how procedural systems can become more usable, interpretable, and cognitively sustainable without compromising regulatory rigor.</p>
+        <p>Current bridge: linking design questions in human-centered systems with conceptual work on responsibility, closure, and AI-mediated support.</p>
       </aside>
     </div>
 
     <section class="card section-card">
       <div class="section-head">
-        <h2 class="h2">Conceptual arc</h2>
-        <div class="hint">before action → during execution → after events → under AI mediation</div>
+        <h2 class="h2">Research areas</h2>
+        <div class="hint">what I study across projects and papers</div>
+      </div>
+
+      <div class="focus-grid">
+        <div class="mini-card">
+          <div class="mini-label">area 01</div>
+          <h3>Regulatory UX</h3>
+          <p>
+            I examine how people navigate dense documentation, constrained workflows, and inspection-facing records in regulated environments where usability is often treated as secondary.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">area 02</div>
+          <h3>Procedural cognition</h3>
+          <p>
+            I study how people interpret instructions, manage ambiguity, and reason through procedural tasks when documents and systems place cognitive demands on everyday work.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">area 03</div>
+          <h3>Workflow visibility</h3>
+          <p>
+            I explore ways to make review interaction, traceability, bottlenecks, and document relationships more visible without altering validated systems directly.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">area 04</div>
+          <h3>Decision support in high-stakes systems</h3>
+          <p>
+            I am interested in how support tools, reasoning scaffolds, and AI-mediated representations shape judgment, interpretation, and responsibility under procedural pressure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">Core research questions</h2>
+        <div class="hint">agenda-centered, not paper-centered</div>
+      </div>
+
+      <div class="question-grid">
+        <div class="mini-card">
+          <div class="mini-label">question 01</div>
+          <h3>How do documents shape judgment?</h3>
+          <p>
+            I ask how procedural language, document architecture, and review structures distribute interpretive burden across workers in regulated settings.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">question 02</div>
+          <h3>How do workflows shape interpretation?</h3>
+          <p>
+            I study how review loops, traceability systems, and investigation formats influence what becomes visible, actionable, or cognitively difficult in everyday work.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">question 03</div>
+          <h3>How can support systems help without oversimplifying?</h3>
+          <p>
+            I explore human-centered tools that support navigation and reasoning while preserving interpretive openness instead of forcing premature closure.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">question 04</div>
+          <h3>What changes under AI mediation?</h3>
+          <p>
+            I investigate how AI systems may accelerate decision closure, compress interpretation, and reshape accountability in high-stakes procedural environments.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">Methods</h2>
+        <div class="hint">mixed methods for procedural environments</div>
+      </div>
+
+      <div class="methods-grid">
+        <div class="mini-card">
+          <div class="mini-label">qualitative</div>
+          <h3>Field-based observation and close reading</h3>
+          <p>
+            I use field observation, document analysis, and qualitative coding to understand how people actually work through regulated documentation and investigative processes.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <div class="mini-label">computational</div>
+          <h3>Low-code and computational analysis</h3>
+          <p>
+            I use Excel and Python to structure metadata, visualize workflow patterns, map cognitive pathways, and analyze document-level patterns in procedural systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card section-card">
+      <div class="section-head">
+        <h2 class="h2">How the papers connect</h2>
+        <div class="hint">conceptual lenses supporting the broader agenda</div>
       </div>
 
       <div class="arc-box">
@@ -579,9 +728,9 @@
               </div>
               <div class="stage-sub">anticipatory alignment</div>
               <p class="stage-p">
-                Accountability expectations become aligned across procedures, documentation regimes, and evaluative infrastructures before work is performed.
+                A conceptual lens for understanding how expectations of defensible action become aligned before work begins.
               </p>
-              <div class="stage-mini">anticipation structures accountability before action</div>
+              <div class="stage-mini">supports questions about interpretive expectations in organizational systems</div>
             </div>
           </div>
 
@@ -592,11 +741,11 @@
                 <span class="dot dot-pink"></span>
                 <div class="abbr">CF</div>
               </div>
-              <div class="stage-sub">procedural embedding</div>
+              <div class="stage-sub">procedural cognition</div>
               <p class="stage-p">
-                Procedural sentence structure creates localized judgment demands that actors must resolve while remaining individually accountable.
+                A framework for examining how sentence structure and document form create localized judgment demands during execution.
               </p>
-              <div class="stage-mini">procedural text distributes interpretive burden</div>
+              <div class="stage-mini">supports research on documents, cognition, and procedural usability</div>
             </div>
           </div>
 
@@ -607,11 +756,11 @@
                 <span class="dot dot-purple"></span>
                 <div class="abbr">RC</div>
               </div>
-              <div class="stage-sub">investigative stabilization</div>
+              <div class="stage-sub">investigative closure</div>
               <p class="stage-p">
-                Under ambiguity and closure pressure, investigations converge accountability on administratively legible actors rather than distributed conditions.
+                A framework explaining why investigations often stabilize responsibility through administratively legible outcomes.
               </p>
-              <div class="stage-mini">investigations translate ambiguity into responsibility</div>
+              <div class="stage-mini">supports research on review systems, investigations, and reasoning under pressure</div>
             </div>
           </div>
 
@@ -622,11 +771,11 @@
                 <span class="dot dot-green"></span>
                 <div class="abbr">PAC</div>
               </div>
-              <div class="stage-sub">computational acceleration</div>
+              <div class="stage-sub">AI and premature closure</div>
               <p class="stage-p">
-                AI-mediated representations can compress interpretive space and accelerate responsibility stabilization before causal ambiguity is meaningfully examined.
+                A framework for studying how AI-mediated systems may accelerate convergence before ambiguity has been meaningfully examined.
               </p>
-              <div class="stage-mini">AI compresses the tempo of accountability</div>
+              <div class="stage-mini">supports research on decision support, AI mediation, and accountability timing</div>
             </div>
           </div>
         </div>
@@ -643,23 +792,23 @@
         <div class="current-block">
           <h3>FDA document analysis</h3>
           <p>
-            My current empirical project examines how responsibility becomes stabilized within regulatory investigation documents. Using FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections, I analyze how regulatory agencies articulate responsibility, enforcement reasoning, and corrective action expectations in response to observed violations. The study traces patterns of responsibility convergence within real-world regulatory investigations.
+            My current empirical project examines how responsibility becomes stabilized within regulatory investigation documents. Using FDA Warning Letters and selected Form 483 observations from drug manufacturing inspections, I analyze how agencies articulate responsibility, enforcement reasoning, and corrective action expectations in response to observed violations.
           </p>
           <p>
-            These materials provide a rare public record of how responsibility, enforcement reasoning, and corrective action expectations are articulated in regulatory investigations. Using this corpus, I trace patterns of responsibility convergence in real-world document settings.
+            This project gives me a public document corpus for studying how procedural systems translate ambiguity into actionable decisions and how responsibility becomes legible in real-world regulatory settings.
           </p>
-          <div class="subtle-line">why this project: to show how accountability is made administratively legible through document infrastructures, not simply assigned after the fact</div>
+          <div class="subtle-line">current role in the program: connecting document analysis, investigation reasoning, and accountability under high-stakes procedural conditions</div>
         </div>
 
         <div class="current-block">
           <h3>Method and analytic focus</h3>
           <ul class="method-list">
-            <li>Dataset: FDA Warning Letters (drug manufacturing inspections) with matched Form 483 observations when available</li>
-            <li>Unit of analysis: violation / observation blocks within inspection documents</li>
+            <li>Dataset: FDA Warning Letters with matched Form 483 observations when available</li>
+            <li>Unit of analysis: violation or observation blocks within inspection documents</li>
             <li>Approach: qualitative document analysis combining close reading and structured coding</li>
-            <li>Coding focus: responsibility attribution, procedural framing, corrective action language, and convergence patterns in regulatory reasoning</li>
+            <li>Focus: attribution language, procedural framing, corrective action expectations, and convergence patterns in regulatory reasoning</li>
           </ul>
-          <div class="subtle-line">empirical aim: ground the broader responsibility program in observable regulatory texts while extending the PAC framework through document-based evidence</div>
+          <div class="subtle-line">broader aim: grounding conceptual questions in observable document systems while linking papers and design directions to a shared empirical domain</div>
         </div>
       </div>
     </section>
@@ -669,25 +818,16 @@
         <div class="paper-top">
           <span class="dot dot-blue"></span>
           <span class="pill">AAC</span>
-          <span class="pill">anticipatory accountability</span>
-          <span class="pill">organizational infrastructures</span>
+          <span class="pill">interpretive expectations</span>
+          <span class="pill">before action</span>
         </div>
 
         <h3 class="h3">Anticipated Accountability Convergence (AAC)</h3>
-        <p class="tagline">before action / interpretive expectations / prospective structuring</p>
+        <p class="tagline">conceptual work supporting prospective accountability questions</p>
         <p class="abs">
-          AAC theorizes accountability as a prospective structuring condition rather than a purely retrospective evaluative event. The framework explains how procedural structuring, documentation regimes, and evaluative anticipation converge to stabilize defensible interpretation before action unfolds.
+          AAC examines how expectations of accountable conduct become aligned before action unfolds. It helps frame my broader interest in how systems structure what counts as defensible interpretation in advance.
         </p>
-
-        <ul class="bullets">
-          <li>Focus: how organizations preconfigure what will count as accountable conduct before execution.</li>
-          <li>Mechanism: procedural structuring + documentation regimes + evaluative anticipation.</li>
-          <li>Core argument: what converges is not behavior itself, but interpretive expectations of defensible action.</li>
-          <li>Extension: calibrated convergence as a curvilinear relationship between convergence intensity and organizational effectiveness.</li>
-        </ul>
-
-        <div class="concept-line">before action: interpretive expectations become prospectively aligned</div>
-        <div class="status">Full-paper manuscript in preparation for submission to the National Communication Association (NCA).</div>
+        <div class="status">Conceptual manuscript in development.</div>
       </article>
 
       <article class="card paper">
@@ -695,24 +835,15 @@
           <span class="dot dot-pink"></span>
           <span class="pill">CF</span>
           <span class="pill">procedural texts</span>
-          <span class="pill">document architecture</span>
+          <span class="pill">during execution</span>
         </div>
 
         <h3 class="h3">Cognitive Friction in Procedural Texts (CF)</h3>
-        <p class="tagline">during execution / procedural language / localized judgment demands</p>
+        <p class="tagline">conceptual and empirical work on documentation and judgment</p>
         <p class="abs">
-          CF examines how procedural language structures localized judgment demands during execution. It conceptualizes cognitive friction as the co-occurrence of conditional branching, cross-references, exception structures, and discretionary qualifiers within procedural sentences.
+          CF studies how procedural text structure creates localized judgment demands during execution. It anchors my research on documentation, cognition, and the usability of procedural systems.
         </p>
-
-        <ul class="bullets">
-          <li>Focus: how documentation distributes interpretive work and localizes responsibility during execution.</li>
-          <li>Empirical pilot: 500 procedurally realistic sentences drawn from public regulatory and safety materials.</li>
-          <li>Operationalization: rule-based annotation of structural features within sentence-level procedural text.</li>
-          <li>Core claim: responsibility-relevant judgment demands are embedded in document architecture, not only in human error or post-hoc evaluation.</li>
-        </ul>
-
-        <div class="concept-line">during execution: sentence structure shapes interpretive burden and attributable judgment</div>
-        <div class="status">Expanded empirical version in progress, including corpus enlargement, feature co-occurrence analysis, and annotation reliability testing.</div>
+        <div class="status">Expanded empirical version in progress.</div>
       </article>
 
       <article class="card paper">
@@ -720,23 +851,15 @@
           <span class="dot dot-purple"></span>
           <span class="pill">RC</span>
           <span class="pill">investigations</span>
-          <span class="pill">closure pressure</span>
+          <span class="pill">after events</span>
         </div>
 
         <h3 class="h3">Responsibility Convergence (RC)</h3>
-        <p class="tagline">after events / investigative closure / administratively legible attribution</p>
+        <p class="tagline">conceptual work on investigative closure and attribution</p>
         <p class="abs">
-          RC explains why organizational investigations such as root cause analysis recurrently stabilize accountability at identifiable actors even when failures are distributed across sociotechnical systems. The paper specifies a structural convergence dynamic rather than a purely psychological bias account.
+          RC explains why investigations often stabilize responsibility through interpretable and actionable attribution points. It supports my research on review systems, investigative structure, and reasoning under pressure.
         </p>
-
-        <ul class="bullets">
-          <li>Focus: why investigative systems designed for systemic explanation still produce administratively legible accountability outcomes.</li>
-          <li>Mechanisms: procedural ambiguity, attributional closure pressure, and accountability legibility bias.</li>
-          <li>Core claim: accountability converges because organizations require interpretable and actionable attribution anchors under investigative pressure.</li>
-          <li>Contribution: reframes blame as a structural output of accountability infrastructures rather than a simple individual bias.</li>
-        </ul>
-
-        <div class="concept-line">after events: causal ambiguity is translated into administratively actionable responsibility</div>
+        <div class="status">Conceptual manuscript in development.</div>
       </article>
 
       <article class="card paper">
@@ -744,35 +867,26 @@
           <span class="dot dot-green"></span>
           <span class="pill">PAC</span>
           <span class="pill">AI mediation</span>
-          <span class="pill">temporal accountability</span>
+          <span class="pill">decision closure</span>
         </div>
 
         <h3 class="h3">Premature Accountability Convergence (PAC)</h3>
-        <p class="tagline">under AI mediation / representational compression / temporal contraction</p>
+        <p class="tagline">conceptual work on AI-mediated support and closure timing</p>
         <p class="abs">
-          PAC analyzes how AI systems reshape the timing and scope of responsibility stabilization in organizational settings. Rather than treating AI as an autonomous decision-maker, the paper conceptualizes computational systems as representational accelerators within existing accountability infrastructures.
+          PAC analyzes how AI systems may accelerate responsibility convergence and narrow interpretive openness in organizational settings. It supports my research on decision support and AI in high-stakes procedural work.
         </p>
-
-        <ul class="bullets">
-          <li>Focus: when and how responsibility converges too early under computational mediation.</li>
-          <li>Mechanisms: representational compression, epistemic authority amplification, and temporal contraction of sensemaking.</li>
-          <li>Core claim: AI may not determine who is responsible, but it can alter how quickly and how narrowly responsibility becomes actionable.</li>
-          <li>Contribution: shifts attention from algorithmic bias toward the temporal architecture of accountability.</li>
-        </ul>
-
-        <div class="concept-line">under AI mediation: convergence can accelerate before ambiguity has been meaningfully examined</div>
-        <div class="status">Abstract in preparation for submission to the Society for Social Studies of Science (4S). Current empirical work analyzes FDA Warning Letters and Form 483 observations to examine responsibility convergence patterns in regulatory investigations, providing empirical grounding for the PAC framework. Empirical extension in progress through FDA regulatory document analysis.</div>
+        <div class="status">Conceptual and empirical extension in progress.</div>
       </article>
     </section>
 
     <div class="footer">
       <div>
-        Current emphasis: responsibility, documentation, investigations, and AI-mediated accountability in regulated sociotechnical systems.
+        Current emphasis: human-centered systems, regulatory UX, procedural cognition, and decision support in regulated environments.
       </div>
 
       <div class="btns">
+        <a class="btn" href="projects.html">Project portfolio</a>
         <a class="btn" href="papers.html">Selected manuscripts</a>
-        <a class="btn" href="about.html">About this program</a>
         <a class="btn" href="mailto:sorakim.phd@gmail.com">Email</a>
       </div>
     </div>
