@@ -28,47 +28,54 @@
   <style>
     :root{
       --bg:#f5f5f7;
-      --panel:rgba(255,255,255,0.84);
+      --panel:rgba(255,255,255,0.82);
       --panel-strong:rgba(255,255,255,0.92);
-      --panel-soft:rgba(250,250,252,0.84);
-      --text:#121316;
-      --muted:#6e6e73;
-      --muted-strong:#4a4d55;
+      --text:#111218;
+      --muted:#6d6f78;
+      --muted-strong:#4a4d56;
       --line:rgba(17,17,17,0.08);
-      --line-strong:rgba(17,17,17,0.12);
+      --line-strong:rgba(17,17,17,0.13);
 
-      --blue:#4da3ff;
-      --pink:#ff6786;
-      --purple:#b987ff;
-      --green:#55d38a;
+      --blue:#e8eefc;
+      --green:#ebf7f1;
+      --lilac:#f2edfc;
+      --pink:#f9eef2;
+      --sand:#f6f1e7;
+      --silver:#f3f4f8;
 
-      --soft-blue:rgba(77,163,255,0.10);
-      --soft-pink:rgba(255,103,134,0.08);
-      --soft-purple:rgba(185,135,255,0.10);
-      --soft-green:rgba(85,211,138,0.10);
+      --blue-strong:#cddafb;
+      --green-strong:#cbeedb;
+      --lilac-strong:#ddd0fb;
+      --pink-strong:#f3d7df;
+      --sand-strong:#ebdec0;
+      --silver-strong:#e1e5ef;
 
-      --radius-xl:32px;
+      --radius-2xl:34px;
+      --radius-xl:28px;
       --radius-lg:22px;
-      --radius-md:16px;
+      --radius-md:18px;
 
-      --shadow:0 18px 50px rgba(15,23,42,0.08);
-      --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+      --shadow:0 18px 55px rgba(15,23,42,0.08);
+      --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
+      --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
 
-      --mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --mono:'JetBrains Mono', monospace;
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
       color:var(--text);
-      line-height:1.68;
+      line-height:1.65;
       background:
-        radial-gradient(circle at 12% 10%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.74) 18%, transparent 40%),
-        radial-gradient(circle at 84% 14%, rgba(255,255,255,0.68) 0, transparent 34%),
-        linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
+        radial-gradient(circle at 10% 12%, rgba(255,255,255,0.98) 0, rgba(255,255,255,0.72) 15%, transparent 42%),
+        radial-gradient(circle at 88% 12%, rgba(232,238,252,0.72) 0, transparent 28%),
+        radial-gradient(circle at 78% 72%, rgba(242,237,252,0.45) 0, transparent 26%),
+        radial-gradient(circle at 24% 84%, rgba(235,247,241,0.38) 0, transparent 22%),
+        linear-gradient(180deg, #f7f7f9 0%, #f1f2f6 100%);
       overflow-x:hidden;
     }
 
@@ -77,7 +84,9 @@
       position:fixed;
       inset:0;
       pointer-events:none;
-      background:linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,0.20), transparent 40%);
     }
 
     nav{
@@ -88,8 +97,8 @@
       display:flex;
       gap:8px;
       padding:8px;
-      border:1px solid rgba(255,255,255,0.6);
-      background:rgba(255,255,255,0.58);
+      border:1px solid rgba(255,255,255,0.65);
+      background:rgba(255,255,255,0.56);
       backdrop-filter:blur(20px) saturate(160%);
       -webkit-backdrop-filter:blur(20px) saturate(160%);
       border-radius:999px;
@@ -109,182 +118,251 @@
 
     nav a:hover{
       color:var(--text);
-      background:rgba(255,255,255,0.7);
+      background:rgba(255,255,255,0.72);
     }
 
     nav a.active{
       color:var(--text);
-      background:rgba(255,255,255,0.82);
+      background:rgba(255,255,255,0.86);
       box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
     }
 
     .wrap{
-      max-width:1240px;
+      max-width:1320px;
       margin:0 auto;
-      padding:118px 24px 88px;
+      padding:112px 28px 92px;
     }
 
-    .card{
+    .hero,
+    .section-card,
+    .paper,
+    .backbone-card{
       border:1px solid var(--line);
       background:var(--panel);
       backdrop-filter:blur(20px) saturate(150%);
       -webkit-backdrop-filter:blur(20px) saturate(150%);
       box-shadow:var(--shadow);
-      border-radius:var(--radius-xl);
-    }
-
-    .kicker,
-    .chip,
-    .hint,
-    .mini-label,
-    .section-tag,
-    .identity-label,
-    .status,
-    .mini-meta,
-    .mini-note{
-      font-family:var(--mono);
     }
 
     .hero{
-      display:grid;
-      grid-template-columns:minmax(0, 1.06fr) minmax(320px, 0.94fr);
-      gap:18px;
-      align-items:start;
-      margin-bottom:18px;
-    }
-
-    .hero-card{
-      padding:26px 24px 24px;
-      background:
-        radial-gradient(circle at 84% 18%, var(--soft-blue) 0, transparent 24%),
-        radial-gradient(circle at 18% 88%, var(--soft-purple) 0, transparent 22%),
-        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(249,249,252,0.84));
       position:relative;
       overflow:hidden;
-      min-height:430px;
+      border-radius:var(--radius-2xl);
+      padding:30px;
+      margin-bottom:18px;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(232,238,252,0.65), transparent 26%),
+        radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.80));
     }
 
-    .hero-card::after{
+    .hero::before{
       content:"";
       position:absolute;
-      top:-90px;
-      right:-90px;
-      width:240px;
-      height:240px;
+      inset:0 0 auto 0;
+      height:54px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-120px;
+      top:-120px;
+      width:360px;
+      height:360px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,0.55), transparent 70%);
+      background:radial-gradient(circle, rgba(255,255,255,0.52), transparent 70%);
       pointer-events:none;
     }
 
-    .hero-side{
+    .window-dots{
+      position:absolute;
+      top:16px;
+      left:18px;
+      display:flex;
+      gap:7px;
+      z-index:2;
+    }
+
+    .dot{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
+    }
+
+    .dot:nth-child(1){background:#ff5f57}
+    .dot:nth-child(2){background:#febc2e}
+    .dot:nth-child(3){background:#28c840}
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      margin-top:34px;
       display:grid;
-      grid-template-rows:auto auto auto;
-      gap:16px;
+      grid-template-columns:minmax(0,1.15fr) minmax(340px,0.85fr);
+      gap:22px;
+      align-items:start;
     }
 
-    .side-card{
-      padding:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,248,251,0.84));
-      min-height:auto;
+    .hero-left{
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:28px 28px 26px;
+      background:rgba(255,255,255,0.44);
+      box-shadow:var(--shadow-soft);
     }
 
-    .side-card.soft-green{
-      background:
-        radial-gradient(circle at 84% 18%, var(--soft-green) 0, transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,250,249,0.84));
+    .hero-right{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
     }
 
-    .side-card.soft-pink{
-      background:
-        radial-gradient(circle at 82% 18%, var(--soft-pink) 0, transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,248,249,0.84));
-    }
-
-    .side-card.soft-blue{
-      background:
-        radial-gradient(circle at 82% 18%, var(--soft-blue) 0, transparent 26%),
-        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,249,252,0.84));
-    }
-
-    .kicker{
+    .eyebrow,
+    .chip,
+    .panel-label,
+    .section-tag,
+    .pill,
+    .status,
+    .mini-note,
+    .mini-label,
+    .mini-meta,
+    .hint{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding:7px 11px;
       border:1px solid var(--line);
       border-radius:999px;
-      background:rgba(255,255,255,0.72);
-      box-shadow:var(--shadow-soft);
+      background:rgba(255,255,255,0.78);
+      font-family:var(--mono);
       font-size:11px;
       color:var(--muted);
-      margin-bottom:16px;
-      position:relative;
-      z-index:1;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .title,
+    .h2,
+    .h3,
+    .hero-note strong,
+    .side-note h3,
+    .mini-card h3,
+    .backbone-card .abbr{
+      font-family:'Sora',sans-serif;
+      letter-spacing:-0.055em;
     }
 
     .title{
-      margin:0 0 16px 0;
-      font-family:'Sora',sans-serif;
-      font-size:62px;
-      line-height:0.93;
-      letter-spacing:-0.07em;
-      font-weight:800;
-      max-width:9.5ch;
-      position:relative;
-      z-index:1;
+      font-size:58px;
+      line-height:0.95;
+      margin:14px 0 14px;
+      max-width:10.5ch;
+      font-weight:700;
     }
 
     .lede{
       margin:0;
-      font-size:15.5px;
-      color:rgba(18,19,22,0.84);
-      max-width:64ch;
-      position:relative;
-      z-index:1;
+      max-width:760px;
+      font-size:16px;
+      color:rgba(29,29,31,0.86);
     }
 
     .hero-note{
-      margin-top:18px;
-      max-width:720px;
-      padding:14px 16px;
+      margin-top:24px;
+      max-width:560px;
+      padding:16px 18px;
+      border-radius:24px;
       border:1px solid var(--line);
-      border-radius:18px;
-      background:rgba(255,255,255,0.68);
+      background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.86));
       box-shadow:var(--shadow-soft);
-      font-size:13px;
-      color:#4a4d55;
-      position:relative;
-      z-index:1;
+    }
+
+    .hero-note strong{
+      display:block;
+      font-size:18px;
+      line-height:1.08;
+      margin-bottom:6px;
+      font-weight:600;
+    }
+
+    .hero-note span{
+      display:block;
+      font-size:14px;
+      color:#4b4e57;
+      line-height:1.6;
     }
 
     .position-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
+      grid-template-columns:repeat(3,minmax(0,1fr));
       gap:12px;
       margin-top:18px;
     }
 
     .position-card{
       border:1px solid var(--line);
-      border-radius:18px;
-      background:rgba(255,255,255,0.72);
-      padding:14px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.76);
+      padding:16px;
       box-shadow:var(--shadow-soft);
     }
 
     .position-card strong{
       display:block;
       font-family:'Sora',sans-serif;
-      font-size:16px;
-      line-height:1.06;
-      letter-spacing:-0.035em;
-      margin-bottom:5px;
+      font-size:17px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      margin-bottom:6px;
+      font-weight:600;
     }
 
     .position-card span{
       display:block;
-      font-size:12.5px;
+      font-size:13px;
       color:#4a4d55;
+      line-height:1.6;
+    }
+
+    .side-note{
+      position:relative;
+      overflow:hidden;
+      border-radius:24px;
+      padding:18px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
+      box-shadow:var(--shadow);
+    }
+
+    .side-note::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:4px;
+    }
+
+    .side-note.soft-green{
+      background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92));
+    }
+    .side-note.soft-green::before{
+      background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
+    }
+
+    .side-note.soft-pink{
+      background:linear-gradient(180deg, rgba(249,238,242,0.76), rgba(255,255,255,0.92));
+    }
+    .side-note.soft-pink::before{
+      background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96));
+    }
+
+    .side-note.soft-blue{
+      background:linear-gradient(180deg, rgba(232,238,252,0.66), rgba(255,255,255,0.92));
+    }
+    .side-note.soft-blue::before{
+      background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
     }
 
     .meta-row{
@@ -294,52 +372,44 @@
       margin-bottom:14px;
     }
 
-    .chip{
-      font-size:11px;
-      color:var(--muted);
-      padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,0.64);
-    }
-
-    .identity-label{
+    .identity-label,
+    .mini-label,
+    .mini-meta{
       margin:0 0 8px 0;
       font-size:11px;
       color:var(--muted);
       text-transform:uppercase;
       letter-spacing:0.04em;
+      font-family:var(--mono);
     }
 
-    .side-card h3{
+    .side-note h3{
       margin:0 0 8px 0;
-      font-family:'Sora',sans-serif;
-      font-size:22px;
+      font-size:18px;
       line-height:1.08;
-      letter-spacing:-0.045em;
+      font-weight:600;
     }
 
-    .side-card p{
+    .side-note p{
       margin:0;
       font-size:14px;
-      color:var(--muted-strong);
+      color:#40434b;
+      line-height:1.7;
     }
 
     .mini-note{
       margin-top:12px;
-      padding-top:10px;
-      border-top:1px solid var(--line);
-      font-size:11px;
-      color:var(--muted);
+      display:inline-flex;
       text-transform:uppercase;
       letter-spacing:0.04em;
     }
 
     .section-card{
-      padding:20px;
-      margin-top:16px;
       position:relative;
       overflow:hidden;
+      border-radius:28px;
+      padding:20px;
+      margin-top:16px;
       background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(249,249,252,0.84));
     }
 
@@ -354,17 +424,9 @@
 
     .h2{
       margin:0;
-      font-family:'Sora',sans-serif;
-      font-size:22px;
+      font-size:26px;
       line-height:1.08;
-      letter-spacing:-0.045em;
-    }
-
-    .hint{
-      font-size:11px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.04em;
+      font-weight:600;
     }
 
     .focus-grid{
@@ -393,42 +455,34 @@
 
     .mini-card.featured{
       background:
-        radial-gradient(circle at 86% 18%, var(--soft-blue) 0, transparent 26%),
+        radial-gradient(circle at 86% 18%, rgba(232,238,252,0.55) 0, transparent 26%),
         linear-gradient(180deg, rgba(255,255,255,0.92), rgba(246,248,252,0.86));
     }
 
     .mini-card.secondary{
       background:
-        radial-gradient(circle at 84% 18%, var(--soft-purple) 0, transparent 26%),
+        radial-gradient(circle at 84% 18%, rgba(242,237,252,0.58) 0, transparent 26%),
         linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,248,252,0.84));
     }
 
     .mini-card.tertiary{
       background:
-        radial-gradient(circle at 84% 18%, var(--soft-green) 0, transparent 26%),
+        radial-gradient(circle at 84% 18%, rgba(235,247,241,0.56) 0, transparent 26%),
         linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,251,249,0.84));
-    }
-
-    .mini-label{
-      margin:0 0 8px 0;
-      font-size:11px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.04em;
     }
 
     .mini-card h3{
       margin:0 0 8px 0;
-      font-family:'Sora',sans-serif;
-      font-size:21px;
+      font-size:22px;
       line-height:1.1;
-      letter-spacing:-0.04em;
+      font-weight:600;
     }
 
     .mini-card p{
       margin:0;
-      font-size:13.5px;
+      font-size:14px;
       color:#41444b;
+      line-height:1.7;
     }
 
     .mini-divider{
@@ -445,6 +499,7 @@
       font-size:14px;
       color:#44484f;
       max-width:76ch;
+      line-height:1.7;
     }
 
     .backbone-grid{
@@ -454,7 +509,6 @@
     }
 
     .backbone-card{
-      border:1px solid var(--line);
       border-radius:22px;
       background:rgba(255,255,255,0.78);
       padding:16px;
@@ -469,32 +523,22 @@
       margin-bottom:8px;
     }
 
-    .dot{
+    .backbone-top .color-dot{
       width:12px;
       height:12px;
       border-radius:50%;
       flex:0 0 auto;
     }
 
-    .dot-blue{ background:var(--blue); }
-    .dot-pink{ background:var(--pink); }
-    .dot-purple{ background:var(--purple); }
-    .dot-green{ background:var(--green); }
+    .dot-blue{ background:#8fb2ff; }
+    .dot-pink{ background:#f0a8bb; }
+    .dot-purple{ background:#c7a2ff; }
+    .dot-green{ background:#8fd9ae; }
 
     .abbr{
-      font-family:'Sora',sans-serif;
       font-size:24px;
       font-weight:700;
-      letter-spacing:-0.03em;
       line-height:1;
-    }
-
-    .mini-meta{
-      margin-bottom:8px;
-      font-size:11px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.04em;
     }
 
     .backbone-card p{
@@ -514,6 +558,7 @@
     }
 
     .paper{
+      border-radius:24px;
       padding:18px;
       position:relative;
       overflow:hidden;
@@ -526,28 +571,26 @@
       gap:8px;
       flex-wrap:wrap;
       margin-bottom:10px;
-      font-family:var(--mono);
-      font-size:11px;
-      color:var(--muted);
+    }
+
+    .pill{
+      white-space:nowrap;
       text-transform:uppercase;
       letter-spacing:0.04em;
     }
 
-    .pill{
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.62);
-      white-space:nowrap;
+    .paper-top .color-dot{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      box-shadow:none;
     }
 
     .h3{
       margin:0 0 8px 0;
-      font-family:'Sora',sans-serif;
-      font-size:22px;
-      font-weight:700;
-      letter-spacing:-0.04em;
-      line-height:1.16;
+      font-size:24px;
+      font-weight:600;
+      line-height:1.14;
     }
 
     .tagline{
@@ -563,18 +606,13 @@
       margin:0 0 12px 0;
       font-size:14px;
       color:rgba(18,19,22,0.82);
+      line-height:1.7;
     }
 
     .status{
       margin-top:14px;
-      padding:11px 13px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      font-size:11px;
-      background:rgba(255,255,255,0.66);
-      color:#57606f;
-      letter-spacing:0.03em;
       text-transform:uppercase;
+      letter-spacing:0.03em;
     }
 
     .footer{
@@ -623,44 +661,53 @@
       text-align:right;
     }
 
-    @media (max-width:1100px){
-      nav{
-        left:14px;
-        right:14px;
-        justify-content:center;
-        overflow:auto;
-      }
-
-      .hero,
-      .position-grid,
+    @media (max-width:1180px){
+      .hero-grid,
       .focus-grid,
-      .question-grid,
-      .methods-grid,
-      .works,
       .backbone-grid{
         grid-template-columns:1fr;
       }
 
-      .title{
-        max-width:none;
-      }
-
-      .hero-card{
-        min-height:auto;
-      }
-
-      .hero-side{
-        grid-template-rows:auto;
+      .question-grid,
+      .methods-grid,
+      .works{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width:700px){
+    @media (max-width:860px){
+      nav{
+        left:14px;
+        right:14px;
+        justify-content:flex-start;
+        overflow:auto;
+      }
+
       .wrap{
-        padding:100px 18px 76px;
+        padding:98px 18px 72px;
+      }
+
+      .hero{
+        padding:24px 18px;
+      }
+
+      .hero-left{
+        padding:22px 20px;
       }
 
       .title{
         font-size:46px;
+        max-width:none;
+      }
+
+      .position-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-head,
+      .footer{
+        flex-direction:column;
+        align-items:flex-start;
       }
     }
   </style>
@@ -677,72 +724,86 @@
   </nav>
 
   <div class="wrap">
-    <div class="hero">
-      <section class="card hero-card">
-        <div class="kicker">research / HCI / high-stakes procedural systems</div>
-        <h1 class="title">Human-centered systems research for regulated work.</h1>
-        <p class="lede">
-          I study how documentation systems, review workflows, and decision-support environments shape human judgment in high-stakes regulated settings. My main orientation is HCI, especially design for complex procedural work.
-        </p>
-
-        <div class="hero-note">
-          In other words: I am interested in interaction, usability, interpretation, and reasoning support in environments where formal systems are hard to redesign directly.
-        </div>
-
-        <div class="position-grid">
-          <div class="position-card">
-            <strong>HCI</strong>
-            <span>My main research home is human-centered systems and design for complex work.</span>
-          </div>
-          <div class="position-card">
-            <strong>High-stakes systems</strong>
-            <span>I focus on procedural environments where judgment, traceability, and accountability all matter.</span>
-          </div>
-          <div class="position-card">
-            <strong>Conceptual grounding</strong>
-            <span>I use theory to clarify design problems, not to move away from them.</span>
-          </div>
-        </div>
-      </section>
-
-      <div class="hero-side">
-        <aside class="card side-card soft-green">
-          <div class="meta-row">
-            <span class="chip">HCI</span>
-            <span class="chip">regulatory UX</span>
-            <span class="chip">procedural cognition</span>
-            <span class="chip">decision support</span>
-          </div>
-          <div class="identity-label">research identity</div>
-          <h3>Designing for judgment under constraint.</h3>
-          <p>
-            I am interested in how people navigate procedural environments that are formally rigid, cognitively demanding, and difficult to redesign directly.
-          </p>
-        </aside>
-
-        <aside class="card side-card soft-pink">
-          <div class="identity-label">how I position the work</div>
-          <h3>HCI at the center, theory as grounding.</h3>
-          <p>
-            My projects and manuscripts ask HCI questions about documents, workflows, support tools, and reasoning environments. Conceptual work on responsibility, interpretation, and closure helps me explain why those systems matter.
-          </p>
-        </aside>
-
-        <aside class="card side-card soft-blue">
-          <div class="identity-label">what the site is showing</div>
-          <h3>Projects, papers, and conceptual lenses.</h3>
-          <p>
-            The projects page shows concrete HCI cases and prototype directions. The papers page shows current manuscripts. This page connects them into one research program.
-          </p>
-          <div class="mini-note">not a separate STS identity — a theory-backed HCI agenda</div>
-        </aside>
+    <section class="hero">
+      <div class="window-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
-    </div>
 
-    <section class="card section-card">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <span class="eyebrow">research / HCI / high-stakes procedural systems</span>
+          <h1 class="title">Human-centered systems research for regulated work.</h1>
+          <p class="lede">
+            I study how documentation systems, review workflows, and decision-support environments shape human judgment in high-stakes regulated settings. My main orientation is HCI, especially design for complex procedural work.
+          </p>
+
+          <div class="hero-note">
+            <strong>Research position.</strong>
+            <span>
+              I focus on interaction, usability, interpretation, and reasoning support in environments where formal systems are difficult to redesign directly.
+            </span>
+          </div>
+
+          <div class="position-grid">
+            <div class="position-card">
+              <strong>HCI</strong>
+              <span>My main research home is human-centered systems and design for complex work.</span>
+            </div>
+            <div class="position-card">
+              <strong>High-stakes systems</strong>
+              <span>I focus on procedural environments where judgment, traceability, and accountability all matter.</span>
+            </div>
+            <div class="position-card">
+              <strong>Conceptual grounding</strong>
+              <span>I use theory to clarify design problems, not to move away from them.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="side-note soft-green">
+            <div class="meta-row">
+              <span class="chip">HCI</span>
+              <span class="chip">regulatory UX</span>
+              <span class="chip">procedural cognition</span>
+              <span class="chip">decision support</span>
+            </div>
+            <div class="identity-label">research identity</div>
+            <h3>Designing for judgment under constraint.</h3>
+            <p>
+              I am interested in how people navigate procedural environments that are formally rigid, cognitively demanding, and difficult to redesign directly.
+            </p>
+          </div>
+
+          <div class="side-note soft-pink">
+            <div class="identity-label">how I position the work</div>
+            <h3>HCI at the center, theory as grounding.</h3>
+            <p>
+              My projects and manuscripts ask HCI questions about documents, workflows, support tools, and reasoning environments. Conceptual work on responsibility, interpretation, and closure helps explain why those systems matter.
+            </p>
+          </div>
+
+          <div class="side-note soft-blue">
+            <div class="identity-label">what the site is showing</div>
+            <h3>Projects, papers, and conceptual lenses.</h3>
+            <p>
+              The projects page shows concrete HCI cases and prototype directions. The papers page shows current manuscripts. This page connects them into one research program.
+            </p>
+            <div class="mini-note">not a separate STS identity — a theory-backed HCI agenda</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
       <div class="section-head">
-        <h2 class="h2">Research focus</h2>
-        <div class="hint">main agenda and supporting lenses</div>
+        <div>
+          <span class="section-tag">research focus</span>
+          <h2 class="h2">Main agenda and supporting lenses</h2>
+        </div>
+        <div class="hint">human-centered systems for regulated environments</div>
       </div>
 
       <div class="focus-grid">
@@ -773,9 +834,12 @@
       </div>
     </section>
 
-    <section class="card section-card">
+    <section class="section-card">
       <div class="section-head">
-        <h2 class="h2">Core research questions</h2>
+        <div>
+          <span class="section-tag">core questions</span>
+          <h2 class="h2">Core research questions</h2>
+        </div>
         <div class="hint">from documents to decision support</div>
       </div>
 
@@ -814,9 +878,12 @@
       </div>
     </section>
 
-    <section class="card section-card">
+    <section class="section-card">
       <div class="section-head">
-        <h2 class="h2">Methods</h2>
+        <div>
+          <span class="section-tag">methods</span>
+          <h2 class="h2">Methods</h2>
+        </div>
         <div class="hint">qualitative, computational, and design-oriented</div>
       </div>
 
@@ -839,10 +906,13 @@
       </div>
     </section>
 
-    <section class="card section-card">
+    <section class="section-card">
       <div class="section-head">
-        <h2 class="h2">Conceptual backbone</h2>
-        <div class="hint">theory supporting the broader HCI agenda</div>
+        <div>
+          <span class="section-tag">conceptual backbone</span>
+          <h2 class="h2">Theory supporting the broader HCI agenda</h2>
+        </div>
+        <div class="hint">grounding, not a separate track</div>
       </div>
 
       <p class="backbone-intro">
@@ -852,7 +922,7 @@
       <div class="backbone-grid">
         <div class="backbone-card">
           <div class="backbone-top">
-            <span class="dot dot-blue"></span>
+            <span class="color-dot dot-blue"></span>
             <div class="abbr">AAC</div>
           </div>
           <div class="mini-meta">before action · interpretive expectations</div>
@@ -864,7 +934,7 @@
 
         <div class="backbone-card">
           <div class="backbone-top">
-            <span class="dot dot-pink"></span>
+            <span class="color-dot dot-pink"></span>
             <div class="abbr">CF</div>
           </div>
           <div class="mini-meta">during execution · procedural cognition</div>
@@ -876,7 +946,7 @@
 
         <div class="backbone-card">
           <div class="backbone-top">
-            <span class="dot dot-purple"></span>
+            <span class="color-dot dot-purple"></span>
             <div class="abbr">RC</div>
           </div>
           <div class="mini-meta">after events · investigative closure</div>
@@ -888,7 +958,7 @@
 
         <div class="backbone-card">
           <div class="backbone-top">
-            <span class="dot dot-green"></span>
+            <span class="color-dot dot-green"></span>
             <div class="abbr">PAC</div>
           </div>
           <div class="mini-meta">AI mediation · decision closure</div>
@@ -900,16 +970,19 @@
       </div>
     </section>
 
-    <section class="card section-card">
+    <section class="section-card">
       <div class="section-head">
-        <h2 class="h2">Current HCI paper directions</h2>
+        <div>
+          <span class="section-tag">paper directions</span>
+          <h2 class="h2">Current HCI paper directions</h2>
+        </div>
         <div class="hint">project-linked paper set</div>
       </div>
 
       <div class="works">
-        <article class="card paper">
+        <article class="paper">
           <div class="paper-top">
-            <span class="dot dot-blue"></span>
+            <span class="color-dot dot-blue"></span>
             <span class="pill">paper 01</span>
             <span class="pill">document usability</span>
             <span class="pill">accessibility</span>
@@ -922,9 +995,9 @@
           <div class="status">Paper direction active</div>
         </article>
 
-        <article class="card paper">
+        <article class="paper">
           <div class="paper-top">
-            <span class="dot dot-green"></span>
+            <span class="color-dot dot-green"></span>
             <span class="pill">paper 02</span>
             <span class="pill">workflow UX</span>
             <span class="pill">review interaction</span>
@@ -937,9 +1010,9 @@
           <div class="status">Paper direction active</div>
         </article>
 
-        <article class="card paper">
+        <article class="paper">
           <div class="paper-top">
-            <span class="dot dot-purple"></span>
+            <span class="color-dot dot-purple"></span>
             <span class="pill">paper 03</span>
             <span class="pill">reasoning support</span>
             <span class="pill">investigations</span>
@@ -952,9 +1025,9 @@
           <div class="status">Paper direction active</div>
         </article>
 
-        <article class="card paper">
+        <article class="paper">
           <div class="paper-top">
-            <span class="dot dot-pink"></span>
+            <span class="color-dot dot-pink"></span>
             <span class="pill">paper 04</span>
             <span class="pill">regulatory UX</span>
             <span class="pill">concept paper</span>
