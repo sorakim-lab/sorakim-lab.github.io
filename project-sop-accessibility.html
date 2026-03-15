@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SOP Accessibility System · Sora Kim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="description"
+content="Case study for SOP Accessibility System — a human-centered document UX project improving navigation and retrievability in validated GMP documentation environments." />
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="SOP Accessibility System — Sora Kim">
+<meta property="og:description"
+content="A human-centered document UX project focused on searchability, keyword pathways, and cross-reference clarity in GMP documentation.">
+<meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
+<meta property="og:url" content="https://sorakim-lab.github.io/project-sop-accessibility.html">
+<meta property="og:site_name" content="Sora Kim">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f5f7;
+  --panel:rgba(255,255,255,0.84);
+  --panel-strong:rgba(255,255,255,0.92);
+  --text:#121316;
+  --muted:#6e6e73;
+  --muted-strong:#4d4f57;
+  --line:rgba(17,17,17,0.08);
+  --line-strong:rgba(17,17,17,0.12);
+  --accent:#e9eef9;
+  --accent-2:#edf6f2;
+  --accent-3:#f3eefb;
+  --radius-xl:30px;
+  --radius-lg:24px;
+  --radius-md:18px;
+  --shadow:0 18px 50px rgba(15,23,42,0.08);
+  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
+  --mono:'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
+  color:var(--text);
+  line-height:1.7;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
+    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
+    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+}
+
+nav{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:60;
+  display:flex;
+  gap:8px;
+  padding:8px;
+  border:1px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.58);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:500;
+  padding:8px 12px;
+  border-radius:999px;
+  transition:all .22s ease;
+  white-space:nowrap;
+}
+
+nav a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,0.7);
+}
+
+nav a.active{
+  color:var(--text);
+  background:rgba(255,255,255,0.82);
+  box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
+}
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:112px 28px 92px;
+}
+
+.hero,
+.card,
+.section-card,
+.metric-card,
+.note{
+  border:1px solid var(--line);
+  background:var(--panel);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:var(--shadow);
+}
+
+.hero{
+  border-radius:var(--radius-xl);
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:22px;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:52px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
+}
+
+.window-dots{
+  position:absolute;
+  top:16px;
+  left:18px;
+  display:flex;
+  gap:7px;
+  z-index:2;
+}
+
+.dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
+}
+
+.dot:nth-child(1){background:#ff5f57}
+.dot:nth-child(2){background:#febc2e}
+.dot:nth-child(3){background:#28c840}
+
+.hero-inner{
+  margin-top:38px;
+  display:grid;
+  grid-template-columns:1.08fr 0.92fr;
+  gap:22px;
+  align-items:start;
+}
+
+.eyebrow,
+.section-tag,
+.meta-chip,
+.small-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(255,255,255,0.72);
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+}
+
+.title,
+.section-title,
+.metric-number,
+.note h3,
+.section-card h2{
+  font-family:'Sora',sans-serif;
+  letter-spacing:-0.05em;
+}
+
+.title{
+  font-size:60px;
+  line-height:0.95;
+  margin:14px 0 14px;
+}
+
+.lead{
+  font-size:16px;
+  color:rgba(29,29,31,0.84);
+  margin:0 0 16px;
+  max-width:680px;
+}
+
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:16px 0 18px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:10px 15px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.76);
+  text-decoration:none;
+  color:var(--text);
+  font-size:13px;
+  font-weight:500;
+  white-space:nowrap;
+  box-shadow:var(--shadow-soft);
+  transition:transform .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,0.94);
+  border-color:var(--line-strong);
+}
+
+.btn.primary{
+  background:linear-gradient(180deg, rgba(233,238,249,0.88), rgba(255,255,255,0.88));
+}
+
+.hero-side{
+  display:grid;
+  gap:14px;
+}
+
+.note{
+  border-radius:22px;
+  padding:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,249,252,0.88));
+}
+
+.note h3{
+  font-size:18px;
+  line-height:1.1;
+  margin:0 0 8px;
+}
+
+.note p{
+  margin:0;
+  font-size:14px;
+  color:#40434b;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px;
+  margin:18px 0 8px;
+}
+
+.metric-card{
+  border-radius:22px;
+  padding:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,248,251,0.9));
+}
+
+.metric-number{
+  font-size:30px;
+  line-height:1;
+  margin:8px 0 8px;
+}
+
+.metric-card p{
+  margin:0;
+  font-size:13px;
+  color:#454850;
+}
+
+.section-card{
+  border-radius:26px;
+  padding:22px;
+  margin-top:18px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:16px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+
+.section-title{
+  font-size:28px;
+  margin:0;
+}
+
+.section-card h2{
+  font-size:28px;
+  margin:0 0 12px;
+}
+
+.section-card p{
+  margin:0 0 14px;
+  font-size:15px;
+  color:#40434b;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.card-block{
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(255,255,255,0.74);
+  padding:16px;
+}
+
+.card-block h3{
+  margin:0 0 8px;
+  font-size:13px;
+  color:var(--muted);
+  font-family:var(--mono);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+
+.card-block p{
+  margin:0;
+  font-size:14px;
+  color:#3f4148;
+}
+
+.bullets{
+  margin:0;
+  padding-left:18px;
+}
+
+.bullets li{
+  margin:0 0 8px;
+  color:#41444c;
+}
+
+.method-list{
+  display:grid;
+  gap:12px;
+}
+
+.method-item{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  background:rgba(255,255,255,0.72);
+}
+
+.method-item h3{
+  margin:0 0 6px;
+  font-size:14px;
+  font-family:var(--mono);
+  color:var(--muted);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+
+.method-item p{
+  margin:0;
+  font-size:14px;
+}
+
+.table-wrap{
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(255,255,255,0.72);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:640px;
+}
+
+th, td{
+  padding:14px 16px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+
+th{
+  font-family:var(--mono);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  background:rgba(255,255,255,0.82);
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.footer{
+  margin-top:34px;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+@media (max-width:1080px){
+  .hero-inner,
+  .grid-2,
+  .metrics{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:760px){
+  nav{
+    left:14px;
+    right:14px;
+    justify-content:flex-start;
+    overflow:auto;
+  }
+
+  .wrap{
+    padding:98px 18px 70px;
+  }
+
+  .hero{
+    padding:24px 20px;
+  }
+
+  .title{
+    font-size:44px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a class="active" href="projects.html">Projects</a>
+  <a href="research.html">Research</a>
+  <a href="papers.html">Papers</a>
+  <a href="about.html">About</a>
+  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+</nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="window-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">case study / document UX / regulated environments</span>
+        <h1 class="title">SOP Accessibility System</h1>
+        <p class="lead">
+          A human-centered document UX project focused on improving searchability, keyword pathways, and information access in scanned GMP SOP archives without altering validated files.
+        </p>
+
+        <div class="meta-row">
+          <span class="meta-chip">document UX</span>
+          <span class="meta-chip">information architecture</span>
+          <span class="meta-chip">usability testing</span>
+          <span class="meta-chip">excel</span>
+          <span class="meta-chip">python</span>
+          <span class="meta-chip">R</span>
+          <span class="meta-chip">paper in progress</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="projects.html">back to projects</a>
+          <a class="btn" href="papers.html">view papers</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="note">
+          <h3>Core design question</h3>
+          <p>
+            How can SOP retrievability be improved in a validated GMP environment where the source files themselves cannot be modified?
+          </p>
+        </div>
+        <div class="note">
+          <h3>Project role in the portfolio</h3>
+          <p>
+            This project anchors the accessibility and document-navigation side of my HCI work, and is also being developed into a paper on document usability and compliance-constrained design in regulated systems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics">
+    <div class="metric-card">
+      <div class="small-label">scope</div>
+      <div class="metric-number">~500</div>
+      <p>SOPs reviewed across QA, QC, and Production contexts.</p>
+    </div>
+    <div class="metric-card">
+      <div class="small-label">speed gain</div>
+      <div class="metric-number">70–80%</div>
+      <p>Observed reduction in search time during prototype-based user testing.</p>
+    </div>
+    <div class="metric-card">
+      <div class="small-label">constraint</div>
+      <div class="metric-number">0</div>
+      <p>Changes made to validated source documents or controlled SOP files.</p>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Overview</h2>
+      <span class="section-tag">problem framing</span>
+    </div>
+    <p>
+      In GMP environments, Standard Operating Procedures are tightly controlled documents. Digital copies are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. In practice, analysts may rely on file titles, memory, and manual scrolling to find relevant information.
+    </p>
+    <p>
+      This project explored how a separate accessibility layer could improve information retrieval while fully respecting validation and document-control constraints.
+    </p>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Problem</h2>
+      <span class="section-tag">document friction</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Observed pain points</h3>
+        <ul class="bullets">
+          <li>Scanned SOP files blocked keyword search.</li>
+          <li>Document titles were often too broad or too similar.</li>
+          <li>Users opened multiple wrong files before locating the correct one.</li>
+          <li>Urgent review situations amplified navigation burden and cognitive fatigue.</li>
+        </ul>
+      </div>
+
+      <div class="card-block">
+        <h3>Design constraint</h3>
+        <p>
+          Because GMP environments are validation-sensitive, the SOP source files themselves could not be re-authored, restructured, or directly transformed into a new interactive system for real deployment. Any intervention had to remain external to the validated archive.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Design question</h2>
+      <span class="section-tag">HCI framing</span>
+    </div>
+    <p>
+      How can a human-centered retrieval layer improve navigation and reduce documentation fatigue in a regulated environment where only validated materials can be used operationally?
+    </p>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Method</h2>
+      <span class="section-tag">low-code + mixed methods</span>
+    </div>
+
+    <div class="method-list">
+      <div class="method-item">
+        <h3>1. Keyword mapping</h3>
+        <p>
+          Reviewed approximately 500 SOPs and extracted representative keywords, document identifiers, page references, and related process categories to build a searchable metadata index.
+        </p>
+      </div>
+
+      <div class="method-item">
+        <h3>2. Structure and overlap analysis</h3>
+        <p>
+          Used Excel, Python, and R to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents.
+        </p>
+      </div>
+
+      <div class="method-item">
+        <h3>3. Prototype artifact</h3>
+        <p>
+          Created an external retrieval aid rather than a replacement system: a prototype accessibility artifact that allowed users to search by keywords, related process, and document cues without altering the validated SOP files themselves.
+        </p>
+      </div>
+
+      <div class="method-item">
+        <h3>4. Prototype-based usability testing</h3>
+        <p>
+          Conducted usability testing with actual QC users using the prototype artifact. The artifact was not deployed as a live GMP production tool, because validated environments require controlled systems only; instead, it was used as a testable representation of a compliance-safe accessibility layer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Usability testing</h2>
+      <span class="section-tag">prototype evaluation</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Testing setup</h3>
+        <p>
+          Because validated GMP environments cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live controlled system. QC users were asked to complete retrieval tasks using the prototype artifact as a simulated accessibility layer.
+        </p>
+      </div>
+
+      <div class="card-block">
+        <h3>What was measured</h3>
+        <ul class="bullets">
+          <li>time to locate a target SOP</li>
+          <li>number of wrong-document openings</li>
+          <li>user confidence in identifying the right file</li>
+          <li>qualitative feedback on navigational clarity</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:16px;">
+      <h3>Why this matters</h3>
+      <p>
+        The testing did not claim production deployment inside a validated GMP system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users perform retrieval work more efficiently and with less uncertainty?
+      </p>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Results</h2>
+      <span class="section-tag">evidence</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Before</th>
+            <th>After prototype</th>
+            <th>Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SOP search time</td>
+            <td>~6–7 min</td>
+            <td>~1–2 min</td>
+            <td>Substantial improvement in retrievability</td>
+          </tr>
+          <tr>
+            <td>User confidence</td>
+            <td>Low</td>
+            <td>Higher</td>
+            <td>Users reported clearer starting points</td>
+          </tr>
+          <tr>
+            <td>Wrong-document openings</td>
+            <td>Frequent</td>
+            <td>Reduced</td>
+            <td>Keyword-based cues improved navigation</td>
+          </tr>
+          <tr>
+            <td>Compliance risk</td>
+            <td>None</td>
+            <td>None</td>
+            <td>No validated source files were modified</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:16px;">
+      <h3>User response</h3>
+      <p>
+        A representative reaction from testing was essentially: “Now I know where to look first.” That shift mattered because the intervention did not simplify the SOP content itself; it improved how users approached the archive.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Paper in progress</h2>
+      <span class="section-tag">research output</span>
+    </div>
+    <p>
+      This project is also being developed into a paper on accessibility, document usability, and compliance-constrained design in regulated environments. The paper extends the case study from a practical prototype into a broader HCI argument: even in validation-sensitive systems, usability improvements can be achieved through external support layers rather than direct system replacement.
+    </p>
+    <p>
+      The paper-in-progress uses this project to frame a larger question about how human-centered design can operate in environments where formal systems are difficult to modify, but where users still experience substantial navigational and cognitive burden.
+    </p>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Reflection</h2>
+      <span class="section-tag">why it is HCI</span>
+    </div>
+    <p>
+      This project showed that usability problems in regulated environments are not trivial inconveniences; they shape time, confidence, navigation, and cognitive load in everyday work. In other words, document control may preserve compliance, but it can also generate hidden interaction costs.
+    </p>
+    <p>
+      From an HCI perspective, the important insight was that meaningful design improvement did not require rewriting the validated system. An external, low-code accessibility layer was enough to improve user performance and reveal a concrete design opportunity.
+    </p>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">Tools & skills</h2>
+      <span class="section-tag">methods + implementation</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Technical</h3>
+        <ul class="bullets">
+          <li>Excel metadata indexing</li>
+          <li>Python for term inspection and structured pattern analysis</li>
+          <li>R for lightweight analysis and visualization support</li>
+          <li>Keyword mapping and document structuring</li>
+        </ul>
+      </div>
+
+      <div class="card-block">
+        <h3>Research / design</h3>
+        <ul class="bullets">
+          <li>Document UX framing</li>
+          <li>Information architecture</li>
+          <li>Prototype-based usability testing</li>
+          <li>Compliance-constrained design reasoning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card">
+    <div class="section-head">
+      <h2 class="section-title">One-line summary</h2>
+      <span class="section-tag">project takeaway</span>
+    </div>
+    <p>
+      Designed and tested a human-centered SOP accessibility layer that improved retrieval speed and user confidence in a regulated GMP environment — and is now being extended into a paper on document usability in compliance-constrained systems.
+    </p>
+
+    <div class="hero-actions" style="margin-top:16px;">
+      <a class="btn primary" href="projects.html">back to projects</a>
+      <a class="btn" href="papers.html">papers</a>
+      <a class="btn" href="index.html">home</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    © 2026 Sora Kim.
+  </div>
+</div>
+
+</body>
+</html>
