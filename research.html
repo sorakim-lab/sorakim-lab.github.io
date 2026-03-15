@@ -140,20 +140,21 @@
     .section-tag,
     .identity-label,
     .status,
-    .mini-meta{
+    .mini-meta,
+    .mini-note{
       font-family:var(--mono);
     }
 
     .hero{
       display:grid;
-      grid-template-columns:minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      grid-template-columns:minmax(0, 1.06fr) minmax(320px, 0.94fr);
       gap:18px;
       align-items:start;
       margin-bottom:18px;
     }
 
     .hero-card{
-      padding:26px 24px 22px;
+      padding:26px 24px 24px;
       background:
         radial-gradient(circle at 84% 18%, var(--soft-blue) 0, transparent 24%),
         radial-gradient(circle at 18% 88%, var(--soft-purple) 0, transparent 22%),
@@ -177,12 +178,14 @@
 
     .hero-side{
       display:grid;
+      grid-template-rows:auto auto auto;
       gap:16px;
     }
 
     .side-card{
       padding:20px;
       background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,248,251,0.84));
+      min-height:auto;
     }
 
     .side-card.soft-green{
@@ -195,6 +198,12 @@
       background:
         radial-gradient(circle at 82% 18%, var(--soft-pink) 0, transparent 26%),
         linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,248,249,0.84));
+    }
+
+    .side-card.soft-blue{
+      background:
+        radial-gradient(circle at 82% 18%, var(--soft-blue) 0, transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(248,249,252,0.84));
     }
 
     .kicker{
@@ -248,44 +257,6 @@
       z-index:1;
     }
 
-    .identity-label{
-      margin:0 0 8px 0;
-      font-size:11px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:0.04em;
-    }
-
-    .side-card h3{
-      margin:0 0 8px 0;
-      font-family:'Sora',sans-serif;
-      font-size:22px;
-      line-height:1.08;
-      letter-spacing:-0.045em;
-    }
-
-    .side-card p{
-      margin:0;
-      font-size:14px;
-      color:var(--muted-strong);
-    }
-
-    .meta-row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-
-    .chip{
-      font-size:11px;
-      color:var(--muted);
-      padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,0.64);
-    }
-
     .position-grid{
       display:grid;
       grid-template-columns:repeat(3, minmax(0,1fr));
@@ -314,6 +285,54 @@
       display:block;
       font-size:12.5px;
       color:#4a4d55;
+    }
+
+    .meta-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .chip{
+      font-size:11px;
+      color:var(--muted);
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,0.64);
+    }
+
+    .identity-label{
+      margin:0 0 8px 0;
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
+
+    .side-card h3{
+      margin:0 0 8px 0;
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.08;
+      letter-spacing:-0.045em;
+    }
+
+    .side-card p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted-strong);
+    }
+
+    .mini-note{
+      margin-top:12px;
+      padding-top:10px;
+      border-top:1px solid var(--line);
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.04em;
     }
 
     .section-card{
@@ -629,6 +648,10 @@
       .hero-card{
         min-height:auto;
       }
+
+      .hero-side{
+        grid-template-rows:auto;
+      }
     }
 
     @media (max-width:700px){
@@ -699,10 +722,19 @@
 
         <aside class="card side-card soft-pink">
           <div class="identity-label">how I position the work</div>
-          <h3>HCI at the center, theory in the background.</h3>
+          <h3>HCI at the center, theory as grounding.</h3>
           <p>
             My projects and manuscripts ask HCI questions about documents, workflows, support tools, and reasoning environments. Conceptual work on responsibility, interpretation, and closure helps me explain why those systems matter.
           </p>
+        </aside>
+
+        <aside class="card side-card soft-blue">
+          <div class="identity-label">what the site is showing</div>
+          <h3>Projects, papers, and conceptual lenses.</h3>
+          <p>
+            The projects page shows concrete HCI cases and prototype directions. The papers page shows current manuscripts. This page connects them into one research program.
+          </p>
+          <div class="mini-note">not a separate STS identity — a theory-backed HCI agenda</div>
         </aside>
       </div>
     </div>
@@ -799,9 +831,9 @@
 
         <div class="mini-card">
           <div class="mini-label">computational / design</div>
-          <h3>Metadata analysis, visualization, and lightweight prototyping</h3>
+          <h3>Metadata analysis, visualization, and interaction prototyping</h3>
           <p>
-            I use Excel and Python to structure metadata, analyze workflow patterns, map cognitive pathways, and build lightweight prototype artifacts around judgment, coordination, and reasoning support.
+            I use Excel and Python to structure metadata, analyze workflow patterns, visualize procedural systems, and build lightweight interaction prototypes around judgment, coordination, and reasoning support.
           </p>
         </div>
       </div>
@@ -870,69 +902,69 @@
 
     <section class="card section-card">
       <div class="section-head">
-        <h2 class="h2">Working manuscripts</h2>
-        <div class="hint">current paper set</div>
+        <h2 class="h2">Current HCI paper directions</h2>
+        <div class="hint">project-linked paper set</div>
       </div>
 
       <div class="works">
         <article class="card paper">
           <div class="paper-top">
             <span class="dot dot-blue"></span>
-            <span class="pill">AAC</span>
-            <span class="pill">interpretive expectations</span>
-            <span class="pill">before action</span>
+            <span class="pill">paper 01</span>
+            <span class="pill">document usability</span>
+            <span class="pill">accessibility</span>
           </div>
-          <h3 class="h3">Anticipated Accountability Convergence (AAC)</h3>
-          <p class="tagline">conceptual manuscript</p>
+          <h3 class="h3">SOP Accessibility Paper</h3>
+          <p class="tagline">project-linked HCI paper</p>
           <p class="abs">
-            AAC examines how expectations of accountable conduct become aligned before action unfolds. It frames my broader interest in how systems structure what counts as defensible interpretation in advance.
+            A paper on accessibility, document usability, and compliance-constrained design in regulated environments, developed from the SOP accessibility project.
           </p>
-          <div class="status">Working manuscript available</div>
-        </article>
-
-        <article class="card paper">
-          <div class="paper-top">
-            <span class="dot dot-pink"></span>
-            <span class="pill">CF</span>
-            <span class="pill">procedural texts</span>
-            <span class="pill">during execution</span>
-          </div>
-          <h3 class="h3">Cognitive Friction in Procedural Texts (CF)</h3>
-          <p class="tagline">conceptual + empirical manuscript</p>
-          <p class="abs">
-            CF studies how procedural text structure creates localized judgment demands during execution. It anchors my research on documentation, cognition, and the usability of procedural systems.
-          </p>
-          <div class="status">Working manuscript available · empirical expansion in progress</div>
-        </article>
-
-        <article class="card paper">
-          <div class="paper-top">
-            <span class="dot dot-purple"></span>
-            <span class="pill">RC</span>
-            <span class="pill">investigations</span>
-            <span class="pill">after events</span>
-          </div>
-          <h3 class="h3">Responsibility Convergence (RC)</h3>
-          <p class="tagline">conceptual manuscript</p>
-          <p class="abs">
-            RC explains why investigations often stabilize responsibility through interpretable and actionable attribution points. It supports my research on review systems, investigative structure, and reasoning under pressure.
-          </p>
-          <div class="status">Working manuscript available</div>
+          <div class="status">Paper direction active</div>
         </article>
 
         <article class="card paper">
           <div class="paper-top">
             <span class="dot dot-green"></span>
-            <span class="pill">PAC</span>
-            <span class="pill">AI mediation</span>
-            <span class="pill">decision closure</span>
+            <span class="pill">paper 02</span>
+            <span class="pill">workflow UX</span>
+            <span class="pill">review interaction</span>
           </div>
-          <h3 class="h3">Premature Accountability Convergence (PAC)</h3>
-          <p class="tagline">conceptual manuscript</p>
+          <h3 class="h3">Deviation–CAPA Workflow Paper</h3>
+          <p class="tagline">project-linked HCI paper</p>
           <p class="abs">
-            PAC analyzes how AI systems may accelerate responsibility convergence and narrow interpretive openness in organizational settings. It supports my research on decision support and AI in high-stakes procedural work.
+            A paper on review interaction, workflow friction, and documentation burden in validated deviation–CAPA systems.
           </p>
-          <div class="status">Working manuscript available</div>
+          <div class="status">Paper direction active</div>
+        </article>
+
+        <article class="card paper">
+          <div class="paper-top">
+            <span class="dot dot-purple"></span>
+            <span class="pill">paper 03</span>
+            <span class="pill">reasoning support</span>
+            <span class="pill">investigations</span>
+          </div>
+          <h3 class="h3">RCA Reasoning Paper</h3>
+          <p class="tagline">project-linked HCI paper</p>
+          <p class="abs">
+            A paper on investigation reasoning, causal scaffolding, and human-centered support for deviation analysis in regulated environments.
+          </p>
+          <div class="status">Paper direction active</div>
+        </article>
+
+        <article class="card paper">
+          <div class="paper-top">
+            <span class="dot dot-pink"></span>
+            <span class="pill">paper 04</span>
+            <span class="pill">regulatory UX</span>
+            <span class="pill">concept paper</span>
+          </div>
+          <h3 class="h3">Regulatory UX Concept Paper</h3>
+          <p class="tagline">project-linked HCI paper</p>
+          <p class="abs">
+            A broader HCI paper on human-centered design for regulated procedural environments, connecting the project portfolio into a unified design argument.
+          </p>
+          <div class="status">Paper direction active</div>
         </article>
       </div>
     </section>
