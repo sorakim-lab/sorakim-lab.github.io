@@ -518,7 +518,7 @@
 
     .backbone-top{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       gap:10px;
       margin-bottom:8px;
     }
@@ -528,6 +528,7 @@
       height:12px;
       border-radius:50%;
       flex:0 0 auto;
+      margin-top:6px;
     }
 
     .dot-blue{ background:#8fb2ff; }
@@ -539,6 +540,15 @@
       font-size:24px;
       font-weight:700;
       line-height:1;
+    }
+
+    .backbone-name{
+      margin-top:4px;
+      font-size:12px;
+      color:#5b5e66;
+      line-height:1.45;
+      font-family:'Inter', sans-serif;
+      letter-spacing:-0.01em;
     }
 
     .backbone-card p{
@@ -923,7 +933,10 @@
         <div class="backbone-card">
           <div class="backbone-top">
             <span class="color-dot dot-blue"></span>
-            <div class="abbr">AAC</div>
+            <div>
+              <div class="abbr">AAC</div>
+              <div class="backbone-name">Anticipated Accountability Convergence</div>
+            </div>
           </div>
           <div class="mini-meta">before action · interpretive expectations</div>
           <p>
@@ -935,7 +948,10 @@
         <div class="backbone-card">
           <div class="backbone-top">
             <span class="color-dot dot-pink"></span>
-            <div class="abbr">CF</div>
+            <div>
+              <div class="abbr">CF</div>
+              <div class="backbone-name">Cognitive Friction</div>
+            </div>
           </div>
           <div class="mini-meta">during execution · procedural cognition</div>
           <p>
@@ -947,7 +963,10 @@
         <div class="backbone-card">
           <div class="backbone-top">
             <span class="color-dot dot-purple"></span>
-            <div class="abbr">RC</div>
+            <div>
+              <div class="abbr">RC</div>
+              <div class="backbone-name">Responsibility Convergence</div>
+            </div>
           </div>
           <div class="mini-meta">after events · investigative closure</div>
           <p>
@@ -959,7 +978,10 @@
         <div class="backbone-card">
           <div class="backbone-top">
             <span class="color-dot dot-green"></span>
-            <div class="abbr">PAC</div>
+            <div>
+              <div class="abbr">PAC</div>
+              <div class="backbone-name">Preemptive Accountability Convergence</div>
+            </div>
           </div>
           <div class="mini-meta">AI mediation · decision closure</div>
           <p>
