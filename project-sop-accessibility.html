@@ -122,7 +122,6 @@ html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
 nav a.active{ color:var(--text); background:rgba(255,255,255,0.82); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
 html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 
-/* ===== THEME TOGGLE ===== */
 .theme-toggle{
   position:fixed;
   bottom:24px;
@@ -389,6 +388,108 @@ tr:last-child td{ border-bottom:none; }
 }
 html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9a9daa; }
 
+/* ===== Prototype viewer ===== */
+.proto-viewer{
+  display:grid;
+  grid-template-columns:52px 1fr 52px;
+  gap:14px;
+  align-items:center;
+}
+
+.proto-slide-wrap{
+  min-width:0;
+}
+
+.proto-image{
+  width:100%;
+  display:block;
+  border-radius:18px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+}
+
+.proto-meta{
+  margin-top:14px;
+}
+
+.proto-meta h3{
+  margin:0 0 8px;
+  font-size:13px;
+  color:var(--muted);
+  font-family:var(--mono);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+
+.proto-meta p{
+  margin:0;
+  font-size:14px;
+  color:#3f4148;
+}
+
+html[data-theme="dark"] .proto-meta p{
+  color:#9a9daa;
+}
+
+.proto-nav{
+  width:52px;
+  height:52px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  background:rgba(255,255,255,0.78);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  transition:all .18s ease;
+}
+
+.proto-nav:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,0.96);
+}
+
+html[data-theme="dark"] .proto-nav{
+  background:rgba(255,255,255,0.06);
+}
+
+html[data-theme="dark"] .proto-nav:hover{
+  background:rgba(255,255,255,0.12);
+}
+
+.proto-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:16px;
+}
+
+.proto-dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  background:#d2d6df;
+  transition:all .18s ease;
+}
+
+.proto-dot.active{
+  width:24px;
+  background:#8ea7e8;
+}
+
+html[data-theme="dark"] .proto-dot{
+  background:#4c5363;
+}
+
+html[data-theme="dark"] .proto-dot.active{
+  background:#9cb6ff;
+}
+
 .footer{ margin-top:34px; border-top:1px solid var(--line); padding-top:18px; font-size:12px; color:var(--muted); }
 
 @media (max-width:1080px){
@@ -408,6 +509,16 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
   .hero{ padding:24px 18px; }
   .title{ font-size:38px; }
   .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
+
+  .proto-viewer{
+    grid-template-columns:1fr;
+  }
+
+  .proto-nav{
+    width:100%;
+    height:42px;
+    border-radius:14px;
+  }
 }
 </style>
 </head>
@@ -602,24 +713,30 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       The prototype demonstrates how an external keyword-based accessibility layer can support procedural document retrieval without modifying validated files. It was implemented as a lightweight search interface and evaluated as an interactive artifact rather than a production system.
     </p>
 
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Main search interface</h3>
-        <img src="assets/sop-search-interface.png" alt="Main interface of the procedural document navigation and search prototype" style="width:100%; border-radius:14px; border:1px solid var(--line); margin-top:8px; display:block;">
-        <p style="margin-top:8px;">The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow.</p>
+    <div class="card-block">
+      <div class="proto-viewer">
+        <button class="proto-nav prev" type="button" onclick="changeProtoSlide(-1)">←</button>
+
+        <div class="proto-slide-wrap">
+          <img id="proto-image"
+               src="assets/sop-search-interface.png"
+               alt="Prototype interface screenshot"
+               class="proto-image">
+
+          <div class="proto-meta">
+            <h3 id="proto-title">Main search interface</h3>
+            <p id="proto-caption">The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow.</p>
+          </div>
+        </div>
+
+        <button class="proto-nav next" type="button" onclick="changeProtoSlide(1)">→</button>
       </div>
 
-      <div class="card-block">
-        <h3>Search results</h3>
-        <img src="assets/sop-search-results.png" alt="Search result screen of the procedural document navigation and search prototype" style="width:100%; border-radius:14px; border:1px solid var(--line); margin-top:8px; display:block;">
-        <p style="margin-top:8px;">The result view shows document identifiers, page cues, highlighted matches, and ranked snippets designed to reduce navigation uncertainty.</p>
+      <div class="proto-dots">
+        <button class="proto-dot active" type="button" onclick="setProtoSlide(0)"></button>
+        <button class="proto-dot" type="button" onclick="setProtoSlide(1)"></button>
+        <button class="proto-dot" type="button" onclick="setProtoSlide(2)"></button>
       </div>
-    </div>
-
-    <div class="card-block" style="margin-top:16px;">
-      <h3>No-result feedback</h3>
-      <img src="assets/sop-search-no-results.png" alt="No result screen of the procedural document navigation and search prototype" style="width:100%; border-radius:14px; border:1px solid var(--line); margin-top:8px; display:block;">
-      <p style="margin-top:8px;">The no-result state was intentionally documented because user feedback showed that empty search states were an important point of confusion and therefore part of the design problem itself.</p>
     </div>
 
     <div class="hero-actions" style="margin-top:16px;">
@@ -813,6 +930,58 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     }
   });
 })();
+
+const protoSlides = [
+  {
+    image: "assets/sop-search-interface.png",
+    title: "Main search interface",
+    caption: "The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow."
+  },
+  {
+    image: "assets/sop-search-results.png",
+    title: "Search results",
+    caption: "The result view shows document identifiers, page cues, highlighted matches, and ranked snippets designed to reduce navigation uncertainty."
+  },
+  {
+    image: "assets/sop-search-no-results.png",
+    title: "No-result feedback",
+    caption: "The no-result state was intentionally documented because user feedback showed that empty search states were an important point of confusion and therefore part of the design problem itself."
+  }
+];
+
+let currentProtoSlide = 0;
+
+function renderProtoSlide(){
+  const img = document.getElementById("proto-image");
+  const title = document.getElementById("proto-title");
+  const caption = document.getElementById("proto-caption");
+  const dots = document.querySelectorAll(".proto-dot");
+
+  if(!img || !title || !caption) return;
+
+  img.src = protoSlides[currentProtoSlide].image;
+  img.alt = protoSlides[currentProtoSlide].title;
+  title.textContent = protoSlides[currentProtoSlide].title;
+  caption.textContent = protoSlides[currentProtoSlide].caption;
+
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle("active", idx === currentProtoSlide);
+  });
+}
+
+function changeProtoSlide(direction){
+  currentProtoSlide += direction;
+  if(currentProtoSlide < 0) currentProtoSlide = protoSlides.length - 1;
+  if(currentProtoSlide >= protoSlides.length) currentProtoSlide = 0;
+  renderProtoSlide();
+}
+
+function setProtoSlide(index){
+  currentProtoSlide = index;
+  renderProtoSlide();
+}
+
+document.addEventListener("DOMContentLoaded", renderProtoSlide);
 </script>
 
 </body>
