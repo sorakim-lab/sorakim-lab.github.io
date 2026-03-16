@@ -4,17 +4,13 @@
 <meta charset="UTF-8" />
 <title>About · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<meta name="description"
-content="About Sora Kim — human-centered systems, regulatory UX, procedural cognition, and decision support in regulated environments." />
-
+<meta name="description" content="About Sora Kim — human-centered systems, regulatory UX, procedural cognition, and decision support in regulated environments." />
 <meta property="og:type" content="website">
 <meta property="og:title" content="About — Sora Kim">
-<meta property="og:description" content="About Sora Kim’s research identity in human-centered systems, regulatory UX, procedural cognition, and decision support.">
+<meta property="og:description" content="About Sora Kim's research identity in human-centered systems, regulatory UX, procedural cognition, and decision support.">
 <meta property="og:image" content="https://sorakim-phd.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-phd.github.io/about.html">
 <meta property="og:site_name" content="Sora Kim">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -29,31 +25,42 @@ content="About Sora Kim — human-centered systems, regulatory UX, procedural co
   --muted-strong:#4a4d56;
   --line:rgba(17,17,17,0.08);
   --line-strong:rgba(17,17,17,0.13);
-
   --blue:#e8eefc;
   --green:#ebf7f1;
   --lilac:#f2edfc;
   --pink:#f9eef2;
   --sand:#f6f1e7;
   --silver:#f3f4f8;
-
   --blue-strong:#cddafb;
   --green-strong:#cbeedb;
   --lilac-strong:#ddd0fb;
   --pink-strong:#f3d7df;
   --sand-strong:#ebdec0;
   --silver-strong:#e1e5ef;
-
   --radius-2xl:34px;
   --radius-xl:28px;
   --radius-lg:22px;
   --radius-md:18px;
-
   --shadow:0 18px 55px rgba(15,23,42,0.08);
   --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
   --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
-
   --mono:'JetBrains Mono', monospace;
+}
+
+html[data-theme="dark"]{
+  --text:#e2e4ea;
+  --muted:#7a7d8a;
+  --muted-strong:#a8aab8;
+  --line:rgba(255,255,255,0.07);
+  --line-strong:rgba(255,255,255,0.13);
+  --panel:rgba(22,24,32,0.88);
+  --panel-strong:rgba(26,28,38,0.94);
+  --shadow:0 18px 55px rgba(0,0,0,0.40);
+  --shadow-soft:0 10px 28px rgba(0,0,0,0.28);
+  --blue-strong:rgba(100,130,220,0.3);
+  --green-strong:rgba(80,180,120,0.3);
+  --lilac-strong:rgba(160,120,240,0.3);
+  --pink-strong:rgba(220,120,150,0.3);
 }
 
 *{box-sizing:border-box}
@@ -71,6 +78,13 @@ body{
     radial-gradient(circle at 24% 84%, rgba(235,247,241,0.38) 0, transparent 22%),
     linear-gradient(180deg, #f7f7f9 0%, #f1f2f6 100%);
   overflow-x:hidden;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(circle at 10% 12%, rgba(22,24,36,0.98) 0, transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(18,22,44,0.55) 0, transparent 28%),
+    linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
 }
 
 body::before{
@@ -81,6 +95,9 @@ body::before{
   background:
     linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
     radial-gradient(circle at 50% 0%, rgba(255,255,255,0.20), transparent 40%);
+}
+html[data-theme="dark"] body::before{
+  background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0));
 }
 
 nav{
@@ -98,6 +115,7 @@ nav{
   border-radius:999px;
   box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
+html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
 
 nav a{
   text-decoration:none;
@@ -109,31 +127,40 @@ nav a{
   transition:all .22s ease;
   white-space:nowrap;
 }
+nav a:hover{ color:var(--text); background:rgba(255,255,255,0.72); }
+html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
+nav a.active{ color:var(--text); background:rgba(255,255,255,0.86); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
+html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 
-nav a:hover{
-  color:var(--text);
-  background:rgba(255,255,255,0.72);
+.theme-toggle{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:100;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.78);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
 }
+html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
+.theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
+.theme-toggle:active{ transform:scale(0.95); }
 
-nav a.active{
-  color:var(--text);
-  background:rgba(255,255,255,0.86);
-  box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04);
-}
+.wrap{ max-width:1320px; margin:0 auto; padding:112px 28px 92px; }
 
-.wrap{
-  max-width:1320px;
-  margin:0 auto;
-  padding:112px 28px 92px;
-}
-
-.hero,
-.section-card,
-.info-card,
-.statement,
-.quote-card,
-.approach-card,
-.side-note{
+.hero,.section-card,.info-card,.statement,.quote-card,.approach-card,.side-note{
   border:1px solid var(--line);
   background:var(--panel);
   backdrop-filter:blur(20px) saturate(150%);
@@ -152,6 +179,7 @@ nav a.active{
     radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
     linear-gradient(180deg, rgba(255,255,255,0.90), rgba(251,251,253,0.80));
 }
+html[data-theme="dark"] .hero{ background:linear-gradient(180deg, rgba(22,24,36,0.92), rgba(18,20,30,0.88)); }
 
 .hero::before{
   content:"";
@@ -161,6 +189,7 @@ nav a.active{
   border-bottom:1px solid var(--line);
   background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
 }
+html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
 
 .hero::after{
   content:"";
@@ -174,21 +203,8 @@ nav a.active{
   pointer-events:none;
 }
 
-.window-dots{
-  position:absolute;
-  top:16px;
-  left:18px;
-  display:flex;
-  gap:7px;
-  z-index:2;
-}
-
-.window-dot{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  box-shadow:inset 0 1px 1px rgba(255,255,255,0.45);
-}
+.window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
+.window-dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
 .window-dot:nth-child(1){background:#ff5f57}
 .window-dot:nth-child(2){background:#febc2e}
 .window-dot:nth-child(3){background:#28c840}
@@ -210,18 +226,11 @@ nav a.active{
   background:rgba(255,255,255,0.44);
   box-shadow:var(--shadow-soft);
 }
+html[data-theme="dark"] .hero-main{ background:rgba(255,255,255,0.04); }
 
-.hero-side{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:12px;
-}
+.hero-side{ display:grid; grid-template-columns:1fr; gap:12px; }
 
-.kicker,
-.chip,
-.info-top,
-.section-tag,
-.program-pill{
+.kicker,.chip,.info-top,.section-tag,.program-pill{
   display:inline-flex;
   align-items:center;
   gap:8px;
@@ -234,33 +243,20 @@ nav a.active{
   color:var(--muted);
   box-shadow:var(--shadow-soft);
 }
+html[data-theme="dark"] .kicker,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .info-top,
+html[data-theme="dark"] .section-tag,
+html[data-theme="dark"] .program-pill{ background:rgba(255,255,255,0.06); }
 
-.title,
-.section-title,
-.hero-note strong,
-.side-note h3,
-.info-card h2,
-.statement h2,
-.quote-text,
-.approach-card h3{
+.title,.section-title,.hero-note strong,.side-note h3,.info-card h2,.statement h2,.quote-text,.approach-card h3{
   font-family:'Sora',sans-serif;
   letter-spacing:-0.055em;
 }
 
-.title{
-  margin:14px 0 14px;
-  font-size:56px;
-  line-height:0.95;
-  font-weight:700;
-  max-width:11ch;
-}
-
-.lead{
-  margin:0;
-  max-width:760px;
-  font-size:16px;
-  color:rgba(29,29,31,0.86);
-}
+.title{ margin:14px 0 14px; font-size:56px; line-height:0.95; font-weight:700; max-width:11ch; }
+.lead{ margin:0; max-width:760px; font-size:16px; color:rgba(29,29,31,0.86); }
+html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 
 .hero-note{
   margin-top:24px;
@@ -271,28 +267,12 @@ nav a.active{
   background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.86));
   box-shadow:var(--shadow-soft);
 }
+html[data-theme="dark"] .hero-note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
+.hero-note strong{ display:block; font-size:18px; line-height:1.08; margin-bottom:6px; font-weight:600; }
+.hero-note span{ display:block; font-size:14px; color:#4b4e57; line-height:1.6; }
+html[data-theme="dark"] .hero-note span{ color:#9a9daa; }
 
-.hero-note strong{
-  display:block;
-  font-size:18px;
-  line-height:1.08;
-  margin-bottom:6px;
-  font-weight:600;
-}
-
-.hero-note span{
-  display:block;
-  font-size:14px;
-  color:#4b4e57;
-  line-height:1.6;
-}
-
-.meta-row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:14px;
-}
+.meta-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
 
 .side-note{
   position:relative;
@@ -300,95 +280,34 @@ nav a.active{
   border-radius:24px;
   padding:18px;
 }
+.side-note::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
+.side-note.soft-green{ background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92)); }
+.side-note.soft-green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
+.side-note.soft-pink{ background:linear-gradient(180deg, rgba(249,238,242,0.76), rgba(255,255,255,0.92)); }
+.side-note.soft-pink::before{ background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96)); }
+.side-note.soft-blue{ background:linear-gradient(180deg, rgba(232,238,252,0.66), rgba(255,255,255,0.92)); }
+.side-note.soft-blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
+html[data-theme="dark"] .side-note.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.70), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .side-note.soft-pink{ background:linear-gradient(180deg, rgba(40,18,26,0.70), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .side-note.soft-blue{ background:linear-gradient(180deg, rgba(18,26,52,0.70), rgba(22,24,34,0.92)); }
+.side-note h3{ margin:0 0 8px 0; font-size:18px; line-height:1.08; font-weight:600; }
+.side-note p{ margin:0; font-size:14px; color:#40434b; line-height:1.7; }
+html[data-theme="dark"] .side-note p{ color:#9a9daa; }
 
-.side-note::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:4px;
-}
+.content-grid{ display:grid; grid-template-columns:1.08fr 0.92fr; gap:16px; margin-top:16px; align-items:start; }
+.stack{ display:grid; gap:16px; }
 
-.side-note.soft-green{
-  background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92));
-}
-.side-note.soft-green::before{
-  background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96));
-}
+.info-card,.statement,.quote-card{ border-radius:24px; padding:20px; background:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(248,249,252,0.88)); }
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .statement,
+html[data-theme="dark"] .quote-card{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
 
-.side-note.soft-pink{
-  background:linear-gradient(180deg, rgba(249,238,242,0.76), rgba(255,255,255,0.92));
-}
-.side-note.soft-pink::before{
-  background:linear-gradient(90deg, var(--pink-strong), rgba(249,238,242,0.96));
-}
-
-.side-note.soft-blue{
-  background:linear-gradient(180deg, rgba(232,238,252,0.66), rgba(255,255,255,0.92));
-}
-.side-note.soft-blue::before{
-  background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96));
-}
-
-.side-note h3{
-  margin:0 0 8px 0;
-  font-size:18px;
-  line-height:1.08;
-  font-weight:600;
-}
-
-.side-note p{
-  margin:0;
-  font-size:14px;
-  color:#40434b;
-  line-height:1.7;
-}
-
-.content-grid{
-  display:grid;
-  grid-template-columns:1.08fr 0.92fr;
-  gap:16px;
-  margin-top:16px;
-  align-items:start;
-}
-
-.stack{
-  display:grid;
-  gap:16px;
-}
-
-.info-card,
-.statement,
-.quote-card{
-  border-radius:24px;
-  padding:20px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(248,249,252,0.88));
-}
-
-.info-card h2{
-  margin:10px 0 10px 0;
-  font-size:24px;
-  line-height:1.08;
-  font-weight:600;
-}
-
-.info-card p,
-.statement p{
-  margin:0;
-  font-size:14px;
-  color:#3f4148;
-  line-height:1.75;
-}
-
-.statement h2{
-  margin:10px 0 12px 0;
-  font-size:28px;
-  line-height:1.04;
-  font-weight:600;
-}
-
-.statement p + p{
-  margin-top:12px;
-}
+.info-card h2{ margin:10px 0 10px 0; font-size:24px; line-height:1.08; font-weight:600; }
+.info-card p,.statement p{ margin:0; font-size:14px; color:#3f4148; line-height:1.75; }
+html[data-theme="dark"] .info-card p,
+html[data-theme="dark"] .statement p{ color:#9a9daa; }
+.statement h2{ margin:10px 0 12px 0; font-size:28px; line-height:1.04; font-weight:600; }
+.statement p + p{ margin-top:12px; }
 
 .program-line{
   margin-top:14px;
@@ -400,33 +319,21 @@ nav a.active{
   font-size:11.5px;
   color:var(--muted);
 }
+html[data-theme="dark"] .program-line{ background:rgba(255,255,255,0.04); }
 
-.side-column{
-  display:grid;
-  gap:16px;
-  align-content:start;
-}
+.side-column{ display:grid; gap:16px; align-content:start; }
 
 .quote-card{
   background:
     radial-gradient(circle at 84% 18%, rgba(242,237,252,0.48) 0, transparent 24%),
     linear-gradient(180deg, rgba(255,255,255,0.94), rgba(247,247,250,0.90));
-  padding-bottom: 14px;
+  padding-bottom:14px;
 }
+html[data-theme="dark"] .quote-card{ background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92)); }
 
-.quote-text{
-  margin:10px 0 0;
-  font-size:28px;
-  line-height:1.14;
-  font-weight:600;
-}
-
-.quote-sub{
-  margin-top:14px;
-  font-size:13px;
-  color:var(--muted-strong);
-  line-height:1.8;
-}
+.quote-text{ margin:10px 0 0; font-size:28px; line-height:1.14; font-weight:600; }
+.quote-sub{ margin-top:14px; font-size:13px; color:var(--muted-strong); line-height:1.8; }
+html[data-theme="dark"] .quote-sub{ color:#9a9daa; }
 
 .section-card{
   position:relative;
@@ -436,57 +343,19 @@ nav a.active{
   margin-top:16px;
   background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(249,249,252,0.84));
 }
+html[data-theme="dark"] .section-card{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
 
-.section-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:14px;
-  flex-wrap:wrap;
-}
+.section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.section-title{ margin:8px 0 0; font-size:32px; line-height:1.08; font-weight:600; }
+.section-sub{ margin:0 0 14px 0; font-size:14px; color:#44484f; max-width:78ch; line-height:1.7; }
+html[data-theme="dark"] .section-sub{ color:#9a9daa; }
 
-.section-title{
-  margin:8px 0 0;
-  font-size:32px;
-  line-height:1.08;
-  font-weight:600;
-}
-
-.section-sub{
-  margin:0 0 14px 0;
-  font-size:14px;
-  color:#44484f;
-  max-width:78ch;
-  line-height:1.7;
-}
-
-.approach-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;
-}
-
-.approach-card{
-  border-radius:22px;
-  background:rgba(255,255,255,0.76);
-  padding:16px;
-  box-shadow:var(--shadow-soft);
-}
-
-.approach-card h3{
-  margin:10px 0 8px 0;
-  font-size:20px;
-  line-height:1.1;
-  font-weight:600;
-}
-
-.approach-card p{
-  margin:0;
-  font-size:14px;
-  color:#41444c;
-  line-height:1.7;
-}
+.approach-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.approach-card{ border-radius:22px; background:rgba(255,255,255,0.76); padding:16px; box-shadow:var(--shadow-soft); }
+html[data-theme="dark"] .approach-card{ background:rgba(255,255,255,0.04); }
+.approach-card h3{ margin:10px 0 8px 0; font-size:20px; line-height:1.1; font-weight:600; }
+.approach-card p{ margin:0; font-size:14px; color:#41444c; line-height:1.7; }
+html[data-theme="dark"] .approach-card p{ color:#9a9daa; }
 
 .footer{
   margin-top:30px;
@@ -501,49 +370,24 @@ nav a.active{
 }
 
 @media (max-width:1180px){
-  .hero-grid,
-  .content-grid,
-  .approach-grid{
-    grid-template-columns:1fr;
-  }
-
-  .title{
-    max-width:none;
-  }
+  .hero-grid,.content-grid,.approach-grid{ grid-template-columns:1fr; }
+  .title{ max-width:none; }
 }
 
 @media (max-width:860px){
-  nav{
-    left:14px;
-    right:14px;
-    justify-content:flex-start;
-    overflow:auto;
-  }
-
-  .wrap{
-    padding:98px 18px 72px;
-  }
-
-  .hero{
-    padding:24px 18px;
-  }
-
-  .hero-main{
-    padding:22px 20px;
-  }
-
-  .title{
-    font-size:44px;
-  }
-
-  .section-head,
-  .footer{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+  nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
+  nav::-webkit-scrollbar{ display:none; }
+  nav a{ font-size:12px; padding:7px 10px; }
+  .wrap{ padding:80px 18px 72px; }
+  .hero{ padding:24px 18px; }
+  .hero-main{ padding:22px 20px; }
+  .title{ font-size:40px; }
+  .section-head,.footer{ flex-direction:column; align-items:flex-start; }
+  .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
 }
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -558,24 +402,17 @@ nav a.active{
 <div class="wrap">
   <section class="hero">
     <div class="window-dots">
-      <span class="window-dot"></span>
-      <span class="window-dot"></span>
-      <span class="window-dot"></span>
+      <span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span>
     </div>
 
     <div class="hero-grid">
       <div class="hero-main">
         <div class="kicker">about / researcher profile / human-centered systems</div>
         <h1 class="title">I study human-centered systems for regulated work.</h1>
-        <p class="lead">
-          My work focuses on documentation, procedural cognition, workflow visibility, and decision support in high-stakes environments. I am especially interested in how people interpret dense procedural systems and how support layers can make that work more navigable without collapsing ambiguity too early.
-        </p>
-
+        <p class="lead">My work focuses on documentation, procedural cognition, workflow visibility, and decision support in high-stakes environments. I am especially interested in how people interpret dense procedural systems and how support layers can make that work more navigable without collapsing ambiguity too early.</p>
         <div class="hero-note">
           <strong>Research identity.</strong>
-          <span>
-            HCI for complex procedural environments — especially documents, investigations, interpretation, and the design of systems that support careful human work.
-          </span>
+          <span>HCI for complex procedural environments — especially documents, investigations, interpretation, and the design of systems that support careful human work.</span>
         </div>
       </div>
 
@@ -588,9 +425,7 @@ nav a.active{
             <span class="chip">decision support</span>
           </div>
           <h3>Designing for judgment under constraint.</h3>
-          <p>
-            I care about systems where people must interpret, document, justify, and decide under formal requirements. In those environments, usability is not cosmetic — it shapes the quality of work itself.
-          </p>
+          <p>I care about systems where people must interpret, document, justify, and decide under formal requirements. In those environments, usability is not cosmetic — it shapes the quality of work itself.</p>
         </div>
 
         <div class="side-note soft-pink">
@@ -600,9 +435,7 @@ nav a.active{
             <span class="chip">careful work</span>
           </div>
           <h3>Why this feels like HCI.</h3>
-          <p>
-            I am interested in systems that shape how people read, interpret, coordinate, and act. In regulated environments, even documents and review structures function like interfaces for judgment.
-          </p>
+          <p>I am interested in systems that shape how people read, interpret, coordinate, and act. In regulated environments, even documents and review structures function like interfaces for judgment.</p>
         </div>
 
         <div class="side-note soft-blue">
@@ -612,9 +445,7 @@ nav a.active{
             <span class="chip">organizational life</span>
           </div>
           <h3>Grounded in actual regulated work.</h3>
-          <p>
-            My questions come out of pharmaceutical quality systems, where SOPs, deviations, CAPA, RCA, verification work, and audit-facing documentation are part of everyday practice.
-          </p>
+          <p>My questions come out of pharmaceutical quality systems, where SOPs, deviations, CAPA, RCA, verification work, and audit-facing documentation are part of everyday practice.</p>
         </div>
       </div>
     </div>
@@ -625,32 +456,22 @@ nav a.active{
       <section class="info-card">
         <div class="info-top">what I study</div>
         <h2>Documents, workflows, and judgment</h2>
-        <p>
-          I study how people navigate dense procedural systems: how documents distribute interpretive burden, how workflows create friction, and how support tools can help people reason more clearly without turning complex work into something falsely simple.
-        </p>
+        <p>I study how people navigate dense procedural systems: how documents distribute interpretive burden, how workflows create friction, and how support tools can help people reason more clearly without turning complex work into something falsely simple.</p>
       </section>
 
       <section class="statement">
         <div class="info-top">research approach</div>
         <h2>I treat regulated environments as HCI problems.</h2>
-        <p>
-          Rather than seeing procedures and documentation as passive background materials, I treat them as active structures that shape navigation, timing, interpretation, and judgment.
-        </p>
-        <p>
-          That means moving between design questions and conceptual questions: how systems can become more usable in practice, and how documents, investigations, and support tools shape what becomes visible, legible, and actionable in organizational life.
-        </p>
+        <p>Rather than seeing procedures and documentation as passive background materials, I treat them as active structures that shape navigation, timing, interpretation, and judgment.</p>
+        <p>That means moving between design questions and conceptual questions: how systems can become more usable in practice, and how documents, investigations, and support tools shape what becomes visible, legible, and actionable in organizational life.</p>
         <div class="program-line">human-centered systems → procedural cognition → workflow visibility → decision support</div>
       </section>
 
       <section class="statement">
         <div class="info-top">how I work</div>
         <h2>Close to real work, not abstracted away from it.</h2>
-        <p>
-          I like research that stays close to actual practice. Methodologically, I combine document analysis, structured qualitative reading, field-based observation, and lightweight computational analysis using tools such as Excel and Python.
-        </p>
-        <p>
-          Across projects, I keep returning to one underlying question: how do we make high-stakes procedural systems more legible for the people inside them?
-        </p>
+        <p>I like research that stays close to actual practice. Methodologically, I combine document analysis, structured qualitative reading, field-based observation, and lightweight computational analysis using tools such as Excel and Python.</p>
+        <p>Across projects, I keep returning to one underlying question: how do we make high-stakes procedural systems more legible for the people inside them?</p>
       </section>
     </div>
 
@@ -658,16 +479,12 @@ nav a.active{
       <section class="info-card">
         <div class="info-top">at a glance</div>
         <h2>Research snapshot</h2>
-        <p>
-          My background is in pharmaceutical quality and regulatory systems. I work on human-centered systems, regulatory UX, procedural cognition, and decision support, with current emphasis on documentation, investigations, and AI-mediated support in regulated environments. This background shapes both the questions I ask and the environments I know how to work in.
-        </p>
+        <p>My background is in pharmaceutical quality and regulatory systems. I work on human-centered systems, regulatory UX, procedural cognition, and decision support, with current emphasis on documentation, investigations, and AI-mediated support in regulated environments. This background shapes both the questions I ask and the environments I know how to work in.</p>
       </section>
 
       <section class="quote-card">
         <div class="info-top">small human note</div>
-        <p class="quote-text">
-          Thoughtful systems, soft mornings, and work that stays human. ✨
-        </p>
+        <p class="quote-text">Thoughtful systems, soft mornings, and work that stays human. ✨</p>
         <div class="quote-sub">
           ☕ latte-powered starts<br>
           🥐 fresh bread and tiny rituals<br>
@@ -688,34 +505,22 @@ nav a.active{
       </div>
       <div class="program-pill">HCI × regulated environments</div>
     </div>
-
-    <p class="section-sub">
-      Across projects and papers, I am trying to make procedural work more legible, more navigable, and more supportive of careful judgment — especially in environments where the source systems themselves cannot be easily redesigned.
-    </p>
-
+    <p class="section-sub">Across projects and papers, I am trying to make procedural work more legible, more navigable, and more supportive of careful judgment — especially in environments where the source systems themselves cannot be easily redesigned.</p>
     <div class="approach-grid">
       <div class="approach-card">
         <div class="info-top">01</div>
         <h3>Make friction visible</h3>
-        <p>
-          I study where documentation, workflow order, and interface structure create unnecessary interpretive burden.
-        </p>
+        <p>I study where documentation, workflow order, and interface structure create unnecessary interpretive burden.</p>
       </div>
-
       <div class="approach-card">
         <div class="info-top">02</div>
         <h3>Support judgment, not replace it</h3>
-        <p>
-          I care about tools and support layers that help people think more clearly without pretending complex work can be fully automated away.
-        </p>
+        <p>I care about tools and support layers that help people think more clearly without pretending complex work can be fully automated away.</p>
       </div>
-
       <div class="approach-card">
         <div class="info-top">03</div>
         <h3>Keep accountability in view</h3>
-        <p>
-          I want systems that make reasoning, interpretation, and responsibility more visible rather than prematurely compressed or hidden.
-        </p>
+        <p>I want systems that make reasoning, interpretation, and responsibility more visible rather than prematurely compressed or hidden.</p>
       </div>
     </div>
   </section>
@@ -725,6 +530,32 @@ nav a.active{
     <span>Human-centered systems / regulatory UX / procedural cognition / decision support</span>
   </div>
 </div>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+
+<script>
+(function(){
+  var toggle = document.getElementById('themeToggle');
+  var html = document.documentElement;
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = saved === 'dark' || (!saved && prefersDark);
+  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
+  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
+  toggle.addEventListener('click', function(){
+    var current = html.getAttribute('data-theme');
+    if(current === 'dark'){
+      html.setAttribute('data-theme','light');
+      toggle.textContent='🌙';
+      localStorage.setItem('theme','light');
+    } else {
+      html.setAttribute('data-theme','dark');
+      toggle.textContent='☀️';
+      localStorage.setItem('theme','dark');
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
