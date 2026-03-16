@@ -245,9 +245,38 @@ html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 }
 .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.94); border-color:var(--line-strong); }
 .btn.primary{ background:linear-gradient(180deg, rgba(233,238,249,0.92), rgba(255,255,255,0.88)); }
+
+.btn.demo{
+  background:linear-gradient(180deg, rgba(227,238,255,0.98), rgba(245,249,255,0.92));
+  border:1px solid rgba(125,156,226,0.28);
+  color:#244a9b;
+  box-shadow:
+    0 10px 28px rgba(80,110,180,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.72);
+}
+.btn.demo:hover{
+  transform:translateY(-1px);
+  background:linear-gradient(180deg, rgba(236,243,255,1), rgba(248,251,255,0.96));
+  border-color:rgba(125,156,226,0.38);
+  color:#1f3f86;
+}
+
 html[data-theme="dark"] .btn{ background:rgba(255,255,255,0.07); }
 html[data-theme="dark"] .btn:hover{ background:rgba(255,255,255,0.12); }
 html[data-theme="dark"] .btn.primary{ background:linear-gradient(180deg, rgba(26,36,66,0.80), rgba(22,24,34,0.90)); }
+html[data-theme="dark"] .btn.demo{
+  background:linear-gradient(180deg, rgba(36,52,92,0.92), rgba(28,36,58,0.92));
+  border:1px solid rgba(148,173,255,0.18);
+  color:#dce7ff;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+html[data-theme="dark"] .btn.demo:hover{
+  background:linear-gradient(180deg, rgba(44,61,104,0.96), rgba(30,39,64,0.96));
+  border-color:rgba(148,173,255,0.28);
+  color:#eef3ff;
+}
 
 .hero-side{ display:grid; gap:14px; }
 
@@ -416,12 +445,11 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
           <span class="meta-chip">search interface</span>
           <span class="meta-chip">usability testing</span>
           <span class="meta-chip">python</span>
-          <span class="meta-chip">R</span>
           <span class="meta-chip">paper in progress</span>
         </div>
 
         <div class="hero-actions">
-          <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">live demo</a>
+          <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
           <a class="btn" href="projects.html">back to projects</a>
           <a class="btn" href="papers.html">view papers</a>
         </div>
@@ -509,6 +537,36 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     <p>How can a human-centered retrieval layer improve navigation and reduce documentation fatigue in a constrained environment where only approved materials can be used operationally?</p>
   </section>
 
+  <section class="section-card blue">
+    <div class="section-head">
+      <h2 class="section-title">↔ System change illustration</h2>
+      <span class="section-tag">before / after</span>
+    </div>
+    <div class="grid-2">
+      <div class="card-block">
+        <h3>Before</h3>
+        <ul class="bullets">
+          <li>Title-based browsing across scanned files</li>
+          <li>Keyword search unavailable or unreliable</li>
+          <li>Users manually opened multiple documents</li>
+          <li>Relevant sections had to be found by scrolling and memory</li>
+          <li>Similar titles increased uncertainty during retrieval</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h3>After</h3>
+        <ul class="bullets">
+          <li>Keyword-based entry into the document archive</li>
+          <li>Ranked results with snippets and highlighted matches</li>
+          <li>Document identifiers and page cues surfaced early</li>
+          <li>No-result states handled more explicitly</li>
+          <li>A lightweight support layer improved navigation without changing source files</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quote-line">This project shows how a lightweight search layer can improve procedural document navigation without altering controlled source documents.</div>
+  </section>
+
   <section class="section-card green">
     <div class="section-head">
       <h2 class="section-title">🧠 Method</h2>
@@ -521,7 +579,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
       </div>
       <div class="method-item">
         <h3>2. Structure and overlap analysis</h3>
-        <p>Used Excel, Python, and R to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents.</p>
+        <p>Used Excel and Python to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents.</p>
       </div>
       <div class="method-item">
         <h3>3. Prototype artifact</h3>
@@ -565,7 +623,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     </div>
 
     <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">view live prototype</a>
+      <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
     </div>
   </section>
 
@@ -697,7 +755,6 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
         <ul class="bullets">
           <li>Excel metadata indexing</li>
           <li>Python for term inspection and structured pattern analysis</li>
-          <li>R for lightweight analysis and visualization support</li>
           <li>Keyword mapping and document structuring</li>
           <li>Streamlit prototype deployment</li>
         </ul>
@@ -722,7 +779,7 @@ html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9
     </div>
     <p>Designed and tested a human-centered procedural document retrieval layer that improved clarity, confidence, and perceived usability in a constrained archive — and is now being extended into a paper on document interaction in compliance-sensitive systems.</p>
     <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">live demo</a>
+      <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
       <a class="btn" href="projects.html">back to projects</a>
       <a class="btn" href="papers.html">papers</a>
       <a class="btn" href="index.html">home</a>
