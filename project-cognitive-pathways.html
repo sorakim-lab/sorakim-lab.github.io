@@ -4,572 +4,158 @@
 <meta charset="UTF-8" />
 <title>Cognitive Pathways in Regulated Work Environments · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Case study for Cognitive Pathways in Regulated Work Environments — empirical and design-side companion to Document Judgment: Cognitive Friction and Responsibility in Procedural Documentation." />
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cognitive Pathways in Regulated Work Environments — Sora Kim">
-<meta property="og:description" content="A human-centered project on reasoning pathways, documentation pressure, and cognitive friction in regulated work environments.">
-<meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
-<meta property="og:url" content="https://sorakim-lab.github.io/project-cognitive-pathways.html">
-<meta property="og:site_name" content="Sora Kim">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#f5f5f7;
-  --panel:rgba(255,255,255,0.84);
-  --panel-strong:rgba(255,255,255,0.92);
-  --text:#121316;
-  --muted:#6e6e73;
-  --muted-strong:#4d4f57;
-  --line:rgba(17,17,17,0.08);
-  --line-strong:rgba(17,17,17,0.12);
-  --accent:#e9eef9;
-  --accent-2:#edf6f2;
-  --accent-3:#f3eefb;
-  --accent-4:#f5f2ea;
-  --radius-xl:30px;
-  --radius-lg:24px;
-  --radius-md:18px;
-  --shadow:0 18px 50px rgba(15,23,42,0.08);
-  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
-  --mono:'JetBrains Mono', monospace;
-}
-
-html[data-theme="dark"]{
-  --text:#e2e4ea;
-  --muted:#7a7d8a;
-  --muted-strong:#a8aab8;
-  --line:rgba(255,255,255,0.07);
-  --line-strong:rgba(255,255,255,0.13);
-  --panel:rgba(22,24,32,0.88);
-  --shadow:0 18px 50px rgba(0,0,0,0.40);
-  --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-  color:var(--text);
-  line-height:1.7;
-  background:
-    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.95) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
-    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
-  transition:background 0.3s ease, color 0.3s ease;
-}
-html[data-theme="dark"] body{
-  background:
-    radial-gradient(circle at 12% 16%, rgba(22,24,36,0.98) 0, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(18,22,44,0.55) 0, transparent 34%),
-    linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
+  font-family:'Inter', sans-serif;
+  background:#f5f5f7;
+  color:#121316;
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
-}
-html[data-theme="dark"] body::before{
-  background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0));
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:100px 24px;
 }
 
-nav{
-  position:fixed;
-  top:18px;
-  right:18px;
-  z-index:60;
-  display:flex;
-  gap:8px;
-  padding:8px;
-  border:1px solid rgba(255,255,255,0.6);
-  background:rgba(255,255,255,0.58);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:999px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.06);
-}
-html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
-
-nav a{
-  text-decoration:none;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:500;
-  padding:8px 12px;
-  border-radius:999px;
-  transition:all .22s ease;
-  white-space:nowrap;
-}
-nav a:hover{ color:var(--text); background:rgba(255,255,255,0.7); }
-html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
-nav a.active{ color:var(--text); background:rgba(255,255,255,0.82); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
-html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
-
-.theme-toggle{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  z-index:100;
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  transition:transform .2s ease, box-shadow .2s ease;
-  -webkit-tap-highlight-color:transparent;
-  outline:none;
-}
-html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
-.theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
-.theme-toggle:active{ transform:scale(0.95); }
-
-.wrap{ max-width:1180px; margin:0 auto; padding:112px 28px 92px; }
-
-.hero,.section-card,.metric-card,.note,.card-block,.method-item{
-  border:1px solid var(--line);
-  background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%);
-  -webkit-backdrop-filter:blur(20px) saturate(150%);
-  box-shadow:var(--shadow);
+.hero{
+  background:white;
+  padding:28px;
+  border-radius:24px;
+  margin-bottom:20px;
 }
 
-.hero{ border-radius:var(--radius-xl); padding:30px; position:relative; overflow:hidden; margin-bottom:22px; }
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:52px;
-  border-bottom:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
-}
-html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
-
-.window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
-.dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
-.dot:nth-child(1){background:#ff5f57}
-.dot:nth-child(2){background:#febc2e}
-.dot:nth-child(3){background:#28c840}
-
-.hero-inner{ margin-top:38px; display:grid; grid-template-columns:1.08fr 0.92fr; gap:22px; align-items:start; }
-
-.eyebrow,.section-tag,.meta-chip,.small-label{
-  display:inline-flex; align-items:center; gap:8px; padding:7px 11px;
-  border:1px solid var(--line); border-radius:999px;
-  background:rgba(255,255,255,0.72); font-family:var(--mono); font-size:11px; color:var(--muted);
-}
-html[data-theme="dark"] .eyebrow,
-html[data-theme="dark"] .section-tag,
-html[data-theme="dark"] .meta-chip,
-html[data-theme="dark"] .small-label{ background:rgba(255,255,255,0.06); }
-
-.title,.section-title,.metric-number,.note h3,.section-card h2{ font-family:'Sora',sans-serif; letter-spacing:-0.05em; }
-.title{ font-size:60px; line-height:0.95; margin:14px 0 14px; }
-.lead{ font-size:16px; color:rgba(29,29,31,0.84); margin:0 0 16px; max-width:680px; }
-html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
-.meta-row{ display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 18px; }
-.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
-
-.btn{
-  padding:10px 15px; border-radius:14px; border:1px solid var(--line);
-  background:rgba(255,255,255,0.76); text-decoration:none; color:var(--text);
-  font-size:13px; font-weight:500; white-space:nowrap; box-shadow:var(--shadow-soft);
-  transition:transform .18s ease, background .18s ease, border-color .18s ease;
-}
-.btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.94); border-color:var(--line-strong); }
-.btn.primary{ background:linear-gradient(180deg, rgba(233,238,249,0.92), rgba(255,255,255,0.88)); }
-html[data-theme="dark"] .btn{ background:rgba(255,255,255,0.07); }
-html[data-theme="dark"] .btn:hover{ background:rgba(255,255,255,0.12); }
-html[data-theme="dark"] .btn.primary{ background:linear-gradient(180deg, rgba(26,36,66,0.80), rgba(22,24,34,0.90)); }
-
-.hero-side{ display:grid; gap:14px; }
-
-.note{ border-radius:22px; padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88)); }
-html[data-theme="dark"] .note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
-.note h3{ font-size:18px; line-height:1.1; margin:0 0 8px; }
-.note p{ margin:0; font-size:14px; color:#40434b; }
-html[data-theme="dark"] .note p{ color:#9a9daa; }
-
-.flow-mini{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
-.flow-mini span{
-  font-family:var(--mono); font-size:11px; padding:7px 10px;
-  border-radius:999px; border:1px solid var(--line);
-  background:rgba(255,255,255,0.76); color:var(--muted);
-}
-html[data-theme="dark"] .flow-mini span{ background:rgba(255,255,255,0.06); }
-
-.metrics{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin:18px 0 8px; }
-.metric-card{ border-radius:22px; padding:18px; position:relative; overflow:hidden; }
-.metric-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; }
-.metric-card.blue{ background:linear-gradient(180deg, rgba(233,238,249,0.72), rgba(255,255,255,0.9)); }
-.metric-card.blue::before{ background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95)); }
-.metric-card.green{ background:linear-gradient(180deg, rgba(237,246,242,0.78), rgba(255,255,255,0.9)); }
-.metric-card.green::before{ background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95)); }
-.metric-card.lilac{ background:linear-gradient(180deg, rgba(243,238,251,0.78), rgba(255,255,255,0.9)); }
-.metric-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
-html[data-theme="dark"] .metric-card.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.72), rgba(22,24,34,0.90)); }
-html[data-theme="dark"] .metric-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.78), rgba(22,24,34,0.90)); }
-html[data-theme="dark"] .metric-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.78), rgba(22,24,34,0.90)); }
-.metric-number{ font-size:40px; line-height:0.95; margin:10px 0 8px; }
-.metric-card p{ margin:0; font-size:13px; color:#454850; }
-html[data-theme="dark"] .metric-card p{ color:#9a9daa; }
-
-.section-card{ border-radius:26px; padding:22px; margin-top:18px; position:relative; overflow:hidden; }
-.section-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; }
-.section-card.blue::before{ background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95)); }
-.section-card.green::before{ background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95)); }
-.section-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
-.section-card.sand::before{ background:linear-gradient(90deg, rgba(230,210,171,0.95), rgba(245,242,234,0.95)); }
-html[data-theme="dark"] .section-card.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
-html[data-theme="dark"] .section-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
-html[data-theme="dark"] .section-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
-html[data-theme="dark"] .section-card.sand{ background:linear-gradient(180deg, rgba(32,26,14,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
-
-.section-head{ display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:12px; flex-wrap:wrap; }
-.section-title{ font-size:28px; margin:0; }
-.section-card h2{ font-size:28px; margin:0 0 12px; }
-.section-card p{ margin:0 0 14px; font-size:15px; color:#40434b; }
-html[data-theme="dark"] .section-card p{ color:#9a9daa; }
-
-.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-
-.card-block{ border-radius:20px; background:rgba(255,255,255,0.74); padding:16px; box-shadow:var(--shadow-soft); }
-html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
-.card-block h3{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
-.card-block p{ margin:0; font-size:14px; color:#3f4148; }
-html[data-theme="dark"] .card-block p{ color:#9a9daa; }
-
-.bullets{ margin:0; padding-left:18px; }
-.bullets li{ margin:0 0 8px; color:#41444c; }
-html[data-theme="dark"] .bullets li{ color:#9a9daa; }
-
-.method-list{ display:grid; gap:12px; }
-.method-item{ border-radius:18px; padding:14px; background:rgba(255,255,255,0.72); box-shadow:var(--shadow-soft); }
-html[data-theme="dark"] .method-item{ background:rgba(255,255,255,0.04); }
-.method-item h3{ margin:0 0 6px; font-size:14px; font-family:var(--mono); color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
-.method-item p{ margin:0; font-size:14px; }
-html[data-theme="dark"] .method-item p{ color:#9a9daa; }
-
-.table-wrap{ overflow:auto; border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,0.72); }
-html[data-theme="dark"] .table-wrap{ background:rgba(255,255,255,0.04); }
-table{ width:100%; border-collapse:collapse; min-width:640px; }
-th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--line); font-size:14px; }
-th{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); background:rgba(255,255,255,0.82); }
-html[data-theme="dark"] th{ background:rgba(255,255,255,0.04); }
-tr:last-child td{ border-bottom:none; }
-
-.quote-line{ margin-top:10px; padding:12px 14px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,0.68); font-size:13px; color:#41444c; }
-html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9a9daa; }
-
-.footer{ margin-top:34px; border-top:1px solid var(--line); padding-top:18px; font-size:12px; color:var(--muted); }
-
-@media (max-width:1080px){
-  .hero-inner,.grid-2,.metrics{ grid-template-columns:1fr; }
+.title{
+  font-family:'Sora';
+  font-size:48px;
+  margin:12px 0;
 }
 
-@media (max-width:760px){
-  nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
-  nav::-webkit-scrollbar{ display:none; }
-  nav a{ font-size:12px; padding:7px 10px; }
-  .wrap{ padding:80px 16px 60px; }
-  .hero{ padding:24px 18px; }
-  .title{ font-size:40px; }
-  .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
+.lead{
+  color:#555;
+  max-width:700px;
+}
+
+.section{
+  background:white;
+  border-radius:20px;
+  padding:22px;
+  margin-top:18px;
+}
+
+.section h2{
+  font-family:'Sora';
+  margin-bottom:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.card{
+  background:#fafafa;
+  padding:16px;
+  border-radius:16px;
+}
+
+img{
+  width:100%;
+  border-radius:12px;
+  margin-top:8px;
+}
+
+@media (max-width:800px){
+  .grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a class="active" href="projects.html">Projects</a>
-  <a href="research.html">Research</a>
-  <a href="papers.html">Papers</a>
-  <a href="about.html">About</a>
-  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
-</nav>
-
 <div class="wrap">
-  <section class="hero">
-    <div class="window-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-    <div class="hero-inner">
-      <div>
-        <span class="eyebrow">🧠 case study / cognitive systems / regulated environments</span>
-        <h1 class="title">Cognitive Pathways in Regulated Work Environments</h1>
-        <p class="lead">A human-centered project focused on reconstructing how people actually move through GMP documentation workflows — and on showing how documentation pressure produces the kinds of cognitive friction developed more theoretically in the CF paper.</p>
-        <div class="meta-row">
-          <span class="meta-chip">cognitive pathways</span>
-          <span class="meta-chip">transition analysis</span>
-          <span class="meta-chip">cognitive friction</span>
-          <span class="meta-chip">synthetic data</span>
-          <span class="meta-chip">streamlit prototype</span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn primary" href="https://sora-cognitive-pathways.streamlit.app/" target="_blank" rel="noopener noreferrer">live demo ↗</a>
-          <a class="btn" href="projects.html">back to projects</a>
-        </div>
-      </div>
-      <div class="hero-side">
-        <div class="note">
-          <h3>🎯 Core design question</h3>
-          <p>Where does procedural structure conflict with cognitive flow — and how can that mismatch be made visible without changing validated documentation systems?</p>
-          <div class="flow-mini">
-            <span>procedural logic</span><span>cognitive flow</span><span>friction</span>
-          </div>
-        </div>
-        <div class="note">
-          <h3>📝 Project role in the portfolio</h3>
-          <p>This project functions as the empirical counterpart to my Cognitive Friction paper. Where the paper develops the theoretical argument that procedural systems impose hidden interpretive burdens, this project reconstructs pathway-level behavior to show how that friction becomes visible in actual navigation patterns.</p>
-          <div class="flow-mini">
-            <span>CF paper</span><span>empirical layer</span><span>pathway evidence</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="metrics">
-    <div class="metric-card blue">
-      <div class="small-label">reasoning form</div>
-      <div class="metric-number">linear → adaptive</div>
-      <p>Reframes documentation following as a dynamic cognitive path rather than a simple step-by-step execution.</p>
-    </div>
-    <div class="metric-card green">
-      <div class="small-label">analytic mode</div>
-      <div class="metric-number">pathway + transition</div>
-      <p>Uses pathway reconstruction, transition mapping, and friction markers to externalize otherwise invisible reasoning work.</p>
-    </div>
-    <div class="metric-card lilac">
-      <div class="small-label">design implication</div>
-      <div class="metric-number">visibility</div>
-      <p>Makes structural cognitive burden legible without requiring any modification to validated GMP documentation systems.</p>
-    </div>
-  </section>
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="title">Cognitive Pathways in Regulated Work Environments</h1>
+    <p class="lead">
+      A human-centered project focused on reconstructing how people actually move through GMP documentation workflows — 
+      and on showing how documentation pressure produces the kinds of cognitive friction developed more theoretically in the CF paper.
+    </p>
+  </div>
 
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">🧩 Background</h2>
-      <span class="section-tag">problem framing</span>
-    </div>
-    <p>In <strong>Good Manufacturing Practice (GMP)</strong> environments, analysts and reviewers are expected to follow highly structured documentation and procedural workflows. On paper, these workflows appear orderly, linear, and complete.</p>
-    <p>In practice, human reasoning is rarely linear. People pause, revisit earlier sections, compare multiple instructions, cross-check prior records, and reconstruct meaning in context while trying to stay compliant.</p>
-    <p>This creates a tension between how procedural work is formally written and how cognition actually unfolds during use. That tension also connects this project directly to my Cognitive Friction paper, which argues that procedural systems often externalize interpretive burden onto the person following them rather than resolving that burden in the document itself.</p>
-    <div class="quote-line">💬 Human reasoning often unfolds through returns, comparison, hesitation, and repair, while procedural documentation is written as if cognition proceeds in a straight line. This project makes that mismatch visible at the level of reasoning pathways, while the CF paper explains it as a structural property of procedural writing.</div>
-  </section>
+  <!-- BACKGROUND -->
+  <div class="section">
+    <h2>Background</h2>
+    <p>
+      In GMP environments, procedures are written as linear sequences. However, real cognition is non-linear: users revisit,
+      compare, and reconstruct meaning across sections.
+    </p>
+    <p>
+      This project connects directly to the Cognitive Friction paper, which argues that procedural systems often shift interpretive
+      burden onto the user instead of resolving it within the document.
+    </p>
+  </div>
 
-  <section class="section-card sand">
-    <div class="section-head">
-      <h2 class="section-title">⚠️ Observation</h2>
-      <span class="section-tag">cognitive friction</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Observed pain points</h3>
-        <ul class="bullets">
-          <li>Users moved back and forth across sections rather than simply following written order.</li>
-          <li>Repeated cross-checking was needed around terminology, prior records, and ambiguous instructions.</li>
-          <li>Reasoning often depended on reconstructing context rather than merely executing a written step.</li>
-          <li>Interruptions and detours made it difficult to maintain the same cognitive state across the workflow.</li>
-        </ul>
+  <!-- METHOD -->
+  <div class="section">
+    <h2>Method</h2>
+    <p>
+      Synthetic pathway data was generated to model how users navigate documentation, including forward transitions,
+      loopbacks, and cross-references. These were visualized using a Streamlit-based prototype.
+    </p>
+  </div>
+
+  <!-- SCREENSHOTS -->
+  <div class="section">
+    <h2>Interface Preview</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Pathway structure view</h3>
+        <img src="assets/cognitive-pathways-1.png">
+        <p>Shows how users actually move through procedural steps including loops and revisits.</p>
       </div>
-      <div class="card-block">
-        <h3>Why this was difficult</h3>
-        <p>In regulated environments, the challenge is not just to complete the procedure, but to absorb the interpretive work that the procedure leaves unresolved. The issue was not "users failed to follow the workflow," but rather "the workflow demanded more cognitive repair than the written structure acknowledged."</p>
+
+      <div class="card">
+        <h3>Transition / friction view</h3>
+        <img src="assets/cognitive-pathways-2.png">
+        <p>Highlights non-linear transitions where cognitive friction emerges.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">🎯 Design question</h2>
-      <span class="section-tag">HCI framing</span>
-    </div>
-    <p>How can cognitive pathways in regulated documentation work be reconstructed so that hidden interpretive burden, hesitation, and pathway mismatch become visible as design problems rather than being treated only as user difficulty?</p>
-  </section>
+  <!-- RESULT -->
+  <div class="section">
+    <h2>Result</h2>
+    <p>
+      The project demonstrates that documentation workflows are not followed linearly in practice. Instead,
+      users adapt dynamically, revealing hidden cognitive burden.
+    </p>
+  </div>
 
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🧠 Method</h2>
-      <span class="section-tag">computational + qualitative</span>
-    </div>
-    <div class="method-list">
-      <div class="method-item">
-        <h3>1. Synthetic pathway dataset construction</h3>
-        <p>Generated a synthetic dataset representing transition behavior in regulated documentation work, including forward movement, cross-reference behavior, loopbacks, and hesitation-like pathway patterns.</p>
-      </div>
-      <div class="method-item">
-        <h3>2. Cognitive pathway mapping</h3>
-        <p>Translated documented work sequences into node-edge structures where nodes represent procedural locations and edges represent actual cognitive transitions across those locations.</p>
-      </div>
-      <div class="method-item">
-        <h3>3. Transition and frequency analysis</h3>
-        <p>Used Python and pandas to analyze transition structure, distinguish forward versus non-forward movement, and identify where pathway irregularity and repeated returns concentrated.</p>
-      </div>
-      <div class="method-item">
-        <h3>4. Interactive demonstrator</h3>
-        <p>Built a Streamlit-based prototype to visualize pathway structure, transition patterns, and friction-relevant behavior so that cognitive flow could be explored as a structural property of procedural work.</p>
-      </div>
-    </div>
-  </section>
+  <!-- PAPER -->
+  <div class="section">
+    <h2>Paper in Progress</h2>
+    <p>
+      This work serves as the empirical companion to the Cognitive Friction paper.
+      While the CF paper explains friction structurally, this project shows how it appears in real navigation behavior.
+    </p>
+  </div>
 
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">🧪 Evaluation logic</h2>
-      <span class="section-tag">prototype evaluation</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Evaluation setup</h3>
-        <p>Because the project's main contribution is conceptual and analytical, the prototype was treated as a demonstrator rather than a production tool. The focus was on whether pathway structure made hidden cognitive work more visible.</p>
-        <div class="flow-mini">
-          <span>workflow traces</span><span>pathway model</span><span>structural visibility</span>
-        </div>
-      </div>
-      <div class="card-block">
-        <h3>What was examined</h3>
-        <ul class="bullets">
-          <li>whether non-linear pathway behavior became structurally legible</li>
-          <li>whether hesitation and return paths could be distinguished from simple compliance flow</li>
-          <li>whether transition structure clarified where documentation imposed extra cognitive burden</li>
-          <li>whether the prototype made the broader CF argument more tangible</li>
-        </ul>
-      </div>
-    </div>
-    <div class="note" style="margin-top:16px;">
-      <h3>Why this matters</h3>
-      <p>The point was not to challenge GMP compliance. It was to ask a more human-centered question: if pathway structure is surfaced clearly, can we better understand where documentation itself creates unnecessary cognitive work? In that sense, the project supports the broader CF argument that procedural systems can appear complete on paper while leaving substantial interpretive labor to the human actor.</p>
-    </div>
-  </section>
+  <!-- SUMMARY -->
+  <div class="section">
+    <h2>One-line Summary</h2>
+    <p>
+      Reconstructed cognitive pathways in GMP workflows to make hidden interpretive burden visible as a structural design issue.
+    </p>
+  </div>
 
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">📊 Results & impact</h2>
-      <span class="section-tag">comparison</span>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Dimension</th><th>Conventional view</th><th>Pathway view</th><th>Interpretation</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Workflow logic</td><td>Linear sequence</td><td>Adaptive movement</td><td>Human cognition navigates around friction rather than simply following written order</td></tr>
-          <tr><td>Detours and returns</td><td>Treated as irregularity</td><td>Treated as signal</td><td>Loopbacks and cross-references reveal where the procedure failed to carry its own interpretive load</td></tr>
-          <tr><td>Cognitive burden</td><td>Mostly invisible</td><td>Structurally legible</td><td>Transition patterns reveal where documentation shifts burden onto the reader</td></tr>
-          <tr><td>Design implication</td><td>User must adapt</td><td>Procedure can be analyzed</td><td>The mismatch can be studied as a systems design issue, not only an individual performance issue</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note" style="margin-top:16px;">
-      <h3>💬 Main takeaway</h3>
-      <p>The value of the project is not just that it visualizes movement through documentation, but that it turns invisible reasoning burden into something structurally inspectable. It makes pathway-level evidence available for a design argument about cognitive friction.</p>
-    </div>
-  </section>
-
-  <section class="section-card sand">
-    <div class="section-head">
-      <h2 class="section-title">📄 Paper in progress</h2>
-      <span class="section-tag">research output</span>
-    </div>
-    <p>This project is being developed into a paper on cognitive pathways, procedural mismatch, and human reasoning under regulatory constraint. It also sits in direct conversation with my Cognitive Friction paper: where the CF paper develops the theoretical argument that procedural texts generate hidden interpretive burdens, this project traces how those burdens appear in actual reasoning pathways during regulated work.</p>
-    <p>Together, the two pieces form a linked argument. The CF paper explains friction at the level of procedural structure and wording; this project shows how that friction surfaces behaviorally as branching, hesitation, return paths, and non-linear navigation under documentation pressure.</p>
-  </section>
-
-  <section class="section-card lilac">
-    <div class="section-head">
-      <h2 class="section-title">💬 Reflection</h2>
-      <span class="section-tag">why it is HCI</span>
-    </div>
-    <p>This project reframes documentation work as a cognitive systems issue rather than a simple matter of whether users comply correctly. In other words, pathway irregularity is not always a sign of weak performance; it can also be evidence of systems that demand hidden repair work from the human mind.</p>
-    <p>From an HCI perspective, the important insight is that documentation should be evaluated not only for formal completeness but also for cognitive realism. It also reinforces the broader claim of the Cognitive Friction paper: when procedural systems fail to carry their own interpretive load, that burden is shifted onto human reasoning.</p>
-  </section>
-
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🛠 Tools & skills</h2>
-      <span class="section-tag">methods + implementation</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Technical / design</h3>
-        <ul class="bullets">
-          <li>Python-based synthetic data construction</li>
-          <li>transition analysis and workflow mapping</li>
-          <li>Streamlit prototype design</li>
-          <li>pathway visualization and exploratory modeling</li>
-        </ul>
-      </div>
-      <div class="card-block">
-        <h3>Research / conceptual</h3>
-        <ul class="bullets">
-          <li>cognitive workflow analysis</li>
-          <li>cognitive friction framing</li>
-          <li>pathway-based interpretation of procedural work</li>
-          <li>compliance-constrained human-centered systems reasoning</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-card blue">
-    <div class="section-head">
-      <h2 class="section-title">✨ One-line summary</h2>
-      <span class="section-tag">project takeaway</span>
-    </div>
-    <p>Reconstructed cognitive pathways in GMP documentation workflows to make hidden interpretive burden visible as a structural design issue, while also serving as the empirical and behavioral companion to the Cognitive Friction paper.</p>
-    <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn primary" href="https://sora-cognitive-pathways.streamlit.app/" target="_blank" rel="noopener noreferrer">live demo ↗</a>
-      <a class="btn" href="papers.html">papers</a>
-      <a class="btn" href="projects.html">back to projects</a>
-      <a class="btn" href="index.html">home</a>
-    </div>
-  </section>
-
-  <div class="footer">© 2026 Sora Kim.</div>
 </div>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
-
-<script>
-(function(){
-  var toggle = document.getElementById('themeToggle');
-  var html = document.documentElement;
-  var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var isDark = saved === 'dark' || (!saved && prefersDark);
-  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
-  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
-  toggle.addEventListener('click', function(){
-    var current = html.getAttribute('data-theme');
-    if(current === 'dark'){
-      html.setAttribute('data-theme','light');
-      toggle.textContent='🌙';
-      localStorage.setItem('theme','light');
-    } else {
-      html.setAttribute('data-theme','dark');
-      toggle.textContent='☀️';
-      localStorage.setItem('theme','dark');
-    }
-  });
-})();
-</script>
 
 </body>
 </html>
