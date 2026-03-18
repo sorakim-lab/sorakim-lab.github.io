@@ -478,7 +478,7 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
   <a href="research.html">Research</a>
   <a href="papers.html">Papers</a>
   <a href="about.html">About</a>
-  <a href="assets/sora-kim-cv.pdf" target="_blank">CV</a>
+  <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
 </nav>
 
 <div class="wrap">
@@ -492,7 +492,8 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
       <div class="profile-inner">
         <img class="avatar" src="assets/sorakim-profile.png" alt="Sora Kim headshot">
         <div>
-          <div class="identity-kicker">Sora Kim / independent researcher</div>
+          <!-- 수정 1: identity-kicker에 현장 기반 맥락 추가 -->
+          <div class="identity-kicker">Sora Kim / 4 years pharmaceutical QC · independent researcher</div>
           <div class="name">Sora Kim</div>
           <p class="bio-mini">I design and study human-centered systems for high-stakes procedural work, focusing on regulatory UX, judgment, procedural cognition, and decision support.</p>
           <div class="mini">
@@ -505,7 +506,7 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
             <a class="btn primary" href="projects.html">view projects</a>
             <a class="btn" href="research.html">current research</a>
             <a class="btn" href="papers.html">selected papers</a>
-            <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank">cv (pdf)</a>
+            <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener noreferrer">cv (pdf)</a>
           </div>
         </div>
         <div class="contact-card">
@@ -527,7 +528,8 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
 
     <div class="hero-right">
       <div class="hero-main glass">
-        <div class="eyebrow">human-centered systems / regulatory UX / judgment / high-stakes procedural environments</div>
+        <!-- 수정 2: eyebrow에 PhD applicant 맥락 추가 -->
+        <div class="eyebrow">human-centered systems / regulatory UX / judgment / high-stakes procedural environments · PhD applicant, Fall 2027</div>
         <div class="hi">Hi 👋</div>
         <h1 class="h1">
           I design <span class="gradient-word">systems</span><br>
@@ -555,22 +557,24 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
             <h2>Regulated documentation as a user environment</h2>
             <p>SOPs, investigations, CAPA records, and FDA-facing documents are not only compliance artifacts. They are environments people inhabit while trying to find, interpret, justify, and act.</p>
           </div>
+          <!-- 수정 3: four connected papers 패널에 아크 설명 한 줄 추가 -->
           <div class="panel soft-sand">
             <div class="panel-label">current paper set</div>
             <h2>Four connected papers</h2>
-            <p>SOP Accessibility Paper · Deviation–CAPA Workflow Paper · RCA Reasoning Paper · Regulatory UX Concept Paper</p>
+            <p>SOP Accessibility → Deviation–CAPA Workflow → RCA Reasoning → Regulatory UX Concept. Each paper extends the last: from access and usability, through workflow and coordination, toward judgment, cognition, and the broader frame of regulated environments as user environments.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 수정 4: 프로젝트 섹션 subtitle — "내가 만든 것"임을 명확히 -->
   <section class="projects-home">
     <span class="section-tag">featured projects</span>
     <div class="section-header">
       <div>
-        <h2 class="section-title">Selected systems and UX projects</h2>
-        <p class="section-sub">Design explorations in document accessibility, workflow interaction, and reasoning support for regulated environments.</p>
+        <h2 class="section-title">Prototypes and systems I built</h2>
+        <p class="section-sub">Hands-on design and prototype work in document accessibility, workflow interaction, and reasoning support for regulated environments.</p>
       </div>
       <a class="btn" href="projects.html">see all projects</a>
     </div>
@@ -608,12 +612,13 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
     </div>
   </section>
 
+  <!-- 수정 5: 논문 섹션 subtitle — "내가 분석/주장하는 것"임을 명확히 -->
   <section class="papers-home">
     <span class="section-tag">paper set</span>
     <div class="section-header">
       <div>
-        <h2 class="section-title">Current paper lineup</h2>
-        <p class="section-sub">Four connected papers organized around accessibility, workflow, reasoning, and regulatory UX concepts in complex procedural environments.</p>
+        <h2 class="section-title">Analytical work in progress</h2>
+        <p class="section-sub">Four connected papers organized as a single arc — from accessibility and usability, through workflow and coordination, toward judgment, cognition, and a broader regulatory UX frame.</p>
       </div>
       <a class="btn" href="papers.html">view papers</a>
     </div>
@@ -649,7 +654,7 @@ html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
     </div>
   </section>
 
-  <div class="footer">Independent researcher · Human-centered systems for regulated environments · PhD applicant (Fall 2027)</div>
+  <div class="footer">Independent researcher · Human-centered systems for regulated environments · 4 years pharmaceutical QC</div>
   <div class="credit-note">Concept, design, and code by Sora Kim.</div>
 </div>
 
