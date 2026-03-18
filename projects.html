@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Projects — Sora Kim</title>
 
-<meta name="description" content="Projects by Sora Kim on human-centered systems, regulatory UX, cognition, workflow observability, and decision support in GMP environments." />
+<meta name="description" content="Projects by Sora Kim on Regulatory UX — how systems shape human judgment in compliance-constrained environments." />
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Projects — Sora Kim">
-<meta property="og:description" content="Human-centered systems projects spanning accessibility, workflow interaction, traceability, cognition, workflow observability, and investigation reasoning.">
+<meta property="og:description" content="Regulatory UX research: how procedural systems constrain and support human judgment in GMP environments.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/projects.html">
 <meta property="og:site_name" content="Sora Kim">
@@ -53,7 +53,6 @@
   --mono:'JetBrains Mono', monospace;
 }
 
-/* ===== DARK MODE ===== */
 html[data-theme="dark"]{
   --text:#e2e4ea;
   --muted:#7a7d8a;
@@ -145,7 +144,6 @@ html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
 nav a.active{ color:var(--text); background:rgba(255,255,255,0.86); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
 html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 
-/* ===== THEME TOGGLE ===== */
 .theme-toggle{
   position:fixed;
   bottom:24px;
@@ -451,6 +449,7 @@ html[data-theme="dark"] .project-card p{ color:#9a9daa; }
 .meta-chip{ padding:6px 10px; }
 
 .project-body{ display:grid; grid-template-columns:1fr; gap:14px; position:relative; z-index:1; }
+.project-body.two-col{ grid-template-columns:1fr 1fr; }
 .bullets{ margin:0; padding-left:18px; }
 .bullets li{ margin:0 0 6px; color:#41444c; }
 html[data-theme="dark"] .bullets li{ color:#9a9daa; }
@@ -467,6 +466,31 @@ html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
 .card-block h4{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
 .card-block p{ margin:0; color:#3f4148; font-size:14px; }
 html[data-theme="dark"] .card-block p{ color:#9a9daa; }
+
+/* AI layer block — subtle green accent, same card-block base */
+.card-block.ai-layer{
+  border-color:rgba(180,228,204,0.55);
+  background:rgba(235,247,241,0.60);
+}
+html[data-theme="dark"] .card-block.ai-layer{
+  border-color:rgba(26,58,42,0.55);
+  background:rgba(14,28,22,0.50);
+}
+.card-block.ai-layer h4{ color:#266644; }
+html[data-theme="dark"] .card-block.ai-layer h4{ color:#70c29a; }
+
+/* Section divider for supporting projects */
+.section-divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:42px 0 24px;
+}
+.section-divider-line{
+  flex:1;
+  height:1px;
+  background:var(--line);
+}
 
 .project-bottom{ margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; position:relative; z-index:1; }
 .project-signal{ display:flex; gap:8px; flex-wrap:wrap; }
@@ -498,6 +522,7 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
   .info-grid{ grid-template-columns:1fr 1fr 1fr; }
   .stats-grid{ grid-template-columns:1fr 1fr; }
   .project-list{ grid-template-columns:1fr; }
+  .project-body.two-col{ grid-template-columns:1fr; }
 }
 
 @media (max-width:860px){
@@ -545,38 +570,38 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
 
     <div class="hero-grid">
       <div class="hero-left">
-        <span class="eyebrow">projects / human-centered systems / regulated environments</span>
-        <h1 class="h1">Designing systems for complex procedural work.</h1>
+        <span class="eyebrow">projects / regulatory UX / human judgment in regulated environments</span>
+        <h1 class="h1">How systems shape human judgment.</h1>
         <p class="lead">
-          These projects explore how human-centered design can improve access, review interaction, traceability, cognition, workflow observability, and investigation reasoning in validation-constrained GMP environments.
+          I study what I call <em>Regulatory UX</em> — the interaction experience of workers inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures organize navigation, cognition, and decision-making. These projects are the empirical ground for that argument.
         </p>
 
         <div class="hero-float">
-          <strong>Support judgment.</strong>
-          <span>Not replacement, not automation theater — just clearer procedural environments for real human work.</span>
+          <strong>The through-line across every project:</strong>
+          <span>In regulated environments, system design is not neutral. Document structure, workflow architecture, and AI integration all actively shape how workers search, reason, assign blame, and close investigations. Each project examines one angle of that constraint.</span>
         </div>
       </div>
 
       <div class="hero-right">
         <div class="note hero-note">
-          <h2>Portfolio structure</h2>
+          <h2>Research statement</h2>
           <p>
-            The projects below function as case studies and prototype artifacts. Some are also being extended into short papers, so the site connects design work with research writing.
+            I study how regulatory systems shape human judgment — through document design, workflow structure, and investigation scaffolding — in compliance-constrained GMP environments. Three core projects anchor this argument. Supporting projects extend it into adjacent failure modes.
           </p>
         </div>
 
         <div class="hero-right-bottom">
           <div class="note">
-            <h2>Research arc</h2>
+            <h2>Portfolio structure</h2>
             <p>
-              The sequence moves from information access to workflow interaction, then to traceability, cognitive pathways, workflow observability, and investigation reasoning.
+              Core projects: primary evidence for the Regulatory UX claim. Supporting projects: adjacent case studies on traceability, review interaction, and workflow observability.
             </p>
           </div>
 
           <div class="note">
-            <h2>Why this feels like HCI</h2>
+            <h2>Design condition</h2>
             <p>
-              These projects treat regulated documentation systems not only as compliance tools, but as user environments that shape navigation, coordination, interpretation, and decision-making.
+              No validated source files are modified. All interventions are compliance-safe and external — support layers only.
             </p>
           </div>
         </div>
@@ -586,96 +611,106 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
 
   <div class="info-grid">
     <div class="panel soft-blue">
-      <div class="panel-label">focus</div>
-      <h2>Human-centered regulatory UX</h2>
-      <p>Designing usable systems under compliance, documentation, and validation constraints.</p>
+      <div class="panel-label">research concept</div>
+      <h2>Regulatory UX</h2>
+      <p>The interaction experience of workers inside compliance-constrained systems — where procedural structure shapes navigation, interpretation, and decision-making.</p>
     </div>
 
     <div class="panel soft-green">
-      <div class="panel-label">methods</div>
-      <h2>Excel + Python + R</h2>
-      <p>Research workflows combining metadata structuring, analysis, visualization, and prototype evaluation.</p>
+      <div class="panel-label">core claim</div>
+      <h2>Constraint shapes cognition</h2>
+      <p>Regulated document systems don't just store information. They determine how workers search, reason, assign blame, and close investigations.</p>
     </div>
 
     <div class="panel soft-lilac">
-      <div class="panel-label">through-line</div>
-      <h2>Interpretation stays visible</h2>
-      <p>Designing support systems that clarify procedural work without hiding judgment, uncertainty, or accountability.</p>
+      <div class="panel-label">design direction</div>
+      <h2>Expand, don't replace</h2>
+      <p>AI and design interventions should expand human reasoning space — not compress judgment into premature accountability convergence.</p>
     </div>
   </div>
 
   <div class="stats-grid">
     <div class="summary-card blue">
-      <div class="panel-label">series scope</div>
-      <div class="summary-number">6</div>
-      <p>Connected case studies across document usability, workflow interaction, cognition, and investigation support.</p>
+      <div class="panel-label">core projects</div>
+      <div class="summary-number">3</div>
+      <p>Primary case studies directly evidencing the Regulatory UX argument — reasoning scaffolding, cognitive navigation, and document accessibility.</p>
     </div>
 
     <div class="summary-card green">
       <div class="panel-label">paper-track</div>
       <div class="summary-number">4</div>
-      <p>Projects being extended into short papers on accessibility, workflow friction, reasoning support, and regulatory UX.</p>
+      <p>Projects being extended into HCI papers on accessibility, workflow friction, reasoning scaffolds, and the Regulatory UX concept.</p>
     </div>
 
     <div class="summary-card lilac">
-      <div class="panel-label">domain</div>
-      <div class="summary-number">Regulated Environments</div>
-      <p>Compliance, documentation, and human judgment intersect.</p>
+      <div class="panel-label">supporting projects</div>
+      <div class="summary-number">3</div>
+      <p>Adjacent case studies on traceability, review interaction, and workflow observability in GMP compliance systems.</p>
     </div>
 
     <div class="summary-card sand">
       <div class="panel-label">design condition</div>
       <div class="summary-number">0</div>
-      <p>Direct modifications to validated source systems — interventions remain compliance-safe and external.</p>
+      <p>Direct modifications to validated source systems — all interventions remain compliance-safe and external.</p>
     </div>
   </div>
 
+  <!-- ======= CORE PROJECTS ======= -->
   <section>
     <div class="section-head">
       <div>
-        <span class="section-tag">selected projects</span>
-        <h2 class="section-title">Human-Centered Regulatory UX Series</h2>
+        <span class="section-tag">core research · 3 projects</span>
+        <h2 class="section-title">Primary Evidence</h2>
         <p class="section-sub">
-          A project series on accessibility, workflow friction, traceability, cognitive pathways, workflow observability, and structured reasoning in regulated GMP environments. Each card opens to a dedicated case-study page.
+          These three projects form the empirical backbone of the Regulatory UX argument. Each addresses a distinct mechanism by which regulated systems constrain human judgment — causal reasoning, cognitive navigation, and information access.
         </p>
       </div>
     </div>
 
     <div class="project-list">
 
-      <a class="project-link" href="project-sop-accessibility.html">
-        <article class="project-card visual" id="project-1">
+      <!-- CORE 01: RCA Reasoning Scaffolder — lead project -->
+      <a class="project-link" href="project-rca-reasoning-scaffolder.html">
+        <article class="project-card soft-sand" id="project-rca">
           <div class="project-top">
             <div>
-              <div class="panel-label">project 01</div>
-              <h3>Enhancing SOP Accessibility in GMP Environments</h3>
+              <div class="panel-label">core project 01 · lead</div>
+              <h3>RCA Reasoning Scaffolder</h3>
             </div>
             <div class="project-signal">
-              <span class="status-chip">accessibility</span>
+              <span class="status-chip">decision support</span>
               <span class="track-chip paper">paper-track</span>
             </div>
           </div>
-          <p>A human-centered document UX project improving retrievability in scanned SOP archives through a compliance-safe accessibility layer rather than changes to validated files.</p>
+          <p>A reasoning-support system for root cause investigations, designed to keep causal hypotheses open — countering the structural pressure toward premature blame attribution that existing documentation systems produce.</p>
           <div class="project-meta">
-            <span class="meta-chip">document UX</span>
-            <span class="meta-chip">information architecture</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">R</span>
-            <span class="meta-chip">usability testing</span>
+            <span class="meta-chip">reasoning design</span>
+            <span class="meta-chip">causal mapping</span>
+            <span class="meta-chip">investigation support</span>
+            <span class="meta-chip">blame language analysis</span>
+            <span class="meta-chip">qualitative evaluation</span>
+            <span class="meta-chip">human-centered systems</span>
           </div>
-          <div class="project-body">
+          <div class="project-body two-col">
             <div class="card-block">
-              <h4>What it addressed</h4>
+              <h4>The problem</h4>
               <ul class="bullets">
-                <li>Scanned SOP PDFs were not searchable or metadata-linked.</li>
-                <li>Analysts relied on manual scrolling and ambiguous titles.</li>
-                <li>Retrieval delays increased cognitive fatigue during audits and urgent reviews.</li>
+                <li>RCA narratives converge on single causes and individual responsibility — not because evidence demands it, but because document structure does.</li>
+                <li>"Operator error" language appears at disproportionate rates, closing off systemic explanations before they are explored.</li>
+                <li>Investigators lack an external layer for maintaining and comparing alternative causal hypotheses.</li>
               </ul>
             </div>
             <div class="card-block">
-              <h4>Outcome</h4>
-              <p>Built a searchable metadata layer for approximately 500 SOPs, improving retrieval speed from roughly 6–7 minutes to 1–2 minutes while preserving full GMP compliance.</p>
+              <h4>Design response</h4>
+              <p>A scaffold using causal diagrams, structured prompts, and hypothesis branching to support broader causal exploration. AI is positioned not to answer, but to expand the reasoning space investigators can work within — the direct design counterargument to premature accountability convergence.</p>
+            </div>
+            <div class="card-block ai-layer">
+              <h4>AI layer · in development</h4>
+              <p><strong>Without AI:</strong> Static scaffold — causal diagram templates, structured prompts, hypothesis branching worksheets.<br><br><strong>With AI:</strong> Dynamic reasoning partner that flags premature closure, surfaces alternative causal pathways, and detects blame-convergent language in real time.</p>
+            </div>
+            <div class="card-block">
+              <h4>Theoretical grounding</h4>
+              <p>Directly instantiates the PAC framework (Premature Accountability Convergence) — examining what happens when AI is designed to expand interpretive space rather than stabilize responsibility. Connects to Karen Levy's research on algorithmic accountability and worker judgment.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -684,11 +719,129 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
         </article>
       </a>
 
-      <a class="project-link" href="project-review-interaction.html">
-        <article class="project-card soft-green" id="project-2">
+      <!-- CORE 02: Cognitive Pathways -->
+      <a class="project-link" href="project-cognitive-pathways.html">
+        <article class="project-card soft-silver" id="project-cognitive">
           <div class="project-top">
             <div>
-              <div class="panel-label">project 02</div>
+              <div class="panel-label">core project 02</div>
+              <h3>Cognitive Pathways in Regulated Work Environments</h3>
+            </div>
+            <div class="project-signal">
+              <span class="status-chip">cognition</span>
+              <span class="track-chip case">case study</span>
+            </div>
+          </div>
+          <p>A project mapping how workers actually navigate procedural environments — revealing where formal workflow structure diverges from real cognitive pathways, and where that divergence produces friction, error, and invisible workarounds.</p>
+          <div class="project-meta">
+            <span class="meta-chip">cognitive HCI</span>
+            <span class="meta-chip">decision traceability</span>
+            <span class="meta-chip">field observation</span>
+            <span class="meta-chip">interviews</span>
+            <span class="meta-chip">Excel</span>
+            <span class="meta-chip">Python</span>
+            <span class="meta-chip">network analysis</span>
+          </div>
+          <div class="project-body">
+            <div class="card-block">
+              <h4>The problem</h4>
+              <ul class="bullets">
+                <li>Procedural order rarely matches actual reasoning order — workers loop, revisit, and reinterpret steps under time and audit pressure.</li>
+                <li>Implicit decision-making is invisible to the system; only formal outputs are recorded, not how they were reached.</li>
+                <li>Bottlenecks cluster around cross-references, terminology ambiguity, and validation anxiety — not task complexity.</li>
+              </ul>
+            </div>
+            <div class="card-block">
+              <h4>Design response</h4>
+              <p>Observation, interviews, activity logging, and computational path visualization combined to surface where procedural structure conflicts with real cognitive navigation — and where targeted design interventions could reduce friction without compromising compliance integrity.</p>
+            </div>
+            <div class="card-block ai-layer">
+              <h4>AI layer · in development</h4>
+              <p><strong>Without AI:</strong> Cognitive pathway maps showing divergence between formal and actual reasoning sequences.<br><br><strong>With AI:</strong> Adaptive guidance that detects navigation friction in real time and surfaces relevant procedural context at decision points — reducing lookup burden without modifying validated files.</p>
+            </div>
+          </div>
+          <div class="project-bottom">
+            <div class="project-arrow">open case study ↗</div>
+          </div>
+        </article>
+      </a>
+
+      <!-- CORE 03: SOP Accessibility -->
+      <a class="project-link" href="project-sop-accessibility.html">
+        <article class="project-card visual" id="project-sop">
+          <div class="project-top">
+            <div>
+              <div class="panel-label">core project 03</div>
+              <h3>Enhancing SOP Accessibility in GMP Environments</h3>
+            </div>
+            <div class="project-signal">
+              <span class="status-chip">accessibility</span>
+              <span class="track-chip paper">paper-track</span>
+            </div>
+          </div>
+          <p>A human-centered document UX project improving retrievability in scanned SOP archives — demonstrating that usability improvements can emerge through external support layers without modifying validated source files.</p>
+          <div class="project-meta">
+            <span class="meta-chip">document UX</span>
+            <span class="meta-chip">information architecture</span>
+            <span class="meta-chip">Excel</span>
+            <span class="meta-chip">Python</span>
+            <span class="meta-chip">R</span>
+            <span class="meta-chip">usability testing · N=12</span>
+          </div>
+          <div class="project-body">
+            <div class="card-block">
+              <h4>The problem</h4>
+              <ul class="bullets">
+                <li>Scanned SOP PDFs were unsearchable and unlinked — analysts relied on manual scrolling and ambiguous file titles.</li>
+                <li>Retrieval delays averaged 6–7 minutes, compressing the cognitive resources available for actual compliance judgment.</li>
+                <li>Information access failure is a judgment failure: analysts who cannot find the right procedure cannot apply it correctly.</li>
+              </ul>
+            </div>
+            <div class="card-block">
+              <h4>Outcome</h4>
+              <p>Searchable metadata layer built for approximately 500 SOPs. Retrieval time reduced from ~6–7 minutes to ~1–2 minutes. N=12 usability study confirmed accessibility gains with full GMP compliance preserved. Deployed at sora-sop-demo.streamlit.app.</p>
+            </div>
+            <div class="card-block ai-layer">
+              <h4>AI layer · in development</h4>
+              <p><strong>Without AI:</strong> Keyword-based metadata search and structured retrieval layer over validated SOP archive.<br><br><strong>With AI:</strong> Semantic search and contextual document surfacing — retrieving not just the queried SOP, but related procedures, applicable deviations, and cross-referenced records.</p>
+            </div>
+          </div>
+          <div class="project-bottom">
+            <div class="project-arrow">open case study ↗</div>
+          </div>
+        </article>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ======= SUPPORTING PROJECTS DIVIDER ======= -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-tag">supporting projects · 3 projects</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ======= SUPPORTING PROJECTS ======= -->
+  <section>
+    <div class="section-head">
+      <div>
+        <span class="section-tag">extended case studies</span>
+        <h2 class="section-title">Adjacent Problems</h2>
+        <p class="section-sub">
+          These projects extend the Regulatory UX argument into traceability, review interaction, and workflow observability — adjacent failure modes within compliance-constrained GMP environments.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-list">
+
+      <!-- SUPPORTING 01: Review Interaction -->
+      <a class="project-link" href="project-review-interaction.html">
+        <article class="project-card soft-green" id="project-review">
+          <div class="project-top">
+            <div>
+              <div class="panel-label">supporting project 01</div>
               <h3>Human-Centered Review Interaction in Deviation &amp; CAPA Management</h3>
             </div>
             <div class="project-signal">
@@ -709,14 +862,14 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
             <div class="card-block">
               <h4>What it addressed</h4>
               <ul class="bullets">
-                <li>Different QA reviewers applied inconsistent feedback styles.</li>
+                <li>Different QA reviewers applied inconsistent feedback styles, creating unpredictable revision burdens.</li>
                 <li>Redundant identifier entry created friction during revision loops.</li>
                 <li>Small clarifications still triggered multi-day review delays.</li>
               </ul>
             </div>
             <div class="card-block">
               <h4>Outcome</h4>
-              <p>Developed a review interaction framework using mapping, reviewer checklists, heatmaps, and usability-oriented workflow analysis to improve clarity while preserving validation integrity.</p>
+              <p>Review interaction framework using latency mapping, reviewer checklists, heatmaps, and usability-oriented workflow analysis to improve clarity while preserving validation integrity.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -725,11 +878,12 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
         </article>
       </a>
 
+      <!-- SUPPORTING 02: Cross-Reference -->
       <a class="project-link" href="project-cross-reference.html">
-        <article class="project-card soft-lilac" id="project-3">
+        <article class="project-card soft-lilac" id="project-xref">
           <div class="project-top">
             <div>
-              <div class="panel-label">project 03</div>
+              <div class="panel-label">supporting project 02</div>
               <h3>Human-Centered Cross-Reference System for GMP Documentation</h3>
             </div>
             <div class="project-signal">
@@ -750,14 +904,13 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
             <div class="card-block">
               <h4>What it addressed</h4>
               <ul class="bullets">
-                <li>Validated files could not be automatically interlinked.</li>
-                <li>Users manually cross-referenced IDs, status, and closure records.</li>
+                <li>Validated files could not be automatically interlinked — users manually cross-referenced IDs, status, and closure records.</li>
                 <li>Version inconsistency and lookup burden weakened inspection readiness.</li>
               </ul>
             </div>
             <div class="card-block">
               <h4>Outcome</h4>
-              <p>Built an external cross-reference matrix plus computational linkage analysis, enabling faster tracking and lower version-error risk without modifying validated systems.</p>
+              <p>External cross-reference matrix plus computational linkage analysis, enabling faster tracking and lower version-error risk without modifying validated systems.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -766,52 +919,12 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
         </article>
       </a>
 
-      <a class="project-link" href="project-cognitive-pathways.html">
-        <article class="project-card soft-silver" id="project-4">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">project 04</div>
-              <h3>Cognitive Pathways in Regulated Work Environments</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">cognition</span>
-              <span class="track-chip case">case study</span>
-            </div>
-          </div>
-          <p>A project mapping how analysts and reviewers actually think through procedural work, revealing where human reasoning diverges from formal workflow structure.</p>
-          <div class="project-meta">
-            <span class="meta-chip">cognitive HCI</span>
-            <span class="meta-chip">field observation</span>
-            <span class="meta-chip">interviews</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">network analysis</span>
-          </div>
-          <div class="project-body">
-            <div class="card-block">
-              <h4>What it addressed</h4>
-              <ul class="bullets">
-                <li>Procedural order did not always match actual reasoning order.</li>
-                <li>Users looped, revisited, and reinterpreted steps under pressure.</li>
-                <li>Bottlenecks emerged around terminology, cross-references, and validation anxiety.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Outcome</h4>
-              <p>Combined observation, interviews, logging, and computational path visualization to show where procedural structure conflicts with real cognitive navigation.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
-      </a>
-
+      <!-- SUPPORTING 03: Feedback Dashboard -->
       <a class="project-link" href="project-feedback-dashboard.html">
-        <article class="project-card visual" id="project-5">
+        <article class="project-card visual" id="project-dashboard">
           <div class="project-top">
             <div>
-              <div class="panel-label">project 05</div>
+              <div class="panel-label">supporting project 03</div>
               <h3>Smart Feedback &amp; Review Dashboard</h3>
             </div>
             <div class="project-signal">
@@ -832,54 +945,13 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
             <div class="card-block">
               <h4>What it addressed</h4>
               <ul class="bullets">
-                <li>Review cycles were opaque and often discussed only informally.</li>
-                <li>Workload imbalance and delay accumulation were hard to detect early.</li>
-                <li>Teams lacked a shared visual layer for workflow interpretation.</li>
+                <li>Review cycles were opaque and discussed only informally — workload imbalance and delay accumulation were hard to detect early.</li>
+                <li>Teams lacked a shared visual layer for workflow interpretation and coordination.</li>
               </ul>
             </div>
             <div class="card-block">
               <h4>Outcome</h4>
-              <p>Created an observability dashboard from timestamps and reviewer metadata, enabling earlier bottleneck recognition and more transparent coordination without touching validated templates.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
-      </a>
-
-      <a class="project-link" href="project-rca-reasoning-scaffolder.html">
-        <article class="project-card soft-sand" id="project-6">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">project 06</div>
-              <h3>RCA Reasoning Scaffolder</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">decision support</span>
-              <span class="track-chip paper">paper-track</span>
-            </div>
-          </div>
-          <p>A reasoning-support project for root cause investigations, designed to help investigators explore causal hypotheses systematically instead of collapsing too early into single-cause explanations.</p>
-          <div class="project-meta">
-            <span class="meta-chip">reasoning design</span>
-            <span class="meta-chip">causal mapping</span>
-            <span class="meta-chip">investigation support</span>
-            <span class="meta-chip">qualitative evaluation</span>
-            <span class="meta-chip">human-centered systems</span>
-          </div>
-          <div class="project-body">
-            <div class="card-block">
-              <h4>What it addressed</h4>
-              <ul class="bullets">
-                <li>RCA narratives often became linear and prematurely simplified.</li>
-                <li>Alternative hypotheses were difficult to sustain within existing document structures.</li>
-                <li>Investigators lacked an external reasoning layer to visualize causal relations.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Outcome</h4>
-              <p>Designed a scaffold using investigation mapping, causal diagrams, and structured prompts to support broader hypothesis exploration while keeping validated systems unchanged.</p>
+              <p>Observability dashboard built from timestamps and reviewer metadata, enabling earlier bottleneck recognition and more transparent coordination without touching validated templates.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -892,7 +964,7 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
   </section>
 
   <div class="footer">
-    Independent researcher · Human-centered systems for regulated environments · project case studies + paper-track prototypes
+    Independent researcher · Regulatory UX — human judgment in compliance-constrained systems · GMP environments · HCI
   </div>
 
   <div class="credit-note">
