@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Procedural Accessibility in Regulated Environments · Sora Kim</title>
+<title>SOP Accessibility in Regulated Environments · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <meta name="description"
-content="Case study for Procedural Accessibility in Regulated Environments — a human-centered document UX project exploring accessibility, cognitive friction, and information retrieval in compliance-constrained procedural systems." />
+content="Case study for SOP Accessibility in Regulated Environments — a human-centered document UX project exploring accessibility, cognitive friction, judgment, and AI-mediated support in compliance-constrained procedural systems." />
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Procedural Accessibility in Regulated Environments — Sora Kim">
+<meta property="og:title" content="SOP Accessibility in Regulated Environments — Sora Kim">
 <meta property="og:description"
-content="A human-centered document UX project on procedural accessibility, navigation burden, and retrieval clarity in regulated work environments.">
+content="A human-centered document UX project on SOP accessibility, cognitive friction, downstream judgment, and AI-mediated support in regulated work environments.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/project-sop-accessibility.html">
 <meta property="og:site_name" content="Sora Kim">
@@ -896,19 +896,19 @@ html[data-theme="dark"] .proto-dot.active{
 
     <div class="hero-inner">
       <div>
-        <span class="eyebrow">📘 case study / procedural accessibility / regulated environments</span>
-        <h1 class="title">Procedural Accessibility in Regulated Environments</h1>
+        <span class="eyebrow">📘 case study / SOP accessibility / regulated environments</span>
+        <h1 class="title">SOP Accessibility in Regulated Environments</h1>
         <p class="lead">
-          Standard Operating Procedures (SOPs) are formal step-by-step documents used in regulated environments to support consistency, compliance, and traceability in work processes. This project explores how the structure of procedural documents shapes accessibility, cognitive friction, and worker experience in high-stakes workflows.
+          Standard Operating Procedures (SOPs) are not just reference documents in regulated work. They shape how people locate information, interpret requirements, and act under constraint. This project explores how documentation structure creates accessibility barriers and cognitive friction in high-stakes environments, and how a lightweight support layer can open a broader path toward judgment-aware and AI-mediated procedural assistance.
         </p>
 
         <div class="meta-row">
-          <span class="meta-chip">procedural accessibility</span>
-          <span class="meta-chip">information architecture</span>
+          <span class="meta-chip">SOP accessibility</span>
+          <span class="meta-chip">cognitive friction</span>
           <span class="meta-chip">search interface</span>
           <span class="meta-chip">usability testing</span>
           <span class="meta-chip">python</span>
-          <span class="meta-chip">paper in progress</span>
+          <span class="meta-chip">AI-mediated support</span>
         </div>
 
         <div class="hero-actions">
@@ -921,7 +921,7 @@ html[data-theme="dark"] .proto-dot.active{
       <div class="hero-side">
         <div class="note">
           <h3>🎯 Core design question</h3>
-          <p>How can procedural documents be redesigned to improve accessibility and reduce cognitive friction in regulated work environments — without modifying validated source files?</p>
+          <p>How can procedural documents be made easier to search, navigate, and interpret in regulated work environments — without modifying validated source files?</p>
           <div class="flow-mini">
             <span>procedural archive</span>
             <span>accessibility layer</span>
@@ -931,11 +931,11 @@ html[data-theme="dark"] .proto-dot.active{
 
         <div class="note">
           <h3>📝 Project role in the portfolio</h3>
-          <p>This project anchors the document accessibility side of my broader work on regulatory UX and worker experience in regulated systems. It also serves as an entry point into my work on how documentation structure shapes burden, interpretation, and downstream decision-making.</p>
+          <p>This project serves as an entry point into my broader research on how documentation structure shapes cognitive burden, downstream judgment, and responsibility in regulated systems. It also lays the groundwork for future AI-mediated interfaces that support navigation and reasoning without replacing human judgment.</p>
           <div class="flow-mini">
-            <span>project</span>
-            <span>prototype</span>
-            <span>paper</span>
+            <span>documents</span>
+            <span>judgment</span>
+            <span>AI support</span>
           </div>
         </div>
       </div>
@@ -965,13 +965,12 @@ html[data-theme="dark"] .proto-dot.active{
       <h2 class="section-title">🧩 Background</h2>
       <span class="section-tag">problem framing</span>
     </div>
-    <p>In regulated and procedure-heavy environments, formal operating documents shape how work is performed, checked, and reviewed. These documents are not merely references; they are part of the infrastructure through which high-stakes work becomes legible and repeatable.</p>
+    <p>In regulated and procedure-heavy environments, formal operating documents shape how work is performed, checked, and reviewed. These documents are not merely references; they are part of the infrastructure through which high-stakes work becomes legible, repeatable, and auditable.</p>
     <p>In practice, however, procedural archives are not always easy to use. Digital versions are often stored as scanned PDFs, which makes them difficult to search, cross-reference, or navigate efficiently. As a result, users may rely on file titles, memory, and manual scrolling simply to find the right procedure.</p>
-    <p>At the sentence level, procedural documents often introduce complexity through nested conditions, fragmented instructions, and cross-references spread across sections. These structural features can create cognitive friction, where effort is spent not on the task itself, but on locating, interpreting, and navigating the document before action can even begin.</p>
+    <p>At the sentence and section level, procedural documents often introduce complexity through nested conditions, fragmented instructions, and cross-references spread across multiple locations. These structural features can create cognitive friction, where effort is spent not on the task itself, but on locating, interpreting, and navigating the document before action can even begin.</p>
     <p>Importantly, this burden is not distributed evenly. In document-heavy systems, more experienced workers often accumulate informal knowledge of naming conventions, archive structure, and likely file locations, while less experienced workers may take much longer to locate the same material. In that sense, access to procedural information can become partly experience-dependent, even when the formal system is the same for everyone.</p>
-    <p>Rather than treating this as a problem limited to less experienced users, this project approaches procedural navigation as a broader equity issue within regulated systems. In high-constraint environments, both experienced and less-experienced workers are shaped by documentation burden, fragmented access, and compliance pressure. The goal is therefore not to optimize for a specific user group, but to reduce structural burden across different levels of familiarity.</p>
-    <p>In practice, however, the resulting difficulty is often attributed to individual error rather than to the structure of the document itself.</p>
-    <div class="quote-line">💬 Accessibility is often invisible in regulated systems, yet it strongly shapes efficiency, confidence, and cognitive burden in everyday work.</div>
+    <p>More broadly, navigation burden does not stop at retrieval. When documentation is difficult to access or interpret, the resulting hesitation, workaround behavior, or procedural mismatch can later appear as an individual performance issue rather than as a property of the documentation system itself.</p>
+    <div class="quote-line">💬 In regulated systems, documentation does not simply store instructions. It shapes how work is found, understood, and later judged.</div>
   </section>
 
   <section class="section-card sand">
@@ -987,12 +986,12 @@ html[data-theme="dark"] .proto-dot.active{
           <li>Document titles were often too broad or too similar.</li>
           <li>Users opened multiple wrong files before locating the correct one.</li>
           <li>Access often depended on prior familiarity with naming conventions and archive structure.</li>
-          <li>Time-sensitive review situations amplified navigation burden and cognitive fatigue.</li>
+          <li>Time-sensitive review situations amplified navigation burden and interpretive uncertainty.</li>
         </ul>
       </div>
       <div class="card-block">
         <h3>Why this was difficult</h3>
-        <p>In controlled environments, source documents cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not “replace the system,” but rather “improve accessibility without touching the archive itself.”</p>
+        <p>In controlled environments, source documents cannot be casually rewritten or transformed into a new interface. That meant the design challenge was not “replace the system,” but rather “improve accessibility without touching the archive itself.” At the same time, the deeper question was not only how to make retrieval easier, but how to reduce the hidden burden that documentation structure places on downstream judgment and action.</p>
       </div>
     </div>
   </section>
@@ -1002,7 +1001,7 @@ html[data-theme="dark"] .proto-dot.active{
       <h2 class="section-title">🎯 Design question</h2>
       <span class="section-tag">HCI framing</span>
     </div>
-    <p>How can a human-centered retrieval layer improve accessibility and reduce cognitive friction in a constrained environment where only approved materials can be used operationally?</p>
+    <p>How can a human-centered retrieval layer improve accessibility and reduce cognitive friction in a constrained environment where only approved materials can be used operationally — while opening a path toward interfaces that make procedural reasoning more legible?</p>
   </section>
 
   <section class="section-card blue">
@@ -1032,7 +1031,7 @@ html[data-theme="dark"] .proto-dot.active{
         </ul>
       </div>
     </div>
-    <div class="quote-line">This project shows how a lightweight accessibility layer can improve procedural document navigation without altering controlled source documents.</div>
+    <div class="quote-line">This project shows how a lightweight accessibility layer can improve procedural document navigation without altering controlled source documents — a first step toward broader interfaces for judgment support in regulated work.</div>
   </section>
 
   <section class="section-card green">
@@ -1047,7 +1046,7 @@ html[data-theme="dark"] .proto-dot.active{
       </div>
       <div class="method-item">
         <h3>2. Structure and overlap analysis</h3>
-        <p>Used Excel and Python to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents.</p>
+        <p>Used Excel and Python to inspect overlapping terms, recurring categories, and retrieval-relevant keyword patterns across documents. This step also helped surface how archive structure and document similarity could create retrieval burden beyond a single missing search feature.</p>
       </div>
       <div class="method-item">
         <h3>3. Prototype artifact</h3>
@@ -1055,7 +1054,7 @@ html[data-theme="dark"] .proto-dot.active{
       </div>
       <div class="method-item">
         <h3>4. Prototype-based usability testing</h3>
-        <p>Conducted usability testing with likely end users using the prototype artifact. The artifact was not deployed as a live production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer.</p>
+        <p>Conducted usability testing with likely end users using the prototype artifact. The artifact was not deployed as a live production tool; instead, it was used as a testable representation of a compliance-safe accessibility layer and as a way to study how documentation access shapes confidence, uncertainty, and navigation experience.</p>
       </div>
     </div>
   </section>
@@ -1084,51 +1083,27 @@ html[data-theme="dark"] .proto-dot.active{
             <h3 id="proto-title">Main search interface</h3>
             <p id="proto-caption">The landing interface presents a simple search field, suggested searches, and a direct pathway into the retrieval workflow.</p>
           </div>
+
+          <div class="proto-dots">
+            <button class="proto-dot active" type="button" onclick="setProtoSlide(0)" aria-label="Show prototype slide 1"></button>
+            <button class="proto-dot" type="button" onclick="setProtoSlide(1)" aria-label="Show prototype slide 2"></button>
+            <button class="proto-dot" type="button" onclick="setProtoSlide(2)" aria-label="Show prototype slide 3"></button>
+          </div>
         </div>
 
         <button class="proto-nav next" type="button" onclick="changeProtoSlide(1)">→</button>
       </div>
-
-      <div class="proto-dots">
-        <button class="proto-dot active" type="button" onclick="setProtoSlide(0)"></button>
-        <button class="proto-dot" type="button" onclick="setProtoSlide(1)"></button>
-        <button class="proto-dot" type="button" onclick="setProtoSlide(2)"></button>
-      </div>
-    </div>
-
-    <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
     </div>
   </section>
 
   <section class="section-card lilac">
     <div class="section-head">
-      <h2 class="section-title">🧪 Usability testing</h2>
-      <span class="section-tag">prototype evaluation</span>
-    </div>
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Testing setup</h3>
-        <p>Because controlled environments cannot freely adopt unvalidated interface changes, the prototype was evaluated outside the live system. Participants were asked to complete simple retrieval tasks using the prototype as a simulated accessibility layer.</p>
-        <div class="flow-mini">
-          <span>prototype artifact</span>
-          <span>task-based test</span>
-          <span>n = 12</span>
-        </div>
-      </div>
-      <div class="card-block">
-        <h3>What was measured</h3>
-        <ul class="bullets">
-          <li>ease of finding relevant document sections</li>
-          <li>usefulness of titles, snippets, and highlighting</li>
-          <li>overall intuitiveness of the interface</li>
-          <li>qualitative feedback on confusion and ambiguity</li>
-        </ul>
-      </div>
+      <h2 class="section-title">🧪 Usability study</h2>
+      <span class="section-tag">early evaluation</span>
     </div>
 
-    <div class="note" style="margin-top:16px;">
-      <h3>Quantitative summary</h3>
+    <div class="note">
+      <h3>What was tested</h3>
       <p>
         A short usability survey was completed by 12 participants. Most respondents reported regular SOP use (91.7%) and daily SOP search behavior (91.7%). The prototype received high ratings for ease of use (mean 4.83/5), usefulness of search results (mean 4.50/5), and overall intuitiveness (mean 4.82/5).
       </p>
@@ -1143,7 +1118,7 @@ html[data-theme="dark"] .proto-dot.active{
 
     <div class="note" style="margin-top:16px;">
       <h3>Why this matters</h3>
-      <p>The study did not claim production deployment inside a validated system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users navigate procedural information more efficiently and with less uncertainty?</p>
+      <p>The study did not claim production deployment inside a validated system. Instead, it asked a more HCI-relevant question: if a compliance-safe accessibility layer were available, would actual users navigate procedural information more efficiently and with less uncertainty? The answer was yes — which suggests that even before automation enters the workflow, interface design can reduce hidden burden in documentation-heavy environments.</p>
     </div>
   </section>
 
@@ -1202,23 +1177,47 @@ html[data-theme="dark"] .proto-dot.active{
     </div>
   </section>
 
+  <section class="section-card green">
+    <div class="section-head">
+      <h2 class="section-title">🔗 Connection to the broader research program</h2>
+      <span class="section-tag">documents → judgment → responsibility</span>
+    </div>
+    <p>This project begins with a practical question about document retrieval, but its broader significance lies in what retrieval difficulty reveals. When documentation is hard to search, fragmented across sections, or cognitively demanding to interpret, the burden does not disappear after access is achieved. It travels downstream into hesitation, workaround behavior, variable interpretation, and later judgments about whether someone followed procedure correctly.</p>
+    <p>For that reason, I treat this prototype not only as an accessibility tool, but as the first layer of a broader research program on how documentation structure shapes cognitive friction, worker judgment, and responsibility in regulated systems. In this framing, SOP accessibility is not separate from accountability; it is one of the conditions under which accountability is produced.</p>
+    <div class="flow-mini">
+      <span>documentation structure</span>
+      <span>cognitive friction</span>
+      <span>judgment under constraint</span>
+      <span>responsibility</span>
+    </div>
+  </section>
+
+  <section class="section-card sand">
+    <div class="section-head">
+      <h2 class="section-title">🤖 Future AI direction</h2>
+      <span class="section-tag">AI-mediated support</span>
+    </div>
+    <p>This project also points toward a future AI-mediated interface layer. Importantly, the goal is not to replace procedural reading with automated answers or to delegate compliance decisions to a model. Instead, the value of AI here would be to support navigation, surface relevant cross-references, clarify why a document or section is being retrieved, and make procedural reasoning more legible to the user.</p>
+    <p>In other words, the long-term direction is not “AI as autopilot,” but AI as a support interface that helps users move through complex procedural archives with more clarity and less hidden burden. Framed this way, AI becomes part of a responsibility-sensitive design strategy: it should expand visibility into documentation and reasoning, not collapse judgment into black-box output.</p>
+  </section>
+
   <section class="section-card sand">
     <div class="section-head">
       <h2 class="section-title">📄 Paper in progress</h2>
       <span class="section-tag">research output</span>
     </div>
     <p>This project is being developed into a paper on accessibility, document usability, and compliance-constrained design in procedural environments. The paper extends the case study from a practical prototype into a broader HCI argument: accessibility improvements in validation-sensitive systems can often be achieved through external support layers rather than direct modification or replacement of the underlying system.</p>
-    <p>The paper-in-progress uses this project to frame a broader question about how human-centered design can operate in environments where formal systems are difficult to modify, yet users still experience substantial navigational and cognitive burden.</p>
+    <p>It also serves as an entry point into a larger research agenda on how documentation structure shapes cognitive friction, downstream judgment, and responsibility in high-constraint work settings. In later stages of this research program, that question expands toward AI-mediated interfaces that support procedural reasoning while preserving human accountability.</p>
   </section>
 
   <section class="section-card lilac">
     <div class="section-head">
       <h2 class="section-title">💬 Reflection</h2>
-      <span class="section-tag">why it is HCI</span>
+      <span class="section-tag">why it matters</span>
     </div>
     <p>This project showed that accessibility problems in constrained procedural environments are not trivial inconveniences; they shape time, confidence, navigation, and cognitive load in everyday work. In other words, document control may preserve compliance, but it can also generate hidden interaction costs.</p>
     <p>From an HCI perspective, the important insight was that meaningful design improvement did not require rewriting the validated system. An external, low-code accessibility layer was enough to improve user performance and reveal a concrete design opportunity.</p>
-    <p>Importantly, the study also showed that accessibility is not only about successful retrieval. Users needed clearer feedback when no result was returned and better differentiation between similarly titled entries. These observations helped frame the project not simply as a search aid, but as a broader HCI problem concerning uncertainty, navigation, procedural interaction, and how documentation structure shapes downstream work.</p>
+    <p>More importantly, the project clarified a broader conceptual point for my research: documentation design is not only about access. It also shapes how uncertainty is managed, how action is guided, and how later responsibility may be assigned. That is why I see this project as both a usable prototype and a conceptual foundation for future work on judgment-aware and AI-mediated interfaces in regulated systems.</p>
   </section>
 
   <section class="section-card green">
@@ -1239,11 +1238,12 @@ html[data-theme="dark"] .proto-dot.active{
       <div class="card-block">
         <h3>Research / design</h3>
         <ul class="bullets">
-          <li>Procedural accessibility framing</li>
+          <li>SOP accessibility framing</li>
           <li>Information architecture</li>
           <li>Prototype-based usability testing</li>
           <li>Search-interface evaluation</li>
           <li>Compliance-constrained design reasoning</li>
+          <li>AI-mediated support framing</li>
         </ul>
       </div>
     </div>
@@ -1254,7 +1254,7 @@ html[data-theme="dark"] .proto-dot.active{
       <h2 class="section-title">✨ One-line summary</h2>
       <span class="section-tag">project takeaway</span>
     </div>
-    <p>Designed and tested a human-centered accessibility layer for procedural documents that improved clarity, confidence, and perceived usability in a constrained archive — while showing how document structure itself can generate cognitive friction in regulated work environments.</p>
+    <p>Designed and tested a human-centered accessibility layer for SOP retrieval that improved clarity, confidence, and perceived usability in a constrained archive — while positioning documentation structure as a key site where cognitive friction, downstream judgment, and future AI-mediated support can be studied in regulated work environments.</p>
     <div class="hero-actions" style="margin-top:16px;">
       <a class="btn demo" href="https://sora-sop-demo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
       <a class="btn" href="projects.html">back to projects</a>
