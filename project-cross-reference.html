@@ -11,11 +11,9 @@
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/project-cross-reference.html">
 <meta property="og:site_name" content="Sora Kim">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg:#f5f5f7;
@@ -33,16 +31,13 @@
   --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
   --mono:'JetBrains Mono', monospace;
 }
-
 html[data-theme="dark"]{
   --text:#e2e4ea; --muted:#7a7d8a; --muted-strong:#a8aab8;
   --line:rgba(255,255,255,0.07); --line-strong:rgba(255,255,255,0.13);
   --panel:rgba(22,24,32,0.88);
   --shadow:0 18px 50px rgba(0,0,0,0.40); --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
 }
-
 *{box-sizing:border-box} html{scroll-behavior:smooth}
-
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
@@ -53,20 +48,17 @@ body{
     linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
   transition:background 0.3s ease, color 0.3s ease;
 }
-
 html[data-theme="dark"] body{
   background:
     radial-gradient(circle at 12% 16%, rgba(22,24,36,0.98) 0, transparent 40%),
     radial-gradient(circle at 84% 22%, rgba(18,22,44,0.55) 0, transparent 34%),
     linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
 }
-
 body::before{
   content:""; position:fixed; inset:0; pointer-events:none;
   background:linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
 }
 html[data-theme="dark"] body::before{ background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0)); }
-
 nav{
   position:fixed; top:18px; right:18px; z-index:60;
   display:flex; gap:8px; padding:8px;
@@ -77,7 +69,6 @@ nav{
   border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
 html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
-
 nav a{
   text-decoration:none; color:var(--muted); font-size:13px; font-weight:500;
   padding:8px 12px; border-radius:999px; transition:all .22s ease; white-space:nowrap;
@@ -86,7 +77,6 @@ nav a:hover{ color:var(--text); background:rgba(255,255,255,0.7); }
 html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
 nav a.active{ color:var(--text); background:rgba(255,255,255,0.82); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
 html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
-
 .theme-toggle{
   position:fixed; bottom:24px; right:24px; z-index:100;
   width:48px; height:48px; border-radius:50%;
@@ -99,15 +89,12 @@ html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
 .theme-toggle:hover{ transform:scale(1.1); box-shadow:0 24px 54px rgba(0,0,0,0.50); }
 .theme-toggle:active{ transform:scale(0.95); }
-
 .wrap{ max-width:1180px; margin:0 auto; padding:112px 28px 92px; }
-
 .hero,.section-card,.metric-card,.note,.card-block,.method-item{
   border:1px solid var(--line); background:var(--panel);
   backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%);
   box-shadow:var(--shadow);
 }
-
 .hero{ border-radius:var(--radius-xl); padding:30px; position:relative; overflow:hidden; margin-bottom:22px; }
 .hero::before{
   content:""; position:absolute; inset:0 0 auto 0; height:52px;
@@ -115,13 +102,10 @@ html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
   background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
 }
 html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
-
 .window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
 .dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
 .dot:nth-child(1){background:#ff5f57} .dot:nth-child(2){background:#febc2e} .dot:nth-child(3){background:#28c840}
-
 .hero-inner{ margin-top:38px; display:grid; grid-template-columns:1.08fr 0.92fr; gap:22px; align-items:start; }
-
 .eyebrow,.section-tag,.meta-chip,.small-label{
   display:inline-flex; align-items:center; gap:8px; padding:7px 11px;
   border:1px solid var(--line); border-radius:999px;
@@ -131,14 +115,12 @@ html[data-theme="dark"] .eyebrow,
 html[data-theme="dark"] .section-tag,
 html[data-theme="dark"] .meta-chip,
 html[data-theme="dark"] .small-label{ background:rgba(255,255,255,0.06); }
-
 .title,.section-title,.metric-number,.note h3,.section-card h2{ font-family:'Sora',sans-serif; letter-spacing:-0.05em; }
 .title{ font-size:56px; line-height:0.95; margin:14px 0 14px; }
 .lead{ font-size:16px; color:rgba(29,29,31,0.84); margin:0 0 16px; max-width:700px; }
 html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 .meta-row{ display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 18px; }
 .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
-
 .btn{
   padding:10px 15px; border-radius:14px; border:1px solid var(--line);
   background:rgba(255,255,255,0.76); text-decoration:none; color:var(--text);
@@ -146,7 +128,6 @@ html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
   transition:transform .18s ease, background .18s ease, border-color .18s ease;
 }
 .btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.94); border-color:var(--line-strong); }
-
 .btn.demo{
   background:linear-gradient(180deg, rgba(227,238,255,0.98), rgba(245,249,255,0.92));
   border:1px solid rgba(125,156,226,0.28); color:#244a9b;
@@ -157,7 +138,6 @@ html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
   background:linear-gradient(180deg, rgba(236,243,255,1), rgba(248,251,255,0.96));
   border-color:rgba(125,156,226,0.38); color:#1f3f86;
 }
-
 html[data-theme="dark"] .btn{ background:rgba(255,255,255,0.07); }
 html[data-theme="dark"] .btn:hover{ background:rgba(255,255,255,0.12); }
 html[data-theme="dark"] .btn.demo{
@@ -168,15 +148,12 @@ html[data-theme="dark"] .btn.demo:hover{
   background:linear-gradient(180deg, rgba(44,61,104,0.96), rgba(30,39,64,0.96));
   border-color:rgba(148,173,255,0.28); color:#eef3ff;
 }
-
 .hero-side{ display:grid; gap:14px; }
-
 .note{ border-radius:22px; padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88)); }
 html[data-theme="dark"] .note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
 .note h3{ font-size:18px; line-height:1.1; margin:0 0 8px; }
 .note p{ margin:0; font-size:14px; color:#40434b; }
 html[data-theme="dark"] .note p{ color:#9a9daa; }
-
 .flow-mini{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
 .flow-mini span{
   font-family:var(--mono); font-size:11px; padding:7px 10px;
@@ -184,7 +161,6 @@ html[data-theme="dark"] .note p{ color:#9a9daa; }
   background:rgba(255,255,255,0.76); color:var(--muted);
 }
 html[data-theme="dark"] .flow-mini span{ background:rgba(255,255,255,0.06); }
-
 .metrics{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin:18px 0 8px; }
 .metric-card{ border-radius:22px; padding:18px; position:relative; overflow:hidden; }
 .metric-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; }
@@ -203,45 +179,37 @@ html[data-theme="dark"] .metric-card.sand{ background:linear-gradient(180deg, rg
 .metric-number{ font-size:40px; line-height:0.95; margin:10px 0 8px; }
 .metric-card p{ margin:0; font-size:13px; color:#454850; }
 html[data-theme="dark"] .metric-card p{ color:#9a9daa; }
-
 .section-card{ border-radius:26px; padding:22px; margin-top:18px; position:relative; overflow:hidden; }
 .section-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; }
 .section-card.blue::before{ background:linear-gradient(90deg, rgba(174,194,245,0.95), rgba(233,238,249,0.95)); }
 .section-card.green::before{ background:linear-gradient(90deg, rgba(157,220,188,0.95), rgba(237,246,242,0.95)); }
 .section-card.lilac::before{ background:linear-gradient(90deg, rgba(202,182,240,0.95), rgba(243,238,251,0.95)); }
 .section-card.sand::before{ background:linear-gradient(90deg, rgba(230,210,171,0.95), rgba(245,242,234,0.95)); }
-
 html[data-theme="dark"] .section-card.blue{ background:linear-gradient(180deg, rgba(18,26,52,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
 html[data-theme="dark"] .section-card.green{ background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
 html[data-theme="dark"] .section-card.lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
 html[data-theme="dark"] .section-card.sand{ background:linear-gradient(180deg, rgba(32,26,14,0.60), rgba(22,24,34,0.92)); border-color:var(--line); }
-
 .section-head{ display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:12px; flex-wrap:wrap; }
 .section-title{ font-size:28px; margin:0; }
 .section-card h2{ font-size:28px; margin:0 0 12px; }
 .section-card p{ margin:0 0 14px; font-size:15px; color:#40434b; }
 html[data-theme="dark"] .section-card p{ color:#9a9daa; }
-
 .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; }
-
 .card-block{ border-radius:20px; background:rgba(255,255,255,0.74); padding:16px; box-shadow:var(--shadow-soft); }
 html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
 .card-block h3{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
 .card-block p{ margin:0; font-size:14px; color:#3f4148; }
 html[data-theme="dark"] .card-block p{ color:#9a9daa; }
-
 .bullets{ margin:0; padding-left:18px; }
 .bullets li{ margin:0 0 8px; color:#41444c; }
 html[data-theme="dark"] .bullets li{ color:#9a9daa; }
-
 .method-list{ display:grid; gap:12px; }
 .method-item{ border-radius:18px; padding:14px; background:rgba(255,255,255,0.72); box-shadow:var(--shadow-soft); }
 html[data-theme="dark"] .method-item{ background:rgba(255,255,255,0.04); }
 .method-item h3{ margin:0 0 6px; font-size:14px; font-family:var(--mono); color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
 .method-item p{ margin:0; font-size:14px; }
 html[data-theme="dark"] .method-item p{ color:#9a9daa; }
-
 .table-wrap{ overflow:auto; border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,0.72); }
 html[data-theme="dark"] .table-wrap{ background:rgba(255,255,255,0.04); }
 table{ width:100%; border-collapse:collapse; min-width:640px; }
@@ -249,49 +217,35 @@ th, td{ padding:14px 16px; text-align:left; border-bottom:1px solid var(--line);
 th{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); background:rgba(255,255,255,0.82); }
 html[data-theme="dark"] th{ background:rgba(255,255,255,0.04); }
 tr:last-child td{ border-bottom:none; }
-
 .quote-line{ margin-top:10px; padding:12px 14px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,0.68); font-size:13px; color:#41444c; }
 html[data-theme="dark"] .quote-line{ background:rgba(255,255,255,0.04); color:#9a9daa; }
-
-/* analysis image */
-.analysis-img{
-  width:100%; display:block; border-radius:18px;
-  border:1px solid var(--line); box-shadow:var(--shadow-soft);
-}
-
-.proto-viewer{ display:grid; grid-template-columns:52px 1fr 52px; gap:14px; align-items:center; }
-.proto-slide-wrap{ min-width:0; }
-.proto-image{ width:100%; display:block; border-radius:18px; border:1px solid var(--line); box-shadow:var(--shadow-soft); }
-.proto-meta{ margin-top:14px; }
-.proto-meta h3{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
-.proto-meta p{ margin:0; font-size:14px; color:#3f4148; }
-html[data-theme="dark"] .proto-meta p{ color:#9a9daa; }
-.proto-nav{
-  width:52px; height:52px; border-radius:999px; cursor:pointer;
-  font-size:18px; font-weight:600; color:var(--text);
-  background:rgba(255,255,255,0.78); border:1px solid var(--line);
-  box-shadow:var(--shadow-soft); transition:all .18s ease;
-}
-.proto-nav:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.96); }
-html[data-theme="dark"] .proto-nav{ background:rgba(255,255,255,0.06); }
-html[data-theme="dark"] .proto-nav:hover{ background:rgba(255,255,255,0.12); }
-.proto-dots{ display:flex; justify-content:center; gap:8px; margin-top:16px; flex-wrap:wrap; }
-.proto-dot{ width:10px; height:10px; border-radius:999px; border:none; cursor:pointer; background:#d2d6df; transition:all .18s ease; }
-.proto-dot.active{ width:24px; background:#8ea7e8; }
-html[data-theme="dark"] .proto-dot{ background:#4c5363; }
-html[data-theme="dark"] .proto-dot.active{ background:#9cb6ff; }
-
+.analysis-img{ width:100%; display:block; border-radius:18px; border:1px solid var(--line); box-shadow:var(--shadow-soft); }
 .stat-row{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; margin-bottom:18px; }
 .stat-item{ background:rgba(255,255,255,0.74); border:1px solid var(--line); border-radius:18px; padding:16px; box-shadow:var(--shadow-soft); text-align:center; }
 html[data-theme="dark"] .stat-item{ background:rgba(255,255,255,0.04); }
 .stat-num{ font-family:'Sora',sans-serif; font-size:34px; font-weight:800; letter-spacing:-0.04em; color:#121316; line-height:1; margin-bottom:6px; }
 html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
 .stat-label{ font-size:12px; color:var(--muted); font-family:var(--mono); }
-
+.demo-features{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+.demo-feature-item{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:12px 14px; background:rgba(255,255,255,0.6);
+  border:1px solid var(--line); border-radius:14px;
+  font-size:13px; color:var(--muted-strong); line-height:1.5;
+}
+html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
+.demo-feature-icon{ font-size:16px; flex-shrink:0; margin-top:1px; }
+/* finding row */
+.finding-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+.finding-item{ padding:16px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,0.74); box-shadow:var(--shadow-soft); }
+html[data-theme="dark"] .finding-item{ background:rgba(255,255,255,0.04); }
+.finding-before{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#dc2626; margin-bottom:6px; }
+.finding-after{ font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:#16a34a; margin-bottom:6px; }
+.finding-val{ font-family:var(--mono); font-size:22px; font-weight:700; color:#111827; margin-bottom:4px; }
+.finding-desc{ font-size:13px; color:#6b7280; line-height:1.5; }
 .footer{ margin-top:34px; border-top:1px solid var(--line); padding-top:18px; font-size:12px; color:var(--muted); }
-
 @media (max-width:1080px){
-  .hero-inner,.grid-2,.grid-3,.metrics,.stat-row{ grid-template-columns:1fr; }
+  .hero-inner,.grid-2,.grid-3,.metrics,.stat-row,.finding-row,.demo-features{ grid-template-columns:1fr; }
 }
 @media (max-width:760px){
   nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
@@ -301,8 +255,6 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
   .hero{ padding:24px 18px; }
   .title{ font-size:36px; }
   .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
-  .proto-viewer{ grid-template-columns:1fr; }
-  .proto-nav{ width:100%; height:42px; border-radius:14px; }
 }
 </style>
 </head>
@@ -334,10 +286,11 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
           <span class="meta-chip">traceability</span>
           <span class="meta-chip">metadata mapping</span>
           <span class="meta-chip">workflow visualization</span>
-          <span class="meta-chip">excel</span>
+          <span class="meta-chip">networkx</span>
           <span class="meta-chip">python</span>
           <span class="meta-chip">R</span>
-          <span class="meta-chip">networkx</span>
+          <span class="meta-chip">streamlit</span>
+          <span class="meta-chip">usability study</span>
           <span class="meta-chip">paper in progress</span>
         </div>
         <div class="hero-actions">
@@ -366,6 +319,25 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
     </div>
   </section>
 
+  <!-- METRICS -->
+  <section class="metrics">
+    <div class="metric-card blue">
+      <div class="small-label">participants</div>
+      <div class="metric-number">17</div>
+      <p>GMP QC practitioners evaluated the system on real documentation tasks using actual workplace data.</p>
+    </div>
+    <div class="metric-card green">
+      <div class="small-label">task completion time</div>
+      <div class="metric-number">30–60%</div>
+      <p>Reduction in time to complete traceability tasks compared to the baseline condition.</p>
+    </div>
+    <div class="metric-card lilac">
+      <div class="small-label">real-world adoption</div>
+      <div class="metric-number">100%</div>
+      <p>All 17 participants said they would use the system in actual work. Ease of use: 17/17.</p>
+    </div>
+  </section>
+
   <!-- BACKGROUND -->
   <section class="section-card blue">
     <div class="section-head">
@@ -374,7 +346,7 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
     </div>
     <p>In <strong>Good Manufacturing Practice (GMP)</strong> environments, every <strong>Deviation</strong>, <strong>CAPA</strong>, and <strong>Change Control</strong> record must be cross-linked to demonstrate process integrity and inspection readiness. These records are often deeply interdependent, but they usually exist as separate validated Word files.</p>
     <p>Because these files cannot be freely restructured or automatically linked, analysts and QA reviewers must repeatedly copy and verify identifiers such as deviation IDs, batch numbers, product codes, status labels, and closure dates across multiple records.</p>
-    <p>What looks like a traceability requirement on paper becomes, in practice, a cognitive burden placed on people.</p>
+    <p>What looks like a traceability requirement on paper becomes, in practice, a cognitive burden placed on people — a form of friction that accumulates invisibly across hundreds of linked records in a real GMP environment.</p>
     <div class="quote-line">💬 In validation-constrained systems, people often become the missing infrastructure between documents that cannot easily talk to each other.</div>
   </section>
 
@@ -420,11 +392,11 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
     <div class="method-list">
       <div class="method-item">
         <h3>1. Synthetic dataset construction</h3>
-        <p>Generated a synthetic GMP documentation network of 150 records (60 Deviations, 40 CAPAs, 30 Change Controls, 20 SOPs) using Python, replicating the structural properties of real regulated documentation — including partial linkage, version drift, and lifecycle inconsistency.</p>
+        <p>Generated a synthetic GMP documentation network of 150 records (60 Deviations, 40 CAPAs, 30 Change Controls, 20 SOPs) using Python, replicating structural properties of real regulated documentation — including partial linkage, version drift, and lifecycle inconsistency.</p>
       </div>
       <div class="method-item">
         <h3>2. Cross-reference metadata mapping</h3>
-        <p>Extracted key identifier fields — Deviation ID, CAPA ID, batch number, product code, status, closure date, SOP version — and constructed a structured linkage matrix. Added status-based filters and category-level keyword indexing to support rapid pattern detection.</p>
+        <p>Extracted key identifier fields — Deviation ID, CAPA ID, batch number, product code, status, closure date, SOP version — and constructed a structured linkage matrix with status-based filters and category-level keyword indexing.</p>
       </div>
       <div class="method-item">
         <h3>3. Computational linkage analysis</h3>
@@ -432,11 +404,11 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       </div>
       <div class="method-item">
         <h3>4. Network graph analysis</h3>
-        <p>Modeled the documentation network as a directed graph, where nodes represent individual records and edges represent cross-reference relationships. Visualized how records cluster, where traceability chains break, and how cognitive load distributes across the network.</p>
+        <p>Modeled the documentation network as a directed graph where nodes represent records and edges represent cross-reference relationships — visualizing hub concentration, isolated clusters, and cognitive load distribution.</p>
       </div>
       <div class="method-item">
-        <h3>5. Interactive prototype (Streamlit)</h3>
-        <p>Built a Traceability Explorer prototype that renders the full documentation chain for any selected record — surfacing linkage gaps, version conflicts, and lifecycle mismatches in one place, without modifying any validated source file.</p>
+        <h3>5. Interactive prototype + workplace evaluation</h3>
+        <p>Built a Traceability Explorer in Streamlit and evaluated it with 17 GMP QC practitioners using real workplace data and structured traceability tasks. Evaluation focused on task completion time, document discovery, path completion, and navigation efficiency.</p>
       </div>
     </div>
   </section>
@@ -447,10 +419,8 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       <h2 class="section-title">📊 Computational analysis</h2>
       <span class="section-tag">synthetic dataset · python · networkx</span>
     </div>
+    <p>The computational analysis was conducted on a synthetic dataset of 150 GMP records, designed to reflect structural patterns observed in real validation-constrained documentation environments.</p>
 
-    <p>The analysis was conducted on a synthetic dataset of 150 GMP records. The dataset was designed to reflect structural patterns observed in real validation-constrained documentation environments — not to represent a specific organization, but to make the traceability problem computationally tractable and visually demonstrable.</p>
-
-    <!-- stat row -->
     <div class="stat-row">
       <div class="stat-item">
         <div class="stat-num">150</div>
@@ -470,39 +440,31 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       </div>
     </div>
 
-    <!-- network graph -->
     <div class="card-block" style="margin-bottom:16px;">
       <h3>Document cross-reference network</h3>
       <img src="assets/network_graph.png" alt="Document Cross-reference Network" class="analysis-img" style="margin-top:10px;">
       <div class="note" style="margin-top:14px; box-shadow:none; border:1px solid var(--line);">
         <h3>What this graph shows</h3>
-        <p>Each node is a GMP record. Each directed edge is a cross-reference link — the kind of connection that a reviewer must manually trace across separate validated files in a real environment. The graph reveals several things that are invisible in normal document workflows:</p>
-        <ul class="bullets" style="margin-top:10px;">
-          <li><strong>Density asymmetry</strong> — some records act as hubs with many incoming and outgoing references, concentrating cognitive work on the users who own or review them.</li>
-          <li><strong>Isolated clusters</strong> — some deviation chains are structurally disconnected from the broader network, signaling traceability gaps that would only surface under audit pressure.</li>
-          <li><strong>Cognitive load distribution</strong> — in a real environment, every edge in this graph represents a manual lookup, identifier copy, or version check that a person must perform. With 3.71 average linkages per record across 150 documents, the cumulative load is substantial.</li>
-          <li><strong>Self-loops</strong> — visible in several nodes, indicating records that reference themselves or contain internally circular linkage logic — a structural anomaly that is difficult to detect without network-level analysis.</li>
-        </ul>
+        <p>Each node is a GMP record. Each directed edge is a cross-reference link — the kind of connection a reviewer must manually trace across separate validated files. The graph reveals density asymmetry (hub records concentrating cognitive work), isolated clusters (traceability gaps invisible until audit pressure), self-loops (circular linkage anomalies), and the cumulative cognitive load embedded in 3.71 average linkages per record.</p>
       </div>
     </div>
 
-    <!-- two charts side by side -->
     <div class="grid-2">
       <div class="card-block">
         <h3>Cross-reference link coverage</h3>
         <img src="assets/linkage_bar.png" alt="Cross-reference Link Coverage" class="analysis-img" style="margin-top:10px;">
-        <p style="margin-top:12px; font-size:13px; color:var(--muted);">Deviation and SOP records have the highest number of cross-reference connections (130 each), while Change Control coverage is notably lower (47). This gap means that the downstream consequences of a deviation — process changes — are often the least traceable part of the chain.</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--muted);">Deviation and SOP records have the highest cross-reference connections (130 each), while Change Control coverage is notably lower (47) — meaning downstream process consequences are often the least traceable part of the chain.</p>
       </div>
       <div class="card-block">
         <h3>Record status heatmap</h3>
         <img src="assets/status_heatmap.png" alt="Record Status Heatmap" class="analysis-img" style="margin-top:10px;">
-        <p style="margin-top:12px; font-size:13px; color:var(--muted);">Deviations show a high concentration of both Closed and Under Review statuses simultaneously — a lifecycle pattern that creates ambiguity during audit reconstruction. When the status of a record is unclear or inconsistent with its linked documents, reviewers must resolve the discrepancy manually.</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--muted);">Deviations show high concentrations of both Closed and Under Review statuses simultaneously — a lifecycle pattern creating ambiguity during audit reconstruction that reviewers must resolve manually.</p>
       </div>
     </div>
 
     <div class="note" style="margin-top:16px;">
       <h3>Why synthetic data — and why that is appropriate here</h3>
-      <p>Real GMP records contain proprietary product identifiers, batch numbers, and investigation details that cannot be disclosed. The synthetic dataset was constructed to preserve the <em>structural</em> properties of real documentation networks — partial linkage, version drift, lifecycle inconsistency — without exposing any organizational data. The research argument does not depend on specific record content; it depends on the network-level patterns that the data makes visible.</p>
+      <p>Real GMP records contain proprietary identifiers and investigation details that cannot be disclosed. The synthetic dataset was constructed to preserve the <em>structural</em> properties of real documentation networks without exposing organizational data. The research argument depends on network-level patterns, not specific record content.</p>
     </div>
   </section>
 
@@ -512,37 +474,119 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       <h2 class="section-title">🖥 Interactive prototype</h2>
       <span class="section-tag">traceability explorer · streamlit</span>
     </div>
-
     <p>The Traceability Explorer renders the full documentation chain for any selected record — Deviation → CAPA → Change Control → SOP — in a single view, surfacing linkage gaps, version conflicts, and lifecycle mismatches without modifying any validated source file.</p>
-
-    <div class="card-block">
-      <div class="proto-viewer">
-        <button class="proto-nav prev" type="button" onclick="changeProtoSlide(-1)">←</button>
-        <div class="proto-slide-wrap">
-          <img id="proto-image" src="assets/traceability-chainviewer.png" alt="Traceability chain viewer" class="proto-image">
-          <div class="proto-meta">
-            <h3 id="proto-title">Chain viewer</h3>
-            <p id="proto-caption">Select any GMP record and trace the full documentation chain across Deviation, CAPA, Change Control, and SOP reference — with linkage warnings surfaced automatically.</p>
-          </div>
-        </div>
-        <button class="proto-nav next" type="button" onclick="changeProtoSlide(1)">→</button>
+    <div class="hero-actions" style="margin:16px 0 8px;">
+      <a class="btn demo" href="https://gmp-traceability-explorer.streamlit.app/" target="_blank" rel="noopener noreferrer">Open Live Demo ↗</a>
+    </div>
+    <div class="demo-features">
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">🔗</span>
+        <span>Chain viewer — trace Deviation → CAPA → Change Control → SOP in one place with automatic linkage warnings</span>
       </div>
-      <div class="proto-dots">
-        <button class="proto-dot active" type="button" onclick="setProtoSlide(0)"></button>
-        <button class="proto-dot" type="button" onclick="setProtoSlide(1)"></button>
-        <button class="proto-dot" type="button" onclick="setProtoSlide(2)"></button>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">⚠️</span>
+        <span>Risk summary — missing links, lifecycle mismatches, and outdated SOP references surfaced computationally</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">🗂️</span>
+        <span>Record explorer — browse the full documentation network with filters by type, status, and product</span>
+      </div>
+      <div class="demo-feature-item">
+        <span class="demo-feature-icon">🛡️</span>
+        <span>No validated templates modified — prototype acts as an external visibility layer only</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- USABILITY STUDY -->
+  <section class="section-card lilac">
+    <div class="section-head">
+      <h2 class="section-title">🧪 Workplace usability study</h2>
+      <span class="section-tag">N = 17 · GMP QC practitioners · real data</span>
+    </div>
+    <p>Because the traceability problem is deeply embedded in real GMP work, the evaluation was conducted with 17 QC practitioners using actual workplace documentation rather than the synthetic demo corpus. The same prototype code was applied to real records, and participants completed structured traceability tasks across three conditions.</p>
+
+    <div class="grid-2" style="margin-top:14px;">
+      <div class="card-block">
+        <h3>Task design</h3>
+        <ul class="bullets">
+          <li><strong>Task 1 — Information retrieval:</strong> "Find the SOP relevant to this situation."</li>
+          <li><strong>Task 2 — Document linkage:</strong> "Find the documents related to this SOP."</li>
+          <li><strong>Task 3 — Path tracing:</strong> "Describe how you moved from the initial document to a final judgment."</li>
+        </ul>
+      </div>
+      <div class="card-block">
+        <h3>What was measured</h3>
+        <ul class="bullets">
+          <li>Task completion time (seconds)</li>
+          <li>Number of documents discovered</li>
+          <li>Path completion rate — meaningful traceability chain established</li>
+          <li>Click count / navigation efficiency</li>
+          <li>Ease of use and real-world adoption intent</li>
+        </ul>
+        <div class="flow-mini" style="margin-top:10px;">
+          <span>real workplace data</span>
+          <span>NDA — logs not disclosed</span>
+        </div>
       </div>
     </div>
 
-    <div class="hero-actions" style="margin-top:16px;">
-      <a class="btn demo" href="https://gmp-traceability-explorer.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+    <div class="note" style="margin-top:16px;">
+      <h3>🔑 Key finding: all four measures improved substantially</h3>
+      <p>Across all three tasks, the cross-reference system produced consistent improvements in speed, discovery, path completion, and navigation efficiency — while 17/17 participants rated the tool as easy to use and said they would use it in real work.</p>
+    </div>
+
+    <div class="finding-row">
+      <div class="finding-item">
+        <div class="finding-before">Baseline</div>
+        <div class="finding-val">120–300s</div>
+        <div class="finding-desc">Task completion time without the system</div>
+        <div style="margin-top:8px;">
+          <div class="finding-after">With system</div>
+          <div class="finding-val">60–150s</div>
+          <div class="finding-desc">30–60% reduction in task time</div>
+        </div>
+      </div>
+      <div class="finding-item">
+        <div class="finding-before">Baseline</div>
+        <div class="finding-val">1.5–2.5</div>
+        <div class="finding-desc">Average documents discovered per task</div>
+        <div style="margin-top:8px;">
+          <div class="finding-after">With system</div>
+          <div class="finding-val">3–5</div>
+          <div class="finding-desc">1.5–2× increase in document discovery</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="finding-row" style="margin-top:14px;">
+      <div class="finding-item">
+        <div class="finding-before">Baseline path completion</div>
+        <div class="finding-val">30–50%</div>
+        <div class="finding-desc">Participants who established a meaningful traceability chain</div>
+        <div style="margin-top:8px;">
+          <div class="finding-after">With system</div>
+          <div class="finding-val">70–90%</div>
+          <div class="finding-desc">Significant increase in complete path formation</div>
+        </div>
+      </div>
+      <div class="finding-item">
+        <div class="finding-before">Baseline navigation</div>
+        <div class="finding-val">6–12 clicks</div>
+        <div class="finding-desc">Average clicks per task without support</div>
+        <div style="margin-top:8px;">
+          <div class="finding-after">With system</div>
+          <div class="finding-val">3–6 clicks</div>
+          <div class="finding-desc">40–60% reduction in navigation steps</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- COMPUTATIONAL EXTENSION -->
-  <section class="section-card lilac">
+  <section class="section-card green">
     <div class="section-head">
-      <h2 class="section-title">💻 Computational extension</h2>
+      <h2 class="section-title">💻 Computational contribution</h2>
       <span class="section-tag">python · networkx · pandas</span>
     </div>
     <div class="grid-2">
@@ -558,32 +602,7 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       </div>
       <div class="card-block">
         <h3>Why it matters for the HCI argument</h3>
-        <p>Without computational analysis, the traceability problem can only be described anecdotally. The network graph makes the cognitive burden <em>visible</em> — each edge is a manual lookup, each disconnected node is a gap that only a person can fill. The analysis transforms a qualitative observation into a structural, measurable claim.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY NO USABILITY TEST -->
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🧪 Evaluation approach</h2>
-      <span class="section-tag">prototype demonstrator · no formal usability study</span>
-    </div>
-
-    <div class="grid-2">
-      <div class="card-block">
-        <h3>Why no formal usability test</h3>
-        <p>This project's primary contribution is conceptual and computational, not interactional. The central claim — that <em>traceability is a cognitive problem, not just a technical one</em> — is demonstrated through the network analysis, not through measuring how fast users complete tasks.</p>
-        <p style="margin-top:10px;">Conducting a valid usability study would also require participants with active GMP experience working on real or realistic documentation — a context where NDA constraints and data sensitivity make formal testing difficult to conduct appropriately.</p>
-      </div>
-      <div class="card-block">
-        <h3>What the prototype does instead</h3>
-        <p>The Traceability Explorer functions as a <em>demonstrator</em> — a working artifact that makes the research argument tangible. Rather than proving that the tool is faster to use, it shows what becomes visible when the hidden documentation chain is surfaced in one place.</p>
-        <div class="flow-mini" style="margin-top:12px;">
-          <span>demonstrator artifact</span>
-          <span>no validated templates modified</span>
-          <span>conceptual + computational contribution</span>
-        </div>
+        <p>Without computational analysis, the traceability problem can only be described anecdotally. The network graph makes cognitive burden <em>visible</em> — each edge is a manual lookup, each disconnected node is a gap that only a person can fill. The analysis transforms a qualitative observation into a structural, measurable claim.</p>
       </div>
     </div>
   </section>
@@ -600,7 +619,7 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
           <tr><th>Area</th><th>Before</th><th>With support layer</th><th>Interpretation</th></tr>
         </thead>
         <tbody>
-          <tr><td>Document traceability</td><td>Manual search across separate files</td><td>Full chain visible in one place</td><td>Cognitive linking work is redistributed to the system</td></tr>
+          <tr><td>Document traceability</td><td>Manual search across separate files</td><td>Full chain visible in one place</td><td>Cognitive linking work redistributed to the system</td></tr>
           <tr><td>Missing link detection</td><td>Only visible under audit pressure</td><td>Surfaced computationally</td><td>Gaps become findable before they become problems</td></tr>
           <tr><td>Version consistency</td><td>Checked manually per record</td><td>Flagged automatically</td><td>Version drift no longer depends on reviewer memory</td></tr>
           <tr><td>Lifecycle mismatches</td><td>Invisible until inspection</td><td>Detected at record level</td><td>Status inconsistencies can be addressed proactively</td></tr>
@@ -612,6 +631,30 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       <h3>The core argument</h3>
       <p>The gain here is not just efficiency. It is a redistribution of cognitive work: users no longer have to serve as the only linking mechanism across fragmented documentation. In the network graph, every edge is a task that currently sits with a person. A visibility layer does not eliminate that work — but it makes it legible, surfaceable, and therefore manageable.</p>
     </div>
+  </section>
+
+  <!-- AI FUTURE DIRECTION -->
+  <section class="section-card sand">
+    <div class="section-head">
+      <h2 class="section-title">💡 Future AI extension direction</h2>
+      <span class="section-tag">visibility support, not automation</span>
+    </div>
+    <p>The current prototype uses rule-based linkage detection and metadata mapping. A natural next step would be to layer a lightweight AI support component — not to automate compliance decisions, but to make the reasoning behind traceability gaps more legible.</p>
+    <div class="grid-3" style="margin-top:14px;">
+      <div class="card-block">
+        <h3>Gap explanation</h3>
+        <p>An LLM layer could explain <em>why</em> a linkage gap is risky in plain language, given the record's context, status, and position in the documentation chain.</p>
+      </div>
+      <div class="card-block">
+        <h3>Related record surfacing</h3>
+        <p>Surface records that share root cause categories or batch numbers but are not formally linked — expanding the visible documentation network beyond explicit cross-references.</p>
+      </div>
+      <div class="card-block">
+        <h3>Audit narrative generation</h3>
+        <p>Generate a plain-language audit narrative from the chain, reducing the time reviewers spend reconstructing history from scratch across disconnected files.</p>
+      </div>
+    </div>
+    <div class="quote-line" style="margin-top:14px;">Design principle: AI as a reasoning support layer that expands visibility into documentation — not a replacement for human judgment or validated documentation systems.</div>
   </section>
 
   <!-- PAPER -->
@@ -657,6 +700,7 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
           <li>Document network analysis and traceability modeling</li>
           <li>Compliance-constrained UX design</li>
           <li>Cognitive load framing in regulated environments</li>
+          <li>Workplace usability study with real GMP data</li>
         </ul>
       </div>
     </div>
@@ -668,7 +712,7 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
       <h2 class="section-title">✨ One-line summary</h2>
       <span class="section-tag">project takeaway</span>
     </div>
-    <p>Developed a metadata-driven cross-reference system and document network analysis that made traceability fragmentation visible and computationally measurable in validated GMP documentation — and is now being extended into a paper on traceability as a cognitive and interaction problem in regulated systems.</p>
+    <p>Developed a metadata-driven cross-reference system and document network analysis that made traceability fragmentation visible and computationally measurable — validated with 17 GMP QC practitioners using real workplace data, showing 30–60% reduction in task time and up to 2× improvement in document discovery.</p>
     <div class="hero-actions" style="margin-top:16px;">
       <a class="btn demo" href="https://gmp-traceability-explorer.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
       <a class="btn" href="projects.html">back to projects</a>
@@ -693,57 +737,17 @@ html[data-theme="dark"] .stat-num{ color:#e2e4ea; }
   else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
   toggle.addEventListener('click', function(){
     var current = html.getAttribute('data-theme');
-    if(current === 'dark'){ html.setAttribute('data-theme','light'); toggle.textContent='🌙'; localStorage.setItem('theme','light'); }
-    else { html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; localStorage.setItem('theme','dark'); }
+    if(current === 'dark'){
+      html.setAttribute('data-theme','light');
+      toggle.textContent='🌙';
+      localStorage.setItem('theme','light');
+    } else {
+      html.setAttribute('data-theme','dark');
+      toggle.textContent='☀️';
+      localStorage.setItem('theme','dark');
+    }
   });
 })();
-
-const protoSlides = [
-  {
-    image: "assets/traceability-chainviewer.png",
-    title: "Chain viewer",
-    caption: "Select any GMP record and trace the full documentation chain across Deviation, CAPA, Change Control, and SOP reference — with linkage warnings surfaced automatically."
-  },
-  {
-    image: "assets/traceability-risksummary.png",
-    title: "Risk summary",
-    caption: "Quantified traceability risks across the dataset — missing links, lifecycle mismatches, outdated SOP references — surfaced as structured, actionable findings."
-  },
-  {
-    image: "assets/traceability-recordexplorer.png",
-    title: "Record explorer",
-    caption: "Browse the full documentation network with filters by record type, status, and product — providing a structured overview that normally requires manual file-by-file search."
-  }
-];
-
-let currentProtoSlide = 0;
-
-function renderProtoSlide(){
-  const img = document.getElementById("proto-image");
-  const title = document.getElementById("proto-title");
-  const caption = document.getElementById("proto-caption");
-  const dots = document.querySelectorAll(".proto-dot");
-  if(!img || !title || !caption) return;
-  img.src = protoSlides[currentProtoSlide].image;
-  img.alt = protoSlides[currentProtoSlide].title;
-  title.textContent = protoSlides[currentProtoSlide].title;
-  caption.textContent = protoSlides[currentProtoSlide].caption;
-  dots.forEach((dot, idx) => { dot.classList.toggle("active", idx === currentProtoSlide); });
-}
-
-function changeProtoSlide(direction){
-  currentProtoSlide += direction;
-  if(currentProtoSlide < 0) currentProtoSlide = protoSlides.length - 1;
-  if(currentProtoSlide >= protoSlides.length) currentProtoSlide = 0;
-  renderProtoSlide();
-}
-
-function setProtoSlide(index){
-  currentProtoSlide = index;
-  renderProtoSlide();
-}
-
-document.addEventListener("DOMContentLoaded", renderProtoSlide);
 </script>
 
 </body>
