@@ -290,7 +290,7 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
           <span class="meta-chip">TF-IDF clustering</span>
           <span class="meta-chip">python</span>
           <span class="meta-chip">streamlit</span>
-          <span class="meta-chip">usability feedback</span>
+          <span class="meta-chip">usability study</span>
         </div>
         <div class="hero-actions">
           <a class="btn demo" href="https://sora-review-workflow.streamlit.app/" target="_blank" rel="noopener noreferrer">UI Prototype Demo ↗</a>
@@ -416,6 +416,32 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
     <div class="quote-line">This project reframes review delay as an observability problem, not only a coordination problem.</div>
   </section>
 
+  <!-- METHOD -->
+  <section class="section-card green">
+    <div class="section-head">
+      <h2 class="section-title">🧠 Method</h2>
+      <span class="section-tag">synthetic data + prototype evaluation</span>
+    </div>
+    <div class="method-list">
+      <div class="method-item">
+        <h3>1. Dataset construction</h3>
+        <p>Created a synthetic review-workflow dataset (100 records) representing comment categories, review rounds, severity, turnaround time, reopening, reviewer role, and document type.</p>
+      </div>
+      <div class="method-item">
+        <h3>2. UI prototype implementation</h3>
+        <p>Built an interactive dashboard in Python/Streamlit with workflow summaries, revision heatmaps, a checklist assistant, a rule-based comment classifier, document-level journey tracing, and reviewer simulation.</p>
+      </div>
+      <div class="method-item">
+        <h3>3. AI extension</h3>
+        <p>Added TF-IDF-based similarity clustering for automatic repeated-issue detection, multi-factor revision burden scoring, and AI-generated pattern summaries — all designed as observability tools rather than decision-automation systems.</p>
+      </div>
+      <div class="method-item">
+        <h3>4. Lightweight usability feedback</h3>
+        <p>Conducted an informal prototype feedback session with six QA/QC-experienced users to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- PROTOTYPE -->
   <section class="section-card green">
     <div class="section-head">
@@ -477,36 +503,10 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
     </div>
   </section>
 
-  <!-- METHOD -->
-  <section class="section-card green">
-    <div class="section-head">
-      <h2 class="section-title">🧠 Method</h2>
-      <span class="section-tag">synthetic data + prototype evaluation</span>
-    </div>
-    <div class="method-list">
-      <div class="method-item">
-        <h3>1. Dataset construction</h3>
-        <p>Created a synthetic review-workflow dataset (100 records) representing comment categories, review rounds, severity, turnaround time, reopening, reviewer role, and document type.</p>
-      </div>
-      <div class="method-item">
-        <h3>2. UI prototype implementation</h3>
-        <p>Built an interactive dashboard in Python/Streamlit with workflow summaries, revision heatmaps, a checklist assistant, a rule-based comment classifier, document-level journey tracing, and reviewer simulation.</p>
-      </div>
-      <div class="method-item">
-        <h3>3. AI extension</h3>
-        <p>Added TF-IDF-based similarity clustering for automatic repeated-issue detection, multi-factor revision burden scoring, and AI-generated pattern summaries — all designed as observability tools rather than decision-automation systems.</p>
-      </div>
-      <div class="method-item">
-        <h3>4. Lightweight usability feedback</h3>
-        <p>Conducted an informal prototype feedback session with six QA/QC-experienced users to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- USABILITY -->
   <section class="section-card lilac">
     <div class="section-head">
-      <h2 class="section-title">👥 Usability feedback</h2>
+      <h2 class="section-title">🧪 Usability study</h2>
       <span class="section-tag">N = 6 · QA/QC-experienced</span>
     </div>
     <div class="grid-2">
@@ -576,7 +576,7 @@ html[data-theme="dark"] .demo-feature-item{ background:rgba(255,255,255,0.04); }
   <!-- PROJECT EXTENSION -->
   <section class="section-card sand">
     <div class="section-head">
-      <h2 class="section-title">📄 Project extension</h2>
+      <h2 class="section-title">📄 Paper in progress</h2>
       <span class="section-tag">portfolio direction</span>
     </div>
     <p>This project currently functions as a portfolio-facing HCI case study. Its main contribution is to show how review friction, comment burden, and revision loops can be made visible through a lightweight computational support prototype — and how AI can be applied as a pattern-detection layer rather than a decision-automation system.</p>
