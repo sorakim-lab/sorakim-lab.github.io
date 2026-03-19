@@ -4,20 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Projects — Sora Kim</title>
-
 <meta name="description" content="Projects by Sora Kim on Regulatory UX — how systems shape human judgment in compliance-constrained environments." />
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="Projects — Sora Kim">
 <meta property="og:description" content="Regulatory UX research: how procedural systems constrain and support human judgment in GMP environments.">
 <meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
 <meta property="og:url" content="https://sorakim-lab.github.io/projects.html">
 <meta property="og:site_name" content="Sora Kim">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg:#f5f5f7;
@@ -28,56 +24,30 @@
   --muted-strong:#4a4d56;
   --line:rgba(17,17,17,0.08);
   --line-strong:rgba(17,17,17,0.13);
-
-  --blue:#e8eefc;
-  --green:#ebf7f1;
-  --lilac:#f2edfc;
-  --sand:#f6f1e7;
-  --silver:#f3f4f8;
-
-  --blue-strong:#cddafb;
-  --green-strong:#cbeedb;
-  --lilac-strong:#ddd0fb;
-  --sand-strong:#ebdec0;
-  --silver-strong:#e1e5ef;
-
-  --radius-2xl:34px;
-  --radius-xl:28px;
-  --radius-lg:22px;
-  --radius-md:18px;
-
+  --blue:#e8eefc; --green:#ebf7f1; --lilac:#f2edfc; --sand:#f6f1e7; --silver:#f3f4f8;
+  --blue-strong:#cddafb; --green-strong:#cbeedb; --lilac-strong:#ddd0fb;
+  --sand-strong:#ebdec0; --silver-strong:#e1e5ef;
+  --radius-2xl:34px; --radius-xl:28px; --radius-lg:22px; --radius-md:18px;
   --shadow:0 18px 55px rgba(15,23,42,0.08);
   --shadow-soft:0 10px 28px rgba(15,23,42,0.05);
   --shadow-hover:0 28px 70px rgba(15,23,42,0.12);
-
   --mono:'JetBrains Mono', monospace;
 }
-
 html[data-theme="dark"]{
-  --text:#e2e4ea;
-  --muted:#7a7d8a;
-  --muted-strong:#a8aab8;
-  --line:rgba(255,255,255,0.07);
-  --line-strong:rgba(255,255,255,0.13);
+  --text:#e2e4ea; --muted:#7a7d8a; --muted-strong:#a8aab8;
+  --line:rgba(255,255,255,0.07); --line-strong:rgba(255,255,255,0.13);
   --panel:rgba(22,24,32,0.88);
   --shadow:0 18px 55px rgba(0,0,0,0.40);
   --shadow-soft:0 10px 28px rgba(0,0,0,0.28);
   --shadow-hover:0 28px 70px rgba(0,0,0,0.50);
-  --blue-strong:#2a3a6a;
-  --green-strong:#1a3a2a;
-  --lilac-strong:#3a2a5a;
-  --sand-strong:#3a2e1a;
-  --silver-strong:#2a2e3a;
+  --blue-strong:#2a3a6a; --green-strong:#1a3a2a; --lilac-strong:#3a2a5a;
+  --sand-strong:#3a2e1a; --silver-strong:#2a2e3a;
 }
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
+*{box-sizing:border-box} html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-  color:var(--text);
-  line-height:1.65;
+  color:var(--text); line-height:1.65;
   background:
     radial-gradient(circle at 10% 12%, rgba(255,255,255,0.98) 0, rgba(255,255,255,0.72) 15%, transparent 42%),
     radial-gradient(circle at 88% 12%, rgba(232,238,252,0.72) 0, transparent 28%),
@@ -86,7 +56,6 @@ body{
     linear-gradient(180deg, #f7f7f9 0%, #f1f2f6 100%);
   transition:background 0.3s ease, color 0.3s ease;
 }
-
 html[data-theme="dark"] body{
   background:
     radial-gradient(circle at 10% 12%, rgba(22,24,36,0.98) 0, transparent 42%),
@@ -95,105 +64,53 @@ html[data-theme="dark"] body{
     radial-gradient(circle at 24% 84%, rgba(14,28,22,0.30) 0, transparent 22%),
     linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
 }
-
 body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
+  content:""; position:fixed; inset:0; pointer-events:none;
+  background:linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0)),
     radial-gradient(circle at 50% 0%, rgba(255,255,255,0.20), transparent 40%);
 }
-html[data-theme="dark"] body::before{
-  background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0));
-}
+html[data-theme="dark"] body::before{ background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0)); }
 
 nav{
-  position:fixed;
-  top:18px;
-  right:18px;
-  z-index:60;
-  display:flex;
-  gap:8px;
-  padding:8px;
+  position:fixed; top:18px; right:18px; z-index:60;
+  display:flex; gap:8px; padding:8px;
   border:1px solid rgba(255,255,255,0.65);
   background:rgba(255,255,255,0.56);
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:999px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
-html[data-theme="dark"] nav{
-  background:rgba(18,20,28,0.85);
-  border-color:rgba(255,255,255,0.07);
-}
-
-nav a{
-  text-decoration:none;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:500;
-  padding:8px 12px;
-  border-radius:999px;
-  transition:all .22s ease;
-  white-space:nowrap;
-}
+html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
+nav a{ text-decoration:none; color:var(--muted); font-size:13px; font-weight:500; padding:8px 12px; border-radius:999px; transition:all .22s ease; white-space:nowrap; }
 nav a:hover{ color:var(--text); background:rgba(255,255,255,0.72); }
 html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
 nav a.active{ color:var(--text); background:rgba(255,255,255,0.86); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
 html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
 
 .theme-toggle{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  z-index:100;
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:20px;
-  transition:transform .2s ease, box-shadow .2s ease;
-  -webkit-tap-highlight-color:transparent;
-  outline:none;
+  position:fixed; bottom:24px; right:24px; z-index:100;
+  width:48px; height:48px; border-radius:50%;
+  border:1px solid var(--line); background:rgba(255,255,255,0.78);
+  backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:var(--shadow); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  font-size:20px; transition:transform .2s ease, box-shadow .2s ease;
+  -webkit-tap-highlight-color:transparent; outline:none;
 }
 html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
 .theme-toggle:hover{ transform:scale(1.1); box-shadow:var(--shadow-hover); }
 .theme-toggle:active{ transform:scale(0.95); }
 
-.wrap{
-  max-width:1320px;
-  margin:0 auto;
-  padding:112px 28px 92px;
-}
+.wrap{ max-width:1320px; margin:0 auto; padding:112px 28px 92px; }
 
-.hero,
-.note,
-.panel,
-.summary-card,
-.project-card{
-  border:1px solid var(--line);
-  background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%);
-  -webkit-backdrop-filter:blur(20px) saturate(150%);
+.hero,.note,.panel,.summary-card,.project-card{
+  border:1px solid var(--line); background:var(--panel);
+  backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%);
   box-shadow:var(--shadow);
 }
 
 .hero{
-  position:relative;
-  overflow:hidden;
-  border-radius:var(--radius-2xl);
-  padding:30px;
-  margin-bottom:18px;
+  position:relative; overflow:hidden; border-radius:var(--radius-2xl);
+  padding:30px; margin-bottom:18px;
   background:
     radial-gradient(circle at 82% 12%, rgba(232,238,252,0.65), transparent 26%),
     radial-gradient(circle at 12% 88%, rgba(242,237,252,0.42), transparent 24%),
@@ -205,72 +122,40 @@ html[data-theme="dark"] .hero{
     radial-gradient(circle at 12% 88%, rgba(24,16,40,0.42), transparent 24%),
     linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88));
 }
-
 .hero::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:54px;
+  content:""; position:absolute; inset:0 0 auto 0; height:54px;
   border-bottom:1px solid var(--line);
   background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
 }
-html[data-theme="dark"] .hero::before{
-  background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90));
-}
-
+html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
 .hero::after{
-  content:"";
-  position:absolute;
-  right:-120px;
-  top:-120px;
-  width:360px;
-  height:360px;
-  border-radius:50%;
+  content:""; position:absolute; right:-120px; top:-120px;
+  width:360px; height:360px; border-radius:50%;
   background:radial-gradient(circle, rgba(255,255,255,0.52), transparent 70%);
   pointer-events:none;
 }
 
 .window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
 .dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
-.dot:nth-child(1){background:#ff5f57}
-.dot:nth-child(2){background:#febc2e}
-.dot:nth-child(3){background:#28c840}
+.dot:nth-child(1){background:#ff5f57} .dot:nth-child(2){background:#febc2e} .dot:nth-child(3){background:#28c840}
 
 .hero-grid{
-  position:relative;
-  z-index:1;
-  margin-top:34px;
-  display:grid;
-  grid-template-columns:minmax(0,1.15fr) minmax(340px,0.85fr);
-  gap:22px;
-  align-items:start;
+  position:relative; z-index:1; margin-top:34px;
+  display:grid; grid-template-columns:minmax(0,1.15fr) minmax(340px,0.85fr);
+  gap:22px; align-items:start;
 }
-
 .hero-left{
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:28px 28px 26px;
-  background:rgba(255,255,255,0.44);
-  box-shadow:var(--shadow-soft);
+  border:1px solid var(--line); border-radius:30px; padding:28px 28px 26px;
+  background:rgba(255,255,255,0.44); box-shadow:var(--shadow-soft);
 }
-html[data-theme="dark"] .hero-left{
-  background:rgba(255,255,255,0.04);
-}
-
+html[data-theme="dark"] .hero-left{ background:rgba(255,255,255,0.04); }
 .hero-right{ display:grid; grid-template-columns:1fr; gap:12px; }
 .hero-right-bottom{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 
 .eyebrow,.section-tag,.panel-label,.meta-chip,.status-chip,.track-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:7px 11px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background:rgba(255,255,255,0.78);
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--muted);
+  display:inline-flex; align-items:center; gap:8px; padding:7px 11px;
+  border:1px solid var(--line); border-radius:999px;
+  background:rgba(255,255,255,0.78); font-family:var(--mono); font-size:11px; color:var(--muted);
   box-shadow:var(--shadow-soft);
 }
 html[data-theme="dark"] .eyebrow,
@@ -280,115 +165,68 @@ html[data-theme="dark"] .meta-chip,
 html[data-theme="dark"] .status-chip,
 html[data-theme="dark"] .track-chip{ background:rgba(255,255,255,0.06); }
 
-.track-chip.paper{background:rgba(242,237,252,0.9)}
-.track-chip.case{background:rgba(232,238,252,0.9)}
-.track-chip.prototype{background:rgba(235,247,241,0.9)}
-html[data-theme="dark"] .track-chip.paper{background:rgba(60,40,90,0.60)}
-html[data-theme="dark"] .track-chip.case{background:rgba(24,34,70,0.60)}
-html[data-theme="dark"] .track-chip.prototype{background:rgba(16,40,28,0.60)}
+.track-chip.paper{ background:rgba(242,237,252,0.9); }
+.track-chip.pilot{ background:rgba(232,238,252,0.9); }
+.track-chip.prototype{ background:rgba(235,247,241,0.9); }
+html[data-theme="dark"] .track-chip.paper{ background:rgba(60,40,90,0.60); }
+html[data-theme="dark"] .track-chip.pilot{ background:rgba(24,34,70,0.60); }
+html[data-theme="dark"] .track-chip.prototype{ background:rgba(16,40,28,0.60); }
 
 .h1,.section-title,.project-card h3,.note h2,.panel h2,.summary-card h2{
-  font-family:'Sora',sans-serif;
-  letter-spacing:-0.055em;
+  font-family:'Sora',sans-serif; letter-spacing:-0.055em;
 }
-
 .h1{ font-size:58px; line-height:0.95; margin:14px 0 14px; max-width:11ch; }
 .lead{ margin:0; max-width:760px; font-size:16px; color:rgba(29,29,31,0.86); }
 html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
 
 .hero-float{
-  margin-top:24px;
-  max-width:520px;
-  padding:16px 18px;
-  border-radius:24px;
+  margin-top:24px; max-width:520px; padding:16px 18px; border-radius:24px;
   border:1px solid var(--line);
   background:linear-gradient(180deg, rgba(255,255,255,0.93), rgba(248,249,252,0.86));
   box-shadow:var(--shadow-soft);
 }
-html[data-theme="dark"] .hero-float{
-  background:linear-gradient(180deg, rgba(26,28,40,0.93), rgba(20,22,34,0.86));
-}
-
-.hero-float strong{
-  display:block;
-  font-family:'Sora',sans-serif;
-  font-size:18px;
-  line-height:1.08;
-  letter-spacing:-0.04em;
-  margin-bottom:6px;
-}
-
+html[data-theme="dark"] .hero-float{ background:linear-gradient(180deg, rgba(26,28,40,0.93), rgba(20,22,34,0.86)); }
+.hero-float strong{ display:block; font-family:'Sora',sans-serif; font-size:18px; line-height:1.08; letter-spacing:-0.04em; margin-bottom:6px; }
 .hero-float span{ display:block; font-size:14px; color:#4b4e57; line-height:1.6; }
 html[data-theme="dark"] .hero-float span{ color:#9a9daa; }
 
 .note{
-  position:relative;
-  overflow:hidden;
-  border-radius:24px;
-  padding:18px;
+  position:relative; overflow:hidden; border-radius:24px; padding:18px;
   background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.88));
 }
-html[data-theme="dark"] .note{
-  background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88));
-}
-
-.note::before{
-  content:"";
-  position:absolute;
-  inset:0 0 auto 0;
-  height:4px;
-  background:linear-gradient(90deg, rgba(222,225,235,0.95), rgba(244,244,248,0.95));
-}
-
+html[data-theme="dark"] .note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
+.note::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg, rgba(222,225,235,0.95), rgba(244,244,248,0.95)); }
 .note.hero-note{ min-height:192px; display:flex; flex-direction:column; justify-content:center; }
-
 .note h2,.panel h2,.summary-card h2{ font-size:18px; line-height:1.08; margin:0 0 8px; }
 .note p,.panel p,.summary-card p{ margin:0; font-size:14px; color:#40434b; }
-html[data-theme="dark"] .note p,
-html[data-theme="dark"] .panel p,
-html[data-theme="dark"] .summary-card p{ color:#9a9daa; }
+html[data-theme="dark"] .note p, html[data-theme="dark"] .panel p, html[data-theme="dark"] .summary-card p{ color:#9a9daa; }
 
 .info-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:12px; }
 .stats-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:28px; }
 
 .panel{ position:relative; overflow:hidden; border-radius:22px; padding:18px; }
 .panel::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
-
 .panel.soft-blue{ background:linear-gradient(180deg, rgba(232,238,252,0.66), rgba(255,255,255,0.92)); }
 .panel.soft-blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
 .panel.soft-green{ background:linear-gradient(180deg, rgba(235,247,241,0.72), rgba(255,255,255,0.92)); }
 .panel.soft-green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
 .panel.soft-lilac{ background:linear-gradient(180deg, rgba(242,237,252,0.76), rgba(255,255,255,0.92)); }
 .panel.soft-lilac::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
-
 html[data-theme="dark"] .panel.soft-blue{ background:linear-gradient(180deg, rgba(18,26,52,0.66), rgba(22,24,34,0.92)); }
 html[data-theme="dark"] .panel.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.72), rgba(22,24,34,0.92)); }
 html[data-theme="dark"] .panel.soft-lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.76), rgba(22,24,34,0.92)); }
 
 .summary-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:24px;
-  padding:18px;
+  position:relative; overflow:hidden; border-radius:24px; padding:18px;
   background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,249,252,0.90));
 }
-html[data-theme="dark"] .summary-card{
-  background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.90));
-}
-
+html[data-theme="dark"] .summary-card{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.90)); }
 .summary-card::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
 .summary-card.blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
 .summary-card.green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
 .summary-card.lilac::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
 .summary-card.sand::before{ background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96)); }
-
-.summary-number{
-  font-family:'Sora',sans-serif;
-  font-size:36px;
-  line-height:1;
-  letter-spacing:-0.06em;
-  margin:10px 0 8px;
-}
+.summary-number{ font-family:'Sora',sans-serif; font-size:36px; line-height:1; letter-spacing:-0.06em; margin:10px 0 8px; }
 
 .section-head{ display:flex; justify-content:space-between; align-items:end; gap:16px; margin:0 0 18px; }
 .section-title{ font-size:32px; margin:8px 0 0; }
@@ -398,56 +236,46 @@ html[data-theme="dark"] .summary-card{
 .project-link{ text-decoration:none; color:inherit; display:block; }
 
 .project-card{
-  border-radius:30px;
-  padding:24px;
+  border-radius:30px; padding:24px;
   transition:transform .24s ease, border-color .24s ease, background .24s ease, box-shadow .24s ease;
-  position:relative;
-  overflow:hidden;
-  height:100%;
+  position:relative; overflow:hidden; height:100%;
 }
-
 .project-card::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; }
 .project-card::after{
-  content:"";
-  position:absolute;
-  right:-82px;
-  top:-82px;
-  width:240px;
-  height:240px;
-  border-radius:50%;
+  content:""; position:absolute; right:-82px; top:-82px;
+  width:240px; height:240px; border-radius:50%;
   background:radial-gradient(circle, rgba(255,255,255,0.48), transparent 70%);
-  pointer-events:none;
-  opacity:.95;
+  pointer-events:none; opacity:.95;
 }
-
 .project-card:hover{ transform:translateY(-6px); border-color:var(--line-strong); background:rgba(255,255,255,0.96); box-shadow:var(--shadow-hover); }
 html[data-theme="dark"] .project-card:hover{ background:rgba(30,32,44,0.96); }
 
-.project-card.visual{ background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93)); }
-.project-card.visual::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
+.project-card.soft-sand{ background:linear-gradient(180deg, rgba(246,241,231,0.9), rgba(255,255,255,0.93)); }
+.project-card.soft-sand::before{ background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96)); }
+.project-card.soft-silver{ background:linear-gradient(180deg, rgba(243,244,248,0.98), rgba(255,255,255,0.94)); }
+.project-card.soft-silver::before{ background:linear-gradient(90deg, var(--silver-strong), rgba(243,244,248,0.96)); }
+.project-card.soft-blue{ background:linear-gradient(180deg, rgba(232,238,252,0.68), rgba(255,255,255,0.93)); }
+.project-card.soft-blue::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
 .project-card.soft-green{ background:linear-gradient(180deg, rgba(235,247,241,0.76), rgba(255,255,255,0.93)); }
 .project-card.soft-green::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
 .project-card.soft-lilac{ background:linear-gradient(180deg, rgba(242,237,252,0.8), rgba(255,255,255,0.93)); }
 .project-card.soft-lilac::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
-.project-card.soft-silver{ background:linear-gradient(180deg, rgba(243,244,248,0.98), rgba(255,255,255,0.94)); }
-.project-card.soft-silver::before{ background:linear-gradient(90deg, var(--silver-strong), rgba(243,244,248,0.96)); }
-.project-card.soft-sand{ background:linear-gradient(180deg, rgba(246,241,231,0.9), rgba(255,255,255,0.93)); }
-.project-card.soft-sand::before{ background:linear-gradient(90deg, var(--sand-strong), rgba(246,241,231,0.96)); }
+.project-card.soft-sky{ background:linear-gradient(180deg, rgba(224,240,255,0.85), rgba(255,255,255,0.93)); }
+.project-card.soft-sky::before{ background:linear-gradient(90deg, #b8d8f8, rgba(224,240,255,0.96)); }
 
-html[data-theme="dark"] .project-card.visual{ background:linear-gradient(180deg, rgba(18,26,52,0.68), rgba(22,24,34,0.93)); }
+html[data-theme="dark"] .project-card.soft-sand{ background:linear-gradient(180deg, rgba(32,26,14,0.90), rgba(22,24,34,0.93)); }
+html[data-theme="dark"] .project-card.soft-silver{ background:linear-gradient(180deg, rgba(28,30,40,0.98), rgba(22,24,34,0.94)); }
+html[data-theme="dark"] .project-card.soft-blue{ background:linear-gradient(180deg, rgba(18,26,52,0.68), rgba(22,24,34,0.93)); }
 html[data-theme="dark"] .project-card.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.76), rgba(22,24,34,0.93)); }
 html[data-theme="dark"] .project-card.soft-lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.80), rgba(22,24,34,0.93)); }
-html[data-theme="dark"] .project-card.soft-silver{ background:linear-gradient(180deg, rgba(28,30,40,0.98), rgba(22,24,34,0.94)); }
-html[data-theme="dark"] .project-card.soft-sand{ background:linear-gradient(180deg, rgba(32,26,14,0.90), rgba(22,24,34,0.93)); }
+html[data-theme="dark"] .project-card.soft-sky{ background:linear-gradient(180deg, rgba(14,26,44,0.85), rgba(22,24,34,0.93)); }
 
 .project-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:14px; position:relative; z-index:1; }
-.project-card h3{ font-size:30px; line-height:1.03; margin:10px 0 10px; max-width:18ch; }
+.project-card h3{ font-size:28px; line-height:1.05; margin:10px 0 10px; max-width:18ch; }
 .project-card p{ font-size:15px; color:#40434b; margin:0 0 14px; }
 html[data-theme="dark"] .project-card p{ color:#9a9daa; }
-
 .project-meta{ display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 16px; position:relative; z-index:1; }
 .meta-chip{ padding:6px 10px; }
-
 .project-body{ display:grid; grid-template-columns:1fr; gap:14px; position:relative; z-index:1; }
 .project-body.two-col{ grid-template-columns:1fr 1fr; }
 .bullets{ margin:0; padding-left:18px; }
@@ -455,58 +283,24 @@ html[data-theme="dark"] .project-card p{ color:#9a9daa; }
 html[data-theme="dark"] .bullets li{ color:#9a9daa; }
 
 .card-block{
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:rgba(255,255,255,0.76);
-  padding:16px;
-  box-shadow:var(--shadow-soft);
+  border:1px solid var(--line); border-radius:20px;
+  background:rgba(255,255,255,0.76); padding:16px; box-shadow:var(--shadow-soft);
 }
 html[data-theme="dark"] .card-block{ background:rgba(255,255,255,0.04); }
-
 .card-block h4{ margin:0 0 8px; font-size:13px; color:var(--muted); font-family:var(--mono); font-weight:500; text-transform:uppercase; letter-spacing:0.04em; }
 .card-block p{ margin:0; color:#3f4148; font-size:14px; }
 html[data-theme="dark"] .card-block p{ color:#9a9daa; }
 
-/* AI layer block — subtle green accent, same card-block base */
-.card-block.ai-layer{
-  border-color:rgba(180,228,204,0.55);
-  background:rgba(235,247,241,0.60);
-}
-html[data-theme="dark"] .card-block.ai-layer{
-  border-color:rgba(26,58,42,0.55);
-  background:rgba(14,28,22,0.50);
-}
-.card-block.ai-layer h4{ color:#266644; }
-html[data-theme="dark"] .card-block.ai-layer h4{ color:#70c29a; }
-
-/* Section divider for supporting projects */
-.section-divider{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin:42px 0 24px;
-}
-.section-divider-line{
-  flex:1;
-  height:1px;
-  background:var(--line);
-}
+.section-divider{ display:flex; align-items:center; gap:14px; margin:48px 0 28px; }
+.section-divider-line{ flex:1; height:1px; background:var(--line); }
 
 .project-bottom{ margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; position:relative; z-index:1; }
 .project-signal{ display:flex; gap:8px; flex-wrap:wrap; }
-
 .project-arrow{
-  font-family:var(--mono);
-  font-size:12px;
-  color:var(--muted);
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,0.78);
-  box-shadow:var(--shadow-soft);
+  font-family:var(--mono); font-size:12px; color:var(--muted);
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 14px; border-radius:14px; border:1px solid var(--line);
+  background:rgba(255,255,255,0.78); box-shadow:var(--shadow-soft);
   transition:all .2s ease;
 }
 html[data-theme="dark"] .project-arrow{ background:rgba(255,255,255,0.06); }
@@ -524,14 +318,8 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
   .project-list{ grid-template-columns:1fr; }
   .project-body.two-col{ grid-template-columns:1fr; }
 }
-
 @media (max-width:860px){
-  nav{
-    top:12px; left:12px; right:12px;
-    justify-content:flex-start;
-    overflow-x:auto; gap:4px; padding:5px;
-    -ms-overflow-style:none; scrollbar-width:none;
-  }
+  nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
   nav::-webkit-scrollbar{ display:none; }
   nav a{ font-size:12px; padding:7px 10px; }
   .wrap{ padding:80px 16px 60px; }
@@ -539,11 +327,7 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
   .hero-left{ padding:22px 20px; }
   .h1{ font-size:38px; max-width:none; }
   .hero-float{ max-width:none; width:100%; }
-  .hero-right-bottom,.info-grid,.stats-grid,.section-head,.project-top,.project-bottom{
-    grid-template-columns:1fr;
-    flex-direction:column;
-    align-items:flex-start;
-  }
+  .hero-right-bottom,.info-grid,.stats-grid,.section-head,.project-top,.project-bottom{ grid-template-columns:1fr; flex-direction:column; align-items:flex-start; }
   .project-card h3{ font-size:24px; }
   .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
 }
@@ -561,156 +345,130 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
 </nav>
 
 <div class="wrap">
+
+  <!-- HERO -->
   <section class="hero">
     <div class="window-dots">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
     </div>
-
     <div class="hero-grid">
       <div class="hero-left">
         <span class="eyebrow">projects / regulatory UX / human judgment in regulated environments</span>
         <h1 class="h1">How systems shape human judgment.</h1>
         <p class="lead">
-          I study what I call <em>Regulatory UX</em> — the interaction experience of workers inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures organize navigation, cognition, and decision-making. These projects are the empirical ground for that argument.
+          I study what I call <em>Regulatory UX</em> — the interaction experience of workers inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures organize navigation, cognition, and decision-making. These six projects are the empirical ground for that argument.
         </p>
-
         <div class="hero-float">
-          <strong>The through-line across every project:</strong>
-          <span>In regulated environments, system design is not neutral. Document structure, workflow architecture, and AI integration all actively shape how workers search, reason, assign blame, and close investigations. Each project examines one angle of that constraint.</span>
+          <strong>Two research axes, one argument:</strong>
+          <span>How do GMP systems shape reasoning? (Investigation axis) — and how do they shape navigation? (Access axis.) Every project examines one angle of that constraint — and every design response holds the same condition: compliance-safe, external, non-invasive.</span>
         </div>
       </div>
-
       <div class="hero-right">
         <div class="note hero-note">
           <h2>Research statement</h2>
-          <p>
-            I study how regulatory systems shape human judgment — through document design, workflow structure, and investigation scaffolding — in compliance-constrained GMP environments. Three core projects anchor this argument. Supporting projects extend it into adjacent failure modes.
-          </p>
+          <p>I study how regulatory systems shape human judgment — through document design, workflow structure, and investigation scaffolding — in compliance-constrained GMP environments. Six projects examine this across two axes: how workers reason under investigation pressure, and how they navigate procedural document environments.</p>
         </div>
-
         <div class="hero-right-bottom">
           <div class="note">
-            <h2>Portfolio structure</h2>
-            <p>
-              Core projects: primary evidence for the Regulatory UX claim. Supporting projects: adjacent case studies on traceability, review interaction, and workflow observability.
-            </p>
-          </div>
-
-          <div class="note">
             <h2>Design condition</h2>
-            <p>
-              No validated source files are modified. All interventions are compliance-safe and external — support layers only.
-            </p>
+            <p>No validated source files are modified. All interventions are compliance-safe and external — support layers only.</p>
+          </div>
+          <div class="note">
+            <h2>Regulatory UX concept</h2>
+            <p>The umbrella framework connecting all six projects — currently being developed as a standalone concept paper.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- INFO PANELS -->
   <div class="info-grid">
     <div class="panel soft-blue">
       <div class="panel-label">research concept</div>
       <h2>Regulatory UX</h2>
       <p>The interaction experience of workers inside compliance-constrained systems — where procedural structure shapes navigation, interpretation, and decision-making.</p>
     </div>
-
     <div class="panel soft-green">
       <div class="panel-label">core claim</div>
       <h2>Constraint shapes cognition</h2>
       <p>Regulated document systems don't just store information. They determine how workers search, reason, assign blame, and close investigations.</p>
     </div>
-
     <div class="panel soft-lilac">
       <div class="panel-label">design direction</div>
       <h2>Expand, don't replace</h2>
-      <p>AI and design interventions should expand human reasoning space — not compress judgment into premature accountability convergence.</p>
+      <p>Design interventions should expand human reasoning and navigation space — not compress judgment into premature convergence.</p>
     </div>
   </div>
 
+  <!-- STATS -->
   <div class="stats-grid">
     <div class="summary-card blue">
-      <div class="panel-label">core projects</div>
-      <div class="summary-number">3</div>
-      <p>Primary case studies directly evidencing the Regulatory UX argument — reasoning scaffolding, cognitive navigation, and document accessibility.</p>
+      <div class="panel-label">HCI projects</div>
+      <div class="summary-number">6</div>
+      <p>Six empirical projects across two research axes — reasoning under investigation pressure, and navigation in GMP document environments.</p>
     </div>
-
     <div class="summary-card green">
-      <div class="panel-label">paper-track</div>
-      <div class="summary-number">4</div>
-      <p>Projects being extended into HCI papers on accessibility, workflow friction, reasoning scaffolds, and the Regulatory UX concept.</p>
+      <div class="panel-label">papers in progress</div>
+      <div class="summary-number">5</div>
+      <p>SOP accessibility, RCA reasoning, premature causal convergence, document navigation, and the Regulatory UX concept paper.</p>
     </div>
-
     <div class="summary-card lilac">
-      <div class="panel-label">supporting projects</div>
-      <div class="summary-number">3</div>
-      <p>Adjacent case studies on traceability, review interaction, and workflow observability in GMP compliance systems.</p>
+      <div class="panel-label">total participants</div>
+      <div class="summary-number">52</div>
+      <p>Across usability studies: N=12, N=15, N=17, N=6, N=5, N=5 — all GMP-experienced practitioners.</p>
     </div>
-
     <div class="summary-card sand">
-      <div class="panel-label">design condition</div>
-      <div class="summary-number">0</div>
-      <p>Direct modifications to validated source systems — all interventions remain compliance-safe and external.</p>
+      <div class="panel-label">adoption intent</div>
+      <div class="summary-number">100%</div>
+      <p>Across all usability studies, every participant indicated they would use the prototype in their actual work.</p>
     </div>
   </div>
 
-  <!-- ======= CORE PROJECTS ======= -->
+  <!-- ======= GROUP 1: REASONING & INVESTIGATION ======= -->
   <section>
     <div class="section-head">
       <div>
-        <span class="section-tag">core research · 3 projects</span>
-        <h2 class="section-title">Primary Evidence</h2>
-        <p class="section-sub">
-          These three projects form the empirical backbone of the Regulatory UX argument. Each addresses a distinct mechanism by which regulated systems constrain human judgment — causal reasoning, cognitive navigation, and information access.
-        </p>
+        <span class="section-tag">axis 01 · reasoning &amp; investigation</span>
+        <h2 class="section-title">How GMP systems shape causal reasoning</h2>
+        <p class="section-sub">These two projects examine how investigation workflows constrain reasoning — through closure pressure, premature convergence, and accountability structures that compress judgment before the causal picture is complete.</p>
       </div>
     </div>
 
     <div class="project-list">
 
-      <!-- CORE 01: RCA Reasoning Scaffolder — lead project -->
+      <!-- RCA Reasoning Scaffolder -->
       <a class="project-link" href="project-rca-reasoning-scaffolder.html">
-        <article class="project-card soft-sand" id="project-rca">
+        <article class="project-card soft-sand">
           <div class="project-top">
             <div>
-              <div class="panel-label">core project 01 · lead</div>
+              <div class="panel-label">reasoning · 01</div>
               <h3>RCA Reasoning Scaffolder</h3>
             </div>
             <div class="project-signal">
-              <span class="status-chip">decision support</span>
+              <span class="status-chip">N = 15</span>
               <span class="track-chip paper">paper-track</span>
             </div>
           </div>
-          <p>A reasoning-support system for root cause investigations, designed to keep causal hypotheses open — countering the structural pressure toward premature blame attribution that existing documentation systems produce.</p>
+          <p>A human-centered scaffold for root cause analysis, designed to keep causal hypotheses open and resist the structural pressure toward premature accountability convergence that GMP investigation workflows produce.</p>
           <div class="project-meta">
             <span class="meta-chip">reasoning design</span>
             <span class="meta-chip">causal mapping</span>
-            <span class="meta-chip">investigation support</span>
-            <span class="meta-chip">blame language analysis</span>
-            <span class="meta-chip">qualitative evaluation</span>
-            <span class="meta-chip">human-centered systems</span>
+            <span class="meta-chip">PAC counter-design</span>
+            <span class="meta-chip">streamlit</span>
+            <span class="meta-chip">python</span>
           </div>
           <div class="project-body two-col">
             <div class="card-block">
               <h4>The problem</h4>
               <ul class="bullets">
-                <li>RCA narratives converge on single causes and individual responsibility — not because evidence demands it, but because document structure does.</li>
-                <li>"Operator error" language appears at disproportionate rates, closing off systemic explanations before they are explored.</li>
-                <li>Investigators lack an external layer for maintaining and comparing alternative causal hypotheses.</li>
+                <li>Root cause analysis (RCA) narratives in pharmaceutical quality investigations converge on individual blame — not because evidence demands it, but because document structure and closure pressure do.</li>
+                <li>Investigators lack a layer for maintaining and comparing alternative causal hypotheses before committing to formal documentation.</li>
               </ul>
             </div>
             <div class="card-block">
-              <h4>Design response</h4>
-              <p>A scaffold using causal diagrams, structured prompts, and hypothesis branching to support broader causal exploration. AI is positioned not to answer, but to expand the reasoning space investigators can work within — the direct design counterargument to premature accountability convergence.</p>
-            </div>
-            <div class="card-block ai-layer">
-              <h4>AI layer · in development</h4>
-              <p><strong>Without AI:</strong> Static scaffold — causal diagram templates, structured prompts, hypothesis branching worksheets.<br><br><strong>With AI:</strong> Dynamic reasoning partner that flags premature closure, surfaces alternative causal pathways, and detects blame-convergent language in real time.</p>
-            </div>
-            <div class="card-block">
-              <h4>Theoretical grounding</h4>
-              <p>Directly instantiates the PAC framework (Premature Accountability Convergence) — examining what happens when AI is designed to expand interpretive space rather than stabilize responsibility. Connects to Karen Levy's research on algorithmic accountability and worker judgment.</p>
+              <h4>Results</h4>
+              <p>N=15. 80% of participants increased causal breadth. All 5 who initially attributed causes to individual error revised toward systemic factors. 15/15 reported no premature accountability convergence after using the scaffold.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -719,91 +477,37 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
         </article>
       </a>
 
-      <!-- CORE 02: Cognitive Pathways -->
-      <a class="project-link" href="project-cognitive-pathways.html">
-        <article class="project-card soft-silver" id="project-cognitive">
+      <!-- Premature Causal Convergence -->
+      <a class="project-link" href="project-premature-causal-convergence.html">
+        <article class="project-card soft-silver">
           <div class="project-top">
             <div>
-              <div class="panel-label">core project 02</div>
-              <h3>Cognitive Pathways in Regulated Work Environments</h3>
+              <div class="panel-label">reasoning · 02</div>
+              <h3>Premature Causal Convergence in RCA</h3>
             </div>
             <div class="project-signal">
-              <span class="status-chip">cognition</span>
-              <span class="track-chip case">case study</span>
-            </div>
-          </div>
-          <p>A project mapping how workers actually navigate procedural environments — revealing where formal workflow structure diverges from real cognitive pathways, and where that divergence produces friction, error, and invisible workarounds.</p>
-          <div class="project-meta">
-            <span class="meta-chip">cognitive HCI</span>
-            <span class="meta-chip">decision traceability</span>
-            <span class="meta-chip">field observation</span>
-            <span class="meta-chip">interviews</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">network analysis</span>
-          </div>
-          <div class="project-body">
-            <div class="card-block">
-              <h4>The problem</h4>
-              <ul class="bullets">
-                <li>Procedural order rarely matches actual reasoning order — workers loop, revisit, and reinterpret steps under time and audit pressure.</li>
-                <li>Implicit decision-making is invisible to the system; only formal outputs are recorded, not how they were reached.</li>
-                <li>Bottlenecks cluster around cross-references, terminology ambiguity, and validation anxiety — not task complexity.</li>
-              </ul>
-            </div>
-            <div class="card-block">
-              <h4>Design response</h4>
-              <p>Observation, interviews, activity logging, and computational path visualization combined to surface where procedural structure conflicts with real cognitive navigation — and where targeted design interventions could reduce friction without compromising compliance integrity.</p>
-            </div>
-            <div class="card-block ai-layer">
-              <h4>AI layer · in development</h4>
-              <p><strong>Without AI:</strong> Cognitive pathway maps showing divergence between formal and actual reasoning sequences.<br><br><strong>With AI:</strong> Adaptive guidance that detects navigation friction in real time and surfaces relevant procedural context at decision points — reducing lookup burden without modifying validated files.</p>
-            </div>
-          </div>
-          <div class="project-bottom">
-            <div class="project-arrow">open case study ↗</div>
-          </div>
-        </article>
-      </a>
-
-      <!-- CORE 03: SOP Accessibility -->
-      <a class="project-link" href="project-sop-accessibility.html">
-        <article class="project-card visual" id="project-sop">
-          <div class="project-top">
-            <div>
-              <div class="panel-label">core project 03</div>
-              <h3>Enhancing SOP Accessibility in GMP Environments</h3>
-            </div>
-            <div class="project-signal">
-              <span class="status-chip">accessibility</span>
+              <span class="status-chip">N = 5</span>
               <span class="track-chip paper">paper-track</span>
             </div>
           </div>
-          <p>A human-centered document UX project improving retrievability in scanned SOP archives — demonstrating that usability improvements can emerge through external support layers without modifying validated source files.</p>
+          <p>A pilot study showing that pharmaceutical QC practitioners universally begin out-of-specification (OOS) deviation analysis with a single cause — and that closure pressure in investigation workflows truncates reasoning before systemic factors can surface.</p>
           <div class="project-meta">
-            <span class="meta-chip">document UX</span>
-            <span class="meta-chip">information architecture</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">R</span>
-            <span class="meta-chip">usability testing · N=12</span>
+            <span class="meta-chip">premature causal convergence</span>
+            <span class="meta-chip">closure pressure</span>
+            <span class="meta-chip">pilot study</span>
+            <span class="meta-chip">time-based observation</span>
           </div>
-          <div class="project-body">
+          <div class="project-body two-col">
             <div class="card-block">
               <h4>The problem</h4>
               <ul class="bullets">
-                <li>Scanned SOP PDFs were unsearchable and unlinked — analysts relied on manual scrolling and ambiguous file titles.</li>
-                <li>Retrieval delays averaged 6–7 minutes, compressing the cognitive resources available for actual compliance judgment.</li>
-                <li>Information access failure is a judgment failure: analysts who cannot find the right procedure cannot apply it correctly.</li>
+                <li>In pharmaceutical quality practice, investigators spend less than 10 minutes on initial causal analysis before documentation begins — not by choice, but because investigation timelines structurally demand early closure.</li>
+                <li>Single-cause convergence at the outset is universal across practitioners, regardless of what type of cause they identify.</li>
               </ul>
             </div>
             <div class="card-block">
-              <h4>Outcome</h4>
-              <p>Searchable metadata layer built for approximately 500 SOPs. Retrieval time reduced from ~6–7 minutes to ~1–2 minutes. N=12 usability study confirmed accessibility gains with full GMP compliance preserved. Deployed at sora-sop-demo.streamlit.app.</p>
-            </div>
-            <div class="card-block ai-layer">
-              <h4>AI layer · in development</h4>
-              <p><strong>Without AI:</strong> Keyword-based metadata search and structured retrieval layer over validated SOP archive.<br><br><strong>With AI:</strong> Semantic search and contextual document surfacing — retrieving not just the queried SOP, but related procedures, applicable deviations, and cross-referenced records.</p>
+              <h4>Results</h4>
+              <p>N=5. 5/5 began with a single cause. 5/5 revised and expanded their causal model within 10 minutes when given time — confirming that the problem is structural, not cognitive.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -815,61 +519,57 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
     </div>
   </section>
 
-  <!-- ======= SUPPORTING PROJECTS DIVIDER ======= -->
+  <!-- ======= SECTION DIVIDER ======= -->
   <div class="section-divider">
     <div class="section-divider-line"></div>
-    <span class="section-tag">supporting projects · 3 projects</span>
+    <span class="section-tag">axis 02 · navigation &amp; access</span>
     <div class="section-divider-line"></div>
   </div>
 
-  <!-- ======= SUPPORTING PROJECTS ======= -->
+  <!-- ======= GROUP 2: NAVIGATION & ACCESS ======= -->
   <section>
     <div class="section-head">
       <div>
-        <span class="section-tag">extended case studies</span>
-        <h2 class="section-title">Adjacent Problems</h2>
-        <p class="section-sub">
-          These projects extend the Regulatory UX argument into traceability, review interaction, and workflow observability — adjacent failure modes within compliance-constrained GMP environments.
-        </p>
+        <span class="section-tag">axis 02 · navigation &amp; access</span>
+        <h2 class="section-title">How GMP systems shape document navigation</h2>
+        <p class="section-sub">These four projects examine how procedural document environments constrain access, navigation, and review — through unsearchable archives, fragmented cross-references, opaque review cycles, and invisible navigation friction.</p>
       </div>
     </div>
 
     <div class="project-list">
 
-      <!-- SUPPORTING 01: Review Interaction -->
-      <a class="project-link" href="project-review-interaction.html">
-        <article class="project-card soft-green" id="project-review">
+      <!-- SOP Accessibility -->
+      <a class="project-link" href="project-sop-accessibility.html">
+        <article class="project-card soft-blue">
           <div class="project-top">
             <div>
-              <div class="panel-label">supporting project 01</div>
-              <h3>Human-Centered Review Interaction in Deviation &amp; CAPA Management</h3>
+              <div class="panel-label">navigation · 01</div>
+              <h3>SOP Accessibility in GMP Environments</h3>
             </div>
             <div class="project-signal">
-              <span class="status-chip">interaction</span>
+              <span class="status-chip">N = 12</span>
               <span class="track-chip paper">paper-track</span>
             </div>
           </div>
-          <p>A workflow interaction project focused on review clarity, feedback consistency, and turnaround time in validated deviation–CAPA documentation systems.</p>
+          <p>A human-centered document UX project improving retrievability across scanned standard operating procedure (SOP) archives in a pharmaceutical quality control lab — demonstrating that usability gains can emerge through external support layers without modifying validated source files.</p>
           <div class="project-meta">
-            <span class="meta-chip">workflow UX</span>
-            <span class="meta-chip">review interaction</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python-ready</span>
-            <span class="meta-chip">survey design</span>
-            <span class="meta-chip">latency mapping</span>
+            <span class="meta-chip">document UX</span>
+            <span class="meta-chip">information retrieval</span>
+            <span class="meta-chip">streamlit</span>
+            <span class="meta-chip">python</span>
+            <span class="meta-chip">usability study</span>
           </div>
-          <div class="project-body">
+          <div class="project-body two-col">
             <div class="card-block">
-              <h4>What it addressed</h4>
+              <h4>The problem</h4>
               <ul class="bullets">
-                <li>Different QA reviewers applied inconsistent feedback styles, creating unpredictable revision burdens.</li>
-                <li>Redundant identifier entry created friction during revision loops.</li>
-                <li>Small clarifications still triggered multi-day review delays.</li>
+                <li>Scanned procedure documents (SOPs) were stored as unsearchable PDFs — QC analysts spent 6–7 minutes per document retrieval using manual scrolling through hundreds of files.</li>
+                <li>Access failure is a judgment failure: workers who cannot find the right procedure at the right moment cannot apply it correctly.</li>
               </ul>
             </div>
             <div class="card-block">
-              <h4>Outcome</h4>
-              <p>Review interaction framework using latency mapping, reviewer checklists, heatmaps, and usability-oriented workflow analysis to improve clarity while preserving validation integrity.</p>
+              <h4>Results</h4>
+              <p>N=12. Retrieval time reduced from ~6–7 min to ~1–2 min. 4.83/5 usability. 100% adoption intent. Deployed at sora-sop-demo.streamlit.app.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -878,39 +578,38 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
         </article>
       </a>
 
-      <!-- SUPPORTING 02: Cross-Reference -->
+      <!-- Cross-Reference -->
       <a class="project-link" href="project-cross-reference.html">
-        <article class="project-card soft-lilac" id="project-xref">
+        <article class="project-card soft-lilac">
           <div class="project-top">
             <div>
-              <div class="panel-label">supporting project 02</div>
-              <h3>Human-Centered Cross-Reference System for GMP Documentation</h3>
+              <div class="panel-label">navigation · 02</div>
+              <h3>Cross-Reference System for GMP Documentation</h3>
             </div>
             <div class="project-signal">
-              <span class="status-chip">traceability</span>
-              <span class="track-chip case">case study</span>
+              <span class="status-chip">N = 17</span>
+              <span class="track-chip paper">paper-track</span>
             </div>
           </div>
-          <p>A metadata-driven cross-reference system improving document traceability and reducing cognitive load across deviation, CAPA, and related GMP records.</p>
+          <p>A metadata-driven cross-reference system improving document traceability and reducing cognitive load across deviation reports, corrective and preventive action (CAPA) records, change controls, and related pharmaceutical quality documentation.</p>
           <div class="project-meta">
             <span class="meta-chip">traceability</span>
             <span class="meta-chip">metadata mapping</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">R</span>
-            <span class="meta-chip">workflow visualization</span>
+            <span class="meta-chip">streamlit</span>
+            <span class="meta-chip">python</span>
+            <span class="meta-chip">network analysis</span>
           </div>
-          <div class="project-body">
+          <div class="project-body two-col">
             <div class="card-block">
-              <h4>What it addressed</h4>
+              <h4>The problem</h4>
               <ul class="bullets">
-                <li>Validated files could not be automatically interlinked — users manually cross-referenced IDs, status, and closure records.</li>
-                <li>Version inconsistency and lookup burden weakened inspection readiness.</li>
+                <li>Validated quality records (deviation reports, CAPAs, change controls) could not be automatically interlinked — practitioners manually cross-referenced record IDs across fragmented systems.</li>
+                <li>Version inconsistency and lookup burden weakened both daily work and regulatory inspection readiness.</li>
               </ul>
             </div>
             <div class="card-block">
-              <h4>Outcome</h4>
-              <p>External cross-reference matrix plus computational linkage analysis, enabling faster tracking and lower version-error risk without modifying validated systems.</p>
+              <h4>Results</h4>
+              <p>N=17. Task completion time reduced 30–60%. Documents discovered per session increased 2–3×. Path completion rate up from 30–50% to 70–90%. 17/17 adoption intent.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -919,39 +618,78 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
         </article>
       </a>
 
-      <!-- SUPPORTING 03: Feedback Dashboard -->
-      <a class="project-link" href="project-feedback-dashboard.html">
-        <article class="project-card visual" id="project-dashboard">
+      <!-- Cognitive Navigation Explorer -->
+      <a class="project-link" href="project-cognitive-navigation-explorer.html">
+        <article class="project-card soft-green">
           <div class="project-top">
             <div>
-              <div class="panel-label">supporting project 03</div>
-              <h3>Smart Feedback &amp; Review Dashboard</h3>
+              <div class="panel-label">navigation · 03</div>
+              <h3>Cognitive Navigation Explorer</h3>
             </div>
             <div class="project-signal">
-              <span class="status-chip">analytics</span>
+              <span class="status-chip">N = 5</span>
               <span class="track-chip prototype">prototype study</span>
             </div>
           </div>
-          <p>A compliance-safe workflow observability project visualizing reviewer workload, latency, and bottlenecks using existing documentation metadata.</p>
+          <p>A behavioral tracking prototype that records how GMP practitioners navigate procedural documents — capturing loopbacks, cross-reference jumps, and hesitation patterns as structured data.</p>
           <div class="project-meta">
-            <span class="meta-chip">workflow observability</span>
-            <span class="meta-chip">dashboard</span>
-            <span class="meta-chip">Excel</span>
-            <span class="meta-chip">Python</span>
-            <span class="meta-chip">R</span>
-            <span class="meta-chip">latency analysis</span>
+            <span class="meta-chip">document navigation</span>
+            <span class="meta-chip">loopback tracking</span>
+            <span class="meta-chip">behavioral data</span>
+            <span class="meta-chip">streamlit</span>
+            <span class="meta-chip">python</span>
           </div>
-          <div class="project-body">
+          <div class="project-body two-col">
             <div class="card-block">
-              <h4>What it addressed</h4>
+              <h4>The problem</h4>
               <ul class="bullets">
-                <li>Review cycles were opaque and discussed only informally — workload imbalance and delay accumulation were hard to detect early.</li>
-                <li>Teams lacked a shared visual layer for workflow interpretation and coordination.</li>
+                <li>Navigation friction in pharmaceutical procedural documentation is invisible — when practitioners loop back or hesitate between documents, that behavior leaves no trace in current quality systems.</li>
+                <li>Without behavioral data, it is impossible to distinguish interface usability problems from document structure problems.</li>
               </ul>
             </div>
             <div class="card-block">
-              <h4>Outcome</h4>
-              <p>Observability dashboard built from timestamps and reviewer metadata, enabling earlier bottleneck recognition and more transparent coordination without touching validated templates.</p>
+              <h4>Results</h4>
+              <p>N=5. 5/5 exhibited loopback behavior. 5.0/5 usability across all dimensions. Less experienced practitioners identified standard operating procedure (SOP) structure — not the interface — as the source of navigation confusion. 100% adoption intent.</p>
+            </div>
+          </div>
+          <div class="project-bottom">
+            <div class="project-arrow">open case study ↗</div>
+          </div>
+        </article>
+      </a>
+
+      <!-- Smart Feedback & Review Dashboard -->
+      <a class="project-link" href="project-feedback-dashboard.html">
+        <article class="project-card soft-sky">
+          <div class="project-top">
+            <div>
+              <div class="panel-label">navigation · 04</div>
+              <h3>Smart Feedback &amp; Review Dashboard</h3>
+            </div>
+            <div class="project-signal">
+              <span class="status-chip">N = 6</span>
+              <span class="track-chip prototype">prototype study</span>
+            </div>
+          </div>
+          <p>A compliance-safe workflow observability prototype visualizing reviewer workload, feedback patterns, and latency bottlenecks in deviation–CAPA (corrective and preventive action) review cycles — built from existing documentation metadata without modifying validated templates.</p>
+          <div class="project-meta">
+            <span class="meta-chip">workflow observability</span>
+            <span class="meta-chip">review interaction</span>
+            <span class="meta-chip">latency analysis</span>
+            <span class="meta-chip">streamlit</span>
+            <span class="meta-chip">python</span>
+          </div>
+          <div class="project-body two-col">
+            <div class="card-block">
+              <h4>The problem</h4>
+              <ul class="bullets">
+                <li>Quality review cycles (deviation reports → QA review → CAPA closure) were opaque — workload imbalance, delay accumulation, and inconsistent reviewer feedback were invisible to both reviewers and submitters.</li>
+                <li>Teams lacked a shared visual layer for workflow coordination and bottleneck detection.</li>
+              </ul>
+            </div>
+            <div class="card-block">
+              <h4>Results</h4>
+              <p>N=6 (5 GMP-experienced, 1 non-GMP). All participants expressed clear intent to adopt the tool after reviewing the prototype interface.</p>
             </div>
           </div>
           <div class="project-bottom">
@@ -966,10 +704,7 @@ html[data-theme="dark"] .project-link:hover .project-arrow{ background:rgba(255,
   <div class="footer">
     Independent researcher · Regulatory UX — human judgment in compliance-constrained systems · GMP environments · HCI
   </div>
-
-  <div class="credit-note">
-    © 2026 Sora Kim.
-  </div>
+  <div class="credit-note">© 2026 Sora Kim.</div>
 </div>
 
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
