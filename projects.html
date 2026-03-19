@@ -141,7 +141,7 @@ html[data-theme="dark"] .hero::before{ background:linear-gradient(180deg, rgba(2
 
 .hero-grid{
   position:relative; z-index:1; margin-top:34px;
-  display:grid; grid-template-columns:minmax(0,1.15fr) minmax(340px,0.85fr);
+  display:grid; grid-template-columns:1fr 1fr;
   gap:22px; align-items:start;
 }
 .hero-left{
@@ -197,6 +197,15 @@ html[data-theme="dark"] .hero-float span{ color:#9a9daa; }
 html[data-theme="dark"] .note{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
 .note::before{ content:""; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg, rgba(222,225,235,0.95), rgba(244,244,248,0.95)); }
 .note.hero-note{ min-height:192px; display:flex; flex-direction:column; justify-content:center; }
+.note.soft-blue-note{ background:linear-gradient(180deg, rgba(232,238,252,0.72), rgba(255,255,255,0.92)); }
+.note.soft-blue-note::before{ background:linear-gradient(90deg, var(--blue-strong), rgba(232,238,252,0.96)); }
+.note.soft-green-note{ background:linear-gradient(180deg, rgba(235,247,241,0.78), rgba(255,255,255,0.92)); }
+.note.soft-green-note::before{ background:linear-gradient(90deg, var(--green-strong), rgba(235,247,241,0.96)); }
+.note.soft-lilac-note{ background:linear-gradient(180deg, rgba(242,237,252,0.80), rgba(255,255,255,0.92)); }
+.note.soft-lilac-note::before{ background:linear-gradient(90deg, var(--lilac-strong), rgba(242,237,252,0.96)); }
+html[data-theme="dark"] .note.soft-blue-note{ background:linear-gradient(180deg, rgba(18,26,52,0.70), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .note.soft-green-note{ background:linear-gradient(180deg, rgba(14,28,22,0.70), rgba(22,24,34,0.92)); }
+html[data-theme="dark"] .note.soft-lilac-note{ background:linear-gradient(180deg, rgba(26,18,44,0.70), rgba(22,24,34,0.92)); }
 .note h2,.panel h2,.summary-card h2{ font-size:18px; line-height:1.08; margin:0 0 8px; }
 .note p,.panel p,.summary-card p{ margin:0; font-size:14px; color:#40434b; }
 html[data-theme="dark"] .note p, html[data-theme="dark"] .panel p, html[data-theme="dark"] .summary-card p{ color:#9a9daa; }
