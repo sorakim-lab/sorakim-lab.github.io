@@ -144,7 +144,7 @@ nav {
 .paper-grid { display: grid; grid-template-columns: 1fr 1fr; border: var(--pixel-border); }
 .paper-card { padding: 18px; border-right: var(--pixel-border); border-bottom: var(--pixel-border); transition: background 0.1s; }
 .paper-card:nth-child(2n) { border-right: none; }
-.paper-card:nth-child(5) { grid-column: 1 / -1; border-right: none; border-bottom: none; background: var(--bg2); }
+.paper-card:nth-child(5) { grid-column: 1 / -1; border-right: none; border-bottom: none; border-top: var(--pixel-border); background: var(--bg2); }
 .paper-card:nth-child(3), .paper-card:nth-child(4) { border-bottom: none; }
 .paper-card:hover { background: var(--bg2); }
 .paper-card:nth-child(5):hover { background: var(--text); color: var(--bg); }
@@ -167,18 +167,32 @@ nav {
   .hero-title { font-size: 38px; }
   .proj-grid { grid-template-columns: 1fr; }
   .proj-card { border-right: none; border-bottom: var(--pixel-border); }
+  .proj-card:last-child { border-bottom: none; }
   .paper-grid { grid-template-columns: 1fr; }
-  .paper-card { border-right: none; }
+  .paper-card { border-right: none; border-bottom: var(--pixel-border); }
+  .paper-card:last-child { border-bottom: none; }
+  .paper-card:nth-child(5) { border-bottom: none; }
   .axis-row { grid-template-columns: 1fr; }
   .axis { border-right: none; border-bottom: var(--pixel-border); }
   .axis:last-child { border-bottom: none; }
+  .stat-row { flex-wrap: wrap; }
+  .stat { min-width: 50%; border-bottom: var(--pixel-border); }
 }
 @media(max-width:600px){
-  .nav-links a { padding: 0 8px; font-size: 11px; }
+  nav { padding: 0 12px; overflow-x: auto; }
+  .nav-links { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { padding: 0 10px; font-size: 11px; white-space: nowrap; }
   .wrap { padding: 64px 12px 60px; }
-  .hero-right { padding: 18px; }
-  .hero-title { font-size: 30px; }
+  .hero-right { padding: 16px; }
+  .hero-left { padding: 18px; }
+  .hero-title { font-size: 26px; }
   .stat-row { flex-wrap: wrap; }
+  .stat { min-width: 50%; }
+  .code-block { font-size: 10px; }
+  .px-row svg { width: 36px !important; height: 36px !important; }
+  .footer { flex-direction: column; gap: 4px; }
+  .sec-head { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
 </head>
@@ -413,9 +427,19 @@ nav {
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var btn = document.getElementById('themeToggle');
   var html = document.documentElement;
   var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefe
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(saved === 'dark' || (!saved && prefersDark)) html.setAttribute('data-theme','dark');
+  btn.addEventListener('click', function(){
+    var dark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem('theme', dark ? 'light' : 'dark');
+  });
+})();
+</script>
+</body>
+</html>
