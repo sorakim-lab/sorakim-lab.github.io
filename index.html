@@ -182,15 +182,17 @@ nav {
 .eyebrow::before { content:'▸'; font-size:9px; color:var(--amber) }
 .hero-h {
   font-size:44px; font-weight:600;
-  letter-spacing:-.04em; line-height:1.07;
+  letter-spacing:-.04em; line-height:1.12;
 }
 .hero-h .dim { color:var(--muted) }
 .lede {
   font-size:13.5px; color:var(--muted);
-  line-height:1.84; max-width:520px;
+  line-height:1.84; max-width:560px;
   border-left:2px solid var(--amber);
   padding-left:16px;
 }
+.lede p { margin:0 }
+.lede p + p { margin-top:1em }
 
 /* ── STATS ────────────────────────────────────────────── */
 .stats {
@@ -393,16 +395,16 @@ nav {
         I study how regulated systems<br>
         <span class="dim">shape human judgment.</span>
       </h1>
-      <p class="lede">
-        In pilot and task-based studies (N=52) across pharmaceutical QC and
+      <div class="lede">
+        <p>In pilot and task-based studies (N=52) across pharmaceutical QC and
         regulated work settings, I examine how procedural systems constrain
         causal reasoning under time and interface pressure — combining usability
-        testing, behavioral trace analysis, and prototype interventions. In one
-        pilot study, all five investigators initially converged on a single cause,
+        testing, behavioral trace analysis, and prototype interventions.</p>
+        <p>In one pilot study, all five investigators initially converged on a single cause,
         revising toward systemic explanations only when given structured time and
         support, highlighting how design can expand reasoning pathways and make
-        alternative explanations visible.
-      </p>
+        alternative explanations visible.</p>
+      </div>
       <div class="stats">
         <div class="stat">
           <span class="stat-n">6</span>
@@ -431,7 +433,7 @@ nav {
         <article class="proj-card">
           <div class="proj-num">// featured_01</div>
           <div class="proj-title">SOP Accessibility System</div>
-          <p class="proj-desc">A retrieval-focused interface for navigating procedural documents. Evaluated through task-based experiments (N=12), showing reduced retrieval time (6–7 min → 1–2 min) and changes in navigation behavior under constrained search conditions.</p>
+          <p class="proj-desc">A retrieval-focused interface for navigating procedural documents. Evaluated in task-based experiments (N=12), showing reduced retrieval time (6–7 min → 1–2 min) and changes in navigation behavior under constrained search conditions.</p>
           <div class="tags">
             <span class="tag">document UX</span>
             <span class="tag">retrieval</span>
