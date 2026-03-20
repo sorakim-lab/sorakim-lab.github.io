@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <title>Premature Causal Convergence · Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="A pilot study examining how GMP practitioners rapidly converge on a single causal explanation before formal RCA begins — and what closure pressure does to investigation reasoning." />
+<meta name="description" content="Premature Causal Convergence in RCA — an HCI case study on early-stage investigation reasoning under closure pressure in regulated environments." />
 
 <link rel="icon" href="./assets/favicon-light.png">
 <link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
@@ -23,6 +23,7 @@
   --muted: #626872;
   --muted2: #8a9099;
   --accent: #1a1a1a;
+  --accent-light: #f0f0ee;
   --pixel-border: 2px solid #111214;
   --mono: 'JetBrains Mono', monospace;
   --sans: 'Inter', sans-serif;
@@ -35,238 +36,521 @@ html[data-theme="dark"] {
   --muted: #98a1ad;
   --muted2: #7d8794;
   --accent: #e0e0e0;
+  --accent-light: #232833;
   --pixel-border: 2px solid #f2f4f7;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--bg); color: var(--text);
-  font-family: var(--sans); min-height: 100vh;
-  transition: background 0.3s, color 0.3s; line-height: 1.7;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  line-height: 1.7;
 }
 a { color: inherit; }
 ::selection { background: var(--text); color: var(--bg); }
 
 #progress-bar {
-  position: fixed; top: 0; left: 0;
-  height: 3px; background: #8B7355;
-  width: 0%; z-index: 200; transition: width 0.1s linear;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #8B7355;
+  width: 0%;
+  z-index: 200;
+  transition: width 0.1s linear;
 }
 
 .top-nav {
-  position: fixed; top: 3px; left: 0; right: 0;
-  z-index: 100; border-bottom: var(--pixel-border);
-  background: var(--bg); display: flex;
-  align-items: center; justify-content: space-between;
-  padding: 0 24px; height: 48px; transition: background 0.3s;
+  position: fixed;
+  top: 3px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: var(--pixel-border);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 48px;
+  transition: background 0.3s;
 }
 .nav-logo {
-  font-family: var(--mono); font-size: 13px; font-weight: 700;
-  color: var(--text); text-decoration: none;
-  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .blink {
-  width: 8px; height: 8px; background: #8B7355;
-  display: inline-block; animation: blink 1.2s step-end infinite;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  display: inline-block;
+  animation: blink 1.2s step-end infinite;
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
 .nav-links { display: flex; }
 .nav-links a {
-  font-family: var(--mono); font-size: 12px; color: var(--muted);
-  text-decoration: none; padding: 0 14px; height: 48px;
-  display: flex; align-items: center; border-left: var(--pixel-border);
-  transition: all 0.1s; letter-spacing: 0.04em;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0 14px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-left: var(--pixel-border);
+  transition: all 0.1s;
+  letter-spacing: 0.04em;
 }
-.nav-links a:hover, .nav-links a.active { background: var(--text); color: var(--bg); }
+.nav-links a:hover,
+.nav-links a.active {
+  background: var(--text);
+  color: var(--bg);
+}
+
 .theme-btn {
-  width: 48px; height: 48px; border: none; border-left: var(--pixel-border);
-  background: transparent; cursor: pointer; font-size: 16px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text); transition: all 0.1s; font-family: var(--mono);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-left: var(--pixel-border);
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: all 0.1s;
+  font-family: var(--mono);
 }
 .theme-btn:hover { background: var(--text); color: var(--bg); }
 
-.page-wrap { margin-left: 220px; max-width: 860px; padding: 80px 48px 120px; }
+.page-wrap {
+  margin-left: 220px;
+  max-width: 860px;
+  padding: 80px 48px 120px;
+}
 
 .sidebar {
-  position: fixed; top: 51px; left: 0; width: 220px;
-  height: calc(100vh - 51px); padding: 32px 28px;
-  border-right: 1px solid var(--bg3); overflow-y: auto;
-  background: var(--bg); z-index: 30;
+  position: fixed;
+  top: 51px;
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 51px);
+  padding: 32px 28px;
+  border-right: 1px solid var(--bg3);
+  overflow-y: auto;
+  background: var(--bg);
+  z-index: 30;
 }
+
 .breadcrumb {
-  font-family: var(--mono); font-size: 10px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  margin-bottom: 36px; display: flex; flex-direction: column;
-  gap: 4px; line-height: 1.8;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.8;
 }
-.breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.1s; }
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.1s;
+}
 .breadcrumb a:hover { color: var(--text); }
-.side-nav { display: flex; flex-direction: column; gap: 1px; }
-.side-nav a {
-  font-size: 12px; color: var(--muted2); text-decoration: none;
-  padding: 7px 12px; border-left: 2px solid transparent; transition: all 0.15s;
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
-.side-nav a:hover { color: var(--text); border-left-color: var(--muted2); }
-.side-nav a.active { color: var(--text); border-left-color: #8B7355; font-weight: 600; }
+.side-nav a {
+  font-size: 12px;
+  color: var(--muted2);
+  text-decoration: none;
+  padding: 7px 12px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+}
+.side-nav a:hover {
+  color: var(--text);
+  border-left-color: var(--muted2);
+}
+.side-nav a.active {
+  color: var(--text);
+  border-left-color: #8B7355;
+  font-weight: 600;
+}
 
-.content { width: 100%; position: relative; z-index: 1; }
+.content {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
 
-.hero-section { margin-bottom: 72px; padding-top: 16px; }
+.hero-section {
+  margin-bottom: 72px;
+  padding-top: 16px;
+}
 .hero-eyebrow {
-  font-family: var(--mono); font-size: 10px; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;
-  display: flex; align-items: center; gap: 6px; margin-bottom: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 .hero-eyebrow::before { content: '▶'; font-size: 8px; }
+
 .project-title {
-  font-size: 32px; font-weight: 700; letter-spacing: -0.03em;
-  line-height: 1.1; margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 8px;
 }
+.project-subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+
 .project-lead {
-  font-size: 15px; color: var(--muted); line-height: 1.8;
-  margin-bottom: 28px; max-width: 580px;
-  border-left: 3px solid var(--accent); padding-left: 16px;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 580px;
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
 }
-.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 28px; }
+
+.chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
 .chip {
-  font-family: var(--mono); font-size: 9px; padding: 3px 8px;
-  border: 1px solid var(--muted2); color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.04em;
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 3px 8px;
+  border: 1px solid var(--muted2);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
+
 .btn-row { display: flex; flex-wrap: wrap; }
 .btn {
-  display: inline-flex; align-items: center; padding: 9px 16px;
-  border: var(--pixel-border); margin-right: -2px; text-decoration: none;
-  color: var(--text); font-size: 12px; font-family: var(--mono);
-  letter-spacing: 0.04em; font-weight: 500; transition: all 0.1s;
-  background: var(--bg); white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  border: var(--pixel-border);
+  margin-right: -2px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  transition: all 0.1s;
+  background: var(--bg);
+  white-space: nowrap;
 }
 .btn:hover { background: var(--text); color: var(--bg); }
-.btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+.btn.primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
 .btn.primary:hover { opacity: 0.88; }
 
 .meta-row {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  border: var(--pixel-border); margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border: var(--pixel-border);
+  margin-bottom: 80px;
 }
-.meta-cell { padding: 22px; border-right: var(--pixel-border); }
+.meta-cell {
+  padding: 22px;
+  border-right: var(--pixel-border);
+}
 .meta-cell:last-child { border-right: none; }
 .meta-label {
-  font-family: var(--mono); font-size: 9px; color: var(--accent);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
 }
 .meta-num {
-  font-size: 38px; font-weight: 700; letter-spacing: -0.04em;
-  line-height: 1; margin-bottom: 6px;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
 }
-.meta-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.meta-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
 
-.section { margin-bottom: 80px; scroll-margin-top: 72px; }
+.section {
+  margin-bottom: 80px;
+  scroll-margin-top: 72px;
+}
 .sec-label {
-  font-family: var(--mono); font-size: 9px; color: var(--accent);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
 }
 .sec-title {
-  font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
-  margin-bottom: 20px; line-height: 1.2;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
-.sec-divider { border: none; border-top: var(--pixel-border); margin-bottom: 28px; }
-.body-text { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; max-width: 600px; }
+.sec-divider {
+  border: none;
+  border-top: var(--pixel-border);
+  margin-bottom: 28px;
+}
+.body-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 16px;
+  max-width: 620px;
+}
 
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; border: var(--pixel-border); margin-top: 20px; }
-.gcell { padding: 18px 20px; border-right: var(--pixel-border); }
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: var(--pixel-border);
+  margin-top: 20px;
+}
+.gcell {
+  padding: 18px 20px;
+  border-right: var(--pixel-border);
+}
 .gcell:last-child { border-right: none; }
 .gcell-label {
-  font-family: var(--mono); font-size: 9px; color: var(--accent);
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
 }
 .bullets { padding-left: 16px; }
-.bullets li { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 4px; }
+.bullets li {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
 
-.steps { margin-top: 20px; border: var(--pixel-border); }
+.steps {
+  margin-top: 20px;
+  border: var(--pixel-border);
+}
 .step {
-  padding: 18px 20px; border-bottom: var(--pixel-border);
-  display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
+  padding: 18px 20px;
+  border-bottom: var(--pixel-border);
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  align-items: start;
 }
 .step:last-child { border-bottom: none; }
-.step-n { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -0.04em; padding-top: 1px; }
+.step-n {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+  padding-top: 1px;
+}
 .step-label {
-  font-family: var(--mono); font-size: 9px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
 }
-.step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.step p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
 
-/* timeline */
-.timeline { display: grid; grid-template-columns: repeat(3,1fr); border: var(--pixel-border); margin-top: 20px; }
-.t-cell { padding: 20px; border-right: var(--pixel-border); }
-.t-cell:last-child { border-right: none; }
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border: var(--pixel-border);
+  margin-top: 20px;
+}
+.tcell {
+  padding: 18px 20px;
+  border-right: var(--pixel-border);
+}
+.tcell:last-child { border-right: none; }
 .t-label {
-  font-family: var(--mono); font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
 }
-.t-label.red { color: #dc2626; }
-.t-label.amber { color: #d97706; }
-.t-label.green { color: #16a34a; }
-.t-bar { height: 3px; margin-bottom: 12px; border-radius: 2px; }
-.t-bar.red { background: #dc2626; }
-.t-bar.amber { background: #d97706; }
-.t-bar.green { background: #16a34a; }
-.t-num { font-size: 32px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
-.t-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-.companion {
-  border: var(--pixel-border); border-left: 4px solid #8B7355;
-  padding: 18px 20px; margin-top: 20px; background: var(--bg2);
+.t-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
 }
-.companion-label {
-  font-family: var(--mono); font-size: 9px; color: #8B7355;
-  font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;
+.t-text {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.65;
 }
-.companion p { font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 10px; }
-.companion p:last-child { margin-bottom: 0; }
-
-.table-wrap { border: var(--pixel-border); margin-top: 20px; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; min-width: 480px; }
-th {
-  background: var(--bg2); font-family: var(--mono); font-size: 9px;
-  text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
-  padding: 10px 14px; text-align: left; border-bottom: var(--pixel-border); font-weight: 700;
-}
-td { padding: 11px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.5; }
-html[data-theme="dark"] td { border-bottom-color: rgba(255,255,255,0.05); }
-tr:last-child td { border-bottom: none; }
-td:first-child { color: var(--text); font-weight: 500; }
 
 .quote {
-  margin-top: 20px; padding: 16px 18px;
-  border: var(--pixel-border); border-left: 4px solid var(--accent);
-  background: var(--bg2); font-size: 13px; color: var(--muted);
-  line-height: 1.75; font-style: italic; max-width: 600px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  border: var(--pixel-border);
+  border-left: 4px solid var(--accent);
+  background: var(--bg2);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-style: italic;
+  max-width: 620px;
 }
 
-.flow { display: flex; flex-wrap: wrap; align-items: center; margin-top: 16px; }
-.flow-tag {
-  font-family: var(--mono); font-size: 9px; color: var(--muted);
-  padding: 5px 10px; border: 1px solid var(--muted2);
-  text-transform: uppercase; letter-spacing: 0.04em;
+.table-wrap {
+  border: var(--pixel-border);
+  margin-top: 20px;
+  overflow-x: auto;
 }
-.flow-tag.on { background: #111214; color: #fff; border-color: #111214; }
-html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; border-color: #f2f4f7; }
-.flow-arrow { font-size: 12px; color: var(--muted2); padding: 0 6px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+th {
+  background: var(--bg2);
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: var(--pixel-border);
+  font-weight: 700;
+}
+td {
+  padding: 11px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  line-height: 1.5;
+}
+html[data-theme="dark"] td { border-bottom-color: rgba(255,255,255,0.05); }
+tr:last-child td { border-bottom: none; }
+td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.companion {
+  border: var(--pixel-border);
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: var(--bg2);
+}
+.companion-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.companion-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.companion-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
 
 .footer {
-  border-top: var(--pixel-border); padding-top: 20px;
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--mono); font-size: 10px; color: var(--muted);
-  text-transform: uppercase; letter-spacing: 0.06em;
-  flex-wrap: wrap; gap: 8px; margin-top: 40px;
+  border-top: var(--pixel-border);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
 }
-.footer a { color: var(--muted); text-decoration: none; }
+.footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
 .footer a:hover { color: var(--text); }
 
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 @media(max-width:900px){
   .page-wrap { margin-left: 0; padding: 80px 24px 120px; }
@@ -278,17 +562,25 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
   .gcell { border-right: none; border-bottom: var(--pixel-border); }
   .gcell:last-child { border-bottom: none; }
   .timeline { grid-template-columns: 1fr; }
-  .t-cell { border-right: none; border-bottom: var(--pixel-border); }
-  .t-cell:last-child { border-bottom: none; }
-  .project-title { font-size: 26px; }
+  .tcell { border-right: none; border-bottom: var(--pixel-border); }
+  .tcell:last-child { border-bottom: none; }
+  .project-title { font-size: 30px; }
 }
 @media(max-width:600px){
   .top-nav { padding: 0 12px; }
-  .nav-links { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+  .nav-links {
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
   .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { padding: 0 9px; font-size: 11px; white-space: nowrap; }
+  .nav-links a {
+    padding: 0 9px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
   .page-wrap { padding: 72px 16px 80px; }
-  .project-title { font-size: 22px; }
+  .project-title { font-size: 24px; }
   .btn-row { flex-direction: column; }
   .btn { margin-right: 0; margin-bottom: -2px; }
 }
@@ -319,7 +611,7 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
       <span style="opacity:.3">/</span>
       <a href="projects.html">projects</a>
       <span style="opacity:.3">/</span>
-      <span style="color:var(--text)">causal convergence</span>
+      <span style="color:var(--text)">premature causal convergence</span>
     </div>
     <nav class="side-nav">
       <a href="#overview" class="active">Overview</a>
@@ -328,232 +620,139 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
       <a href="#findings">Findings</a>
       <a href="#results">Results</a>
       <a href="#connection">Connection</a>
-      <a href="#paper">Paper</a>
     </nav>
   </aside>
 
   <main class="content">
 
-    <!-- HERO -->
     <section class="hero-section fade-up" id="overview">
-      <div class="hero-eyebrow">investigation axis · pilot study</div>
-      <h1 class="project-title">Premature Causal Convergence in RCA:<br>A Pilot Study of Early-Stage Reasoning under Closure Pressure</h1>
-      <p style="font-size:14px;color:var(--muted);font-style:italic;margin-bottom:20px;border-left:3px solid #8B7355;padding-left:14px;max-width:580px;line-height:1.7;">Reasoning continues to develop — but documentation demands a commitment before it has time to.</p>
-      <div class="chips">
-        <span class="chip">premature causal convergence</span>
-        <span class="chip">closure pressure</span>
-        <span class="chip">RCA reasoning</span>
-        <span class="chip">pilot study</span>
-        <span class="chip">time-based observation</span>
-      </div>
-      <p class="project-lead">A pilot study examining how GMP practitioners rapidly converge on a single causal explanation before formal RCA begins — and how closure pressure may narrow the reasoning space before systemic factors have been examined.</p>
-      <div class="btn-row">
-        <a class="btn primary" href="project-rca-reasoning-scaffolder.html">RCA Scaffolder (design response) →</a>
-        <a class="btn" href="projects.html">← all projects</a>
-      </div>
+      <div class="hero-eyebrow">investigation axis · project 03</div>
+      <h1 class="project-title">Premature Causal Convergence</h1>
+      <div class="project-subtitle">A Pilot Study of Early-Stage Reasoning under Closure Pressure</div>
+      <p class="project-lead">
+        This project examines how early-stage reasoning changes over time during RCA-style investigation tasks, and how closure pressure can narrow causal reasoning before systemic factors have been examined.
+      </p>
     </section>
 
-    <!-- META -->
     <div class="meta-row fade-up">
       <div class="meta-cell">
         <div class="meta-label">// participants</div>
         <div class="meta-num">5</div>
-        <div class="meta-desc">GMP-experienced practitioners · paper-based · 3 time-point observations</div>
+        <div class="meta-desc">Pilot reasoning study with timed reflection intervals</div>
       </div>
       <div class="meta-cell">
-        <div class="meta-label">// initial cause count</div>
-        <div class="meta-num">1/5</div>
-        <div class="meta-desc">All five began with a single explanation — despite variation in cause type</div>
+        <div class="meta-label">// study format</div>
+        <div class="meta-num">3</div>
+        <div class="meta-desc">Timepoints: initial, +5 min, +10 min</div>
       </div>
       <div class="meta-cell">
-        <div class="meta-label">// revised by 10 min</div>
-        <div class="meta-num">5/5</div>
-        <div class="meta-desc">All participants expanded or reframed their explanation by the 10-minute mark</div>
+        <div class="meta-label">// key signal</div>
+        <div class="meta-num">10</div>
+        <div class="meta-desc">Minutes changed the breadth of causal reasoning</div>
       </div>
     </div>
 
-    <!-- BACKGROUND -->
     <section class="section fade-up" id="background">
       <div class="sec-label">// 01</div>
       <h2 class="sec-title">Background</h2>
       <hr class="sec-divider">
-      <p class="body-text">In GMP environments, deviation investigations must be formally documented within defined timeframes. Quality teams operate under consistent pressure to close records — not because investigations are necessarily complete, but because open deviations create regulatory exposure and workflow bottlenecks.</p>
-      <p class="body-text">This creates closure pressure: a structural condition in which the timeline for committing to an explanation is set by documentation requirements rather than by the state of the investigator's reasoning. The result is that investigators may be documenting a root cause before they have had sufficient time to consider alternatives.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// structural conditions</div>
-          <ul class="bullets">
-            <li>Documentation deadlines precede reasoning completion</li>
-            <li>Open deviations create regulatory and workflow pressure</li>
-            <li>Investigation records reflect first plausible explanation, not most complete one</li>
-            <li>Systemic contributors less likely to surface under time pressure</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// HCI reframing</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">Premature causal convergence is not a training failure or an individual competence issue. It is a structural consequence of how investigation workflows are designed. This reframes the problem as a design question: how can investigation systems protect reasoning space within existing documentation timelines?</p>
-        </div>
-      </div>
-      <div class="quote">In actual GMP practice, most investigators spend far less than 10 minutes on initial causal analysis — not because they are careless, but because the system demands closure before reasoning has time to develop.</div>
+      <p class="body-text">Root cause analysis is often treated as a neutral reasoning task. In practice, however, deviation investigations take place under expectations of speed, closure, and documentation readiness. These conditions can shape how reasoning unfolds before investigators have had time to consider broader contributing factors.</p>
+      <p class="body-text">The result is that investigators may document a root cause before they have fully examined procedural, contextual, or organizational contributors. This pilot study was designed to observe that early-stage reasoning process directly, before any interface intervention was introduced.</p>
+      <div class="quote">Reasoning continues to develop — but documentation demands a commitment before it has time to.</div>
     </section>
 
-    <!-- METHOD -->
     <section class="section fade-up" id="method">
       <div class="sec-label">// 02</div>
       <h2 class="sec-title">Method</h2>
       <hr class="sec-divider">
-      <p class="body-text">A structured paper-based reasoning task with no digital tool or scaffold — a deliberate methodological choice. Using a scaffold would confound the observation, making it impossible to separate natural reasoning development from tool-assisted reasoning. The goal was to observe what unassisted causal reasoning looks like under a naturalistic time constraint.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">01</div>
-          <div>
-            <div class="step-label">scenario</div>
-            <p>An ELISA assay result exceeded its specification limit — a common GMP deviation type. Participants were asked to identify possible causes freely, without being directed toward any particular explanation category.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">02</div>
-          <div>
-            <div class="step-label">recording template — 4 steps</div>
-            <p>Step 1: initial cause written immediately. Step 2: additional causes added during 5–10 minute thinking period. Step 3: connections between causes described. Step 4: explicit comparison of initial vs. revised explanation — what changed and why.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">03</div>
-          <div>
-            <div class="step-label">time-point observation</div>
-            <p>Three observation points: 0 min (immediate), 5 min (mid-window), 10 min (end). Each point captured cause count, cause type, and whether explanation had changed.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">04</div>
-          <div>
-            <div class="step-label">why no prototype</div>
-            <p>The paper format preserved the naturalistic reasoning condition. That baseline observation — what reasoning looks like without structural support — is what motivates the RCA Reasoning Scaffolder as a design response.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINDINGS -->
-    <section class="section fade-up" id="findings">
-      <div class="sec-label">// 03</div>
-      <h2 class="sec-title">Empirical Findings</h2>
-      <hr class="sec-divider">
-      <p class="body-text">Across five participants, initial causal reasoning was uniformly singular: all proposed only one likely cause at the outset, although the content of that cause varied across method-, equipment-, and human-related explanations. The key issue is not simply blame attribution, but early causal convergence itself.</p>
+      <p class="body-text">Participants were given the same investigation-style case and asked to explain the cause at three timepoints: immediately, after five minutes, and after ten minutes. The purpose was to observe whether additional time changed the breadth, direction, or confidence of their reasoning.</p>
       <div class="timeline">
-        <div class="t-cell">
-          <div class="t-label red">0 min — initial</div>
-          <div class="t-bar red"></div>
-          <div class="t-num">1 cause</div>
-          <div class="t-desc">All 5 participants. Cause types varied — assay method, equipment, environmental factor, reagent, operator action — but all were structurally singular.</div>
+        <div class="tcell">
+          <div class="t-label">timepoint_01</div>
+          <div class="t-title">0 minutes</div>
+          <div class="t-text">Immediate explanation based on first interpretation of the case.</div>
         </div>
-        <div class="t-cell">
-          <div class="t-label amber">5 min — expanding</div>
-          <div class="t-bar amber"></div>
-          <div class="t-num">2–3 causes</div>
-          <div class="t-desc">Most participants added at least one additional cause. Some began connecting causes, noting dependencies and contributing conditions.</div>
+        <div class="tcell">
+          <div class="t-label">timepoint_02</div>
+          <div class="t-title">+5 minutes</div>
+          <div class="t-text">Participants continued reflecting without additional prompts, allowing alternative contributors to emerge.</div>
         </div>
-        <div class="t-cell">
-          <div class="t-label green">10 min — revised</div>
-          <div class="t-bar green"></div>
-          <div class="t-num">5/5 revised</div>
-          <div class="t-desc">All participants changed or expanded their initial explanation. Several reprioritised — moving procedural or systemic causes above their original explanation.</div>
+        <div class="tcell">
+          <div class="t-label">timepoint_03</div>
+          <div class="t-title">+10 minutes</div>
+          <div class="t-text">Final reasoning state recorded to assess whether causal breadth changed further over time.</div>
         </div>
       </div>
       <div class="grid2">
         <div class="gcell">
-          <div class="gcell-label">// cause type diversity</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">Initial causes varied across participants: assay method error, equipment malfunction, environmental contamination, reagent quality issue, and operator action. Despite this content diversity, the structural pattern was identical — single-hypothesis initial framing, followed by expansion over time.</p>
+          <div class="gcell-label">// rationale</div>
+          <p style="font-size:13px; color:var(--muted); line-height:1.75; margin:0;">This project was intentionally conducted without a prototype interface. The goal was to establish an empirical baseline: whether reasoning itself expands over short intervals before any design intervention attempts to support it.</p>
         </div>
         <div class="gcell">
-          <div class="gcell-label">// revision direction</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">When participants revised, they consistently moved toward more systemic framings. One participant who began with "operator error" later added "the SOP didn't make this step clear enough." This shift — from individual to system — only emerged with time, not at the outset.</p>
+          <div class="gcell-label">// implication</div>
+          <p style="font-size:13px; color:var(--muted); line-height:1.75; margin:0;">If reasoning naturally broadens with time, then premature closure in investigation settings may reflect environmental pressure rather than fixed cognitive limitation.</p>
         </div>
       </div>
-      <div class="quote">In actual GMP investigation practice, most investigators spend far less than 10 minutes on initial causal analysis before documentation begins. This study suggests that the explanations being formally documented may reflect reasoning that has not yet had time to fully develop.</div>
     </section>
 
-    <!-- RESULTS -->
-    <section class="section fade-up" id="results">
-      <div class="sec-label">// 04</div>
-      <h2 class="sec-title">Results</h2>
+    <section class="section fade-up" id="findings">
+      <div class="sec-label">// 03</div>
+      <h2 class="sec-title">Findings</h2>
       <hr class="sec-divider">
+      <p class="body-text">At the initial timepoint, participants tended to converge on a single salient cause. With additional time, several began introducing procedural, contextual, or organizational explanations that were absent from their first response. The most notable changes occurred between the initial response and the five-minute mark.</p>
+      <p class="body-text">By ten minutes, most participants had either broadened their explanation or become more explicit about uncertainty. This suggests that early closure may be less a property of the investigator than a consequence of constrained reasoning time.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
+          <thead>
+            <tr><th>Timepoint</th><th>Observed Pattern</th><th>Interpretation</th></tr>
+          </thead>
           <tbody>
-            <tr><td>Initial cause count</td><td>1 per participant (5/5)</td><td>All began with a single explanation — despite variation in cause type.</td></tr>
-            <tr><td>Cause expansion by 10 min</td><td>5/5 (100%)</td><td>Every participant added at least one new cause during the observation window.</td></tr>
-            <tr><td>Explanation revision</td><td>5/5 (100%)</td><td>All participants changed or reordered their initial explanation by end of task.</td></tr>
-            <tr><td>Shift toward systemic framing</td><td>Majority of participants</td><td>Participants who began with individual-action causes moved toward procedural or systemic framings over time.</td></tr>
-            <tr><td>Estimated real-world reasoning time</td><td>&lt;10 min (self-reported)</td><td>Participants noted that in practice, documentation typically begins before this reasoning window closes.</td></tr>
+            <tr><td>0 min</td><td>Single-cause explanations dominated</td><td>Initial reasoning favored the most salient explanation.</td></tr>
+            <tr><td>+5 min</td><td>Alternative contributors began to emerge</td><td>Reasoning expanded when participants had additional time.</td></tr>
+            <tr><td>+10 min</td><td>Broader explanations or greater uncertainty appeared</td><td>Closure pressure may truncate reasoning before it naturally develops.</td></tr>
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section class="section fade-up" id="results">
+      <div class="sec-label">// 04</div>
+      <h2 class="sec-title">Results & Implications</h2>
+      <hr class="sec-divider">
+      <p class="body-text">This pilot does not claim statistical generalizability. Its contribution is observational: it shows that investigation reasoning can change meaningfully over short intervals, even without new information. That pattern matters because regulated documentation systems often demand closure during precisely that unstable period.</p>
       <div class="grid2">
         <div class="gcell">
-          <div class="gcell-label">// implication</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">If reasoning continues to develop meaningfully within a 10-minute window, and documentation typically begins before that window closes, then investigation records may systematically underrepresent causal complexity.</p>
+          <div class="gcell-label">// empirical implication</div>
+          <ul class="bullets">
+            <li>Reasoning breadth is time-sensitive</li>
+            <li>Early explanations may underrepresent systemic contributors</li>
+            <li>Closure pressure may distort causal interpretation</li>
+          </ul>
         </div>
         <div class="gcell">
-          <div class="gcell-label">// design response</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">This is not an argument against timeliness. It is an argument for designing investigation workflows that protect reasoning space within those timelines — which is precisely what the RCA Reasoning Scaffolder attempts.</p>
+          <div class="gcell-label">// design implication</div>
+          <ul class="bullets">
+            <li>Investigation environments may need structured support before closure</li>
+            <li>Reasoning scaffolds can be justified empirically, not only conceptually</li>
+            <li>Time-sensitive convergence should be treated as a UX issue</li>
+          </ul>
         </div>
-      </div>
-      <div class="flow" style="margin-top:20px;">
-        <span class="flow-tag on">closure pressure</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">premature convergence</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">systemic factors invisible</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">design problem</span>
       </div>
     </section>
 
-    <!-- CONNECTION TO RCA -->
     <section class="section fade-up" id="connection">
       <div class="sec-label">// 05</div>
-      <h2 class="sec-title">Connection to RCA Scaffolder</h2>
+      <h2 class="sec-title">Connection to the Companion Project</h2>
       <hr class="sec-divider">
-      <p class="body-text">This pilot study establishes the problem that the RCA Reasoning Scaffolder is designed to address. If premature causal convergence is a structural condition — produced by closure pressure, not individual failure — then the design response should be structural too.</p>
-      <div class="companion">
-        <div class="companion-label">// companion project · design response</div>
-        <p>This study shows what reasoning looks like <em>before</em> a scaffold exists — uniformly singular at outset, expanding only when given time that real GMP environments typically don't protect.</p>
-        <p>The RCA Reasoning Scaffolder shows what happens when structural support is provided: 80% of participants considered new causes they hadn't thought of before, and 15/15 reported the scaffold actively preserved reasoning breadth.</p>
-        <div class="btn-row" style="margin-top:14px;">
-          <a class="btn primary" href="project-rca-reasoning-scaffolder.html">View RCA Scaffolder →</a>
-        </div>
-      </div>
-    </section>
+      <p class="body-text">This pilot project functions as the empirical observation layer for the RCA Reasoning Scaffolder. If premature convergence appears before broader contributors are considered, then the design challenge becomes how to keep investigation reasoning open longer without violating closure expectations.</p>
 
-    <!-- PAPER -->
-    <section class="section fade-up" id="paper">
-      <div class="sec-label">// 06</div>
-      <h2 class="sec-title">Paper in Progress</h2>
-      <hr class="sec-divider">
-      <p class="body-text">This pilot study is being developed into a paper on premature causal convergence, closure pressure, and the design of investigation workflows in regulated environments. The paper contributes a behavioral observation to the broader research program: early-stage causal reasoning in GMP investigation is structurally convergent, and the conditions that produce that convergence are design-addressable.</p>
-      <p class="body-text">The paper also contributes methodologically — using time-point observation of unassisted reasoning to study investigation behavior without requiring deployment inside validated systems.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// study design</div>
-          <ul class="bullets">
-            <li>Paper-based structured reasoning task</li>
-            <li>Three-point time observation (0 / 5 / 10 min)</li>
-            <li>Qualitative coding of cause type and revision direction</li>
-            <li>Post-task structured questions</li>
-          </ul>
+      <div class="companion">
+        <div class="companion-label">// companion project</div>
+        <div class="companion-title">RCA Reasoning Scaffolder</div>
+        <div class="companion-text">
+          The companion project translates this observation into a structured interface intervention. In the scaffolder study, 80% of participants considered new causes after using the scaffold, suggesting that the convergence observed here can be actively resisted through design.
         </div>
-        <div class="gcell">
-          <div class="gcell-label">// research framing</div>
-          <ul class="bullets">
-            <li>Premature causal convergence in regulated investigation</li>
-            <li>Closure pressure as structural condition</li>
-            <li>Time-point reasoning observation methodology</li>
-            <li>Empirical foundation for scaffold design</li>
-          </ul>
-        </div>
+        <a class="btn primary" href="project-rca-reasoning-scaffolder.html">View RCA Scaffolder →</a>
       </div>
     </section>
 
@@ -575,6 +774,7 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
   var saved = localStorage.getItem('theme');
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if(saved === 'dark' || (!saved && prefersDark)) html.setAttribute('data-theme','dark');
+
   btn.addEventListener('click', function(){
     var dark = html.getAttribute('data-theme') === 'dark';
     html.setAttribute('data-theme', dark ? 'light' : 'dark');
@@ -590,19 +790,27 @@ window.addEventListener('scroll', function() {
 });
 
 var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
 }, { threshold: 0.08 });
-document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+
+document.querySelectorAll('.fade-up').forEach(function(el) {
+  observer.observe(el);
+});
 
 var sections = document.querySelectorAll('[id]');
 var navLinks = document.querySelectorAll('.side-nav a');
+
 window.addEventListener('scroll', function() {
   var scrollY = window.scrollY + 120;
   sections.forEach(function(sec) {
-    if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
+    if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
       navLinks.forEach(function(link) {
         link.classList.remove('active');
-        if(link.getAttribute('href') === '#' + sec.id) link.classList.add('active');
+        if (link.getAttribute('href') === '#' + sec.id) {
+          link.classList.add('active');
+        }
       });
     }
   });
