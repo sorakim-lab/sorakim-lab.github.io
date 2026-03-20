@@ -161,13 +161,9 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
   filter: grayscale(100%) contrast(1.08) brightness(0.98);
   transition: filter 0.28s ease, transform 0.28s ease;
-}
-.avatar-wrap:hover img {
-  filter: grayscale(0%) contrast(1.03);
-  transform: scale(1.015);
 }
 
 .px-name {
@@ -529,6 +525,13 @@ nav {
   line-height: 1.62;
   margin-bottom: 10px;
 }
+.paper-method {
+  font-size: 10px;
+  color: var(--muted2);
+  font-family: var(--mono);
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
 .paper-tags {
   display: flex;
   gap: 5px;
@@ -715,7 +718,7 @@ nav {
 
       <div class="stat-row">
         <div class="stat"><span class="stat-n">6</span><span class="stat-l">Research Projects</span></div>
-        <div class="stat"><span class="stat-n">5</span><span class="stat-l">Working Manuscripts</span></div>
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l">Papers in Progress</span></div>
         <div class="stat"><span class="stat-n">4+</span><span class="stat-l">Years in Pharma QC</span></div>
       </div>
 
@@ -737,7 +740,7 @@ nav {
   <section class="section">
     <div class="sec-head">
       <span class="sec-title">featured_projects</span>
-      <a class="see-all" href="projects.html">see all 3 →</a>
+      <a class="see-all" href="projects.html">view details →</a>
     </div>
 
     <div class="proj-grid">
@@ -798,6 +801,7 @@ nav {
         <span class="paper-num">// paper_01</span>
         <div class="paper-title">Accessibility, Document Usability, and Compliance-Constrained Design in Regulated Environments</div>
         <p class="paper-sub">Examines retrieval burden, keyword pathways, and compliance-safe usability improvement in scanned SOP archives.</p>
+        <div class="paper-method">method: usability study (N=12, think-aloud protocol) · corpus analysis</div>
         <div class="paper-tags">
           <span class="paper-tag">document UX</span>
           <span class="paper-tag">accessibility</span>
@@ -808,6 +812,7 @@ nav {
         <span class="paper-num">// paper_02</span>
         <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
         <p class="paper-sub">Studies how investigatory environments narrow causal exploration and how interface scaffolds can preserve interpretive breadth.</p>
+        <div class="paper-method">method: protocol analysis · comparative task study</div>
         <div class="paper-tags">
           <span class="paper-tag">reasoning</span>
           <span class="paper-tag">investigation</span>
@@ -818,6 +823,7 @@ nav {
         <span class="paper-num">// paper_03</span>
         <div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
         <p class="paper-sub">Reframes loopbacks, hesitation, and dependency gaps as system-level navigation problems rather than individual failure.</p>
+        <div class="paper-method">method: behavioral trace analysis · navigation log coding</div>
         <div class="paper-tags">
           <span class="paper-tag">navigation</span>
           <span class="paper-tag">traceability</span>
@@ -828,6 +834,7 @@ nav {
         <span class="paper-num">// paper_04</span>
         <div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
         <p class="paper-sub">Focuses on visibility, coordination burden, and review structure in multi-stage quality workflows.</p>
+        <div class="paper-method">method: workflow analysis · semi-structured interviews</div>
         <div class="paper-tags">
           <span class="paper-tag">workflow UX</span>
           <span class="paper-tag">observability</span>
@@ -838,6 +845,7 @@ nav {
         <span class="paper-num">// paper_05</span>
         <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
         <p class="paper-sub">Develops a broader design language for regulated work environments, treating procedures and review systems as user environments.</p>
+        <div class="paper-method">method: conceptual synthesis · design framework</div>
         <div class="paper-tags">
           <span class="paper-tag">regulatory UX</span>
           <span class="paper-tag">concept paper</span>
