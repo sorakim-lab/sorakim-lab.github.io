@@ -6,668 +6,500 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="SOP Accessibility in Regulated Environments — an HCI case study on document retrieval friction, procedural navigation, and compliance-constrained design." />
 
-<link rel="icon" href="./assets/favicon-light.png">
 <link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
 <link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+/* ── TOKENS ───────────────────────────────────────────── */
 :root {
-  --bg: #f8f8f6;
-  --bg2: #f0f0ee;
-  --bg3: #e8e8e6;
-  --text: #111214;
-  --muted: #626872;
-  --muted2: #8a9099;
-  --accent: #1a1a1a;
-  --accent-light: #f0f0ee;
-  --pixel-border: 2px solid #111214;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'Inter', sans-serif;
-  --sidebar-w: 200px;
+  --bg:        #f7f7f5;
+  --bg2:       #eceae4;
+  --bg3:       #e2e0d9;
+  --text:      #0f0f0e;
+  --muted:     #5a5a54;
+  --faint:     #999890;
+  --hr:        rgba(15,15,14,.13);
+  --hrh:       rgba(15,15,14,.80);
+  --amber:     #8B7355;
+  --mono:      'DM Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+  --nav-h:     52px;
+  --sidebar-w: 220px;
 }
 html[data-theme="dark"] {
-  --bg: #111317;
-  --bg2: #1a1e25;
-  --bg3: #232833;
-  --text: #f2f4f7;
-  --muted: #98a1ad;
-  --muted2: #7d8794;
-  --accent: #e0e0e0;
-  --accent-light: #232833;
-  --pixel-border: 2px solid #f2f4f7;
+  --bg:        #0d0d0b;
+  --bg2:       #141412;
+  --bg3:       #1c1c19;
+  --text:      #efede5;
+  --muted:     #96948c;
+  --faint:     #57574f;
+  --hr:        rgba(239,237,229,.10);
+  --hrh:       rgba(239,237,229,.72);
+  --amber:     #b09870;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+
+/* ── RESET ────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  min-height: 100vh;
-  transition: background 0.3s, color 0.3s;
-  line-height: 1.7;
+  background:var(--bg); color:var(--text);
+  font-family:var(--sans); font-size:15px;
+  min-height:100vh; line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s, color .25s;
 }
-a { color: inherit; }
-::selection { background: var(--text); color: var(--bg); }
+a { color:inherit; text-decoration:none }
+img { display:block; max-width:100% }
+::selection { background:var(--text); color:var(--bg) }
 
-#progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: #8B7355;
-  width: 0%;
-  z-index: 200;
-  transition: width 0.1s linear;
+/* ── NAV ──────────────────────────────────────────────── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:var(--nav-h); background:var(--bg);
+  border-bottom:1px solid var(--hrh);
+  display:flex; align-items:stretch;
+  transition:background .25s;
 }
-
-.top-nav {
-  position: fixed;
-  top: 3px;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  border-bottom: var(--pixel-border);
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  height: 48px;
-  transition: background 0.3s;
+.nav-brand {
+  display:flex; align-items:center; gap:9px;
+  padding:0 20px;
+  font-family:var(--mono); font-size:12px; font-weight:500;
+  letter-spacing:.05em;
+  border-right:1px solid var(--hrh); flex-shrink:0;
 }
-.nav-logo {
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.pulse {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--amber);
+  animation:pulse 2.4s ease-in-out infinite;
 }
-.blink {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  display: inline-block;
-  animation: blink 1.2s step-end infinite;
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1) }
+  50%      { opacity:.35; transform:scale(.65) }
 }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-.nav-links { display: flex; }
+.nav-links { display:flex; flex:1; overflow:hidden }
 .nav-links a {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 0 14px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  border-left: var(--pixel-border);
-  transition: all 0.1s;
-  letter-spacing: 0.04em;
+  font-family:var(--mono); font-size:11px;
+  color:var(--muted); letter-spacing:.05em;
+  padding:0 16px; display:flex; align-items:center;
+  border-right:1px solid var(--hr);
+  transition:background .12s, color .12s; white-space:nowrap;
 }
 .nav-links a:hover,
-.nav-links a.active {
-  background: var(--text);
-  color: var(--bg);
-}
-
+.nav-links a.active { background:var(--text); color:var(--bg) }
+.nav-end { display:flex; margin-left:auto }
 .theme-btn {
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-left: var(--pixel-border);
-  background: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  transition: all 0.1s;
-  font-family: var(--mono);
+  width:var(--nav-h); border:none; border-left:1px solid var(--hrh);
+  background:transparent; cursor:pointer;
+  font-family:var(--mono); font-size:14px; color:var(--text);
+  display:flex; align-items:center; justify-content:center;
+  transition:background .12s, color .12s;
 }
-.theme-btn:hover { background: var(--text); color: var(--bg); }
+.theme-btn:hover { background:var(--text); color:var(--bg) }
 
-.page-wrap {
-  margin-left: 220px;
-  max-width: 860px;
-  padding: 80px 48px 120px;
-}
-
+/* ── SIDEBAR ──────────────────────────────────────────── */
 .sidebar {
-  position: fixed;
-  top: 51px;
-  left: 0;
-  width: 220px;
-  height: calc(100vh - 51px);
-  padding: 32px 28px;
-  border-right: 1px solid var(--bg3);
-  overflow-y: auto;
-  background: var(--bg);
-  z-index: 30;
+  position:fixed;
+  top:var(--nav-h); left:0;
+  width:var(--sidebar-w);
+  height:calc(100vh - var(--nav-h));
+  padding:32px 24px;
+  border-right:1px solid var(--hrh);
+  overflow-y:auto; background:var(--bg); z-index:30;
 }
-
 .breadcrumb {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  line-height: 1.8;
+  font-family:var(--mono); font-size:10px; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.08em;
+  margin-bottom:32px;
+  display:flex; flex-direction:column; gap:4px; line-height:1.8;
 }
-.breadcrumb a {
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.1s;
-}
-.breadcrumb a:hover { color: var(--text); }
-
-.side-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
+.breadcrumb a { color:var(--muted) }
+.breadcrumb a:hover { color:var(--text) }
+.breadcrumb .sep { opacity:.3 }
+.side-nav { display:flex; flex-direction:column; gap:1px }
 .side-nav a {
-  font-size: 12px;
-  color: var(--muted2);
-  text-decoration: none;
-  padding: 7px 12px;
-  border-left: 2px solid transparent;
-  transition: all 0.15s;
+  font-family:var(--mono); font-size:11px; color:var(--faint);
+  padding:7px 10px;
+  border-left:2px solid transparent;
+  transition:all .15s;
 }
-.side-nav a:hover {
-  color: var(--text);
-  border-left-color: var(--muted2);
-}
-.side-nav a.active {
-  color: var(--text);
-  border-left-color: #8B7355;
-  font-weight: 600;
+.side-nav a:hover { color:var(--text); border-left-color:var(--faint) }
+.side-nav a.active { color:var(--text); border-left-color:var(--amber); font-weight:500 }
+
+/* ── PAGE WRAP ────────────────────────────────────────── */
+.page-wrap {
+  margin-left:var(--sidebar-w);
+  max-width:860px;
+  padding:calc(var(--nav-h) + 44px) 48px 120px;
 }
 
-.content {
-  width: 100%;
-  position: relative;
-  z-index: 1;
+/* ── HERO ─────────────────────────────────────────────── */
+.hero { margin-bottom:56px }
+.eyebrow {
+  font-family:var(--mono); font-size:9.5px; color:var(--amber);
+  text-transform:uppercase; letter-spacing:.12em; font-weight:500;
+  display:flex; align-items:center; gap:6px; margin-bottom:14px;
 }
-
-.hero-section {
-  margin-bottom: 72px;
-  padding-top: 16px;
+.eyebrow::before { content:'▸'; font-size:9px }
+.proj-title {
+  font-size:34px; font-weight:600;
+  letter-spacing:-.03em; line-height:1.08; margin-bottom:18px;
 }
-.hero-eyebrow {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-.hero-eyebrow::before { content: '▶'; font-size: 8px; }
-
-.project-title {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  margin-bottom: 20px;
-}
-
-.project-lead {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 28px;
-  max-width: 580px;
-  border-left: 3px solid var(--accent);
-  padding-left: 16px;
-}
-
-.chips {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
+.chips { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px }
 .chip {
-  font-family: var(--mono);
-  font-size: 9px;
-  padding: 3px 8px;
-  border: 1px solid var(--muted2);
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-family:var(--mono); font-size:9px;
+  padding:3px 8px; border:1px solid var(--hr);
+  color:var(--faint); text-transform:uppercase; letter-spacing:.04em;
+}
+.proj-lead {
+  font-size:14px; color:var(--muted);
+  line-height:1.82; margin-bottom:16px;
+  max-width:580px;
+  border-left:2px solid var(--amber); padding-left:16px;
+}
+.proj-claim {
+  font-size:13px; color:var(--muted);
+  line-height:1.78; margin-bottom:24px;
+  max-width:580px; font-style:italic;
+  border-left:2px solid var(--hr); padding-left:16px;
 }
 
-.btn-row { display: flex; flex-wrap: wrap; }
-.btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 9px 16px;
-  border: var(--pixel-border);
-  margin-right: -2px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 12px;
-  font-family: var(--mono);
-  letter-spacing: 0.04em;
-  font-weight: 500;
-  transition: all 0.1s;
-  background: var(--bg);
-  white-space: nowrap;
-}
-.btn:hover { background: var(--text); color: var(--bg); }
-.btn.primary {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
-}
-.btn.primary:hover { opacity: 0.88; }
-
-.meta-row {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  border: var(--pixel-border);
-  margin-bottom: 80px;
-}
-.meta-cell {
-  padding: 22px;
-  border-right: var(--pixel-border);
-}
-.meta-cell:last-child { border-right: none; }
-.meta-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
-}
-.meta-num {
-  font-size: 38px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.meta-desc {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.section {
-  margin-bottom: 80px;
-  scroll-margin-top: 72px;
-}
-.sec-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 8px;
-}
-.sec-title {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-.sec-divider {
-  border: none;
-  border-top: var(--pixel-border);
-  margin-bottom: 28px;
-}
-.body-text {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.85;
-  margin-bottom: 16px;
-  max-width: 600px;
-}
-
-.grid2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: var(--pixel-border);
-  margin-top: 20px;
-}
-.gcell {
-  padding: 18px 20px;
-  border-right: var(--pixel-border);
-}
-.gcell:last-child { border-right: none; }
-.gcell-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-.bullets { padding-left: 16px; }
-.bullets li {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 4px;
-}
-
-.steps {
-  margin-top: 20px;
-  border: var(--pixel-border);
-}
-.step {
-  padding: 18px 20px;
-  border-bottom: var(--pixel-border);
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 16px;
-  align-items: start;
-}
-.step:last-child { border-bottom: none; }
-.step-n {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: -0.04em;
-  padding-top: 1px;
-}
-.step-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 5px;
-}
-.step p {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.screenshot-wrap {
-  border: var(--pixel-border);
-  overflow: hidden;
-  margin-top: 20px;
-  background: var(--bg2);
-}
-.screenshot-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 8px 12px;
-  border-bottom: var(--pixel-border);
-  background: var(--bg2);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.screenshot-label::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-.screenshot-wrap video {
-  width: 100%;
-  display: block;
-  background: #000;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: var(--pixel-border);
-  margin-top: 20px;
-}
-.feat {
-  padding: 14px 16px;
-  border-right: var(--pixel-border);
-  border-bottom: var(--pixel-border);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-}
-.feat:nth-child(2n) { border-right: none; }
-.feat:nth-last-child(-n+2) { border-bottom: none; }
-.feat-icon {
-  font-size: 14px;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.feat-text {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.table-wrap {
-  border: var(--pixel-border);
-  margin-top: 20px;
-  overflow-x: auto;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 480px;
-}
-th {
-  background: var(--bg2);
-  font-family: var(--mono);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  padding: 10px 14px;
-  text-align: left;
-  border-bottom: var(--pixel-border);
-  font-weight: 700;
-}
-td {
-  padding: 11px 14px;
-  font-size: 12px;
-  color: var(--muted);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  line-height: 1.5;
-}
-html[data-theme="dark"] td { border-bottom-color: rgba(255,255,255,0.05); }
-tr:last-child td { border-bottom: none; }
-td:first-child {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.quote {
-  margin-top: 20px;
-  padding: 16px 18px;
-  border: var(--pixel-border);
-  border-left: 4px solid var(--accent);
-  background: var(--bg2);
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.75;
-  font-style: italic;
-  max-width: 600px;
-}
-
+/* ── FLOW ─────────────────────────────────────────────── */
 .flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 16px;
+  display:flex; flex-wrap:wrap; align-items:center;
+  margin-bottom:28px; gap:0;
 }
 .flow-tag {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--muted);
-  padding: 5px 10px;
-  border: 1px solid var(--muted2);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-family:var(--mono); font-size:9px; color:var(--muted);
+  padding:5px 10px; border:1px solid var(--hrh);
+  text-transform:uppercase; letter-spacing:.04em;
+  margin-right:-1px;
 }
 .flow-tag.on {
-  background: #111214;
-  color: #fff;
-  border-color: #111214;
-}
-html[data-theme="dark"] .flow-tag.on {
-  background: #f2f4f7;
-  color: #111214;
-  border-color: #f2f4f7;
+  background:var(--text); color:var(--bg);
 }
 .flow-arrow {
-  font-size: 12px;
-  color: var(--muted2);
-  padding: 0 6px;
+  font-family:var(--mono); font-size:11px;
+  color:var(--faint); padding:0 6px;
 }
 
+/* ── BUTTONS ──────────────────────────────────────────── */
+.btn-row { display:flex; flex-wrap:wrap; margin-bottom:0 }
+.btn {
+  display:inline-flex; align-items:center;
+  padding:8px 16px; border:1px solid var(--hrh);
+  margin-right:-1px; background:var(--bg);
+  font-family:var(--mono); font-size:11px;
+  letter-spacing:.04em; font-weight:400;
+  transition:background .12s, color .12s; white-space:nowrap;
+}
+.btn:hover { background:var(--text); color:var(--bg) }
+.btn.primary { background:var(--text); color:var(--bg) }
+.btn.primary:hover { opacity:.85 }
+
+/* ── META ROW ─────────────────────────────────────────── */
+.meta-row {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--hrh); margin-bottom:64px;
+}
+.meta-cell {
+  padding:20px 22px; border-right:1px solid var(--hrh);
+}
+.meta-cell:last-child { border-right:none }
+.meta-label {
+  font-family:var(--mono); font-size:9px; color:var(--amber);
+  font-weight:500; text-transform:uppercase; letter-spacing:.1em;
+  margin-bottom:8px;
+}
+.meta-n {
+  font-size:28px; font-weight:600;
+  letter-spacing:-.04em; line-height:1; margin-bottom:6px;
+}
+.meta-desc { font-size:12px; color:var(--muted); line-height:1.5 }
+
+/* ── SECTIONS ─────────────────────────────────────────── */
+.sec { margin-bottom:72px; scroll-margin-top:80px }
+.sec-label {
+  font-family:var(--mono); font-size:9px; color:var(--amber);
+  font-weight:500; text-transform:uppercase; letter-spacing:.12em;
+  margin-bottom:6px;
+}
+.sec-title {
+  font-size:26px; font-weight:600;
+  letter-spacing:-.02em; margin-bottom:16px; line-height:1.2;
+}
+.sec-divider {
+  border:none; border-top:1px solid var(--hrh); margin-bottom:24px;
+}
+.body-text {
+  font-size:13.5px; color:var(--muted);
+  line-height:1.85; margin-bottom:16px; max-width:600px;
+}
+.body-text.shows { color:var(--text); font-weight:500 }
+.body-text.suggests { color:var(--muted); font-style:italic }
+
+/* ── GRID 2 ───────────────────────────────────────────── */
+.grid2 {
+  display:grid; grid-template-columns:1fr 1fr;
+  border:1px solid var(--hrh); margin-top:20px;
+}
+.gcell { padding:18px 20px; border-right:1px solid var(--hrh) }
+.gcell:last-child { border-right:none }
+.gcell-label {
+  font-family:var(--mono); font-size:9px; color:var(--amber);
+  font-weight:500; text-transform:uppercase; letter-spacing:.08em;
+  margin-bottom:10px;
+}
+.bullets { padding-left:16px }
+.bullets li {
+  font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:4px;
+}
+
+/* ── STEPS ────────────────────────────────────────────── */
+.steps { border:1px solid var(--hrh); margin-top:20px }
+.step {
+  padding:18px 20px; border-bottom:1px solid var(--hrh);
+  display:grid; grid-template-columns:44px 1fr;
+  gap:16px; align-items:start;
+}
+.step:last-child { border-bottom:none }
+.step-n {
+  font-size:20px; font-weight:600; color:var(--amber);
+  letter-spacing:-.04em; padding-top:1px; font-family:var(--mono);
+}
+.step-label {
+  font-family:var(--mono); font-size:9px; color:var(--faint);
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:5px;
+}
+.step p { font-size:13px; color:var(--muted); line-height:1.7 }
+
+/* ── DESIGN RATIONALE ─────────────────────────────────── */
+.rationale {
+  border:1px solid var(--hrh); margin-top:20px;
+}
+.rationale-row {
+  display:grid; grid-template-columns:120px 1fr 1fr;
+  border-bottom:1px solid var(--hrh);
+}
+.rationale-row:last-child { border-bottom:none }
+.rationale-head {
+  padding:14px 16px; background:var(--bg2);
+  border-right:1px solid var(--hrh);
+  font-family:var(--mono); font-size:9px; color:var(--amber);
+  font-weight:500; text-transform:uppercase; letter-spacing:.08em;
+  display:flex; align-items:center;
+}
+.rationale-cell {
+  padding:14px 16px; border-right:1px solid var(--hrh);
+  font-size:12.5px; color:var(--muted); line-height:1.65;
+}
+.rationale-cell:last-child { border-right:none }
+
+/* ── SCREENSHOT ───────────────────────────────────────── */
+.screenshot-wrap {
+  border:1px solid var(--hrh); overflow:hidden; margin-top:20px;
+  background:var(--bg2);
+}
+.screenshot-label {
+  font-family:var(--mono); font-size:9px; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.08em;
+  padding:8px 12px; border-bottom:1px solid var(--hrh);
+  background:var(--bg2);
+  display:flex; align-items:center; gap:6px;
+}
+.screenshot-dot {
+  width:5px; height:5px; border-radius:50%; background:var(--amber);
+  flex-shrink:0;
+}
+.screenshot-wrap video { width:100%; display:block; background:#000 }
+.screenshot-caption {
+  font-family:var(--mono); font-size:10px; color:var(--faint);
+  font-style:italic; margin-top:8px;
+}
+
+/* ── TABLE ────────────────────────────────────────────── */
+.table-wrap {
+  border:1px solid var(--hrh); margin-top:20px; overflow-x:auto;
+}
+table { width:100%; border-collapse:collapse; min-width:480px }
+th {
+  background:var(--bg2); font-family:var(--mono);
+  font-size:9px; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--muted); padding:10px 14px; text-align:left;
+  border-bottom:1px solid var(--hrh); font-weight:500;
+}
+td {
+  padding:11px 14px; font-size:12.5px; color:var(--muted);
+  border-bottom:1px solid var(--hr); line-height:1.5;
+}
+html[data-theme="dark"] td { border-bottom-color:rgba(255,255,255,.05) }
+tr:last-child td { border-bottom:none }
+td:first-child { color:var(--text); font-weight:500 }
+
+/* ── QUOTE ────────────────────────────────────────────── */
+.quote {
+  margin-top:20px; padding:14px 18px;
+  border:1px solid var(--hrh); border-left:2px solid var(--amber);
+  background:var(--bg2); font-size:13px; color:var(--muted);
+  line-height:1.75; font-style:italic; max-width:600px;
+}
+
+/* ── PAPER BLOCK ──────────────────────────────────────── */
+.paper-block {
+  border:1px solid var(--hrh); margin-top:20px;
+}
+.paper-row {
+  padding:16px 20px; border-bottom:1px solid var(--hrh);
+  display:grid; grid-template-columns:120px 1fr; gap:16px;
+}
+.paper-row:last-child { border-bottom:none }
+.paper-row-label {
+  font-family:var(--mono); font-size:9px; color:var(--amber);
+  font-weight:500; text-transform:uppercase; letter-spacing:.08em;
+  padding-top:2px;
+}
+.paper-row-content {
+  font-size:13px; color:var(--muted); line-height:1.7;
+}
+.paper-claim-text {
+  font-size:13.5px; font-weight:500; color:var(--text);
+  line-height:1.55; border-left:2px solid var(--amber); padding-left:12px;
+}
+
+/* ── FLOW ANNOTATED ───────────────────────────────────── */
+.flow-annotated {
+  display:flex; flex-wrap:wrap; align-items:flex-start;
+  gap:0; margin-top:20px;
+}
+.flow-item {
+  display:flex; flex-direction:column; gap:6px;
+  max-width:160px;
+}
+.flow-note {
+  font-family:var(--mono); font-size:9px; color:var(--faint);
+  line-height:1.6; padding:0 4px;
+}
+.flow-annotated .flow-arrow {
+  padding:0 6px; padding-top:8px;
+  font-family:var(--mono); font-size:11px; color:var(--faint);
+  align-self:flex-start;
+}
 .footer {
-  border-top: var(--pixel-border);
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 40px;
+  border-top:1px solid var(--hrh); padding-top:18px;
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--mono); font-size:9.5px; color:var(--faint);
+  text-transform:uppercase; letter-spacing:.06em;
+  flex-wrap:wrap; gap:8px; margin-top:40px;
 }
-.footer a {
-  color: var(--muted);
-  text-decoration: none;
+.footer a { color:var(--faint) }
+.footer a:hover { color:var(--text) }
+.btn-row-sm { display:flex }
+.btn-sm {
+  font-family:var(--mono); font-size:9.5px;
+  padding:6px 12px; border:1px solid var(--hrh); margin-right:-1px;
+  background:var(--bg); color:var(--muted);
+  transition:background .12s, color .12s; display:inline-block;
 }
-.footer a:hover { color: var(--text); }
+.btn-sm:hover { background:var(--text); color:var(--bg) }
 
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media(max-width:900px) {
+  .sidebar { display:none }
+  .page-wrap { margin-left:0; padding:calc(var(--nav-h) + 24px) 24px 80px }
+  .meta-row { grid-template-columns:1fr }
+  .meta-cell { border-right:none; border-bottom:1px solid var(--hrh) }
+  .meta-cell:last-child { border-bottom:none }
+  .grid2 { grid-template-columns:1fr }
+  .gcell { border-right:none; border-bottom:1px solid var(--hrh) }
+  .gcell:last-child { border-bottom:none }
+  .rationale-row { grid-template-columns:1fr }
+  .rationale-head { border-right:none; border-bottom:1px solid var(--hrh) }
+  .rationale-cell { border-right:none; border-bottom:1px solid var(--hrh) }
+  .rationale-cell:last-child { border-bottom:none }
+  .paper-row { grid-template-columns:1fr }
+  .proj-title { font-size:28px }
 }
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media(max-width:900px){
-  .page-wrap { margin-left: 0; padding: 80px 24px 120px; }
-  .sidebar { display: none; }
-  .meta-row { grid-template-columns: 1fr; }
-  .meta-cell { border-right: none; border-bottom: var(--pixel-border); }
-  .meta-cell:last-child { border-bottom: none; }
-  .grid2 { grid-template-columns: 1fr; }
-  .gcell { border-right: none; border-bottom: var(--pixel-border); }
-  .gcell:last-child { border-bottom: none; }
-  .features { grid-template-columns: 1fr; }
-  .feat { border-right: none; }
-  .feat:nth-last-child(-n+2) { border-bottom: var(--pixel-border); }
-  .feat:last-child { border-bottom: none; }
-  .project-title { font-size: 30px; }
-}
-@media(max-width:600px){
-  .top-nav { padding: 0 12px; }
-  .nav-links {
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a {
-    padding: 0 9px;
-    font-size: 11px;
-    white-space: nowrap;
-  }
-  .page-wrap { padding: 72px 16px 80px; }
-  .project-title { font-size: 24px; }
-  .btn-row { flex-direction: column; }
-  .btn { margin-right: 0; margin-bottom: -2px; }
+@media(max-width:600px) {
+  .nav-links { overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none }
+  .nav-links::-webkit-scrollbar { display:none }
+  .nav-links a { padding:0 11px; font-size:10px }
+  .page-wrap { padding:calc(var(--nav-h) + 16px) 16px 60px }
+  .proj-title { font-size:24px }
+  .btn-row { flex-direction:column }
+  .btn { margin-right:0; margin-bottom:-1px }
 }
 </style>
 </head>
 <body>
 
-<div id="progress-bar"></div>
-
-<nav class="top-nav">
-  <a class="nav-logo" href="index.html"><span class="blink"></span>sora kim</a>
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span class="pulse"></span>sora kim
+  </a>
   <div class="nav-links">
     <a href="index.html">home</a>
     <a class="active" href="projects.html">projects</a>
     <a href="research.html">research</a>
     <a href="papers.html">papers</a>
     <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank">cv ↗</a>
   </div>
-  <button class="theme-btn" id="themeToggle">◐</button>
+  <div class="nav-end">
+    <button class="theme-btn" id="themeToggle" aria-label="toggle theme">◐</button>
+  </div>
 </nav>
 
+<aside class="sidebar">
+  <div class="breadcrumb">
+    <a href="index.html">home</a>
+    <span class="sep">/</span>
+    <a href="projects.html">projects</a>
+    <span class="sep">/</span>
+    <span style="color:var(--text)">sop accessibility</span>
+  </div>
+  <nav class="side-nav">
+    <a href="#overview" class="active">Overview</a>
+    <a href="#problem">Problem</a>
+    <a href="#method">Method</a>
+    <a href="#prototype">Prototype</a>
+    <a href="#ai-layer">AI Layer</a>
+    <a href="#study">Study</a>
+    <a href="#findings">Findings</a>
+    <a href="#paper">Paper</a>
+  </nav>
+</aside>
+
 <div class="page-wrap">
+  <main>
 
-  <aside class="sidebar">
-    <div class="breadcrumb">
-      <a href="index.html">home</a>
-      <span style="opacity:.3">/</span>
-      <a href="projects.html">projects</a>
-      <span style="opacity:.3">/</span>
-      <span style="color:var(--text)">sop accessibility</span>
-    </div>
-    <nav class="side-nav">
-      <a href="#overview" class="active">Overview</a>
-      <a href="#observation">Problem</a>
-      <a href="#method">Method</a>
-      <a href="#prototype">Prototype</a>
-      <a href="#ai-layer">AI Layer</a>
-      <a href="#study">Study</a>
-      <a href="#takeaway">Findings</a>
-      <a href="#paper">Paper</a>
-    </nav>
-  </aside>
-
-  <main class="content">
-
-    <section class="hero-section fade-up" id="overview">
-      <div class="hero-eyebrow">navigation axis · project 01</div>
-      <h1 class="project-title">SOP Accessibility System</h1>
-      <p style="font-size:14px;color:var(--muted);font-style:italic;margin-bottom:20px;border-left:3px solid #8B7355;padding-left:14px;max-width:580px;line-height:1.7;">Procedural systems do not only store information — they structure how interpretation unfolds.</p>
+    <!-- ── HERO ── -->
+    <section class="hero" id="overview">
+      <div class="eyebrow">navigation axis · project 01</div>
+      <h1 class="proj-title">SOP Accessibility System</h1>
       <div class="chips">
         <span class="chip">document UX</span>
-        <span class="chip">cognitive friction</span>
         <span class="chip">python</span>
         <span class="chip">streamlit</span>
-        <span class="chip">AI support layer</span>
+        <span class="chip">usability study</span>
       </div>
-      <p class="project-lead">
-        Access alone does not resolve interpretive burden in procedural systems. In pharmaceutical manufacturing, Standard Operating Procedures (SOPs) define how every critical task is performed — and when those documents are hard to find, friction travels downstream into hesitation, workarounds, and judgment under constraint. This project builds a compliance-safe retrieval layer that treats document accessibility as an HCI problem.
+      <p class="proj-lead">
+        In pharmaceutical manufacturing, Standard Operating Procedures define how every critical task is performed. When those documents are hard to find, friction travels downstream into hesitation, workarounds, and judgment under constraint. This project builds a compliance-safe retrieval layer that treats document accessibility as an HCI problem.
       </p>
+      <p class="proj-claim">
+        This project does not claim to measure responsibility outcomes directly, but isolates accessibility as an upstream condition that structures interpretive pathways.
+      </p>
+      <div class="flow" style="margin-bottom:24px;">
+        <span class="flow-tag on">retrieval difficulty</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-tag on">interpretive variance</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-tag on">judgment under constraint</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-tag on">perceived responsibility</span>
+      </div>
       <div class="btn-row">
         <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">UI Demo ↗</a>
         <a class="btn" href="https://sop-accessibility-ai.streamlit.app/" target="_blank">AI Support Layer ↗</a>
@@ -675,48 +507,51 @@ html[data-theme="dark"] .flow-tag.on {
       </div>
     </section>
 
-    <div class="meta-row fade-up">
+    <!-- ── META ── -->
+    <div class="meta-row">
       <div class="meta-cell">
-        <div class="meta-label">// participants</div>
-        <div class="meta-num">12</div>
-        <div class="meta-desc">Think-aloud study · frequent SOP users · daily search behavior</div>
+        <div class="meta-label">// study</div>
+        <div class="meta-n">N=12</div>
+        <div class="meta-desc">Think-aloud protocol · frequent SOP users · daily search behavior</div>
       </div>
       <div class="meta-cell">
-        <div class="meta-label">// ease of use</div>
-        <div class="meta-num">4.8/5</div>
-        <div class="meta-desc">Mean ease-of-use rating · locating relevant sections</div>
+        <div class="meta-label">// retrieval time</div>
+        <div class="meta-n" style="font-size:20px;letter-spacing:-.02em;">~6 → ~1 min</div>
+        <div class="meta-desc">Observed reduction in retrieval time (min) · informal timing</div>
       </div>
       <div class="meta-cell">
-        <div class="meta-label">// intuitiveness</div>
-        <div class="meta-num">4.8/5</div>
-        <div class="meta-desc">Mean intuitiveness rating · overall interaction model</div>
+        <div class="meta-label">// adoption intent</div>
+        <div class="meta-n">12/12</div>
+        <div class="meta-desc">Adoption intent observed across all participants</div>
       </div>
     </div>
 
-    <section class="section fade-up" id="observation">
+    <!-- ── PROBLEM ── -->
+    <section class="sec" id="problem">
       <div class="sec-label">// 01</div>
       <h2 class="sec-title">Problem</h2>
       <hr class="sec-divider">
-      <p class="body-text">Procedural archives are often stored as scanned PDFs — blocking keyword search, burying relevant sections behind similar-sounding titles, forcing users to rely on folder memory. The problem isn't missing functionality. It's a structural mismatch between how archives are organized and how people actually search under constraint.</p>
+      <p class="body-text">Procedural archives are often stored as scanned PDFs — blocking keyword search, burying relevant sections behind similar-sounding titles, forcing users to rely on folder memory. The problem is not missing functionality. It is a structural mismatch between how archives are organized and how people actually search under constraint.</p>
       <div class="grid2">
         <div class="gcell">
-          <div class="gcell-label">// pain points</div>
+          <div class="gcell-label">// observed friction points</div>
           <ul class="bullets">
             <li>Scanned files blocked keyword search</li>
             <li>Titles too broad, similar, or generic</li>
-            <li>Users opened multiple wrong files</li>
+            <li>Users opened multiple wrong files before locating target</li>
             <li>Access required archive naming familiarity</li>
             <li>Time pressure amplified every friction point</li>
           </ul>
         </div>
         <div class="gcell">
-          <div class="gcell-label">// implication</div>
-          <p style="font-size:13px; color:var(--muted); line-height:1.75; margin:0;">Accessibility problems systematically introduce hesitation and interpretive variance <em>before</em> any formal task error occurs. What looks like individual failure downstream often begins as structural difficulty upstream.</p>
+          <div class="gcell-label">// structural implication</div>
+          <p class="body-text" style="margin:0;">Accessibility problems can introduce hesitation and interpretive variance before any formal task error occurs. What looks like individual failure downstream often begins as structural difficulty upstream.</p>
         </div>
       </div>
     </section>
 
-    <section class="section fade-up" id="method">
+    <!-- ── METHOD ── -->
+    <section class="sec" id="method">
       <div class="sec-label">// 02</div>
       <h2 class="sec-title">Method</h2>
       <hr class="sec-divider">
@@ -739,20 +574,21 @@ html[data-theme="dark"] .flow-tag.on {
           <div class="step-n">03</div>
           <div>
             <div class="step-label">prototype development</div>
-            <p>Built an external retrieval layer allowing keyword-based search without altering validated source files. Compliance-safe by design.</p>
+            <p>Built an external retrieval layer allowing keyword-based search without altering validated source files. Compliance-safe by design — no modifications to any controlled document.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-n">04</div>
           <div>
-            <div class="step-label">usability study · N=12, think-aloud protocol</div>
-            <p>Used the prototype as both a design intervention and an analytic probe — observing how documentation access shapes confidence, search behavior, and navigation experience.</p>
+            <div class="step-label">usability study · N=12 · think-aloud protocol</div>
+            <p>Used the prototype as both a design intervention and an analytic probe — observing how documentation access shapes confidence, search behavior, and navigation experience under realistic task conditions.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-up" id="prototype">
+    <!-- ── PROTOTYPE ── -->
+    <section class="sec" id="prototype">
       <div class="sec-label">// 03</div>
       <h2 class="sec-title">UI Prototype</h2>
       <hr class="sec-divider">
@@ -761,61 +597,70 @@ html[data-theme="dark"] .flow-tag.on {
         <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">Open Demo ↗</a>
       </div>
       <div class="screenshot-wrap">
-        <div class="screenshot-label">search interface · demo video</div>
+        <div class="screenshot-label"><span class="screenshot-dot"></span>search interface · demo video</div>
         <video autoplay muted loop playsinline preload="metadata">
           <source src="./assets/sop-ui.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
-      <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">Keyword entry replaces filename memory — users enter task terms, not document titles.</p>
-      <div class="features">
-        <div class="feat"><span class="feat-icon">🔍</span><span class="feat-text">Keyword search with ranked results and snippet highlighting</span></div>
-        <div class="feat"><span class="feat-icon">📄</span><span class="feat-text">Document IDs and page cues surfaced at point of retrieval</span></div>
-        <div class="feat"><span class="feat-icon">⚠️</span><span class="feat-text">Empty states treated as usability signals, not user failure</span></div>
-        <div class="feat"><span class="feat-icon">📊</span><span class="feat-text">Per-result feedback logging to capture retrieval patterns</span></div>
+      <p class="screenshot-caption">Keyword entry replaces filename memory — users enter task terms, not document titles.</p>
+
+      <div class="rationale">
+        <div class="rationale-row">
+          <div class="rationale-head">Constraint</div>
+          <div class="rationale-cell">Validated SOP files cannot be modified — any change requires full revalidation under GMP regulations.</div>
+          <div class="rationale-cell">Users rely on folder memory and trial-and-error file opening, creating interpretive friction before any task begins.</div>
+        </div>
+        <div class="rationale-row">
+          <div class="rationale-head">Decision</div>
+          <div class="rationale-cell">External retrieval layer — search operates over metadata index, not source files.</div>
+          <div class="rationale-cell">Keyword-based access decouples retrieval from archive structure while preserving document integrity.</div>
+        </div>
+        <div class="rationale-row">
+          <div class="rationale-head">Trade-off</div>
+          <div class="rationale-cell">No automation of interpretation or compliance decisions — human interpretive authority is preserved.</div>
+          <div class="rationale-cell">System surfaces documents; practitioners retain full responsibility for reading, applying, and judging.</div>
+        </div>
       </div>
     </section>
 
-    <section class="section fade-up" id="ai-layer">
+    <!-- ── AI LAYER ── -->
+    <section class="sec" id="ai-layer">
       <div class="sec-label">// 04</div>
       <h2 class="sec-title">AI Support Layer</h2>
       <hr class="sec-divider">
-      <p class="body-text">Retrieval is only one component of procedural usability. Rather than optimizing access alone, this layer makes visible why results appear, what adjacent procedures matter, and where ambiguity remains — maintaining reasoning openness rather than collapsing it prematurely. It does not replace reading or make compliance decisions.</p>
+      <p class="body-text">Retrieval is only one component of procedural usability. A conceptual AI-assisted extension explores how retrieval cues could be expanded — making visible why results appear, what adjacent procedures matter, and where ambiguity remains. It does not replace reading or make compliance decisions.</p>
+      <p class="body-text" style="font-family:var(--mono);font-size:11px;color:var(--faint);border-left:2px solid var(--hr);padding-left:12px;">Conceptual extension — no separate usability study conducted on this layer. Included as a design direction, not an empirical claim.</p>
       <div class="btn-row" style="margin-bottom:20px;">
         <a class="btn primary" href="https://sop-accessibility-ai.streamlit.app/" target="_blank">Open AI Layer ↗</a>
       </div>
       <div class="screenshot-wrap">
-        <div class="screenshot-label">AI support layer · demo video</div>
+        <div class="screenshot-label"><span class="screenshot-dot"></span>AI support layer · demo video</div>
         <video autoplay muted loop playsinline preload="metadata">
           <source src="./assets/sop-ai.mp4" type="video/mp4">
-          Your browser does not support the video tag.
         </video>
       </div>
-      <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">Three design principles made explicit upfront: EXPLAINS why a result appeared, SURFACES related procedures, KEEPS interpretive options open.</p>
+      <p class="screenshot-caption">Three design principles made explicit: explains why a result appeared, surfaces related procedures, keeps interpretive options open.</p>
       <div class="quote">This prototype suggests that retrieval is only one component of procedural usability, and that interpretive support is necessary to maintain reasoning openness in regulated environments.</div>
     </section>
 
-    <section class="section fade-up" id="study">
+    <!-- ── STUDY ── -->
+    <section class="sec" id="study">
       <div class="sec-label">// 05</div>
       <h2 class="sec-title">Usability Study</h2>
       <hr class="sec-divider">
-      <p class="body-text">Think-aloud study, N=12, all frequent procedural document users reporting daily search behavior. Ratings were consistently high across ease of use, result cues, and intuitiveness.</p>
-      <div class="flow" style="margin-bottom:20px;">
-        <span class="flow-tag on">ease: 4.8/5</span>
-        <span class="flow-arrow">·</span>
-        <span class="flow-tag on">usefulness: 4.5/5</span>
-        <span class="flow-arrow">·</span>
-        <span class="flow-tag on">intuitiveness: 4.8/5</span>
-      </div>
+      <p class="body-text shows">This study shows: participants initially relied on folder memory and trial-and-error file opening, while the prototype enabled direct keyword-based retrieval — observed reduction in retrieval time (~6 → ~1 min, informal timing, exploratory measure). As retrieval effort decreased, participants appeared to allocate more attention to interpretation rather than navigation.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
+          <thead>
+            <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
+          </thead>
           <tbody>
-            <tr><td>Regular procedural document users</td><td>100%</td><td>Experienced documentation users throughout.</td></tr>
-            <tr><td>Ease of finding relevant sections</td><td>4.8 / 5</td><td>Interface rated highly easy to use.</td></tr>
-            <tr><td>Usefulness of titles / snippets</td><td>4.5 / 5</td><td>Result cues reduced early-stage uncertainty.</td></tr>
-            <tr><td>Overall intuitiveness</td><td>4.8 / 5</td><td>Interaction model felt natural and easy to follow.</td></tr>
-            <tr><td>Would use in practice</td><td>12/12</td><td>Reflects gap between current infrastructure and user needs.</td></tr>
+            <tr><td>Participants</td><td>N = 12</td><td>Think-aloud study · frequent procedural document users · daily search behavior</td></tr>
+            <tr><td>Retrieval time</td><td>~6 → ~1 min</td><td>Observed reduction · informal timing, exploratory measure · not controlled measurement</td></tr>
+            <tr><td>Ease of finding relevant sections</td><td>4.8/5</td><td>Interface rated highly accessible</td></tr>
+            <tr><td>Usefulness of titles / snippets</td><td>4.5/5</td><td>Result cues observed to reduce early-stage uncertainty</td></tr>
+            <tr><td>Overall intuitiveness</td><td>4.8/5</td><td>Interaction model felt natural across participants</td></tr>
+            <tr><td>Adoption intent</td><td>12/12</td><td>All participants indicated willingness to adopt the system</td></tr>
           </tbody>
         </table>
       </div>
@@ -824,7 +669,7 @@ html[data-theme="dark"] .flow-tag.on {
           <div class="gcell-label">// what worked</div>
           <ul class="bullets">
             <li>Task-relevant keyword entry (not filename memory)</li>
-            <li>Snippets reduced early-stage uncertainty</li>
+            <li>Snippets observed to reduce early-stage uncertainty</li>
             <li>Document IDs improved search confidence</li>
           </ul>
         </div>
@@ -840,74 +685,75 @@ html[data-theme="dark"] .flow-tag.on {
       <div class="quote">The strongest signal: ambiguity became more visible. The prototype helped separate user difficulty from structural difficulty in the archive itself.</div>
     </section>
 
-    <section class="section fade-up" id="takeaway">
+    <!-- ── FINDINGS ── -->
+    <section class="sec" id="findings">
       <div class="sec-label">// 06</div>
       <h2 class="sec-title">What This Revealed</h2>
       <hr class="sec-divider">
-      <p class="body-text">Document accessibility shapes how responsibility is interpreted in practice. Retrieval difficulty shapes what people notice, how they hesitate, and which document they trust — and when those patterns appear downstream as inconsistency or deviation, they are misread as individual failure rather than structural friction.</p>
-      <div class="flow">
-        <span class="flow-tag on">retrieval difficulty</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">interpretive variance</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">judgment under constraint</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">perceived responsibility</span>
+      <p class="body-text shows">This study shows that accessibility constraints shape how practitioners navigate and interpret procedural material under time pressure.</p>
+      <p class="body-text suggests">This work suggests that accessibility may function as an upstream condition — potentially influencing how responsibility is interpreted when retrieval fails or is delayed.</p>
+      <div class="flow-annotated">
+        <div class="flow-item">
+          <div class="flow-tag on">retrieval difficulty</div>
+          <div class="flow-note">scanned PDFs block keyword search; folder memory required</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="flow-tag on">interpretive variance</div>
+          <div class="flow-note">hesitation and uncertainty before any task error occurs</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="flow-tag on">judgment under constraint</div>
+          <div class="flow-note">decisions made with incomplete procedural grounding</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="flow-tag on">perceived responsibility</div>
+          <div class="flow-note">structural difficulty misread as individual failure</div>
+        </div>
       </div>
+      <p class="body-text suggests" style="margin-top:16px;">This sequence reflects how access constraints propagate into interpretive variation, rather than directly determining outcomes.</p>
+      <p class="body-text suggests" style="margin-top:8px;">While responsibility is not directly measured, it is introduced as a downstream interpretive construct emerging from judgment.</p>
     </section>
 
-    <section class="section fade-up" id="future">
+    <!-- ── PAPER ── -->
+    <section class="sec" id="paper">
       <div class="sec-label">// 07</div>
-      <h2 class="sec-title">Future Work</h2>
+      <h2 class="sec-title">Paper</h2>
       <hr class="sec-divider">
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// next steps</div>
-          <ul class="bullets">
-            <li>Context-sensitive retrieval explanation (why this result, not just what)</li>
-            <li>Adjacent procedure recommendation from cross-reference mappings</li>
-            <li>Ambiguity logging across repeated searches to surface structural gaps</li>
-          </ul>
+      <div class="paper-block">
+        <div class="paper-row">
+          <div class="paper-row-label">Claim</div>
+          <div class="paper-row-content">
+            <p class="paper-claim-text">This paper argues that document inaccessibility in regulated environments can create conditions for recurring judgment errors — extending beyond compliance gaps into interpretive structure.</p>
+          </div>
         </div>
-        <div class="gcell">
-          <div class="gcell-label">// design constraint</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">All extensions must preserve human interpretive authority — no black-box decisions, no modification of validated source files.</p>
+        <div class="paper-row">
+          <div class="paper-row-label">What it does</div>
+          <div class="paper-row-content">Develops a prototype-based study isolating accessibility as an upstream condition that shapes interpretive variability in SOP systems — arguing that compliance-safe usability improvements can be achieved through external support layers.</div>
         </div>
-      </div>
-    </section>
-
-    <section class="section fade-up" id="paper">
-      <div class="sec-label">// 08</div>
-      <h2 class="sec-title">Paper in Progress</h2>
-      <hr class="sec-divider">
-      <p class="body-text">This paper examines how accessibility constraints in SOP systems shape interpretive variability and downstream responsibility judgments. The central argument: accessibility improvements in validation-sensitive systems can be achieved through external support layers — without touching validated source files.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// tools & methods</div>
-          <ul class="bullets">
-            <li>Python — term inspection, overlap analysis</li>
-            <li>Excel — metadata indexing</li>
-            <li>Streamlit — prototype deployment</li>
-            <li>Think-aloud usability study · N=12</li>
-          </ul>
+        <div class="paper-row">
+          <div class="paper-row-label">Status</div>
+          <div class="paper-row-content">Preprint · 2026 · SSRN</div>
         </div>
-        <div class="gcell">
-          <div class="gcell-label">// research framing</div>
-          <ul class="bullets">
-            <li>SOP accessibility & information architecture</li>
-            <li>Compliance-constrained design</li>
-            <li>Cognitive friction in regulated work</li>
-            <li>Prototype-based usability evaluation</li>
-          </ul>
+        <div class="paper-row">
+          <div class="paper-row-label">Links</div>
+          <div class="paper-row-content">
+            <div class="btn-row">
+              <a class="btn" href="[my_ssrn_link]" target="_blank">SSRN ↗</a>
+              <a class="btn" href="papers.html">→ papers page</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <div class="footer">
-      <span>© 2026 Sora Kim</span>
-      <div style="display:flex;">
-        <a class="btn" href="projects.html" style="font-size:10px;padding:6px 12px;">← projects</a>
-        <a class="btn" href="index.html" style="font-size:10px;padding:6px 12px;border-left:none;">home</a>
+      <span>navigation axis · project 01</span>
+      <div class="btn-row-sm">
+        <a class="btn-sm" href="projects.html">← projects</a>
+        <a class="btn-sm" href="index.html">home</a>
       </div>
     </div>
 
@@ -915,42 +761,24 @@ html[data-theme="dark"] .flow-tag.on {
 </div>
 
 <script>
-(function(){
+(function() {
   var btn = document.getElementById('themeToggle');
   var html = document.documentElement;
   var saved = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if(saved === 'dark' || (!saved && prefersDark)) html.setAttribute('data-theme','dark');
-
-  btn.addEventListener('click', function(){
-    var dark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', dark ? 'light' : 'dark');
-    localStorage.setItem('theme', dark ? 'light' : 'dark');
+  var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (saved === null && sysDark)) html.setAttribute('data-theme', 'dark');
+  btn.addEventListener('click', function() {
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
   });
 })();
 
-window.addEventListener('scroll', function() {
-  var scrollTop = window.scrollY;
-  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.getElementById('progress-bar').style.width = pct + '%';
-});
-
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.fade-up').forEach(function(el) {
-  observer.observe(el);
-});
-
+// sidebar scroll-spy
 var sections = document.querySelectorAll('[id]');
 var navLinks = document.querySelectorAll('.side-nav a');
-
 window.addEventListener('scroll', function() {
-  var scrollY = window.scrollY + 120;
+  var scrollY = window.scrollY + 100;
   sections.forEach(function(sec) {
     if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
       navLinks.forEach(function(link) {
