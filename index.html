@@ -4,569 +4,743 @@
 <meta charset="UTF-8" />
 <title>Sora Kim</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Sora Kim designs and studies human-centered systems for high-stakes procedural work, focusing on regulatory UX, procedural cognition, judgment, and decision support." />
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sora Kim — Human-Centered Systems Research">
-<meta property="og:description" content="Research and design work on human-centered systems, regulatory UX, procedural cognition, judgment, and decision support in high-stakes procedural environments.">
-<meta property="og:image" content="https://sorakim-lab.github.io/og-preview.png">
-<meta property="og:url" content="https://sorakim-lab.github.io/">
-<meta property="og:site_name" content="Sora Kim">
+<meta name="description" content="Sora Kim — HCI researcher studying judgment, procedural systems, and human-centered design in regulated environments." />
+
+<link rel="icon" href="./assets/favicon-light.png">
+<link rel="icon" href="./assets/favicon-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="./assets/favicon-dark.png" media="(prefers-color-scheme: dark)">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#f5f5f7;
-  --panel:rgba(255,255,255,0.82);
-  --panel-strong:rgba(255,255,255,0.92);
-  --text:#111218;
-  --muted:#6d6f78;
-  --muted-strong:#4b4e57;
-  --line:rgba(17,17,17,0.08);
-  --line-strong:rgba(17,17,17,0.12);
-  --blue:#e9eef9;
-  --green:#edf6f2;
-  --lilac:#f3eefb;
-  --sand:#f6f1e7;
-  --blue-strong:#d3def8;
-  --green-strong:#d9efe4;
-  --lilac-strong:#e6dbfb;
-  --sand-strong:#ece1cb;
-  --radius-xl:30px;
-  --radius-lg:24px;
-  --radius-md:18px;
-  --shadow:0 18px 50px rgba(15,23,42,0.08);
-  --shadow-soft:0 8px 28px rgba(15,23,42,0.05);
-  --shadow-hover:0 24px 54px rgba(15,23,42,0.12);
-  --mono:'JetBrains Mono', monospace;
+:root {
+  --bg: #f8f8f6;
+  --bg2: #f0f0ee;
+  --bg3: #e8e8e6;
+  --text: #111214;
+  --muted: #626872;
+  --muted2: #8a9099;
+  --accent: #1a1a1a;
+  --accent-light: #f0f0ee;
+  --pixel-border: 1px solid #222;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', sans-serif;
 }
-html[data-theme="dark"]{
-  --text:#e2e4ea; --muted:#7a7d8a; --muted-strong:#a8aab8;
-  --line:rgba(255,255,255,0.07); --line-strong:rgba(255,255,255,0.13);
-  --panel:rgba(22,24,32,0.88);
-  --shadow:0 18px 50px rgba(0,0,0,0.40);
-  --shadow-soft:0 8px 28px rgba(0,0,0,0.28);
-  --shadow-hover:0 24px 54px rgba(0,0,0,0.50);
+html[data-theme="dark"] {
+  --bg: #111317;
+  --bg2: #1a1e25;
+  --bg3: #232833;
+  --text: #f2f4f7;
+  --muted: #98a1ad;
+  --muted2: #7d8794;
+  --accent: #e0e0e0;
+  --accent-light: #232833;
+  --pixel-border: 1px solid #e0e0e0;
 }
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;
-  color:var(--text); line-height:1.65;
-  background:
-    radial-gradient(circle at 12% 16%, rgba(255,255,255,0.96) 0, rgba(255,255,255,0.72) 18%, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(233,238,249,0.55) 0, transparent 34%),
-    radial-gradient(circle at 78% 72%, rgba(243,238,251,0.38) 0, transparent 26%),
-    linear-gradient(180deg, #f7f7f9 0%, #f1f1f4 100%);
-  transition:background 0.3s ease, color 0.3s ease;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  transition: background 0.25s, color 0.25s;
+  line-height: 1.7;
 }
-html[data-theme="dark"] body{
-  background:
-    radial-gradient(circle at 12% 16%, rgba(22,24,36,0.98) 0, transparent 40%),
-    radial-gradient(circle at 84% 22%, rgba(18,22,44,0.55) 0, transparent 34%),
-    radial-gradient(circle at 78% 72%, rgba(24,18,38,0.38) 0, transparent 26%),
-    linear-gradient(180deg, #0f1014 0%, #0c0d10 100%);
-}
-body::before{
-  content:""; position:fixed; inset:0; pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0));
-}
-html[data-theme="dark"] body::before{ background:linear-gradient(180deg, rgba(0,0,0,0.14), rgba(0,0,0,0)); }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--text); color: var(--bg); }
 
-nav{
-  position:fixed; top:18px; right:18px; z-index:50;
-  display:flex; gap:8px; padding:8px;
-  border:1px solid rgba(255,255,255,0.62);
-  background:rgba(255,255,255,0.58);
-  backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.06);
-}
-html[data-theme="dark"] nav{ background:rgba(18,20,28,0.85); border-color:rgba(255,255,255,0.07); }
-nav a{ text-decoration:none; color:var(--muted); font-size:13px; font-weight:500; padding:8px 12px; border-radius:999px; transition:all .22s ease; white-space:nowrap; }
-nav a:hover{ color:var(--text); background:rgba(255,255,255,0.72); }
-html[data-theme="dark"] nav a:hover{ background:rgba(255,255,255,0.06); }
-nav a.active{ color:var(--text); background:rgba(255,255,255,0.86); box-shadow:inset 0 0 0 1px rgba(17,17,17,0.04); }
-html[data-theme="dark"] nav a.active{ background:rgba(255,255,255,0.10); }
-
-.theme-toggle{
-  position:fixed; bottom:24px; right:24px; z-index:100;
-  width:48px; height:48px; border-radius:50%;
-  border:1px solid var(--line); background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:var(--shadow); cursor:pointer; display:flex; align-items:center; justify-content:center;
-  font-size:20px; transition:transform .2s ease, box-shadow .2s ease;
-  -webkit-tap-highlight-color:transparent; outline:none;
-}
-html[data-theme="dark"] .theme-toggle{ background:rgba(255,255,255,0.07); }
-.theme-toggle:hover{ transform:scale(1.1); box-shadow:var(--shadow-hover); }
-.theme-toggle:active{ transform:scale(0.95); }
-
-.wrap{ max-width:1260px; margin:0 auto; padding:112px 28px 88px; }
-
-.hero{
-  display:grid;
-  grid-template-columns:minmax(320px, 0.78fr) minmax(420px, 1.22fr);
-  gap:22px; align-items:stretch;
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: #8B7355;
+  width: 0%;
+  z-index: 200;
+  transition: width 0.1s linear;
 }
 
-.glass,.panel,.project-card,.paper-card{
-  border:1px solid var(--line); background:var(--panel);
-  backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%);
-  box-shadow:var(--shadow);
+nav {
+  position: fixed;
+  top: 3px; left: 0; right: 0;
+  z-index: 100;
+  border-bottom: var(--pixel-border);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 48px;
+  transition: background 0.25s;
+}
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.blink {
+  width: 8px; height: 8px;
+  background: #8B7355;
+  display: inline-block;
+  animation: blink 1.2s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.nav-links { display: flex; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0 14px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-left: var(--pixel-border);
+  transition: all 0.12s ease;
+  letter-spacing: 0.04em;
+}
+.nav-links a:hover, .nav-links a.active { background: var(--text); color: var(--bg); }
+.theme-btn {
+  width: 48px; height: 48px;
+  border: none; border-left: var(--pixel-border);
+  background: transparent; cursor: pointer;
+  font-size: 16px; display: flex; align-items: center; justify-content: center;
+  color: var(--text); transition: all 0.12s ease; font-family: var(--mono);
+}
+.theme-btn:hover { background: var(--text); color: var(--bg); }
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px 80px;
 }
 
-.profile-card{
-  border-radius:var(--radius-xl); padding:28px; position:relative; overflow:hidden;
-  background:linear-gradient(180deg, rgba(255,255,255,0.90), rgba(249,249,252,0.84));
+.hero {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  border: var(--pixel-border);
+  margin-top: 28px;
+  margin-bottom: 40px;
+  align-items: start;
 }
-html[data-theme="dark"] .profile-card{ background:linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88)); }
-.profile-card::before{
-  content:""; position:absolute; inset:0 0 auto 0; height:52px;
-  border-bottom:1px solid var(--line);
-  background:linear-gradient(180deg, rgba(250,250,252,0.96), rgba(244,244,247,0.88));
+.hero-left {
+  border-right: var(--pixel-border);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--bg2);
 }
-html[data-theme="dark"] .profile-card::before{ background:linear-gradient(180deg, rgba(26,28,40,0.96), rgba(20,22,34,0.90)); }
-
-.window-dots{ position:absolute; top:16px; left:18px; display:flex; gap:7px; z-index:2; }
-.dot{ width:11px; height:11px; border-radius:50%; box-shadow:inset 0 1px 1px rgba(255,255,255,0.45); }
-.dot:nth-child(1){background:#ff5f57} .dot:nth-child(2){background:#febc2e} .dot:nth-child(3){background:#28c840}
-
-.profile-inner{ margin-top:42px; display:grid; gap:20px; }
-
-.avatar{
-  width:260px; height:260px; border-radius:50%; object-fit:cover; object-position:center;
-  border:2px solid rgba(255,255,255,0.85);
-  box-shadow:0 14px 32px rgba(15,23,42,0.14), 0 0 0 4px rgba(255,255,255,0.35);
-  transition:transform 0.25s ease;
+.avatar-wrap {
+  width: 160px; height: 160px;
+  border: var(--pixel-border);
+  overflow: hidden;
+  background: var(--bg3);
 }
-.avatar:hover{ transform:scale(1.05); }
-html[data-theme="dark"] .avatar{ border-color:rgba(255,255,255,0.15); box-shadow:0 14px 32px rgba(0,0,0,0.45), 0 0 0 4px rgba(255,255,255,0.07); }
-
-.identity-kicker,.eyebrow,.panel-label,.section-tag{
-  display:inline-flex; align-items:center; gap:8px;
-  font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:0.02em;
+.avatar-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  filter: grayscale(100%) contrast(1.08) brightness(0.98);
 }
-.identity-kicker{ text-transform:uppercase; }
-.name{ font-family:'Sora',sans-serif; font-size:44px; font-weight:700; line-height:0.98; letter-spacing:-0.05em; margin:8px 0 10px; }
-.bio-mini{ margin:0; font-size:15px; color:var(--muted-strong); max-width:420px; }
-.mini{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
-
-.chip,.eyebrow,.section-tag{
-  padding:7px 12px; border-radius:999px; border:1px solid var(--line);
-  background:rgba(255,255,255,0.72); box-shadow:var(--shadow-soft);
+.px-name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
-html[data-theme="dark"] .chip, html[data-theme="dark"] .section-tag{ background:rgba(255,255,255,0.06); }
-
-.links{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
-.btn{
-  padding:10px 15px; border-radius:14px; border:1px solid var(--line);
-  background:rgba(255,255,255,0.78); text-decoration:none; color:var(--text);
-  font-size:13px; font-weight:500; white-space:nowrap; box-shadow:var(--shadow-soft);
-  transition:transform .18s ease, background .18s ease, border-color .18s ease;
+.px-role {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
-.btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,0.94); border-color:var(--line-strong); }
-.btn.primary{ background:linear-gradient(180deg, rgba(233,238,249,0.9), rgba(255,255,255,0.9)); }
-html[data-theme="dark"] .btn{ background:rgba(255,255,255,0.07); }
-html[data-theme="dark"] .btn:hover{ background:rgba(255,255,255,0.12); }
-html[data-theme="dark"] .btn.primary{ background:linear-gradient(180deg, rgba(26,36,66,0.80), rgba(22,24,34,0.90)); }
-
-.contact-card{
-  margin-top:8px; border:1px solid var(--line); border-radius:24px;
-  background:linear-gradient(180deg, rgba(240,244,252,0.72), rgba(255,255,255,0.90));
-  padding:18px; box-shadow:var(--shadow-soft);
+.info-block {
+  background: var(--bg);
+  border: 1px solid #222;
+  padding: 10px 14px;
+  overflow-x: auto;
 }
-html[data-theme="dark"] .contact-card{ background:linear-gradient(180deg, rgba(16,20,36,0.80), rgba(20,22,34,0.92)); }
-.contact-top{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:14px; }
-.contact-label{ font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em; }
-.contact-status{
-  font-family:var(--mono); font-size:11px; color:#4b5b7a;
-  padding:6px 10px; border-radius:999px;
-  border:1px solid rgba(77,96,132,0.10); background:rgba(255,255,255,0.72);
+.info-block pre {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--muted);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  letter-spacing: 0.02em;
 }
-html[data-theme="dark"] .contact-status{ color:#8899bb; border-color:rgba(100,130,180,0.14); background:rgba(255,255,255,0.05); }
-.imessage{ display:grid; gap:10px; margin-bottom:14px; }
-.bubble{ max-width:88%; padding:11px 13px; border-radius:18px; font-size:13px; line-height:1.55; box-shadow:var(--shadow-soft); }
-.bubble.left{ background:rgba(255,255,255,0.92); border:1px solid var(--line); color:#353840; border-bottom-left-radius:8px; }
-.bubble.right{ margin-left:auto; background:linear-gradient(180deg, rgba(218,229,251,0.95), rgba(232,238,249,0.96)); border:1px solid rgba(120,144,190,0.10); color:#243047; border-bottom-right-radius:8px; }
-html[data-theme="dark"] .bubble.left{ background:rgba(28,30,42,0.95); color:#b8bac8; }
-html[data-theme="dark"] .bubble.right{ background:linear-gradient(180deg, rgba(26,36,66,0.95), rgba(20,30,58,0.96)); color:#a8bcdc; border-color:rgba(80,110,170,0.14); }
-.contact-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.key { color: #8B7355; font-weight: 700; }
+.val { color: var(--text); }
+.cmt { opacity: 0.55; }
 
-.hero-right{ display:grid; gap:14px; }
-.hero-main{
-  border-radius:var(--radius-xl); padding:30px;
-  background:
-    radial-gradient(circle at 84% 18%, rgba(233,238,249,0.58), transparent 30%),
-    radial-gradient(circle at 16% 76%, rgba(243,238,251,0.30), transparent 22%),
-    linear-gradient(180deg, rgba(255,255,255,0.90), rgba(250,250,252,0.84));
+.px-links { display: flex; flex-direction: column; }
+.px-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border: var(--pixel-border);
+  margin-top: -1px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  transition: all 0.12s ease;
 }
-html[data-theme="dark"] .hero-main{
-  background:
-    radial-gradient(circle at 84% 18%, rgba(18,26,52,0.58), transparent 30%),
-    radial-gradient(circle at 16% 76%, rgba(24,16,40,0.30), transparent 22%),
-    linear-gradient(180deg, rgba(22,24,34,0.92), rgba(18,20,30,0.88));
+.px-link:hover { background: var(--text); color: var(--bg); }
+.arr { opacity: 0.45; }
+
+.contact-line {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  border-top: 1px dashed var(--muted2);
+  padding-top: 12px;
 }
-.eyebrow{ margin-bottom:18px; }
-.hi{ font-family:'Sora',sans-serif; font-size:56px; font-weight:800; letter-spacing:-0.07em; line-height:0.92; color:#111218; margin:0 0 16px; }
-html[data-theme="dark"] .hi{ color:#e2e4ea; }
-.h1{ font-family:'Sora',sans-serif; font-size:56px; font-weight:800; letter-spacing:-0.07em; line-height:0.92; margin:0 0 16px; max-width:10.5ch; }
-.gradient-word{ background:linear-gradient(180deg, #17181b 0%, #2d3748 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.accent-word{ background:linear-gradient(180deg, #4a5368 0%, #2b3140 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-html[data-theme="dark"] .gradient-word{ background:linear-gradient(180deg, #c8ccd8 0%, #a0a8c0 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-html[data-theme="dark"] .accent-word{ background:linear-gradient(180deg, #8890a8 0%, #6878a0 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.lead{ font-size:17px; color:rgba(29,29,31,0.84); margin:0; max-width:620px; }
-html[data-theme="dark"] .lead{ color:rgba(210,214,226,0.84); }
+.contact-line a { color: var(--muted); text-decoration: none; }
+.contact-line a:hover { color: var(--text); }
 
-.hero-panels{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:14px; }
-.column{ display:grid; gap:14px; }
-.panel{ border-radius:22px; padding:18px; transition:transform .2s ease, border-color .2s ease, background .2s ease; }
-.panel:hover,.project-card:hover,.paper-card:hover{ transform:translateY(-2px); border-color:var(--line-strong); background:rgba(255,255,255,0.94); box-shadow:var(--shadow-hover); }
-html[data-theme="dark"] .panel:hover, html[data-theme="dark"] .project-card:hover, html[data-theme="dark"] .paper-card:hover{ background:rgba(30,32,44,0.96); }
-.panel.featured{ min-height:170px; }
-.panel.soft-blue{ background:linear-gradient(180deg, rgba(233,238,249,0.48), rgba(255,255,255,0.88)); }
-.panel.soft-green{ background:linear-gradient(180deg, rgba(237,246,242,0.55), rgba(255,255,255,0.88)); }
-.panel.soft-lilac{ background:linear-gradient(180deg, rgba(243,238,251,0.58), rgba(255,255,255,0.88)); }
-.panel.soft-sand{ background:linear-gradient(180deg, rgba(246,241,231,0.65), rgba(255,255,255,0.88)); }
-html[data-theme="dark"] .panel.soft-blue{ background:linear-gradient(180deg, rgba(18,26,52,0.60), rgba(22,24,34,0.88)); }
-html[data-theme="dark"] .panel.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.65), rgba(22,24,34,0.88)); }
-html[data-theme="dark"] .panel.soft-lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.65), rgba(22,24,34,0.88)); }
-html[data-theme="dark"] .panel.soft-sand{ background:linear-gradient(180deg, rgba(32,26,14,0.70), rgba(22,24,34,0.88)); }
-.panel-label{ margin-bottom:10px; text-transform:uppercase; }
-.panel h2,.project-card h3,.paper-card h3,.section-title{ font-family:'Sora',sans-serif; letter-spacing:-0.04em; }
-.panel h2{ font-size:19px; line-height:1.1; margin:0 0 8px; }
-.panel p{ margin:0; font-size:14px; color:#3f4148; }
-html[data-theme="dark"] .panel p{ color:#9a9daa; }
-
-.projects-home,.papers-home{ margin-top:52px; }
-.section-header{ display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:18px; }
-.section-title{ font-size:30px; margin:8px 0 0; }
-.section-sub{ max-width:700px; font-size:15px; color:var(--muted-strong); margin:8px 0 0; }
-
-.project-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-.project-link{ display:block; text-decoration:none; color:inherit; }
-.project-card{ border-radius:24px; padding:22px; transition:transform .2s ease, border-color .2s ease, background .2s ease; height:100%; }
-.project-link:hover .project-card{ transform:translateY(-2px); border-color:var(--line-strong); background:rgba(255,255,255,0.94); box-shadow:var(--shadow-hover); }
-html[data-theme="dark"] .project-link:hover .project-card{ background:rgba(30,32,44,0.96); }
-.project-card.visual{ background:linear-gradient(180deg, rgba(233,238,249,0.46), rgba(255,255,255,0.88)); }
-.project-card.soft-green{ background:linear-gradient(180deg, rgba(237,246,242,0.55), rgba(255,255,255,0.88)); }
-.project-card.soft-lilac{ background:linear-gradient(180deg, rgba(243,238,251,0.58), rgba(255,255,255,0.88)); }
-html[data-theme="dark"] .project-card.visual{ background:linear-gradient(180deg, rgba(18,26,52,0.55), rgba(22,24,34,0.88)); }
-html[data-theme="dark"] .project-card.soft-green{ background:linear-gradient(180deg, rgba(14,28,22,0.60), rgba(22,24,34,0.88)); }
-html[data-theme="dark"] .project-card.soft-lilac{ background:linear-gradient(180deg, rgba(26,18,44,0.60), rgba(22,24,34,0.88)); }
-.project-card h3{ font-size:24px; line-height:1.04; margin:8px 0 10px; }
-.project-card p{ margin:0 0 16px; font-size:14px; color:#41444c; }
-html[data-theme="dark"] .project-card p{ color:#9a9daa; }
-.project-meta,.paper-meta{ display:flex; gap:8px; flex-wrap:wrap; }
-.project-meta span,.paper-meta span{
-  font-family:var(--mono); font-size:11px; padding:6px 10px; border-radius:999px;
-  border:1px solid var(--line); background:rgba(255,255,255,0.76); color:var(--muted);
+.hero-right {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
-html[data-theme="dark"] .project-meta span, html[data-theme="dark"] .paper-meta span{ background:rgba(255,255,255,0.06); }
-
-.paper-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-.paper-card{
-  border-radius:26px; padding:22px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,249,252,0.90));
-  transition:transform .2s ease, border-color .2s ease, background .2s ease;
-  position:relative; overflow:hidden;
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-html[data-theme="dark"] .paper-card{ background:linear-gradient(180deg, rgba(22,24,34,0.95), rgba(18,20,30,0.92)); }
-.paper-card::before{ content:""; position:absolute; inset:0 0 auto 0; height:5px; }
-.paper-card:nth-child(1)::before{ background:linear-gradient(90deg, #111218, rgba(17,17,17,0.45)); }
-.paper-card:nth-child(2)::before{ background:linear-gradient(90deg, #2a3342, rgba(42,51,66,0.38)); }
-.paper-card:nth-child(3)::before{ background:linear-gradient(90deg, #3c2e50, rgba(60,46,80,0.34)); }
-.paper-card:nth-child(4)::before{ background:linear-gradient(90deg, #2a4a38, rgba(42,74,56,0.34)); }
-.paper-card:nth-child(5)::before{ background:linear-gradient(90deg, #4b4031, rgba(75,64,49,0.34)); }
-html[data-theme="dark"] .paper-card:nth-child(1)::before{ background:linear-gradient(90deg, #5a6080, rgba(90,96,128,0.45)); }
-html[data-theme="dark"] .paper-card:nth-child(2)::before{ background:linear-gradient(90deg, #4a5878, rgba(74,88,120,0.38)); }
-html[data-theme="dark"] .paper-card:nth-child(3)::before{ background:linear-gradient(90deg, #6a4a80, rgba(106,74,128,0.34)); }
-html[data-theme="dark"] .paper-card:nth-child(4)::before{ background:linear-gradient(90deg, #2a6a4a, rgba(42,106,74,0.34)); }
-html[data-theme="dark"] .paper-card:nth-child(5)::before{ background:linear-gradient(90deg, #7a6050, rgba(122,96,80,0.34)); }
-.paper-card:hover{ transform:translateY(-2px); border-color:var(--line-strong); background:rgba(255,255,255,0.96); box-shadow:var(--shadow-hover); }
-html[data-theme="dark"] .paper-card:hover{ background:rgba(28,30,42,0.98); }
-.paper-kicker{ font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:10px; }
-.paper-claim{ font-family:'Sora',sans-serif; font-size:22px; line-height:1.16; letter-spacing:-0.035em; margin:0 0 16px; color:#1a1d24; max-width:30ch; }
-html[data-theme="dark"] .paper-claim{ color:#d0d4e0; }
-.paper-card h3{ font-size:22px; line-height:1.06; margin:0 0 10px; }
-.paper-card p{ margin:0 0 14px; font-size:14px; color:#42454c; }
-html[data-theme="dark"] .paper-card p{ color:#98a0b0; }
+.eyebrow::before { content: '▶'; font-size: 8px; color: #8B7355; }
 
-.footer{ margin-top:40px; border-top:1px solid var(--line); padding-top:18px; font-size:13px; color:var(--muted); }
-.credit-note{ margin-top:10px; font-size:12px; color:var(--muted); line-height:1.65; }
+.hero-title {
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+.hero-title .dim { color: var(--muted2); }
 
-@media (max-width:1180px){
-  .hero{ grid-template-columns:1fr; }
-  .h1{ max-width:none; }
-  .project-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.hero-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 520px;
+  border-left: 3px solid #8B7355;
+  padding-left: 14px;
+  opacity: 0.85;
 }
-@media (max-width:860px){
-  nav{ top:12px; left:12px; right:12px; justify-content:flex-start; overflow-x:auto; gap:4px; padding:5px; -ms-overflow-style:none; scrollbar-width:none; }
-  nav::-webkit-scrollbar{ display:none; }
-  nav a{ font-size:12px; padding:7px 10px; }
-  .wrap{ padding:80px 16px 60px; }
-  .hero{ gap:16px; }
-  .profile-card{ padding:22px 18px; }
-  .profile-inner{ gap:16px; }
-  .avatar{ width:140px; height:140px; }
-  .name{ font-size:36px; }
-  .bio-mini{ font-size:14px; }
-  .mini{ gap:8px; }
-  .chip{ font-size:11px; padding:6px 10px; }
-  .links{ gap:8px; }
-  .btn{ font-size:12px; padding:9px 13px; }
-  .contact-card{ padding:14px; }
-  .contact-top{ flex-direction:column; align-items:flex-start; gap:8px; }
-  .hero-main{ padding:22px 18px; }
-  .hi{ font-size:42px; }
-  .h1{ font-size:42px; margin-bottom:14px; }
-  .lead{ font-size:15px; }
-  .eyebrow{ font-size:10px; margin-bottom:14px; }
-  .hero-panels{ grid-template-columns:1fr; gap:12px; }
-  .panel{ padding:16px; }
-  .panel h2{ font-size:17px; }
-  .projects-home,.papers-home{ margin-top:36px; }
-  .section-header{ flex-direction:column; align-items:flex-start; gap:12px; }
-  .section-title{ font-size:26px; }
-  .project-grid{ grid-template-columns:1fr; gap:12px; }
-  .project-card{ padding:18px; }
-  .project-card h3{ font-size:20px; }
-  .paper-grid{ grid-template-columns:1fr; gap:12px; }
-  .paper-card{ padding:18px; }
-  .paper-claim{ font-size:18px; }
-  .paper-card h3{ font-size:20px; }
-  .theme-toggle{ bottom:16px; right:16px; width:44px; height:44px; font-size:18px; }
+
+.stat-row {
+  display: flex;
+  border: var(--pixel-border);
 }
-@media (max-width:480px){
-  .hi{ font-size:36px; } .h1{ font-size:36px; } .name{ font-size:32px; }
-  .avatar{ width:120px; height:120px; } .paper-claim{ font-size:16px; }
+.stat {
+  flex: 1;
+  padding: 14px 16px;
+  text-align: center;
+  border-right: var(--pixel-border);
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-l {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+}
+
+.axis-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: var(--pixel-border);
+  margin-top: 8px;
+}
+.axis { padding: 16px 18px; border-right: var(--pixel-border); }
+.axis:last-child { border-right: none; }
+.axis-n {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #8B7355;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.axis-t {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.axis-d { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+.section { margin-bottom: 56px; }
+.sec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--pixel-border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.sec-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sec-title::before { content: '#'; color: #8B7355; }
+.see-all {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border: var(--pixel-border);
+  transition: all 0.12s ease;
+}
+.see-all:hover { background: var(--text); color: var(--bg); }
+
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border: var(--pixel-border);
+  gap: 0;
+}
+.proj-link { text-decoration: none; color: inherit; display: block; }
+.proj-card {
+  padding: 20px;
+  border-right: var(--pixel-border);
+  transition: all 0.2s ease;
+  height: 100%;
+}
+.proj-card:last-child { border-right: none; }
+.proj-link:hover .proj-card {
+  background: var(--text);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+.proj-link:hover .proj-num,
+.proj-link:hover .proj-p { color: rgba(255,255,255,0.6); }
+.proj-link:hover .proj-tag { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.25); }
+.proj-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted2);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: block;
+}
+.proj-h {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.proj-p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.proj-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.proj-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 3px 7px;
+  border: 1px solid var(--muted2);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.paper-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.82;
+  border-left: 3px solid #8B7355;
+  padding-left: 14px;
+  margin-bottom: 20px;
+  max-width: 640px;
+}
+.paper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: var(--pixel-border);
+}
+.paper-card {
+  padding: 18px;
+  border-right: var(--pixel-border);
+  border-bottom: var(--pixel-border);
+  transition: background 0.12s ease;
+}
+.paper-card:nth-child(2n) { border-right: none; }
+.paper-card:nth-child(5) {
+  grid-column: 1 / -1;
+  border-right: none;
+  border-bottom: none;
+  border-top: var(--pixel-border);
+  background: var(--bg2);
+}
+.paper-card:nth-child(3),
+.paper-card:nth-child(4) { border-bottom: none; }
+.paper-card:hover { background: var(--bg2); }
+.paper-card:nth-child(5):hover { background: var(--text); color: var(--bg); }
+.paper-card:nth-child(5):hover .paper-num { color: rgba(255,255,255,0.7); }
+.paper-card:nth-child(5):hover .paper-sub,
+.paper-card:nth-child(5):hover .paper-method,
+.paper-card:nth-child(5):hover .paper-tag { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.25); }
+.paper-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted2);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+.paper-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.paper-sub {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+.paper-method {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted2);
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+.paper-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.paper-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 3px 7px;
+  border: 1px solid var(--muted2);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer {
+  border-top: var(--pixel-border);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer a { color: var(--muted); text-decoration: none; }
+.footer a:hover { color: var(--text); }
+
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:900px){
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { border-right: none; border-bottom: var(--pixel-border); }
+  .hero-title { font-size: 36px; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .proj-card { border-right: none; border-bottom: var(--pixel-border); }
+  .proj-card:last-child { border-bottom: none; }
+  .paper-grid { grid-template-columns: 1fr; }
+  .paper-card { border-right: none; border-bottom: var(--pixel-border); }
+  .paper-card:last-child { border-bottom: none; }
+  .paper-card:nth-child(5) { border-bottom: none; }
+  .axis-row { grid-template-columns: 1fr; }
+  .axis { border-right: none; border-bottom: var(--pixel-border); }
+  .axis:last-child { border-bottom: none; }
+  .stat-row { flex-wrap: wrap; }
+  .stat { min-width: 50%; border-bottom: var(--pixel-border); }
+}
+@media(max-width:600px){
+  nav { padding: 0 12px; }
+  .nav-links { overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { padding: 0 10px; font-size: 11px; white-space: nowrap; }
+  .wrap { padding: 64px 12px 60px; }
+  .hero-right { padding: 16px; }
+  .hero-left { padding: 18px; }
+  .hero-title { font-size: 28px; }
+  .avatar-wrap { width: 120px; height: 120px; }
+  .footer { flex-direction: column; gap: 4px; }
+  .sec-head { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
 </head>
 <body>
 
+<div id="progress-bar"></div>
+
 <nav>
-  <a class="active" href="index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="research.html">Research</a>
-  <a href="papers.html">Papers</a>
-  <a href="about.html">About</a>
-  <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+  <a class="nav-logo" href="index.html">
+    <span class="blink"></span>sora kim
+  </a>
+  <div class="nav-links">
+    <a class="active" href="index.html">home</a>
+    <a href="projects.html">projects</a>
+    <a href="research.html">research</a>
+    <a href="papers.html">papers</a>
+    <a href="about.html">about</a>
+    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+  </div>
+  <button class="theme-btn" id="themeToggle" aria-label="toggle dark mode">◐</button>
 </nav>
 
 <div class="wrap">
-  <section class="hero">
-    <div class="profile-card glass">
-      <div class="window-dots">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  <section class="hero fade-up">
+    <div class="hero-left">
+      <div class="avatar-wrap">
+        <img src="./assets/sora-kim.jpg" alt="Sora Kim">
       </div>
-      <div class="profile-inner">
-        <img class="avatar" src="assets/sorakim-profile.png" alt="Sora Kim headshot">
-        <div>
-          <div class="identity-kicker">Sora Kim / 4 years pharmaceutical quality control · independent researcher</div>
-          <div class="name">Sora Kim</div>
-          <p class="bio-mini">I design and study human-centered systems for high-stakes procedural work, focusing on regulatory UX, judgment, procedural cognition, and decision support.</p>
-          <div class="mini">
-            <span class="chip">human-centered systems</span>
-            <span class="chip">judgment</span>
-            <span class="chip">organizational environments</span>
-            <span class="chip">high-stakes work</span>
-          </div>
-          <div class="links">
-            <a class="btn primary" href="projects.html">view projects</a>
-            <a class="btn" href="research.html">current research</a>
-            <a class="btn" href="papers.html">selected papers</a>
-            <a class="btn" href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener noreferrer">cv (pdf)</a>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-top">
-            <div class="contact-label">contact / say hi</div>
-            <div class="contact-status">open to conversation</div>
-          </div>
-          <div class="imessage">
-            <div class="bubble left">Hi Sora — loved your work on human-centered systems for regulated environments.</div>
-            <div class="bubble right">Thank you! Feel free to reach out by email 🤗</div>
-            <div class="bubble left">Research, collaboration, or just a thoughtful hello?</div>
-          </div>
-          <div class="contact-actions">
-            <a class="btn primary" href="mailto:sorakim.lab@gmail.com">email me</a>
-          </div>
-        </div>
+      <div>
+        <div class="px-name">Sora Kim</div>
+        <div class="px-role">HCI Researcher<br>PhD Applicant · Fall 2027<br>Seoul, Korea</div>
+      </div>
+      <div class="info-block">
+<pre><span class="cmt"># research_index</span>
+<span class="key">focus   </span> = <span class="val">"judgment"</span>
+<span class="key">method  </span> = <span class="val">"human-centered systems"</span>
+<span class="key">context </span> = <span class="val">"regulated environments"</span>
+</pre>
+      </div>
+      <div class="px-links">
+        <a class="px-link" href="projects.html"><span>projects</span><span class="arr">→</span></a>
+        <a class="px-link" href="research.html"><span>research</span><span class="arr">→</span></a>
+        <a class="px-link" href="papers.html"><span>papers</span><span class="arr">→</span></a>
+        <a class="px-link" href="about.html"><span>about</span><span class="arr">→</span></a>
+        <a class="px-link" href="assets/sora-kim-cv.pdf" target="_blank"><span>cv (pdf)</span><span class="arr">↗</span></a>
+      </div>
+      <div class="contact-line">
+        <a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a>
       </div>
     </div>
 
     <div class="hero-right">
-      <div class="hero-main glass">
-        <div class="eyebrow">human-centered systems / regulatory UX / judgment / high-stakes procedural environments · PhD applicant, Fall 2027</div>
-        <div class="hi">Hi 👋</div>
-        <h1 class="h1">
-          I design <span class="gradient-word">systems</span><br>
-          for <span class="accent-word">complex work.</span>
-        </h1>
-        <p class="lead">My work sits across HCI, regulatory UX, procedural cognition, and broader organizational systems. I study how documents, workflows, interfaces, and support structures shape navigation, reasoning, interpretation, and decision-making in high-stakes environments. My current focus is regulatory UX — how procedural environments shape judgment, and how support systems can make that work more navigable.</p>
+      <div class="eyebrow">human-centered systems · regulated environments</div>
+      <h1 class="hero-title">
+        I study how regulated systems<br>
+        <span class="dim">shape human judgment.</span>
+      </h1>
+      <p class="hero-desc">
+        Procedures are not neutral.<br>
+        They shape how people interpret and decide.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-n">6</span><span class="stat-l">Research Projects</span></div>
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l">Papers in Progress</span></div>
+        <div class="stat"><span class="stat-n">4+</span><span class="stat-l">Years in Regulated Systems</span></div>
       </div>
-
-      <div class="hero-panels">
-        <div class="column">
-          <div class="panel featured soft-blue">
-            <div class="panel-label">current build</div>
-            <h2>Six projects across reasoning and navigation in regulated work</h2>
-            <p>From investigation reasoning scaffolds to document navigation trackers — six empirical HCI projects examining how pharmaceutical quality systems shape human judgment.</p>
-          </div>
-          <div class="panel soft-lilac">
-            <div class="panel-label">bridge</div>
-            <h2>From HCI and UX to broader systems questions</h2>
-            <p>My work begins with usability and interaction, but extends toward larger questions about accountability, infrastructure, closure, and decision processes in compliance-constrained environments.</p>
-          </div>
+      <div class="axis-row">
+        <div class="axis">
+          <div class="axis-n">axis_01</div>
+          <div class="axis-t">Responsibility Formation</div>
+          <div class="axis-d">How systems shape causal reasoning and responsibility attribution — and how design can keep interpretive space open longer.</div>
         </div>
-        <div class="column">
-          <div class="panel soft-green">
-            <div class="panel-label">domain</div>
-            <h2>Regulated documentation as a user environment</h2>
-            <p>Standard operating procedures, deviation reports, root cause analysis records, corrective action workflows — these are not only compliance artifacts. They are environments people navigate under pressure, trying to find, interpret, justify, and act.</p>
-          </div>
-          <div class="panel soft-sand">
-            <div class="panel-label">current paper set</div>
-            <h2>Five connected HCI papers</h2>
-            <p>SOP Accessibility → RCA Reasoning + Premature Causal Convergence → Document Navigation → Workflow Observability → Regulatory UX. Each paper develops an empirical case into a design argument about how compliance-constrained systems shape worker experience.</p>
-          </div>
+        <div class="axis">
+          <div class="axis-n">axis_02</div>
+          <div class="axis-t">Cognitive Friction Mechanisms</div>
+          <div class="axis-d">How procedural documents distribute interpretive burden — and how that friction can be made visible and redesigned.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED PROJECTS -->
-  <section class="projects-home">
-    <span class="section-tag">featured projects</span>
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">Prototypes and systems I built</h2>
-        <p class="section-sub">Six empirical HCI projects built from four years inside pharmaceutical quality control — spanning document accessibility, investigation reasoning, and behavioral navigation tracking.</p>
-      </div>
-      <a class="btn" href="projects.html">see all 6 projects</a>
+  <section class="section fade-up">
+    <div class="sec-head">
+      <span class="sec-title">featured_projects</span>
+      <a class="see-all" href="projects.html">view details →</a>
     </div>
-    <div class="project-grid">
-
-      <a class="project-link" href="project-sop-accessibility.html">
-        <article class="project-card visual">
-          <div class="panel-label">featured · 01</div>
-          <h3>SOP Accessibility System</h3>
-          <p>Standard operating procedures (SOPs) are the backbone of regulated manufacturing — but workers often spend more time hunting for the right document than using it. This project built a searchable metadata layer over ~500 scanned SOPs, reducing retrieval time from 6–7 minutes to 1–2 minutes. N=12, 4.83/5, 100% adoption intent.</p>
-          <div class="project-meta">
-            <span>document UX</span><span>accessibility</span><span>N=12</span><span>live demo</span>
+    <div class="proj-grid">
+      <a class="proj-link" href="project-sop-accessibility.html">
+        <article class="proj-card">
+          <span class="proj-num">// featured_01</span>
+          <h3 class="proj-h">SOP Accessibility System</h3>
+          <p class="proj-p">Examines how retrieval friction in procedural systems shapes access to task-relevant information and interpretive effort.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">document UX</span>
+            <span class="proj-tag">retrieval</span>
+            <span class="proj-tag">live demo</span>
           </div>
         </article>
       </a>
-
-      <a class="project-link" href="project-rca-reasoning-scaffolder.html">
-        <article class="project-card soft-green">
-          <div class="panel-label">featured · 02</div>
-          <h3>RCA Reasoning Scaffolder</h3>
-          <p>Root cause analysis (RCA) investigations often converge on individual blame before systemic factors are examined — not because evidence demands it, but because investigation workflows do. This scaffold keeps causal hypotheses open. N=15, 80% increased causal breadth, 100% adoption intent.</p>
-          <div class="project-meta">
-            <span>reasoning support</span><span>investigation design</span><span>N=15</span><span>live demo</span>
+      <a class="proj-link" href="project-rca-reasoning-scaffolder.html">
+        <article class="proj-card">
+          <span class="proj-num">// featured_02</span>
+          <h3 class="proj-h">RCA Reasoning Scaffolder</h3>
+          <p class="proj-p">Examines how investigatory environments narrow causal exploration — and how interface scaffolds can preserve interpretive breadth.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">reasoning</span>
+            <span class="proj-tag">investigation</span>
+            <span class="proj-tag">live demo</span>
           </div>
         </article>
       </a>
-
-      <a class="project-link" href="project-cognitive-navigation-explorer.html">
-        <article class="project-card soft-lilac">
-          <div class="panel-label">featured · 03</div>
-          <h3>Cognitive Navigation Explorer</h3>
-          <p>Navigation friction in pharmaceutical procedural documentation is invisible — when practitioners loop back or hesitate, that behavior leaves no trace. This prototype tracks document navigation paths in real time, making loopbacks, cross-reference jumps, and hesitation patterns visible as structured behavioral data. N=5, 5.0/5, 100% adoption intent.</p>
-          <div class="project-meta">
-            <span>behavioral tracking</span><span>document navigation</span><span>N=5</span><span>live demo</span>
+      <a class="proj-link" href="project-cognitive-navigation-explorer.html">
+        <article class="proj-card">
+          <span class="proj-num">// featured_03</span>
+          <h3 class="proj-h">Cognitive Navigation Explorer</h3>
+          <p class="proj-p">Traces hesitation, loopbacks, and search behavior as indicators of structural friction in constrained documentation environments.</p>
+          <div class="proj-tags">
+            <span class="proj-tag">behavioral traces</span>
+            <span class="proj-tag">navigation</span>
+            <span class="proj-tag">live demo</span>
           </div>
         </article>
       </a>
-
     </div>
   </section>
 
-  <!-- PAPERS -->
-  <section class="papers-home">
-    <span class="section-tag">paper set</span>
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">Analytical work in progress</h2>
-        <p class="section-sub">Five connected HCI papers — from how workers access and navigate procedural documents, through investigation reasoning under closure pressure, toward a unified regulatory UX framework.</p>
-      </div>
-      <a class="btn" href="papers.html">view all 5 papers</a>
+  <section class="section fade-up">
+    <div class="sec-head">
+      <span class="sec-title">papers_in_progress</span>
+      <a class="see-all" href="papers.html">see all 5 →</a>
     </div>
+    <p class="paper-note">
+      Across projects, I examine how procedural systems shape judgment, navigation, reasoning, and responsibility —
+      and how design can make those structures more legible and more humane.
+    </p>
     <div class="paper-grid">
-
       <article class="paper-card">
-        <div class="paper-kicker">paper 01</div>
-        <div class="paper-claim">Procedural access is not a convenience issue — it shapes cognition and judgment quality.</div>
-        <h3>SOP Accessibility and Compliance-Constrained Design</h3>
-        <p>Standard operating procedures (SOPs) are how regulated facilities encode what workers should do. This paper examines what happens when those documents are hard to find — and how retrieval burden shapes cognitive load and decision quality.</p>
-        <div class="paper-meta"><span>accessibility</span><span>document UX</span><span>N=12</span></div>
+        <span class="paper-num">// paper_01</span>
+        <div class="paper-title">Accessibility, Document Usability, and Compliance-Constrained Design in Regulated Environments</div>
+        <p class="paper-sub">Examines retrieval burden, keyword pathways, and compliance-safe usability improvement in scanned SOP archives.</p>
+        <div class="paper-method">method: usability study (N=12, think-aloud protocol) · corpus analysis</div>
+        <div class="paper-tags">
+          <span class="paper-tag">document UX</span>
+          <span class="paper-tag">accessibility</span>
+        </div>
       </article>
-
       <article class="paper-card">
-        <div class="paper-kicker">paper 02</div>
-        <div class="paper-claim">Closure pressure truncates reasoning before systemic causes can surface.</div>
-        <h3>Reasoning Under Closure Pressure: Scaffolding RCA</h3>
-        <p>A pilot study (N=5) shows all practitioners began with a single cause; a scaffold evaluation (N=15) shows design can counter this. Together, they establish premature causal convergence as a structural, design-addressable condition.</p>
-        <div class="paper-meta"><span>reasoning support</span><span>investigation</span><span>N=5 + N=15</span></div>
+        <span class="paper-num">// paper_02</span>
+        <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
+        <p class="paper-sub">Studies how investigatory environments narrow causal exploration and how interface scaffolds can preserve interpretive breadth.</p>
+        <div class="paper-method">method: protocol analysis · comparative task study</div>
+        <div class="paper-tags">
+          <span class="paper-tag">reasoning</span>
+          <span class="paper-tag">investigation</span>
+        </div>
       </article>
-
       <article class="paper-card">
-        <div class="paper-kicker">paper 03</div>
-        <div class="paper-claim">Where a practitioner loops back is a signal that document structure failed — not user error.</div>
-        <h3>Document Navigation as a Design Problem</h3>
-        <p>Two complementary projects — a cross-reference system (N=17) and a behavioral navigation tracker (N=5) — combine to argue that GMP document navigation is a design problem, not a user competence problem.</p>
-        <div class="paper-meta"><span>navigation</span><span>traceability</span><span>N=17 + N=5</span></div>
+        <span class="paper-num">// paper_03</span>
+        <div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
+        <p class="paper-sub">Reframes loopbacks, hesitation, and dependency gaps as system-level navigation problems rather than individual failure.</p>
+        <div class="paper-method">method: behavioral trace analysis · navigation log coding</div>
+        <div class="paper-tags">
+          <span class="paper-tag">navigation</span>
+          <span class="paper-tag">traceability</span>
+        </div>
       </article>
-
       <article class="paper-card">
-        <div class="paper-kicker">paper 04</div>
-        <div class="paper-claim">Review cycles are opaque — observability is a precondition for coordination.</div>
-        <h3>Workflow Friction and Observability in Deviation–CAPA Review</h3>
-        <p>Quality review cycles connecting deviation reports to corrective actions are invisible to the people inside them. This paper examines how observability design can make bottlenecks detectable before they accumulate.</p>
-        <div class="paper-meta"><span>workflow UX</span><span>observability</span><span>N=6</span></div>
+        <span class="paper-num">// paper_04</span>
+        <div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
+        <p class="paper-sub">Focuses on visibility, coordination burden, and review structure in multi-stage quality workflows.</p>
+        <div class="paper-method">method: workflow analysis · semi-structured interviews</div>
+        <div class="paper-tags">
+          <span class="paper-tag">workflow UX</span>
+          <span class="paper-tag">observability</span>
+        </div>
       </article>
-
       <article class="paper-card">
-        <div class="paper-kicker">paper 05 · writing now</div>
-        <div class="paper-claim">Regulated documents and workflows are user environments, not only compliance artifacts.</div>
-        <h3>Regulatory UX: Toward a Human-Centered Framework</h3>
-        <p>A concept paper introducing Regulatory UX as a new HCI research frame — connecting all six projects into a unified design argument about how compliance-constrained systems shape worker experience, and how that can be changed.</p>
-        <div class="paper-meta"><span>regulatory UX</span><span>concept paper</span><span>in progress</span></div>
+        <span class="paper-num">// paper_05 · research backbone</span>
+        <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
+        <p class="paper-sub">Develops a broader design language for regulated work environments, treating procedures and review systems as user environments.</p>
+        <div class="paper-method">method: conceptual synthesis · design framework</div>
+        <div class="paper-tags">
+          <span class="paper-tag">regulatory UX</span>
+          <span class="paper-tag">concept paper</span>
+        </div>
       </article>
-
     </div>
   </section>
 
-  <div class="footer">Independent researcher · Human-centered systems for regulated environments · 4 years pharmaceutical quality control</div>
-  <div class="credit-note">Concept, design, and code by Sora Kim · <a href="mailto:sorakim.lab@gmail.com" style="color:inherit;">sorakim.lab@gmail.com</a></div>
+  <div class="footer fade-up">
+    <span>Design, concept & code by Sora Kim</span>
+    <span><a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a></span>
+  </div>
 </div>
-
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
 
 <script>
 (function(){
-  var toggle = document.getElementById('themeToggle');
+  var btn = document.getElementById('themeToggle');
   var html = document.documentElement;
   var saved = localStorage.getItem('theme');
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var isDark = saved === 'dark' || (!saved && prefersDark);
-  if(isDark){ html.setAttribute('data-theme','dark'); toggle.textContent='☀️'; }
-  else { html.setAttribute('data-theme','light'); toggle.textContent='🌙'; }
-  toggle.addEventListener('click', function(){
-    var current = html.getAttribute('data-theme');
-    if(current === 'dark'){
-      html.setAttribute('data-theme','light');
-      toggle.textContent='🌙';
-      localStorage.setItem('theme','light');
-    } else {
-      html.setAttribute('data-theme','dark');
-      toggle.textContent='☀️';
-      localStorage.setItem('theme','dark');
-    }
+  if(saved === 'dark' || (!saved && prefersDark)) html.setAttribute('data-theme','dark');
+  btn.addEventListener('click', function(){
+    var dark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem('theme', dark ? 'light' : 'dark');
   });
 })();
-</script>
 
+window.addEventListener('scroll', function() {
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+</script>
 </body>
 </html>
