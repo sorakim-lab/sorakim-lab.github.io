@@ -118,22 +118,21 @@ nav {
 .theme-btn:hover { background: var(--text); color: var(--bg); }
 
 .page-wrap {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 80px 32px 120px;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 0 60px;
-  align-items: start;
+  margin-left: 220px;
+  max-width: 860px;
+  padding: 80px 48px 120px;
 }
 
 .sidebar {
-  position: sticky;
-  top: 64px;
-  padding-top: 16px;
-  align-self: start;
-  max-height: calc(100vh - 64px);
+  position: fixed;
+  top: 51px;
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 51px);
+  padding: 32px 28px;
+  border-right: 1px solid var(--bg3);
   overflow-y: auto;
+  background: var(--bg);
 }
 .breadcrumb {
   font-family: var(--mono);
@@ -161,7 +160,7 @@ nav {
 .side-nav a:hover { color: var(--text); border-left-color: var(--muted2); }
 .side-nav a.active { color: var(--text); border-left-color: #8B7355; font-weight: 600; }
 
-.content { min-width: 0; width: 100%; }
+.content { width: 100%; }
 
 .hero-section { margin-bottom: 72px; padding-top: 16px; }
 .hero-eyebrow {
@@ -276,9 +275,6 @@ nav {
 .screenshot-wrap img {
   width: 100%;
   display: block;
-  max-height: 600px;
-  object-fit: cover;
-  object-position: top;
 }
 
 .features {
@@ -337,7 +333,7 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 @media(max-width:900px){
-  .page-wrap { grid-template-columns: 1fr; padding: 80px 24px 120px; }
+  .page-wrap { margin-left: 0; padding: 80px 24px 120px; }
   .sidebar { display: none; }
   .meta-row { grid-template-columns: 1fr; }
   .meta-cell { border-right: none; border-bottom: var(--pixel-border); }
