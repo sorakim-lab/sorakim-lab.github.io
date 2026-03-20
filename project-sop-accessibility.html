@@ -129,7 +129,7 @@ nav {
   left: 0;
   width: 220px;
   height: calc(100vh - 51px);
-  padding: 32px 12px 32px 16px;
+  padding: 32px 28px;
   border-right: 1px solid var(--bg3);
   overflow-y: auto;
   background: var(--bg);
@@ -154,21 +154,11 @@ nav {
   color: var(--muted2);
   text-decoration: none;
   padding: 7px 12px;
-  border-left: none;
+  border-left: 2px solid transparent;
   transition: all 0.15s;
-  position: relative;
 }
-.side-nav a:hover { color: var(--text); }
-.side-nav a.active { color: var(--text); font-weight: 600; }
-.side-nav a.active::before {
-  content: '';
-  position: absolute;
-  left: -16px;
-  top: 0;
-  height: 100%;
-  width: 2px;
-  background: #8B7355;
-}
+.side-nav a:hover { color: var(--text); border-left-color: var(--muted2); }
+.side-nav a.active { color: var(--text); border-left-color: #8B7355; font-weight: 600; }
 
 .content { width: 100%; }
 
@@ -282,9 +272,10 @@ nav {
   content: ''; display: inline-block;
   width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
 }
-.screenshot-wrap img {
+.screenshot-wrap video {
   width: 100%;
   display: block;
+  background: #000;
 }
 
 .features {
@@ -517,15 +508,13 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
         <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" target="_blank">Open Demo ↗</a>
       </div>
       <div class="screenshot-wrap">
-        <div class="screenshot-label">search interface · main view</div>
-        <img src="./assets/sop-ui-1.png" alt="SOP Accessibility Search — main interface" loading="lazy">
+        <div class="screenshot-label">search interface · demo video</div>
+        <video autoplay muted loop playsinline controls preload="metadata">
+          <source src="./assets/sop-ui.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">Keyword entry replaces filename memory — users enter task terms, not document titles.</p>
-      <div class="screenshot-wrap" style="margin-top:20px;">
-        <div class="screenshot-label">search results view</div>
-        <img src="./assets/sop-ui-2.png" alt="SOP Accessibility Search — results with match strength" loading="lazy">
-      </div>
-      <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">Match strength labels (Strong / Good / Weak) made retrieval confidence visible — users noticed ambiguity rather than assuming it was their fault.</p>
       <div class="features">
         <div class="feat"><span class="feat-icon">🔍</span><span class="feat-text">Keyword search with ranked results and snippet highlighting</span></div>
         <div class="feat"><span class="feat-icon">📄</span><span class="feat-text">Document IDs and page cues surfaced at point of retrieval</span></div>
@@ -543,15 +532,13 @@ html[data-theme="dark"] .flow-tag.on { background: #f2f4f7; color: #111214; bord
         <a class="btn primary" href="https://sop-accessibility-ai.streamlit.app/" target="_blank">Open AI Layer ↗</a>
       </div>
       <div class="screenshot-wrap">
-        <div class="screenshot-label">AI support layer · main view</div>
-        <img src="./assets/sop-ai-1.png" alt="AI Support Layer — main interface" loading="lazy">
+        <div class="screenshot-label">AI support layer · demo video</div>
+        <video autoplay muted loop playsinline controls preload="metadata">
+          <source src="./assets/sop-ai.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">Three design principles made explicit upfront: EXPLAINS why a result appeared, SURFACES related procedures, KEEPS interpretive options open.</p>
-      <div class="screenshot-wrap" style="margin-top:20px;">
-        <div class="screenshot-label">reasoning support · result view</div>
-        <img src="./assets/sop-ai-2.png" alt="AI Support Layer — results with reasoning notes" loading="lazy">
-      </div>
-      <p style="font-size:12px;color:var(--muted2);margin-top:8px;font-style:italic;">Each result surfaces a score breakdown and reasoning note — making retrieval logic visible rather than leaving it implicit.</p>
       <div class="quote">This prototype suggests that retrieval is only one component of procedural usability, and that interpretive support is necessary to maintain reasoning openness in regulated environments.</div>
     </section>
 
