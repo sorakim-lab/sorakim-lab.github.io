@@ -1,389 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Cognitive Navigation Explorer · Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" href="./assets/favicon-light.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f8f8f6;--bg2:#f0f0ee;--bg3:#e8e8e6;--text:#111214;--muted:#626872;--muted2:#8a9099;--accent:#1a1a1a;--pixel-border:2px solid #111214;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
-html[data-theme="dark"]{--bg:#111317;--bg2:#1a1e25;--bg3:#232833;--text:#f2f4f7;--muted:#98a1ad;--muted2:#7d8794;--accent:#e0e0e0;--pixel-border:2px solid #f2f4f7}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;transition:background .3s,color .3s;line-height:1.7}
-a{color:inherit}::selection{background:var(--text);color:var(--bg)}
-#progress-bar{position:fixed;top:0;left:0;height:3px;background:#8B7355;width:0%;z-index:200;transition:width .1s linear}
-.top-nav{position:fixed;top:3px;left:0;right:0;z-index:100;border-bottom:var(--pixel-border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:48px;transition:background .3s}
-.nav-logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
-.blink{width:8px;height:8px;background:#8B7355;display:inline-block;animation:blink 1.2s step-end infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.nav-links{display:flex}
-.nav-links a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;border-left:var(--pixel-border);transition:all .1s;letter-spacing:.04em}
-.nav-links a:hover,.nav-links a.active{background:var(--text);color:var(--bg)}
-.theme-btn{width:48px;height:48px;border:none;border-left:var(--pixel-border);background:transparent;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .1s;font-family:var(--mono)}
-.theme-btn:hover{background:var(--text);color:var(--bg)}
-.page-wrap{margin-left:220px;max-width:860px;padding:80px 48px 120px}
-.sidebar{position:fixed;top:51px;left:0;width:220px;height:calc(100vh - 51px);padding:32px 28px;border-right:1px solid var(--bg3);overflow-y:auto;background:var(--bg);z-index:30}
-.breadcrumb{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:36px;display:flex;flex-direction:column;gap:4px;line-height:1.8}
-.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .1s}.breadcrumb a:hover{color:var(--text)}
-.side-nav{display:flex;flex-direction:column;gap:1px}
-.side-nav a{font-size:12px;color:var(--muted2);text-decoration:none;padding:7px 12px;border-left:2px solid transparent;transition:all .15s}
-.side-nav a:hover{color:var(--text);border-left-color:var(--muted2)}
-.side-nav a.active{color:var(--text);border-left-color:#8B7355;font-weight:600}
-.content{width:100%;position:relative;z-index:1}
-.hero-section{margin-bottom:72px;padding-top:16px}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:16px}
-.hero-eyebrow::before{content:'▶';font-size:8px}
-.project-title{font-size:36px;font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:20px}
-.project-lead{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;max-width:580px;border-left:3px solid var(--accent);padding-left:16px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
-.chip{font-family:var(--mono);font-size:9px;padding:3px 8px;border:1px solid var(--muted2);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.btn-row{display:flex;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;padding:9px 16px;border:var(--pixel-border);margin-right:-2px;text-decoration:none;color:var(--text);font-size:12px;font-family:var(--mono);letter-spacing:.04em;font-weight:500;transition:all .1s;background:var(--bg);white-space:nowrap}
-.btn:hover{background:var(--text);color:var(--bg)}
-.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}.btn.primary:hover{opacity:.88}
-.meta-row{display:grid;grid-template-columns:repeat(3,1fr);border:var(--pixel-border);margin-bottom:80px}
-.meta-cell{padding:22px;border-right:var(--pixel-border)}.meta-cell:last-child{border-right:none}
-.meta-label{font-family:var(--mono);font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.meta-num{font-size:38px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
-.meta-desc{font-size:12px;color:var(--muted);line-height:1.5}
-.section{margin-bottom:80px;scroll-margin-top:72px}
-.sec-label{font-family:var(--mono);font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.sec-title{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:20px;line-height:1.2}
-.sec-divider{border:none;border-top:var(--pixel-border);margin-bottom:28px}
-.body-text{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:16px;max-width:600px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;border:var(--pixel-border);margin-top:20px}
-.gcell{padding:18px 20px;border-right:var(--pixel-border)}.gcell:last-child{border-right:none}
-.gcell-label{font-family:var(--mono);font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.bullets{padding-left:16px}
-.bullets li{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:4px}
-.steps{margin-top:20px;border:var(--pixel-border)}
-.step{padding:18px 20px;border-bottom:var(--pixel-border);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
-.step:last-child{border-bottom:none}
-.step-n{font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-.04em;padding-top:1px}
-.step-label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
-.step p{font-size:13px;color:var(--muted);line-height:1.7}
-.carousel-wrap{border:var(--pixel-border);margin-top:20px}
-.carousel-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:var(--pixel-border);background:var(--bg2)}
-.carousel-label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
-.carousel-label::before{content:'';display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%}
-.carousel-nav{display:flex;align-items:center}
-.carousel-btn{width:32px;height:32px;border:var(--pixel-border);background:var(--bg);cursor:pointer;font-family:var(--mono);font-size:14px;color:var(--text);transition:all .1s;display:flex;align-items:center;justify-content:center}
-.carousel-btn:hover{background:var(--text);color:var(--bg)}.carousel-btn:last-child{margin-left:-2px}
-.carousel-counter{font-family:var(--mono);font-size:10px;color:var(--muted);padding:0 12px}
-.carousel-slide{display:none}.carousel-slide.active{display:block}
-.carousel-slide img{width:100%;display:block}
-.carousel-caption{padding:8px 12px;border-top:var(--pixel-border);font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;background:var(--bg2)}
-.table-wrap{border:var(--pixel-border);margin-top:20px;overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:480px}
-th{background:var(--bg2);font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:10px 14px;text-align:left;border-bottom:var(--pixel-border);font-weight:700}
-td{padding:11px 14px;font-size:12px;color:var(--muted);border-bottom:1px solid rgba(0,0,0,.06);line-height:1.5}
-html[data-theme="dark"] td{border-bottom-color:rgba(255,255,255,.05)}
-tr:last-child td{border-bottom:none}td:first-child{color:var(--text);font-weight:500}
-.quote{margin-top:20px;padding:16px 18px;border:var(--pixel-border);border-left:4px solid var(--accent);background:var(--bg2);font-size:13px;color:var(--muted);line-height:1.75;font-style:italic;max-width:600px}
-.flow{display:flex;flex-wrap:wrap;align-items:center;margin-top:16px}
-.flow-tag{font-family:var(--mono);font-size:9px;color:var(--muted);padding:5px 10px;border:1px solid var(--muted2);text-transform:uppercase;letter-spacing:.04em}
-.flow-tag.on{background:#111214;color:#fff;border-color:#111214}
-html[data-theme="dark"] .flow-tag.on{background:#f2f4f7;color:#111214;border-color:#f2f4f7}
-.flow-arrow{font-size:12px;color:var(--muted2);padding:0 6px}
-.footer{border-top:var(--pixel-border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap;gap:8px;margin-top:40px}
-.footer a{color:var(--muted);text-decoration:none}.footer a:hover{color:var(--text)}
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-@media(max-width:900px){.page-wrap{margin-left:0;padding:80px 24px 120px}.sidebar{display:none}.meta-row,.grid2{grid-template-columns:1fr}.meta-cell,.gcell{border-right:none;border-bottom:var(--pixel-border)}.meta-cell:last-child,.gcell:last-child{border-bottom:none}.project-title{font-size:28px}}
-@media(max-width:600px){.top-nav{padding:0 12px}.nav-links{overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}.nav-links a{padding:0 9px;font-size:11px;white-space:nowrap}.page-wrap{padding:72px 16px 80px}.project-title{font-size:22px}.btn-row{flex-direction:column}.btn{margin-right:0;margin-bottom:-2px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Navigation Explorer — Sora Kim</title>
+  <meta name="description" content="Cognitive Navigation Explorer — a behavioral tracking prototype surfacing documentation friction through navigation paths, loopbacks, and hesitation patterns in GMP environments." />
+  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
+      --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
+      --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
+      --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
+      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --mono:'DM Mono',monospace;
+      --max:1120px;--nav-h:64px;--sidebar-w:200px;
+    }
+    html.dark{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);
+    }
+    @media(prefers-color-scheme:dark){:root{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);
+    }}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;background:none;border:none;cursor:pointer}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
+    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+    @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
+    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-links a.active{font-weight:600}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
+    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
+    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
+
+    /* HAMBURGER */
+    .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px}
+    .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
+    .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);z-index:99;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
+    .mobile-menu a:hover{color:var(--accent)}
+
+    /* LAYOUT */
+    .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:calc(100vh - var(--nav-h))}
+
+    /* SIDEBAR */
+    .sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));border-right:1px solid var(--line);padding:32px 20px;overflow-y:auto;background:var(--bg)}
+    .breadcrumb{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.06em;margin-bottom:28px;line-height:1.9}
+    .breadcrumb a{color:var(--text-4);transition:color 150ms}
+    .breadcrumb a:hover{color:var(--accent)}
+    .side-nav{display:flex;flex-direction:column;gap:1px}
+    .side-nav a{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:6px 10px;border-left:2px solid transparent;letter-spacing:0.03em;transition:color 150ms,border-color 150ms,opacity 150ms;opacity:0.6}
+    .side-nav a:hover{color:var(--text-2);border-left-color:var(--text-4);opacity:1}
+    .side-nav a.active{color:var(--text);border-left-color:var(--accent);font-weight:500;opacity:1}
+
+    /* CONTENT */
+    .content{padding:56px 64px 120px;max-width:800px}
+
+    /* HERO */
+    .proj-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:14px}
+    .proj-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
+    .proj-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+    .chip{font-family:var(--mono);font-size:10px;padding:3px 8px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
+    .proj-lead{font-size:15px;font-weight:400;color:var(--text-2);line-height:1.75;max-width:600px;margin-bottom:14px;border-left:3px solid var(--accent);padding-left:16px}
+    .proj-claim{font-size:13px;color:var(--text-3);line-height:1.75;max-width:580px;margin-bottom:24px;border-left:2px solid var(--line);padding-left:16px;font-style:italic}
+
+    /* FLOW */
+    .flow{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:28px}
+    .flow-tag{font-family:var(--mono);font-size:10px;padding:5px 10px;border:1px solid var(--line);color:var(--text-4);letter-spacing:0.04em;text-transform:uppercase}
+    .flow-tag.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .flow-arrow{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:0 6px}
+
+    /* BUTTONS */
+    .btn-row{display:flex;flex-wrap:wrap;gap:0;margin-bottom:24px}
+    .btn{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:0;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms,border-color 150ms}
+    .btn:first-child{border-radius:8px 0 0 8px}
+    .btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .btn:only-child{border-radius:8px}
+    .btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn.primary:hover{opacity:0.85}
+
+    /* META ROW */
+    .meta-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
+    .meta-cell{background:var(--bg);padding:20px 22px}
+    .meta-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
+    .meta-num{font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
+    .meta-desc{font-size:12px;color:var(--text-4);line-height:1.5}
+
+    /* SECTIONS */
+    .sec{margin-bottom:64px;scroll-margin-top:80px}
+    .sec-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:6px}
+    .sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.2;margin-bottom:14px}
+    .sec-divider{border:none;border-top:1px solid var(--line);margin-bottom:20px}
+    .body-text{font-size:14px;color:var(--text-3);line-height:1.85;margin-bottom:14px;max-width:600px}
+    .body-text.strong{color:var(--text-2);font-weight:500}
+    .body-text.note{font-family:var(--mono);font-size:11px;border-left:2px solid var(--line-soft);padding-left:12px;color:var(--text-4);opacity:0.7}
+
+    /* GRID 2 */
+    .grid2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
+    .gcell{background:var(--bg);padding:18px 20px}
+    .gcell-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px}
+    .bullets{padding-left:16px}
+    .bullets li{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
+
+    /* STEPS */
+    .steps{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
+    .step{background:var(--bg);padding:18px 20px;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
+    .step-n{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--accent);letter-spacing:-0.04em;padding-top:1px}
+    .step-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px}
+    .step p{font-size:13px;color:var(--text-3);line-height:1.7}
+
+    /* CAROUSEL */
+    .carousel-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px}
+    .carousel-header{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+    .carousel-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;display:flex;align-items:center;gap:6px}
+    .carousel-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .carousel-nav{display:flex;align-items:center;gap:0}
+    .carousel-btn{width:30px;height:30px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--text-3);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-right:-1px;transition:background 150ms,color 150ms}
+    .carousel-btn:first-child{border-radius:6px 0 0 6px}
+    .carousel-btn:last-child{border-radius:0 6px 6px 0;margin-right:0}
+    .carousel-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .carousel-counter{font-family:var(--mono);font-size:10px;color:var(--text-4);padding:0 12px}
+    .carousel-track{background:var(--bg2)}
+    .carousel-slide{display:none}
+    .carousel-slide.active{display:block}
+    .carousel-slide img{width:100%;display:block}
+    .carousel-caption{padding:8px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;background:var(--bg2)}
+
+    /* TABLE */
+    .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px;overflow-x:auto}
+    table{width:100%;border-collapse:collapse;min-width:480px}
+    th{background:var(--bg2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-weight:500}
+    td{padding:11px 14px;font-size:13px;color:var(--text-3);border-bottom:1px solid var(--line-soft);line-height:1.5}
+    tr:last-child td{border-bottom:none}
+    td:first-child{color:var(--text-2);font-weight:500}
+
+    /* QUOTE */
+    .quote{margin-top:16px;padding:14px 18px;border:1px solid rgba(26,58,107,0.08);border-radius:0;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:13.5px;color:var(--text-2);line-height:1.75;font-style:italic;max-width:600px}
+
+    /* PAPER BLOCK */
+    .paper-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
+    .paper-row{background:var(--bg);padding:16px 20px;display:grid;grid-template-columns:110px 1fr;gap:16px}
+    .paper-row-label{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;padding-top:2px}
+    .paper-row-content{font-size:13px;color:var(--text-3);line-height:1.7}
+    .paper-claim{font-size:14px;font-weight:600;color:var(--text);line-height:1.55;border-left:3px solid var(--accent);padding-left:12px}
+
+    /* PAGE FOOTER */
+    .page-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:40px}
+    .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
+    .footer-nav{display:flex;gap:0}
+    .footer-btn{height:32px;padding:0 14px;border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms}
+    .footer-btn:first-child{border-radius:8px 0 0 8px}
+    .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+    /* REVEAL */
+    .reveal{opacity:1;transform:none}
+    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
+    .js-ready .reveal.on{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{display:none}
+      .content{padding:40px 32px 80px;max-width:100%}
+      .meta-row{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .paper-row{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .content{padding:32px 20px 60px}
+      .flow{flex-direction:column;align-items:flex-start}
+      .btn-row{flex-direction:column}
+      .btn{margin-right:0;margin-bottom:-1px;border-radius:0 !important}
+      .btn:first-child{border-radius:8px 8px 0 0 !important}
+      .btn:last-child{border-radius:0 0 8px 8px !important;margin-bottom:0}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
 </head>
 <body>
-<div id="progress-bar"></div>
-<nav class="top-nav">
-  <a class="nav-logo" href="index.html"><span class="blink"></span>sora kim</a>
-  <div class="nav-links">
-    <a href="index.html">home</a>
-    <a class="active" href="projects.html">projects</a>
-    <a href="research.html">research</a>
-    <a href="papers.html">papers</a>
-    <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
+        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
+        <span class="brand-name">Sora Kim</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="papers.html">Papers</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </button>
+        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="papers.html">Papers</a>
+    <a href="research.html">Research</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="breadcrumb">
+        <a href="index.html">home</a> /
+        <a href="projects.html">projects</a> /
+        <span style="color:var(--text-2)">navigation explorer</span>
+      </div>
+      <nav class="side-nav">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#problem">Problem</a>
+        <a href="#method">Method</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#study">Study</a>
+        <a href="#findings">Findings</a>
+        <a href="#paper">Paper</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+
+      <!-- HERO -->
+      <section class="sec" id="overview" style="margin-bottom:40px">
+        <div class="proj-eyebrow reveal">navigation axis · project 03</div>
+        <h1 class="proj-title reveal">Cognitive Navigation Explorer</h1>
+        <div class="proj-chips reveal">
+          <span class="chip">document navigation</span>
+          <span class="chip">loopback tracking</span>
+          <span class="chip">behavioral data</span>
+          <span class="chip">python</span>
+          <span class="chip">streamlit</span>
+          <span class="chip">deployed</span>
+        </div>
+        <p class="proj-lead reveal">
+          Loopbacks are not simply user error — they may reflect moments where the document system failed to resolve a judgment demand on the first pass. This prototype tracks navigation paths, loopbacks, and hesitation patterns as behavioral data, making documentation friction observable without modifying validated systems.
+        </p>
+        <p class="proj-claim reveal">
+          Where a practitioner loops back may indicate that the document structure did not resolve a judgment demand clearly enough the first time.
+        </p>
+        <div class="flow reveal">
+          <span class="flow-tag on">document structure</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">navigation behavior</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">loopback / hesitation</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">investigation friction</span>
+        </div>
+        <div class="btn-row reveal">
+          <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
+          <a class="btn" href="projects.html">← All projects</a>
+        </div>
+      </section>
+
+      <!-- META -->
+      <div class="meta-row reveal">
+        <div class="meta-cell">
+          <div class="meta-label">Participants</div>
+          <div class="meta-num">N=20</div>
+          <div class="meta-desc">GMP-experienced · OOS investigation background</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Loopback signal</div>
+          <div class="meta-num">20/20</div>
+          <div class="meta-desc">Loopback navigation appeared across all participant sessions</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Ease of use</div>
+          <div class="meta-num">5.0/5</div>
+          <div class="meta-desc">Interface was rated highly usable across participants</div>
+        </div>
+      </div>
+
+      <!-- PROBLEM -->
+      <section class="sec reveal" id="problem">
+        <div class="sec-eyebrow">01</div>
+        <h2 class="sec-title">Problem</h2>
+        <hr class="sec-divider">
+        <p class="body-text">GMP procedural documentation is a network, not a flat archive. A single deviation investigation may require navigating across SOPs, method validation documents, specification references, and training records — but the links between them are textual rather than interactive, and the navigation burden falls entirely on the practitioner.</p>
+        <p class="body-text">If we can observe how practitioners actually move through documents — where they go first, where they return, where they hesitate — we can surface structural properties of the documentation system that are otherwise invisible. Navigation behavior is a behavioral trace of documentation friction.</p>
+        <div class="grid2">
+          <div class="gcell">
+            <div class="gcell-label">Observed pain points</div>
+            <ul class="bullets">
+              <li>Cross-references are textual ("refer to SOP-QC-004") rather than navigable</li>
+              <li>Related documents distributed without clear pathways between them</li>
+              <li>Less experienced users face significantly higher navigation burden</li>
+              <li>Loopback behavior is common but invisible in standard workflows</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">Research opportunity</div>
+            <p class="body-text" style="margin:0;font-size:13px;">Navigation behavior contains information practitioners cannot always articulate. A loopback reveals that something in the previously visited document was not resolved — but without tracking, that signal disappears. This prototype makes those signals visible, turning implicit navigation friction into observable, structured data.</p>
+          </div>
+        </div>
+        <div class="quote">A return click can be evidence that the path forward was not yet legible.</div>
+      </section>
+
+      <!-- METHOD -->
+      <section class="sec reveal" id="method">
+        <div class="sec-eyebrow">02</div>
+        <h2 class="sec-title">Method</h2>
+        <hr class="sec-divider">
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">01</div>
+            <div>
+              <div class="step-label">Document set design</div>
+              <p>Constructed 7 synthetic GMP documents (SOPs, analytical method protocol, reference specification) reflecting a realistic OOS investigation workflow — with intentional cross-referencing fragmentation to create naturalistic navigation demands.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">02</div>
+            <div>
+              <div class="step-label">Scenario</div>
+              <p>Participants were given a standardised OOS scenario (ELISA assay result exceeding specification) and asked to find the relevant procedures and documents. No guidance or hints were provided.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">03</div>
+            <div>
+              <div class="step-label">Behavioral tracking</div>
+              <p>The prototype automatically recorded from_doc → to_doc transitions, action type (forward / cross-reference / loopback), visit count per document, and time spent per document. Data exported as CSV per participant session.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">04</div>
+            <div>
+              <div class="step-label">Usability study · N=20</div>
+              <p>Post-task survey measured navigation clarity, cross-reference usefulness, real-world utility, and collected qualitative feedback on confusion points and improvement suggestions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROTOTYPE -->
+      <section class="sec reveal" id="prototype">
+        <div class="sec-eyebrow">03</div>
+        <h2 class="sec-title">Prototype</h2>
+        <hr class="sec-divider">
+        <p class="body-text">The Cognitive Navigation Explorer presents participants with a GMP document set and an OOS investigation scenario. As participants navigate, their movement is tracked in real time. At the end of the session, a results screen visualises the navigation path as a directed network graph — showing forward moves, cross-reference jumps, and loopbacks.</p>
+        <div class="btn-row" style="margin-bottom:16px">
+          <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
+        </div>
+        <div class="carousel-wrap">
+          <div class="carousel-header">
+            <div class="carousel-label"><span class="carousel-dot"></span>Prototype · 3 views</div>
+            <div class="carousel-nav">
+              <button class="carousel-btn" id="prevBtn">←</button>
+              <span class="carousel-counter" id="counter">1 / 3</span>
+              <button class="carousel-btn" id="nextBtn">→</button>
+            </div>
+          </div>
+          <div class="carousel-track">
+            <div class="carousel-slide active">
+              <img src="assets/navigation-1.png" alt="Start screen" loading="lazy">
+              <div class="carousel-caption">screen 01 · start — participant ID entry · navigation tracking begins automatically</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/navigation-2.png" alt="Document navigation screen" loading="lazy">
+              <div class="carousel-caption">screen 02 · navigation — OOS scenario · 7 GMP documents · cross-reference links · loopback badge</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/navigation-3.png" alt="Results screen" loading="lazy">
+              <div class="carousel-caption">screen 03 · results — navigation path network · visit count · time per document · sequence log · CSV export</div>
+            </div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="gcell">
+            <div class="gcell-label">What it tracks</div>
+            <ul class="bullets">
+              <li>from_doc → to_doc transitions with action type (forward / cross-reference / loopback)</li>
+              <li>Visit count and time spent per document</li>
+              <li>Post-session directed network graph visualization</li>
+              <li>CSV export per session for multi-participant aggregation</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">Design principle</div>
+            <ul class="bullets">
+              <li>No deployment inside validated systems required</li>
+              <li>Behavioral data as proxy for document-structural friction</li>
+              <li>Interface separates tool usability from document friction — by design</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- STUDY -->
+      <section class="sec reveal" id="study">
+        <div class="sec-eyebrow">04</div>
+        <h2 class="sec-title">Usability Study</h2>
+        <hr class="sec-divider">
+        <p class="body-text strong">N=20 GMP-experienced practitioners, all with OOS investigation experience and daily procedural document use. Post-task survey measured five dimensions: document list clarity, content readability, cross-reference clarity, navigation awareness, and real-world usefulness.</p>
+        <div class="grid2">
+          <div class="gcell">
+            <div class="gcell-label">First document opened</div>
+            <p class="body-text" style="margin:0;font-size:13px;">Most participants opened an analyst-related document first — reflecting experience-based heuristics (pipetting errors are the most common ELISA OOS cause in practice). A minority opened the Reference Specification first to establish acceptance criteria before investigating.</p>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">Experience vs. navigation difficulty</div>
+            <p class="body-text" style="margin:0;font-size:13px;">Participants with 5+ years GMP experience reported no confusion about navigation direction. Less experienced participants reported difficulty identifying which document to navigate to next, but generally attributed this to SOP structure ambiguity rather than to the prototype interface.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINDINGS -->
+      <section class="sec reveal" id="findings">
+        <div class="sec-eyebrow">05</div>
+        <h2 class="sec-title">Findings</h2>
+        <hr class="sec-divider">
+        <p class="body-text strong">All 20 participants revisited at least one document. The most common loopback pattern was Analyst Training → ELISA Test Method SOP → Method Validation → ELISA Test Method SOP → OOS Procedure. All usability dimensions were rated highly (5.0/5 across participants), indicating that the interface itself did not introduce additional friction. Participants often identified SOP structure, rather than the prototype interface, as the main source of navigation difficulty.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
+            <tbody>
+              <tr><td>Document list clarity</td><td>5.0/5</td><td>Interface list was rated highly legible across participants</td></tr>
+              <tr><td>Content readability</td><td>5.0/5</td><td>Synthetic documents were generally experienced as realistic and easy to follow</td></tr>
+              <tr><td>Cross-reference clarity</td><td>5.0/5</td><td>Navigable cross-references were rated as useful during task completion</td></tr>
+              <tr><td>Navigation awareness</td><td>5.0/5</td><td>Participants reported being able to track where they were in the document set</td></tr>
+              <tr><td>Real-world usefulness</td><td>5.0/5</td><td>Participants rated the tool highly for potential GMP-related use</td></tr>
+              <tr><td>Loopback occurrence</td><td>20/20</td><td>Loopback navigation appeared in every participant session, suggesting a structural rather than isolated behavioral pattern</td></tr>
+              <tr><td>Source of confusion</td><td>SOP structure (not interface)</td><td>Less experienced participants generally identified document design — rather than the prototype — as the main friction source</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="quote">When less experienced participants struggled with cross-reference navigation, they did not say “this tool is confusing.” They more often pointed to the SOP structure itself as the reason the next step was not obvious.</div>
+        <div class="flow" style="margin-top:20px;margin-bottom:0">
+          <span class="flow-tag on">document structure</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">navigation behavior</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">loopback / hesitation</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">investigation friction</span>
+        </div>
+      </section>
+
+      <!-- PAPER -->
+      <section class="sec reveal" id="paper">
+        <div class="sec-eyebrow">06</div>
+        <h2 class="sec-title">Paper</h2>
+        <hr class="sec-divider">
+        <div class="paper-block">
+          <div class="paper-row">
+            <div class="paper-row-label">Claim</div>
+            <div class="paper-row-content">
+              <p class="paper-claim">Navigation behavior can function as a useful proxy for document-structural friction, and lightweight interactive prototypes can make that behavior observable without requiring deployment inside validated systems.</p>
+            </div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">What it does</div>
+            <div class="paper-row-content">Contributes a methodological argument: behavioral navigation tracking surfaces documentation friction in regulated environments. Loopback is reframed as a structural signal rather than as simple individual error.</div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">Status</div>
+            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">Links</div>
+            <div class="paper-row-content">
+              <div class="btn-row">
+                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
+                <a class="btn" href="papers.html">→ Papers page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-footer reveal">
+        <span class="footer-note">navigation axis · project 03</span>
+        <div class="footer-nav">
+          <a href="projects.html" class="footer-btn">← Projects</a>
+          <a href="index.html" class="footer-btn">Home</a>
+        </div>
+      </div>
+
+    </main>
   </div>
-  <button class="theme-btn" id="themeToggle">◐</button>
-</nav>
-<div class="page-wrap">
-  <aside class="sidebar">
-    <div class="breadcrumb">
-      <a href="index.html">home</a><span style="opacity:.3">/</span>
-      <a href="projects.html">projects</a><span style="opacity:.3">/</span>
-      <span style="color:var(--text)">navigation explorer</span>
-    </div>
-    <nav class="side-nav">
-      <a href="#overview" class="active">Overview</a>
-      <a href="#problem">Problem</a>
-      <a href="#method">Method</a>
-      <a href="#prototype">Prototype</a>
-      <a href="#study">Study</a>
-      <a href="#findings">Findings</a>
-      <a href="#paper">Paper</a>
-    </nav>
-  </aside>
-  <main class="content">
 
-    <section class="hero-section fade-up" id="overview">
-      <div class="hero-eyebrow">navigation axis · project 05</div>
-      <h1 class="project-title">Cognitive Navigation Explorer</h1>
-      <p style="font-size:14px;color:var(--muted);font-style:italic;margin-bottom:20px;border-left:3px solid #8B7355;padding-left:14px;max-width:580px;line-height:1.7;">Where a practitioner loops back is not a mistake — it is a signal that the document structure failed to resolve a judgment demand the first time.</p>
-      <div class="chips">
-        <span class="chip">document navigation</span>
-        <span class="chip">loopback tracking</span>
-        <span class="chip">cross-reference behavior</span>
-        <span class="chip">usability study</span>
-        <span class="chip">python</span>
-        <span class="chip">streamlit</span>
-      </div>
-      <p class="project-lead">A research prototype that tracks how GMP practitioners navigate procedural documents during deviation investigations — recording navigation paths, loopbacks, cross-reference jumps, and hesitation patterns as behavioral data.</p>
-      <div class="btn-row">
-        <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" target="_blank">Live Demo ↗</a>
-        <a class="btn" href="projects.html">← all projects</a>
-      </div>
-    </section>
+  <script>
+    (function(){
+      var root = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = stored ? stored === 'dark' : prefersDark;
+      root.classList.toggle('dark', isDark);
+      root.classList.add('js-ready');
 
-    <div class="meta-row fade-up">
-      <div class="meta-cell">
-        <div class="meta-label">// participants</div>
-        <div class="meta-num">5</div>
-        <div class="meta-desc">GMP-experienced · OOS investigation background · daily procedural document users</div>
-      </div>
-      <div class="meta-cell">
-        <div class="meta-label">// usability rating</div>
-        <div class="meta-num">5.0/5</div>
-        <div class="meta-desc">All five dimensions rated 5.0/5 across all participants</div>
-      </div>
-      <div class="meta-cell">
-        <div class="meta-label">// loopback rate</div>
-        <div class="meta-num">100%</div>
-        <div class="meta-desc">All 5 participants revisited at least one document — confirming loopback as a structural condition</div>
-      </div>
-    </div>
+      var btn = document.getElementById('themeBtn');
+      if(btn) btn.addEventListener('click', function(){
+        isDark = !isDark;
+        root.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
 
-    <section class="section fade-up" id="problem">
-      <div class="sec-label">// 01</div>
-      <h2 class="sec-title">Problem</h2>
-      <hr class="sec-divider">
-      <p class="body-text">GMP procedural documentation is a network, not a flat archive. A single deviation investigation may require navigating across SOPs, method validation documents, specification references, and training records. These documents cross-reference each other — but the links are textual rather than interactive, and the navigation burden falls entirely on the practitioner.</p>
-      <p class="body-text">If we can observe how practitioners actually move through documents — where they go first, where they return, where they hesitate — we can surface structural properties of the documentation system that are otherwise invisible. Navigation behavior is a behavioral trace of documentation friction.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// observed pain points</div>
-          <ul class="bullets">
-            <li>Cross-references are textual ("refer to SOP-QC-004") rather than navigable — placing linking work on the practitioner</li>
-            <li>Related documents distributed without clear pathways between them</li>
-            <li>Less experienced users face significantly higher navigation burden</li>
-            <li>Loopback behavior is common but invisible in standard workflows</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// research opportunity</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">Navigation behavior contains information that practitioners cannot always articulate. A loopback reveals that something in the previously visited document was not resolved — but without tracking, that signal disappears. This prototype makes those signals visible, turning implicit navigation friction into observable, structured data.</p>
-        </div>
-      </div>
-      <div class="quote">Where a practitioner loops back is not a mistake. It is a signal that the document structure failed to resolve a judgment demand the first time.</div>
-    </section>
+      var hamburger = document.getElementById('hamburgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if(hamburger && mobileMenu){
+        hamburger.addEventListener('click', function(){
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
 
-    <section class="section fade-up" id="method">
-      <div class="sec-label">// 02</div>
-      <h2 class="sec-title">Method</h2>
-      <hr class="sec-divider">
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">01</div>
-          <div>
-            <div class="step-label">document set design</div>
-            <p>Constructed 7 synthetic GMP documents (SOPs, analytical method protocol, reference specification) designed to reflect a realistic OOS investigation workflow — with intentional cross-referencing fragmentation to create naturalistic navigation demands.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">02</div>
-          <div>
-            <div class="step-label">scenario</div>
-            <p>Participants were given a standardised OOS scenario (ELISA assay result exceeding specification) and asked to find the relevant procedures and documents. No guidance or hints were provided.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">03</div>
-          <div>
-            <div class="step-label">behavioral tracking</div>
-            <p>The prototype automatically recorded from_doc → to_doc transitions, action type (forward / cross-reference / loopback), visit count per document, and time spent per document. Data was exported as CSV per participant session.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">04</div>
-          <div>
-            <div class="step-label">usability study · N=5</div>
-            <p>Post-task survey measured navigation clarity, cross-reference usefulness, real-world utility, and collected qualitative feedback on confusion points and improvement suggestions.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+        });
+      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      setTimeout(function(){
+        document.querySelectorAll('.reveal').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight){ el.classList.add('on'); }
+        });
+      }, 100);
 
-    <section class="section fade-up" id="prototype">
-      <div class="sec-label">// 03</div>
-      <h2 class="sec-title">Prototype</h2>
-      <hr class="sec-divider">
-      <p class="body-text">The Cognitive Navigation Explorer presents participants with a GMP document set and an OOS investigation scenario. As participants navigate between documents, their movement is tracked in real time. At the end of the session, a results screen visualises the navigation path as a directed network graph — showing forward moves, cross-reference jumps, and loopbacks.</p>
-      <div class="btn-row" style="margin-bottom:20px;">
-        <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" target="_blank">Open Live Demo ↗</a>
-      </div>
+      var sections = document.querySelectorAll('[id]');
+      var navLinks = document.querySelectorAll('.side-nav a');
+      window.addEventListener('scroll', function(){
+        var scrollY = window.scrollY + 100;
+        sections.forEach(function(sec){
+          if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight){
+            navLinks.forEach(function(link){
+              link.classList.remove('active');
+              if(link.getAttribute('href') === '#' + sec.id) link.classList.add('active');
+            });
+          }
+        });
+      });
 
-      <div class="carousel-wrap">
-        <div class="carousel-header">
-          <div class="carousel-label">prototype · 3 views</div>
-          <div class="carousel-nav">
-            <button class="carousel-btn" id="prevBtn">←</button>
-            <span class="carousel-counter" id="counter">1 / 3</span>
-            <button class="carousel-btn" id="nextBtn">→</button>
-          </div>
-        </div>
-        <div class="carousel-track">
-          <div class="carousel-slide active">
-            <img src="./assets/navigation-1.png" alt="Start screen — participant ID entry" loading="lazy">
-            <div class="carousel-caption">screen 01 · start — participant ID entry · navigation tracking begins automatically</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/navigation-2.png" alt="Document navigation screen — OOS scenario with document list" loading="lazy">
-            <div class="carousel-caption">screen 02 · navigation — OOS scenario · 7 GMP documents · cross-reference links · loopback badge</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/navigation-3.png" alt="Results screen — navigation path network and analysis" loading="lazy">
-            <div class="carousel-caption">screen 03 · results — navigation path network · visit count · time per document · sequence log · CSV export</div>
-          </div>
-        </div>
-      </div>
+      var slides = document.querySelectorAll('.carousel-slide');
+      var counter = document.getElementById('counter');
+      var current = 0;
+      function showSlide(n){
+        slides[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        if(counter) counter.textContent = (current + 1) + ' / ' + slides.length;
+      }
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      if(prevBtn) prevBtn.addEventListener('click', function(){ showSlide(current - 1); });
+      if(nextBtn) nextBtn.addEventListener('click', function(){ showSlide(current + 1); });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowLeft') showSlide(current - 1);
+        if(e.key === 'ArrowRight') showSlide(current + 1);
+      });
+    })();
+  </script>
 
-      <div class="grid2" style="margin-top:20px;">
-        <div class="gcell">
-          <div class="gcell-label">// what it tracks</div>
-          <ul class="bullets">
-            <li>from_doc → to_doc transitions with action type (forward / cross-reference / loopback)</li>
-            <li>Visit count and time spent per document</li>
-            <li>Post-session directed network graph visualization</li>
-            <li>CSV export per session for multi-participant aggregation</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// design principle</div>
-          <ul class="bullets">
-            <li>No deployment inside validated systems required</li>
-            <li>Behavioral data as proxy for document-structural friction</li>
-            <li>Interface separates tool usability from document friction — by design</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-up" id="study">
-      <div class="sec-label">// 04</div>
-      <h2 class="sec-title">Usability Study</h2>
-      <hr class="sec-divider">
-      <p class="body-text">N=5 GMP-experienced practitioners, all with OOS investigation experience and daily procedural document use. Post-task survey measured five dimensions: document list clarity, content readability, cross-reference clarity, navigation awareness, and real-world usefulness.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// first document opened</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">4/5 participants opened an analyst-related document first — reflecting experience-based heuristics (pipetting errors are the most common ELISA OOS cause in practice). 1/5 opened the Reference Specification first to establish acceptance criteria before investigating.</p>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// experience vs. navigation difficulty</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">3 participants with 5+ years GMP experience reported no confusion about navigation direction. 2 participants with ~1 year experience reported difficulty identifying which document to navigate to next — but attributed this to SOP structure ambiguity, not the prototype interface.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-up" id="findings">
-      <div class="sec-label">// 05</div>
-      <h2 class="sec-title">Findings</h2>
-      <hr class="sec-divider">
-      <p class="body-text">All five participants revisited at least one document. The most common loopback pattern: Analyst Training → ELISA Test Method SOP → Method Validation → ELISA Test Method SOP → OOS Procedure. The prototype interface was rated 5.0/5 across all dimensions — while the SOP structure was identified as the actual source of navigation difficulty.</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
-          <tbody>
-            <tr><td>Document list clarity</td><td>5.0 / 5</td><td>Interface immediately legible to all participants.</td></tr>
-            <tr><td>Content readability</td><td>5.0 / 5</td><td>Synthetic documents were realistic and easy to follow.</td></tr>
-            <tr><td>Cross-reference clarity</td><td>5.0 / 5</td><td>Navigable cross-references rated highly useful (4 very helpful, 1 somewhat helpful).</td></tr>
-            <tr><td>Navigation awareness</td><td>5.0 / 5</td><td>All participants could tell where they were in the process at any point.</td></tr>
-            <tr><td>Real-world usefulness</td><td>5.0 / 5</td><td>All participants rated the tool as useful for actual GMP work.</td></tr>
-            <tr><td>Loopback occurrence</td><td>5/5 (100%)</td><td>Every participant revisited at least one document — loopback is a structural condition, not individual error.</td></tr>
-            <tr><td>Source of confusion</td><td>SOP structure (not interface)</td><td>Less experienced participants correctly identified document design — not the prototype — as the friction source.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="quote">When less experienced participants struggled with cross-reference navigation, they did not say "this tool is confusing." They said "I can't tell where to go because the SOP doesn't make it clear." That is the research finding.</div>
-      <div class="flow" style="margin-top:20px;">
-        <span class="flow-tag on">document structure</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">navigation behavior</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">loopback / hesitation</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">investigation friction</span>
-      </div>
-    </section>
-
-    <section class="section fade-up" id="paper">
-      <div class="sec-label">// 06</div>
-      <h2 class="sec-title">Paper in Progress</h2>
-      <hr class="sec-divider">
-      <p class="body-text">This project is being developed into a paper on behavioral navigation tracking as a method for surfacing documentation friction in regulated environments. The paper contributes a methodological argument: navigation behavior is a valid proxy for document-structural friction — and lightweight interactive prototypes can make that behavior observable without requiring deployment inside validated systems.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// tools & methods</div>
-          <ul class="bullets">
-            <li>Python / Streamlit — interactive navigation prototype</li>
-            <li>NetworkX — navigation path visualization</li>
-            <li>Session state management for behavioral tracking</li>
-            <li>Pandas — session log export and analysis</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// research framing</div>
-          <ul class="bullets">
-            <li>Navigation behavior as documentation friction proxy</li>
-            <li>Loopback as structural signal, not individual error</li>
-            <li>Compliance-constrained behavioral observation</li>
-            <li>Interface friction vs. structural friction distinction</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <span>© 2026 Sora Kim</span>
-      <div style="display:flex;">
-        <a class="btn" href="projects.html" style="font-size:10px;padding:6px 12px;">← projects</a>
-        <a class="btn" href="index.html" style="font-size:10px;padding:6px 12px;border-left:none;">home</a>
-      </div>
-    </div>
-  </main>
-</div>
-
-<script>
-(function(){
-  var btn=document.getElementById('themeToggle'),html=document.documentElement,saved=localStorage.getItem('theme'),prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if(saved==='dark'||(!saved&&prefersDark))html.setAttribute('data-theme','dark');
-  btn.addEventListener('click',function(){var dark=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',dark?'light':'dark');localStorage.setItem('theme',dark?'light':'dark');});
-})();
-window.addEventListener('scroll',function(){var s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?(s/d)*100:0;document.getElementById('progress-bar').style.width=p+'%';});
-var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08});
-document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
-var secs=document.querySelectorAll('[id]'),navs=document.querySelectorAll('.side-nav a');
-window.addEventListener('scroll',function(){var y=window.scrollY+120;secs.forEach(function(s){if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){navs.forEach(function(l){l.classList.remove('active');if(l.getAttribute('href')==='#'+s.id)l.classList.add('active');});}});});
-(function(){
-  var slides=document.querySelectorAll('.carousel-slide'),counter=document.getElementById('counter'),cur=0;
-  function show(n){slides[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');counter.textContent=(cur+1)+' / '+slides.length;}
-  document.getElementById('prevBtn').addEventListener('click',function(){show(cur-1);});
-  document.getElementById('nextBtn').addEventListener('click',function(){show(cur+1);});
-  document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
-})();
-</script>
 </body>
 </html>
