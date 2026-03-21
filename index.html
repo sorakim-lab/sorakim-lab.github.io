@@ -79,6 +79,7 @@
       height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;
       font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);
       letter-spacing:0.02em;transition:border-color 150ms,background 150ms;
+      display:inline-flex;align-items:center;justify-content:center;
     }
     .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
 
@@ -117,12 +118,14 @@
       height:42px;padding:0 22px;background:var(--text);color:var(--bg);
       border-radius:10px;font-size:13px;font-weight:600;
       letter-spacing:-0.01em;transition:opacity 150ms;
+      display:inline-flex;align-items:center;justify-content:center;
     }
     .btn-fill:hover{opacity:0.82}
     .btn-ghost{
       height:42px;padding:0 22px;border:1px solid var(--line);
       border-radius:10px;font-size:13px;font-weight:500;color:var(--text-2);
       transition:border-color 150ms,background 150ms;
+      display:inline-flex;align-items:center;justify-content:center;
     }
     .btn-ghost:hover{border-color:var(--text-4);background:var(--bg2)}
     .portrait-frame{
@@ -492,9 +495,9 @@
           <div class="contact-card reveal">
             <div class="section-label">Contact</div>
             <div class="contact-stack">
-              <a href="/cdn-cgi/l/email-protection#f7849885969c9e9ab7859284929685949fd99c85" class="contact-row">
+              <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;sorakim.lab&#64;gmail&#46;com" class="contact-row">
                 <span class="contact-kind">Email</span>
-                <span class="contact-val"><span class="__cf_email__" data-cfemail="e6958994878d8f8ba6948395838794858ec88d94">[email&#160;protected]</span></span>
+                <span class="contact-val">sorakim.lab&#64;gmail&#46;com</span>
               </a>
               <a href="https://github.com/sorakim-lab" target="_blank" rel="noopener" class="contact-row">
                 <span class="contact-kind">GitHub</span>
@@ -516,12 +519,12 @@
     <div class="wrap">
       <div class="footer-inner">
         <span>Sora Kim · sorakim-lab.github.io</span>
-        <a href="/cdn-cgi/l/email-protection#24574b56454f4d4964564157414556474c0a4f56"><span class="__cf_email__" data-cfemail="98ebf7eaf9f3f1f5d8eafdebfdf9eafbf0b6f3ea">[email&#160;protected]</span></a>
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;sorakim.lab&#64;gmail&#46;com">sorakim.lab&#64;gmail&#46;com</a>
       </div>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -533,4 +536,21 @@
       if(btn) btn.addEventListener('click', function(){
         isDark = !isDark;
         root.classList.toggle('dark', isDark);
-        localStorage.setItem('theme', isDark
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+        });
+      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      setTimeout(function(){
+        document.querySelectorAll('.reveal').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight){ el.classList.add('on'); }
+        });
+      }, 100);
+    })();
+  </script>
+</body>
+</html>
