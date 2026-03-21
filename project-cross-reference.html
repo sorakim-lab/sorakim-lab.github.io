@@ -1,434 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Cross-Reference System · Sora Kim</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" href="./assets/favicon-light.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f8f8f6;--bg2:#f0f0ee;--bg3:#e8e8e6;--text:#111214;--muted:#626872;--muted2:#8a9099;--accent:#1a1a1a;--pixel-border:2px solid #111214;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
-html[data-theme="dark"]{--bg:#111317;--bg2:#1a1e25;--bg3:#232833;--text:#f2f4f7;--muted:#98a1ad;--muted2:#7d8794;--accent:#e0e0e0;--pixel-border:2px solid #f2f4f7}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;transition:background .3s,color .3s;line-height:1.7}
-a{color:inherit}::selection{background:var(--text);color:var(--bg)}
-#progress-bar{position:fixed;top:0;left:0;height:3px;background:#8B7355;width:0%;z-index:200;transition:width .1s linear}
-.top-nav{position:fixed;top:3px;left:0;right:0;z-index:100;border-bottom:var(--pixel-border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:48px;transition:background .3s}
-.nav-logo{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
-.blink{width:8px;height:8px;background:#8B7355;display:inline-block;animation:blink 1.2s step-end infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.nav-links{display:flex}
-.nav-links a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;border-left:var(--pixel-border);transition:all .1s;letter-spacing:.04em}
-.nav-links a:hover,.nav-links a.active{background:var(--text);color:var(--bg)}
-.theme-btn{width:48px;height:48px;border:none;border-left:var(--pixel-border);background:transparent;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .1s;font-family:var(--mono)}
-.theme-btn:hover{background:var(--text);color:var(--bg)}
-.page-wrap{margin-left:220px;max-width:860px;padding:80px 48px 120px}
-.sidebar{position:fixed;top:51px;left:0;width:220px;height:calc(100vh - 51px);padding:32px 28px;border-right:1px solid var(--bg3);overflow-y:auto;background:var(--bg);z-index:30}
-.breadcrumb{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:36px;display:flex;flex-direction:column;gap:4px;line-height:1.8}
-.breadcrumb a{color:var(--muted);text-decoration:none;transition:color .1s}.breadcrumb a:hover{color:var(--text)}
-.side-nav{display:flex;flex-direction:column;gap:1px}
-.side-nav a{font-size:12px;color:var(--muted2);text-decoration:none;padding:7px 12px;border-left:2px solid transparent;transition:all .15s}
-.side-nav a:hover{color:var(--text);border-left-color:var(--muted2)}
-.side-nav a.active{color:var(--text);border-left-color:#8B7355;font-weight:600}
-.content{width:100%;position:relative;z-index:1}
-.hero-section{margin-bottom:72px;padding-top:16px}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:16px}
-.hero-eyebrow::before{content:'▶';font-size:8px}
-.project-title{font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px}
-.project-lead{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;max-width:580px;border-left:3px solid var(--accent);padding-left:16px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
-.chip{font-family:var(--mono);font-size:9px;padding:3px 8px;border:1px solid var(--muted2);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.btn-row{display:flex;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;padding:9px 16px;border:var(--pixel-border);margin-right:-2px;text-decoration:none;color:var(--text);font-size:12px;font-family:var(--mono);letter-spacing:.04em;font-weight:500;transition:all .1s;background:var(--bg);white-space:nowrap}
-.btn:hover{background:var(--text);color:var(--bg)}
-.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}.btn.primary:hover{opacity:.88}
-.meta-row{display:grid;grid-template-columns:repeat(3,1fr);border:var(--pixel-border);margin-bottom:80px}
-.meta-cell{padding:22px;border-right:var(--pixel-border)}.meta-cell:last-child{border-right:none}
-.meta-label{font-family:var(--mono);font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.meta-num{font-size:38px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
-.meta-desc{font-size:12px;color:var(--muted);line-height:1.5}
-.section{margin-bottom:80px;scroll-margin-top:72px}
-.sec-label{font-family:var(--mono);font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.sec-title{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:20px;line-height:1.2}
-.sec-divider{border:none;border-top:var(--pixel-border);margin-bottom:28px}
-.body-text{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:16px;max-width:600px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;border:var(--pixel-border);margin-top:20px}
-.gcell{padding:18px 20px;border-right:var(--pixel-border)}.gcell:last-child{border-right:none}
-.gcell-label{font-family:var(--mono);font-size:9px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.bullets{padding-left:16px}
-.bullets li{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:4px}
-.steps{margin-top:20px;border:var(--pixel-border)}
-.step{padding:18px 20px;border-bottom:var(--pixel-border);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
-.step:last-child{border-bottom:none}
-.step-n{font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-.04em;padding-top:1px}
-.step-label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
-.step p{font-size:13px;color:var(--muted);line-height:1.7}
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);border:var(--pixel-border);margin-top:20px}
-.stat-cell{padding:18px 16px;border-right:var(--pixel-border);text-align:center}.stat-cell:last-child{border-right:none}
-.stat-num{font-size:32px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
-.stat-label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.carousel-wrap{border:var(--pixel-border);margin-top:20px}
-.carousel-header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:var(--pixel-border);background:var(--bg2)}
-.carousel-label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
-.carousel-label::before{content:'';display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%}
-.carousel-nav{display:flex;align-items:center}
-.carousel-btn{width:32px;height:32px;border:var(--pixel-border);background:var(--bg);cursor:pointer;font-family:var(--mono);font-size:14px;color:var(--text);transition:all .1s;display:flex;align-items:center;justify-content:center}
-.carousel-btn:hover{background:var(--text);color:var(--bg)}.carousel-btn:last-child{margin-left:-2px}
-.carousel-counter{font-family:var(--mono);font-size:10px;color:var(--muted);padding:0 12px}
-.carousel-slide{display:none}.carousel-slide.active{display:block}
-.carousel-slide img{width:100%;display:block}
-.carousel-caption{padding:8px 12px;border-top:var(--pixel-border);font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;background:var(--bg2)}
-.finding-row{display:grid;grid-template-columns:1fr 1fr;border:var(--pixel-border);margin-top:20px}
-.finding-cell{padding:20px;border-right:var(--pixel-border)}.finding-cell:last-child{border-right:none}
-.finding-before{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#dc2626;margin-bottom:8px}
-.finding-after{font-family:var(--mono);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#16a34a;margin-bottom:8px;margin-top:14px}
-.finding-num{font-size:28px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
-.finding-desc{font-size:12px;color:var(--muted);line-height:1.5}
-.quote{margin-top:20px;padding:16px 18px;border:var(--pixel-border);border-left:4px solid var(--accent);background:var(--bg2);font-size:13px;color:var(--muted);line-height:1.75;font-style:italic;max-width:600px}
-.flow{display:flex;flex-wrap:wrap;align-items:center;margin-top:16px}
-.flow-tag{font-family:var(--mono);font-size:9px;color:var(--muted);padding:5px 10px;border:1px solid var(--muted2);text-transform:uppercase;letter-spacing:.04em}
-.flow-tag.on{background:#111214;color:#fff;border-color:#111214}
-html[data-theme="dark"] .flow-tag.on{background:#f2f4f7;color:#111214;border-color:#f2f4f7}
-.flow-arrow{font-size:12px;color:var(--muted2);padding:0 6px}
-.footer{border-top:var(--pixel-border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap;gap:8px;margin-top:40px}
-.footer a{color:var(--muted);text-decoration:none}.footer a:hover{color:var(--text)}
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-@media(max-width:900px){.page-wrap{margin-left:0;padding:80px 24px 120px}.sidebar{display:none}.meta-row,.grid2,.stat-row,.finding-row{grid-template-columns:1fr}.meta-cell,.gcell,.stat-cell,.finding-cell{border-right:none;border-bottom:var(--pixel-border)}.meta-cell:last-child,.gcell:last-child,.stat-cell:last-child,.finding-cell:last-child{border-bottom:none}.project-title{font-size:26px}}
-@media(max-width:600px){.top-nav{padding:0 12px}.nav-links{overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}.nav-links a{padding:0 9px;font-size:11px;white-space:nowrap}.page-wrap{padding:72px 16px 80px}.project-title{font-size:22px}.btn-row{flex-direction:column}.btn{margin-right:0;margin-bottom:-2px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cross-Reference Burden Mapper — Sora Kim</title>
+  <meta name="description" content="Cross-Reference Burden Mapper — a traceability visibility prototype for interdependent regulated documents." />
+  <link rel="icon" type="image/png" href="assets/favicon-light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
+      --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
+      --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
+      --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
+      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --mono:'DM Mono',monospace;
+      --max:1120px;--nav-h:64px;--sidebar-w:200px;
+    }
+    html.dark{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);
+    }
+    @media(prefers-color-scheme:dark){:root{
+      --bg:#000000;--bg2:#111111;--panel:#1c1c1e;
+      --line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);
+      --text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;
+      --accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);
+    }}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit;background:none;border:none;cursor:pointer}
+
+    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
+    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+    @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
+    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-links a.active{font-weight:600}
+    .nav-right{display:flex;align-items:center;gap:8px}
+    .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
+    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
+    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
+
+    .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px}
+    .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
+    .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);z-index:99;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
+    .mobile-menu a:hover{color:var(--accent)}
+
+    .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:calc(100vh - var(--nav-h))}
+    .sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));border-right:1px solid var(--line);padding:32px 20px;overflow-y:auto;background:var(--bg)}
+    .breadcrumb{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.06em;margin-bottom:28px;line-height:1.9}
+    .breadcrumb a{color:var(--text-4);transition:color 150ms}
+    .breadcrumb a:hover{color:var(--accent)}
+    .side-nav{display:flex;flex-direction:column;gap:1px}
+    .side-nav a{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:6px 10px;border-left:2px solid transparent;letter-spacing:0.03em;transition:color 150ms,border-color 150ms,opacity 150ms;opacity:0.6}
+    .side-nav a:hover{color:var(--text-2);border-left-color:var(--text-4);opacity:1}
+    .side-nav a.active{color:var(--text);border-left-color:var(--accent);font-weight:500;opacity:1}
+
+    .content{padding:56px 64px 120px;max-width:800px}
+    .proj-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:14px}
+    .proj-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
+    .proj-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+    .chip{font-family:var(--mono);font-size:10px;padding:3px 8px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
+    .proj-lead{font-size:15px;font-weight:400;color:var(--text-2);line-height:1.75;max-width:600px;margin-bottom:14px;border-left:3px solid var(--accent);padding-left:16px}
+    .proj-claim{font-size:13px;color:var(--text-3);line-height:1.75;max-width:580px;margin-bottom:24px;border-left:2px solid var(--line);padding-left:16px;font-style:italic}
+
+    .flow{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:28px}
+    .flow-tag{font-family:var(--mono);font-size:10px;padding:5px 10px;border:1px solid var(--line);color:var(--text-4);letter-spacing:0.04em;text-transform:uppercase}
+    .flow-tag.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .flow-arrow{font-family:var(--mono);font-size:11px;color:var(--text-4);padding:0 6px}
+
+    .btn-row{display:flex;flex-wrap:wrap;gap:0;margin-bottom:24px}
+    .btn{height:36px;padding:0 16px;border:1px solid var(--line);border-radius:0;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms,border-color 150ms}
+    .btn:first-child{border-radius:8px 0 0 8px}
+    .btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .btn:only-child{border-radius:8px}
+    .btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .btn.primary:hover{opacity:0.85}
+
+    .meta-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
+    .meta-cell{background:var(--bg);padding:20px 22px}
+    .meta-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
+    .meta-num{font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
+    .meta-desc{font-size:12px;color:var(--text-4);line-height:1.5}
+
+    .sec{margin-bottom:64px;scroll-margin-top:80px}
+    .sec-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:6px}
+    .sec-title{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.2;margin-bottom:14px}
+    .sec-divider{border:none;border-top:1px solid var(--line);margin-bottom:20px}
+    .body-text{font-size:14px;color:var(--text-3);line-height:1.85;margin-bottom:14px;max-width:600px}
+    .body-text.strong{color:var(--text-2);font-weight:500}
+    .body-text.note{font-family:var(--mono);font-size:11px;border-left:2px solid var(--line-soft);padding-left:12px;color:var(--text-4);opacity:0.7}
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
+    .gcell{background:var(--bg);padding:18px 20px}
+    .gcell-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px}
+    .bullets{padding-left:16px}
+    .bullets li{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
+
+    .steps{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
+    .step{background:var(--bg);padding:18px 20px;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
+    .step-n{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--accent);letter-spacing:-0.04em;padding-top:1px}
+    .step-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px}
+    .step p{font-size:13px;color:var(--text-3);line-height:1.7}
+
+    .data-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
+    .data-cell{background:var(--bg);padding:18px 20px}
+    .data-num{font-size:2.1rem;font-weight:800;letter-spacing:-0.05em;color:var(--accent);line-height:1;margin-bottom:6px}
+    .data-desc{font-size:12px;color:var(--text-3);line-height:1.55}
+
+    .carousel-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px}
+    .carousel-header{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+    .carousel-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;display:flex;align-items:center;gap:6px}
+    .carousel-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .carousel-nav{display:flex;align-items:center;gap:0}
+    .carousel-btn{width:30px;height:30px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--text-3);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-right:-1px;transition:background 150ms,color 150ms}
+    .carousel-btn:first-child{border-radius:6px 0 0 6px}
+    .carousel-btn:last-child{border-radius:0 6px 6px 0;margin-right:0}
+    .carousel-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .carousel-counter{font-family:var(--mono);font-size:10px;color:var(--text-4);padding:0 12px}
+    .carousel-track{background:var(--bg2)}
+    .carousel-slide{display:none}
+    .carousel-slide.active{display:block}
+    .carousel-slide img{width:100%;display:block}
+    .carousel-caption{padding:8px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;background:var(--bg2)}
+
+    .table-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px;overflow-x:auto}
+    table{width:100%;border-collapse:collapse;min-width:480px}
+    th{background:var(--bg2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-4);padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);font-weight:500}
+    td{padding:11px 14px;font-size:13px;color:var(--text-3);border-bottom:1px solid var(--line-soft);line-height:1.5}
+    tr:last-child td{border-bottom:none}
+    td:first-child{color:var(--text-2);font-weight:500}
+
+    .quote{margin-top:16px;padding:14px 18px;border:1px solid rgba(26,58,107,0.08);border-radius:0;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:13.5px;color:var(--text-2);line-height:1.75;font-style:italic;max-width:600px}
+
+    .paper-block{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
+    .paper-row{background:var(--bg);padding:16px 20px;display:grid;grid-template-columns:110px 1fr;gap:16px}
+    .paper-row-label{font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:0.07em;padding-top:2px}
+    .paper-row-content{font-size:13px;color:var(--text-3);line-height:1.7}
+    .paper-claim{font-size:14px;font-weight:600;color:var(--text);line-height:1.55;border-left:3px solid var(--accent);padding-left:12px}
+
+    .page-footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:40px}
+    .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
+    .footer-nav{display:flex;gap:0}
+    .footer-btn{height:32px;padding:0 14px;border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--text-3);display:inline-flex;align-items:center;justify-content:center;margin-right:-1px;transition:background 150ms,color 150ms}
+    .footer-btn:first-child{border-radius:8px 0 0 8px}
+    .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
+    .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+    .reveal{opacity:1;transform:none}
+    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
+    .js-ready .reveal.on{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{display:none}
+      .content{padding:40px 32px 80px;max-width:100%}
+      .meta-row{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .data-row{grid-template-columns:1fr}
+      .paper-row{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .content{padding:32px 20px 60px}
+      .flow{flex-direction:column;align-items:flex-start}
+      .btn-row{flex-direction:column}
+      .btn{margin-right:0;margin-bottom:-1px;border-radius:0 !important}
+      .btn:first-child{border-radius:8px 8px 0 0 !important}
+      .btn:last-child{border-radius:0 0 8px 8px !important;margin-bottom:0}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none !important;transition:none !important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
 </head>
 <body>
-<div id="progress-bar"></div>
-<nav class="top-nav">
-  <a class="nav-logo" href="index.html"><span class="blink"></span>sora kim</a>
-  <div class="nav-links">
-    <a href="index.html">home</a>
-    <a class="active" href="projects.html">projects</a>
-    <a href="research.html">research</a>
-    <a href="papers.html">papers</a>
-    <a href="about.html">about</a>
-    <a href="assets/sora-kim-cv.pdf" target="_blank">cv</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="Sora Kim home">
+        <img src="assets/favicon-light.png" class="nav-icon" alt="" aria-hidden="true" />
+        <span class="brand-name">Sora Kim</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="papers.html">Papers</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            <circle cx="12" cy="12" r="4"/>
+          </svg>
+        </button>
+        <a href="assets/sora-kim-cv.pdf" target="_blank" rel="noopener" class="cv-btn">CV.pdf ↗</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="papers.html">Papers</a>
+    <a href="research.html">Research</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="breadcrumb">
+        <a href="index.html">home</a> /
+        <a href="projects.html">projects</a> /
+        <span style="color:var(--text-2)">cross-reference burden</span>
+      </div>
+      <nav class="side-nav">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#problem">Problem</a>
+        <a href="#method">Method</a>
+        <a href="#analysis">Data Analysis</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#study">Study</a>
+        <a href="#findings">Findings</a>
+        <a href="#paper">Paper</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+
+      <section class="sec" id="overview" style="margin-bottom:40px">
+        <div class="proj-eyebrow reveal">navigation axis · project 03</div>
+        <h1 class="proj-title reveal">Cross-Reference Burden Mapper</h1>
+        <div class="proj-chips reveal">
+          <span class="chip">traceability burden</span>
+          <span class="chip">document linkage</span>
+          <span class="chip">networkx</span>
+          <span class="chip">python</span>
+          <span class="chip">streamlit</span>
+          <span class="chip">deployed</span>
+        </div>
+        <p class="proj-lead reveal">
+          In interdependent document systems, traceability rarely fails because users are careless. It fails because the linkage architecture is partially invisible — and people end up acting as the missing infrastructure between documents.
+        </p>
+        <p class="proj-claim reveal">
+          Cross-reference burden is not only a technical maintenance problem. It is also a navigation and cognition problem shaped by documentation architecture.
+        </p>
+        <div class="flow reveal">
+          <span class="flow-tag on">hidden linkage</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag on">human bridging</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">traceability burden</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-tag">visibility support</span>
+        </div>
+        <div class="btn-row reveal">
+          <a class="btn primary" href="https://cross-reference-burden.streamlit.app/" target="_blank" rel="noopener">Open Demo ↗</a>
+          <a class="btn" href="projects.html">← All projects</a>
+        </div>
+      </section>
+
+      <div class="meta-row reveal">
+        <div class="meta-cell">
+          <div class="meta-label">Participants</div>
+          <div class="meta-num">N=20</div>
+          <div class="meta-desc">QA/QC-experienced workplace evaluation</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Task time</div>
+          <div class="meta-num">30–60%</div>
+          <div class="meta-desc">Observed reduction in traceability task completion time during task-based evaluation</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Adoption intent</div>
+          <div class="meta-num">20/20</div>
+          <div class="meta-desc">All participants indicated willingness to use the tool in similar work contexts</div>
+        </div>
+      </div>
+
+      <section class="sec reveal" id="problem">
+        <div class="sec-eyebrow">01</div>
+        <h2 class="sec-title">Problem</h2>
+        <hr class="sec-divider">
+        <p class="body-text">In regulated environments, traceability often depends on navigating documents that reference one another across SOPs, CAPAs, work instructions, validation files, and change records. When these links are outdated, missing, or difficult to follow, users do not simply lose time — they lose confidence in whether the path they are reconstructing is complete.</p>
+        <p class="body-text">These are not just individual user mistakes. They are often symptoms of partially visible documentation networks, where the burden of stitching paths together falls back onto human memory and manual search.</p>
+        <div class="grid2">
+          <div class="gcell">
+            <div class="gcell-label">Observed friction points</div>
+            <ul class="bullets">
+              <li>References pointed to outdated or superseded documents</li>
+              <li>Downstream links were missing from otherwise valid pathways</li>
+              <li>Lifecycle state mismatches obscured whether a path was current</li>
+              <li>Users relied on memory to bridge missing traceability edges</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">HCI reframing</div>
+            <p class="body-text" style="margin:0;font-size:13px;">Traceability burden is not just a compliance upkeep issue. It is a navigation burden created when documentation architecture withholds structural visibility from the people expected to work through it.</p>
+          </div>
+        </div>
+        <div class="quote">When document systems fail to show their own paths, people become the missing infrastructure between files.</div>
+      </section>
+
+      <section class="sec reveal" id="method">
+        <div class="sec-eyebrow">02</div>
+        <h2 class="sec-title">Method</h2>
+        <hr class="sec-divider">
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">01</div>
+            <div>
+              <div class="step-label">Synthetic corpus construction</div>
+              <p>Built a synthetic document corpus representing SOPs, CAPAs, work instructions, validation artifacts, lifecycle states, and explicit cross-references across multiple document types.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">02</div>
+            <div>
+              <div class="step-label">Metadata mapping</div>
+              <p>Structured document IDs, version status, upstream/downstream references, and document categories into a navigable traceability dataset.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">03</div>
+            <div>
+              <div class="step-label">Computational linkage analysis</div>
+              <p>Used Python and networkx to model the corpus as a directed document graph, surfacing missing links, outdated references, and lifecycle mismatches.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">04</div>
+            <div>
+              <div class="step-label">Prototype + workplace evaluation</div>
+              <p>Built a visibility prototype and evaluated task-based traceability work with 20 participants to assess path completion, discovery, timing, and perceived usefulness.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec reveal" id="analysis">
+        <div class="sec-eyebrow">03</div>
+        <h2 class="sec-title">Data Analysis</h2>
+        <hr class="sec-divider">
+        <p class="body-text">The synthetic network analysis was used to make linkage problems visible before interface design. Rather than treating missing references as isolated defects, the graph model made it possible to inspect how traceability risks propagate through document chains.</p>
+        <div class="data-row">
+          <div class="data-cell">
+            <div class="data-num">31</div>
+            <div class="data-desc">missing CAPA links identified in the synthetic network</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-num">103</div>
+            <div class="data-desc">broken downstream links surfaced across document pathways</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-num">21</div>
+            <div class="data-desc">traceability risks flagged through lifecycle-state mismatch detection</div>
+          </div>
+        </div>
+        <p class="body-text note">These counts come from synthetic network analysis used for prototype construction and pattern inspection — not from a live production archive.</p>
+      </section>
+
+      <section class="sec reveal" id="prototype">
+        <div class="sec-eyebrow">04</div>
+        <h2 class="sec-title">UI Prototype</h2>
+        <hr class="sec-divider">
+        <p class="body-text">The prototype acts as an external visibility layer over cross-referenced document systems. It does not modify validated files. Instead, it makes document relationships, missing paths, and lifecycle inconsistencies more legible during traceability work.</p>
+
+        <div class="carousel-wrap" id="carousel">
+          <div class="carousel-header">
+            <div class="carousel-label"><span class="carousel-dot"></span>UI prototype · 3 views</div>
+            <div class="carousel-nav">
+              <button class="carousel-btn" id="prevBtn">←</button>
+              <span class="carousel-counter" id="counter">1 / 3</span>
+              <button class="carousel-btn" id="nextBtn">→</button>
+            </div>
+          </div>
+          <div class="carousel-track">
+            <div class="carousel-slide active">
+              <img src="assets/cross-ref-1.png" alt="Cross-reference network view" loading="lazy">
+              <div class="carousel-caption">view 01 · network overview — directed linkage map across SOPs, CAPAs, and connected records</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/cross-ref-2.png" alt="Trace path inspection view" loading="lazy">
+              <div class="carousel-caption">view 02 · path inspection — upstream/downstream traversal with missing-link visibility</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/cross-ref-3.png" alt="Risk panel view" loading="lazy">
+              <div class="carousel-caption">view 03 · risk panel — outdated references, lifecycle mismatches, and incomplete traceability chains</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid2" style="margin-top:16px">
+          <div class="gcell">
+            <div class="gcell-label">What it surfaces</div>
+            <ul class="bullets">
+              <li>Broken or incomplete reference chains</li>
+              <li>Outdated references within otherwise active pathways</li>
+              <li>Lifecycle mismatches that complicate current-state judgment</li>
+              <li>Trace paths that depend on undocumented human inference</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">Design principle</div>
+            <p class="body-text" style="margin:0;font-size:13px;">The tool does not automate compliance decisions. It externalizes document relationships so users can inspect and reconstruct traceability paths with less reliance on memory alone.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec reveal" id="study">
+        <div class="sec-eyebrow">05</div>
+        <h2 class="sec-title">Workplace Evaluation</h2>
+        <hr class="sec-divider">
+        <p class="body-text">Participants completed three traceability tasks using the prototype: locating the next relevant downstream document, identifying whether a path was complete, and detecting where a reference chain had broken or become outdated.</p>
+        <p class="body-text strong">In task-based evaluation, the system was associated with faster path completion, higher discovery accuracy, and more complete path formation.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Task completion time</td><td>30–60% reduction</td><td>Observed reduction in traceability task time during workplace evaluation</td></tr>
+              <tr><td>Path completion</td><td>Higher with prototype</td><td>Participants more often completed full reference chains without stopping at the first visible node</td></tr>
+              <tr><td>Discovery accuracy</td><td>Improved</td><td>Broken links and outdated references were identified more reliably</td></tr>
+              <tr><td>Ease of use</td><td>20/20 positive</td><td>All participants rated the tool as easy to use in task-based evaluation</td></tr>
+              <tr><td>Adoption intent</td><td>20/20</td><td>All participants indicated willingness to use it in similar workplace traceability tasks</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="body-text note">Evaluation combined workplace-style tasks with prototype inspection. Reported timing ranges should be read as task-based observed ranges rather than controlled benchmark performance.</p>
+      </section>
+
+      <section class="sec reveal" id="findings">
+        <div class="sec-eyebrow">06</div>
+        <h2 class="sec-title">What This Revealed</h2>
+        <hr class="sec-divider">
+        <p class="body-text strong">Traceability work depends not only on reference accuracy, but on whether document systems make their own structure legible enough to follow.</p>
+        <p class="body-text">The prototype suggests that when document relationships become visible, users spend less time reconstructing paths from memory and more time evaluating whether those paths are valid, current, and complete.</p>
+        <div class="grid2">
+          <div class="gcell">
+            <div class="gcell-label">What became visible</div>
+            <ul class="bullets">
+              <li>Reference chains that looked complete but were structurally broken</li>
+              <li>Outdated links embedded inside active workflows</li>
+              <li>Points where human inference was doing hidden infrastructure work</li>
+              <li>How lifecycle mismatches complicate “current document” judgment</li>
+            </ul>
+          </div>
+          <div class="gcell">
+            <div class="gcell-label">Why it matters</div>
+            <ul class="bullets">
+              <li>Traceability burden can be reduced without modifying validated files</li>
+              <li>Path visibility supports cognition rather than replacing judgment</li>
+              <li>Documentation architecture influences whether users can reconstruct compliance pathways confidently</li>
+              <li>Linkage visibility turns hidden burden into discussable design work</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec reveal" id="paper">
+        <div class="sec-eyebrow">07</div>
+        <h2 class="sec-title">Paper</h2>
+        <hr class="sec-divider">
+        <div class="paper-block">
+          <div class="paper-row">
+            <div class="paper-row-label">Claim</div>
+            <div class="paper-row-content">
+              <p class="paper-claim">Traceability is not only a technical requirement. It is also an interaction and cognition problem shaped by documentation architecture. Making linkage structure more visible can reduce traceability burden without replacing human judgment.</p>
+            </div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">What it does</div>
+            <div class="paper-row-content">Uses synthetic graph analysis and workplace prototype evaluation to argue that cross-reference burden is structurally produced, and that a lightweight visibility layer can help users reconstruct document pathways more effectively.</div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">Status</div>
+            <div class="paper-row-content">Preprint · 2026 · SSRN</div>
+          </div>
+          <div class="paper-row">
+            <div class="paper-row-label">Links</div>
+            <div class="paper-row-content">
+              <div class="btn-row">
+                <a class="btn" href="[ssrn_link]" target="_blank" rel="noopener">SSRN ↗</a>
+                <a class="btn" href="papers.html">→ Papers page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-footer reveal">
+        <span class="footer-note">navigation axis · project 03</span>
+        <div class="footer-nav">
+          <a href="projects.html" class="footer-btn">← Projects</a>
+          <a href="index.html" class="footer-btn">Home</a>
+        </div>
+      </div>
+
+    </main>
   </div>
-  <button class="theme-btn" id="themeToggle">◐</button>
-</nav>
-<div class="page-wrap">
-  <aside class="sidebar">
-    <div class="breadcrumb">
-      <a href="index.html">home</a><span style="opacity:.3">/</span>
-      <a href="projects.html">projects</a><span style="opacity:.3">/</span>
-      <span style="color:var(--text)">cross-reference</span>
-    </div>
-    <nav class="side-nav">
-      <a href="#overview" class="active">Overview</a>
-      <a href="#problem">Problem</a>
-      <a href="#method">Method</a>
-      <a href="#analysis">Data Analysis</a>
-      <a href="#prototype">Prototype</a>
-      <a href="#study">Study</a>
-      <a href="#findings">Findings</a>
-      <a href="#paper">Paper</a>
-    </nav>
-  </aside>
-  <main class="content">
 
-    <section class="hero-section fade-up" id="overview">
-      <div class="hero-eyebrow">navigation axis · project 04</div>
-      <h1 class="project-title">Cross-Reference System<br>for GMP Documentation</h1>
-      <p style="font-size:14px;color:var(--muted);font-style:italic;margin-bottom:20px;border-left:3px solid #8B7355;padding-left:14px;max-width:580px;line-height:1.7;">In validation-constrained systems, people often become the missing infrastructure between documents that cannot easily talk to each other.</p>
-      <div class="chips">
-        <span class="chip">traceability</span><span class="chip">metadata mapping</span>
-        <span class="chip">workflow visualization</span><span class="chip">networkx</span>
-        <span class="chip">python</span><span class="chip">streamlit</span><span class="chip">usability study</span>
-      </div>
-      <p class="project-lead">A human-centered traceability project improving document linkage, process visibility, and cognitive clarity across deviation, CAPA, and change control workflows in validated GMP systems.</p>
-      <div class="btn-row">
-        <a class="btn primary" href="https://gmp-traceability-explorer.streamlit.app/" target="_blank">Live Demo ↗</a>
-        <a class="btn" href="projects.html">← all projects</a>
-      </div>
-    </section>
+  <script>
+    (function(){
+      var root = document.documentElement;
+      var stored = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = stored ? stored === 'dark' : prefersDark;
+      root.classList.toggle('dark', isDark);
+      root.classList.add('js-ready');
 
-    <div class="meta-row fade-up">
-      <div class="meta-cell">
-        <div class="meta-label">// participants</div>
-        <div class="meta-num">17</div>
-        <div class="meta-desc">GMP QC practitioners · real workplace data · structured traceability tasks</div>
-      </div>
-      <div class="meta-cell">
-        <div class="meta-label">// task completion</div>
-        <div class="meta-num">30–60%</div>
-        <div class="meta-desc">Reduction in time to complete traceability tasks vs. baseline</div>
-      </div>
-      <div class="meta-cell">
-        <div class="meta-label">// real-world adoption</div>
-        <div class="meta-num">100%</div>
-        <div class="meta-desc">All 17 participants would use the system in actual work</div>
-      </div>
-    </div>
+      var btn = document.getElementById('themeBtn');
+      if(btn) btn.addEventListener('click', function(){
+        isDark = !isDark;
+        root.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
 
-    <section class="section fade-up" id="problem">
-      <div class="sec-label">// 01</div>
-      <h2 class="sec-title">Problem</h2>
-      <hr class="sec-divider">
-      <p class="body-text">In GMP environments, every Deviation, CAPA, and Change Control record must be cross-linked to demonstrate process integrity and inspection readiness. These records are deeply interdependent, but they exist as separate validated Word files that cannot be freely restructured or automatically linked.</p>
-      <p class="body-text">Analysts and QA reviewers must repeatedly copy and verify identifiers across multiple records. What looks like a traceability requirement on paper becomes, in practice, a cognitive burden placed on people — friction that accumulates invisibly across hundreds of linked records.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// observed pain points</div>
-          <ul class="bullets">
-            <li>Users relied on memory or keyword search to link related records</li>
-            <li>Inconsistent file naming increased outdated version risk</li>
-            <li>QA reviewers spent excessive time checking status and closure consistency</li>
-            <li>Manual linkage work created fatigue during audits</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// HCI reframing</div>
-          <p style="font-size:13px;color:var(--muted);line-height:1.75;margin:0;">These were not individual user mistakes. They were consequences of system design under validation constraints, where automation was limited and humans became the connectors of information across fragmented records. Each cross-reference check that should be automatic instead becomes a cognitive task.</p>
-        </div>
-      </div>
-      <div class="quote">In validation-constrained systems, people often become the missing infrastructure between documents that cannot easily talk to each other.</div>
-    </section>
+      var hamburger = document.getElementById('hamburgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if(hamburger && mobileMenu){
+        hamburger.addEventListener('click', function(){
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
 
-    <section class="section fade-up" id="method">
-      <div class="sec-label">// 02</div>
-      <h2 class="sec-title">Method</h2>
-      <hr class="sec-divider">
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">01</div>
-          <div>
-            <div class="step-label">synthetic dataset construction</div>
-            <p>Generated a synthetic GMP documentation network of 150 records (60 Deviations, 40 CAPAs, 30 Change Controls, 20 SOPs) replicating structural properties of real regulated documentation — including partial linkage, version drift, and lifecycle inconsistency.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">02</div>
-          <div>
-            <div class="step-label">cross-reference metadata mapping</div>
-            <p>Extracted key identifier fields — Deviation ID, CAPA ID, batch number, product code, status, closure date, SOP version — and constructed a structured linkage matrix with status-based filters and keyword indexing.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">03</div>
-          <div>
-            <div class="step-label">computational linkage analysis + network graph</div>
-            <p>Used Python (pandas, networkx) to automate cross-link verification, detect missing connections, identify outdated SOP references, and surface lifecycle mismatches. Modeled the documentation network as a directed graph — visualizing hub concentration, isolated clusters, and cognitive load distribution.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-n">04</div>
-          <div>
-            <div class="step-label">interactive prototype + workplace evaluation · N=17</div>
-            <p>Built a Traceability Explorer in Streamlit and evaluated it with 17 GMP QC practitioners using real workplace data and structured traceability tasks.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+        });
+      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      setTimeout(function(){
+        document.querySelectorAll('.reveal').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight){ el.classList.add('on'); }
+        });
+      }, 100);
 
-    <section class="section fade-up" id="analysis">
-      <div class="sec-label">// 03</div>
-      <h2 class="sec-title">Data Analysis</h2>
-      <hr class="sec-divider">
-      <p class="body-text">The computational analysis was conducted on a synthetic dataset of 150 GMP records, designed to reflect structural patterns observed in real validation-constrained documentation environments.</p>
-      <div class="stat-row">
-        <div class="stat-cell"><div class="stat-num">150</div><div class="stat-label">total records</div></div>
-        <div class="stat-cell"><div class="stat-num">31</div><div class="stat-label">missing CAPA links</div></div>
-        <div class="stat-cell"><div class="stat-num">103</div><div class="stat-label">broken downstream links</div></div>
-        <div class="stat-cell"><div class="stat-num">21</div><div class="stat-label">traceability risks</div></div>
-      </div>
-      <p class="body-text" style="margin-top:20px;">The network graph reveals density asymmetry (hub records concentrating cognitive work), isolated clusters (traceability gaps invisible until audit pressure), and 3.71 average linkages per record. Each edge in the graph is a manual lookup — each disconnected node is a gap that only a person can fill.</p>
-      <div class="quote">Without computational analysis, the traceability problem can only be described anecdotally. The network graph makes cognitive burden visible — and therefore measurable.</div>
-    </section>
+      var sections = document.querySelectorAll('[id]');
+      var navLinks = document.querySelectorAll('.side-nav a');
+      window.addEventListener('scroll', function(){
+        var scrollY = window.scrollY + 100;
+        sections.forEach(function(sec){
+          if(scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight){
+            navLinks.forEach(function(link){
+              link.classList.remove('active');
+              if(link.getAttribute('href') === '#' + sec.id) link.classList.add('active');
+            });
+          }
+        });
+      });
 
-    <section class="section fade-up" id="prototype">
-      <div class="sec-label">// 04</div>
-      <h2 class="sec-title">Prototype</h2>
-      <hr class="sec-divider">
-      <p class="body-text">The Traceability Explorer renders the full documentation chain for any selected record — Deviation → CAPA → Change Control → SOP — in a single view, surfacing linkage gaps, version conflicts, and lifecycle mismatches without modifying any validated source file.</p>
-      <div class="btn-row" style="margin-bottom:20px;">
-        <a class="btn primary" href="https://gmp-traceability-explorer.streamlit.app/" target="_blank">Open Live Demo ↗</a>
-      </div>
-      <div class="carousel-wrap">
-        <div class="carousel-header">
-          <div class="carousel-label">prototype · 3 views</div>
-          <div class="carousel-nav">
-            <button class="carousel-btn" id="prevBtn">←</button>
-            <span class="carousel-counter" id="counter">1 / 3</span>
-            <button class="carousel-btn" id="nextBtn">→</button>
-          </div>
-        </div>
-        <div class="carousel-track">
-          <div class="carousel-slide active">
-            <img src="./assets/cross-ref-1.png" alt="Chain Viewer" loading="lazy">
-            <div class="carousel-caption">tab 01 · chain viewer — full documentation chain trace · missing linkage detection</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/cross-ref-2.png" alt="Record Explorer" loading="lazy">
-            <div class="carousel-caption">tab 02 · record explorer — browse full network · filter by type, status, product</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="./assets/cross-ref-3.png" alt="Risk Summary" loading="lazy">
-            <div class="carousel-caption">tab 03 · risk summary — lifecycle mismatches · outdated SOP references · gap detail</div>
-          </div>
-        </div>
-      </div>
-      <div class="grid2" style="margin-top:20px;">
-        <div class="gcell">
-          <div class="gcell-label">// what it surfaces</div>
-          <ul class="bullets">
-            <li>Full Deviation → CAPA → Change Control → SOP chain in one view</li>
-            <li>Missing links, lifecycle mismatches, outdated SOP references — computationally detected</li>
-            <li>Record explorer with filters by type, status, and product</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// design principle</div>
-          <ul class="bullets">
-            <li>No validated templates modified</li>
-            <li>External visibility layer only</li>
-            <li>Cognitive linking work redistributed to the system</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      var slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      var counter = document.getElementById('counter');
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      var current = 0;
 
-    <section class="section fade-up" id="study">
-      <div class="sec-label">// 05</div>
-      <h2 class="sec-title">Usability Study</h2>
-      <hr class="sec-divider">
-      <p class="body-text">N=17 GMP QC practitioners using real workplace data. Three structured traceability tasks: information retrieval, document linkage, and path tracing. Measured task completion time, document discovery, path completion rate, and navigation efficiency.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// task design</div>
-          <ul class="bullets">
-            <li><strong>Task 1 — Retrieval:</strong> "Find the SOP relevant to this situation."</li>
-            <li><strong>Task 2 — Linkage:</strong> "Find the documents related to this SOP."</li>
-            <li><strong>Task 3 — Path tracing:</strong> "Describe how you moved from the initial document to a final judgment."</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// measurement</div>
-          <ul class="bullets">
-            <li>Task completion time (seconds)</li>
-            <li>Number of documents discovered</li>
-            <li>Path completion rate — meaningful traceability chain established</li>
-            <li>Click count / navigation efficiency</li>
-            <li>Ease of use and real-world adoption intent</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      function renderSlide(idx){
+        slides.forEach(function(slide, i){
+          slide.classList.toggle('active', i === idx);
+        });
+        if(counter) counter.textContent = (idx + 1) + ' / ' + slides.length;
+      }
 
-    <section class="section fade-up" id="findings">
-      <div class="sec-label">// 06</div>
-      <h2 class="sec-title">Findings</h2>
-      <hr class="sec-divider">
-      <p class="body-text">Across all three tasks, the cross-reference system produced consistent improvements in speed, discovery, path completion, and navigation efficiency. 17/17 participants rated the tool as easy to use and said they would use it in real work.</p>
-      <div class="finding-row">
-        <div class="finding-cell">
-          <div class="finding-before">Baseline</div>
-          <div class="finding-num">120–300s</div>
-          <div class="finding-desc">Task completion time without the system</div>
-          <div class="finding-after">With system</div>
-          <div class="finding-num">60–150s</div>
-          <div class="finding-desc">30–60% reduction in task time</div>
-        </div>
-        <div class="finding-cell">
-          <div class="finding-before">Baseline discovery</div>
-          <div class="finding-num">1.5–2.5</div>
-          <div class="finding-desc">Average documents discovered per task</div>
-          <div class="finding-after">With system</div>
-          <div class="finding-num">3–5</div>
-          <div class="finding-desc">1.5–2× increase in document discovery</div>
-        </div>
-      </div>
-      <div class="finding-row" style="margin-top:0;border-top:none;">
-        <div class="finding-cell" style="border-top:var(--pixel-border);">
-          <div class="finding-before">Baseline path completion</div>
-          <div class="finding-num">30–50%</div>
-          <div class="finding-desc">Meaningful traceability chain established</div>
-          <div class="finding-after">With system</div>
-          <div class="finding-num">70–90%</div>
-          <div class="finding-desc">Significant increase in complete path formation</div>
-        </div>
-        <div class="finding-cell" style="border-top:var(--pixel-border);">
-          <div class="finding-before">Baseline navigation</div>
-          <div class="finding-num">6–12</div>
-          <div class="finding-desc">Average clicks per task without support</div>
-          <div class="finding-after">With system</div>
-          <div class="finding-num">3–6</div>
-          <div class="finding-desc">40–60% reduction in navigation steps</div>
-        </div>
-      </div>
-      <div class="flow" style="margin-top:20px;">
-        <span class="flow-tag on">fragmented records</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">visible chain</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">cognitive load redistributed</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-tag on">faster traceability</span>
-      </div>
-    </section>
+      if(prevBtn && nextBtn && slides.length){
+        prevBtn.addEventListener('click', function(){
+          current = (current - 1 + slides.length) % slides.length;
+          renderSlide(current);
+        });
+        nextBtn.addEventListener('click', function(){
+          current = (current + 1) % slides.length;
+          renderSlide(current);
+        });
+        renderSlide(current);
+      }
+    })();
+  </script>
 
-    <section class="section fade-up" id="paper">
-      <div class="sec-label">// 07</div>
-      <h2 class="sec-title">Paper in Progress</h2>
-      <hr class="sec-divider">
-      <p class="body-text">This project is being developed into a paper on traceability, metadata infrastructure, and cognitive load in compliance-constrained documentation systems. The central argument: traceability is not only a technical requirement but also an interaction and cognition problem shaped by documentation architecture — and lightweight external support layers can make that work visible without breaching system integrity.</p>
-      <div class="grid2">
-        <div class="gcell">
-          <div class="gcell-label">// tools & methods</div>
-          <ul class="bullets">
-            <li>Python — synthetic data generation, pandas metadata analysis</li>
-            <li>networkx — graph construction and linkage analysis</li>
-            <li>Streamlit — interactive Traceability Explorer</li>
-            <li>Workplace usability study with real GMP data (NDA)</li>
-          </ul>
-        </div>
-        <div class="gcell">
-          <div class="gcell-label">// research framing</div>
-          <ul class="bullets">
-            <li>Traceability as cognitive load problem</li>
-            <li>Metadata infrastructure in regulated environments</li>
-            <li>Compliance-constrained design</li>
-            <li>Human as connective infrastructure in fragmented systems</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <span>© 2026 Sora Kim</span>
-      <div style="display:flex;">
-        <a class="btn" href="projects.html" style="font-size:10px;padding:6px 12px;">← projects</a>
-        <a class="btn" href="index.html" style="font-size:10px;padding:6px 12px;border-left:none;">home</a>
-      </div>
-    </div>
-  </main>
-</div>
-
-<script>
-(function(){
-  var btn=document.getElementById('themeToggle'),html=document.documentElement,saved=localStorage.getItem('theme'),prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if(saved==='dark'||(!saved&&prefersDark))html.setAttribute('data-theme','dark');
-  btn.addEventListener('click',function(){var dark=html.getAttribute('data-theme')==='dark';html.setAttribute('data-theme',dark?'light':'dark');localStorage.setItem('theme',dark?'light':'dark');});
-})();
-window.addEventListener('scroll',function(){var s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?(s/d)*100:0;document.getElementById('progress-bar').style.width=p+'%';});
-var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08});
-document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
-var secs=document.querySelectorAll('[id]'),navs=document.querySelectorAll('.side-nav a');
-window.addEventListener('scroll',function(){var y=window.scrollY+120;secs.forEach(function(s){if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){navs.forEach(function(l){l.classList.remove('active');if(l.getAttribute('href')==='#'+s.id)l.classList.add('active');});}});});
-(function(){
-  var slides=document.querySelectorAll('.carousel-slide'),counter=document.getElementById('counter'),cur=0;
-  function show(n){slides[cur].classList.remove('active');cur=(n+slides.length)%slides.length;slides[cur].classList.add('active');counter.textContent=(cur+1)+' / '+slides.length;}
-  document.getElementById('prevBtn').addEventListener('click',function(){show(cur-1);});
-  document.getElementById('nextBtn').addEventListener('click',function(){show(cur+1);});
-  document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
-})();
-</script>
 </body>
 </html>
