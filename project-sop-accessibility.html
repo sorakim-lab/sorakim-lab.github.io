@@ -51,7 +51,6 @@
     img{display:block;max-width:100%}
     button{font:inherit;background:none;border:none;cursor:pointer}
 
-    /* ── NAV ── */
     .nav{
       position:sticky;top:0;z-index:100;height:var(--nav-h);
       border-bottom:1px solid var(--line);
@@ -104,14 +103,12 @@
     .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
     .mobile-menu a:hover{color:var(--accent)}
 
-    /* ── LAYOUT ── */
     .layout{
       display:grid;
       grid-template-columns:var(--sidebar-w) 1fr;
       min-height:calc(100vh - var(--nav-h));
     }
 
-    /* ── SIDEBAR ── */
     .sidebar{
       position:sticky;top:var(--nav-h);
       height:calc(100vh - var(--nav-h));
@@ -138,13 +135,11 @@
     .side-nav a:hover{color:var(--text-2);border-left-color:var(--text-4);opacity:1}
     .side-nav a.active{color:var(--text);border-left-color:var(--accent);font-weight:500}
 
-    /* ── MAIN CONTENT ── */
     .content{
       padding:56px 64px 120px;
       max-width:800px;
     }
 
-    /* ── HERO ── */
     .proj-eyebrow{
       font-family:var(--mono);font-size:10px;
       letter-spacing:0.08em;color:var(--text-4);
@@ -173,7 +168,6 @@
       font-style:italic;
     }
 
-    /* ── FLOW ── */
     .flow{
       display:flex;flex-wrap:wrap;align-items:center;
       gap:0;margin-bottom:28px;
@@ -193,7 +187,6 @@
       color:var(--text-4);padding:0 6px;
     }
 
-    /* ── BUTTONS ── */
     .btn-row{display:flex;flex-wrap:wrap;gap:0;margin-bottom:24px}
     .btn{
       height:36px;padding:0 16px;
@@ -211,7 +204,6 @@
     .btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
     .btn.primary:hover{opacity:0.85}
 
-    /* ── META ROW ── */
     .meta-row{
       display:grid;grid-template-columns:repeat(3,1fr);
       border:1px solid var(--line);border-radius:12px;
@@ -231,7 +223,6 @@
     }
     .meta-desc{font-size:12px;color:var(--text-4);line-height:1.5}
 
-    /* ── SECTIONS ── */
     .sec{margin-bottom:64px;scroll-margin-top:80px}
     .sec-eyebrow{
       font-family:var(--mono);font-size:10px;
@@ -255,7 +246,6 @@
       color:var(--text-4);font-style:normal;opacity:0.7;
     }
 
-    /* ── GRID 2 ── */
     .grid2{
       display:grid;grid-template-columns:1fr 1fr;
       border:1px solid var(--line);border-radius:12px;
@@ -271,7 +261,6 @@
     .bullets{padding-left:16px}
     .bullets li{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
 
-    /* ── STEPS ── */
     .steps{
       border:1px solid var(--line);border-radius:12px;
       overflow:hidden;background:var(--line);gap:1px;
@@ -291,7 +280,6 @@
     }
     .step p{font-size:13px;color:var(--text-3);line-height:1.7}
 
-    /* ── RATIONALE TABLE ── */
     .rationale{
       border:1px solid var(--line);border-radius:12px;
       overflow:hidden;background:var(--line);gap:1px;
@@ -312,7 +300,6 @@
       font-size:12.5px;color:var(--text-3);line-height:1.65;
     }
 
-    /* ── SCREENSHOT ── */
     .screenshot-wrap{
       border:1px solid var(--line);border-radius:12px;
       overflow:hidden;margin-top:16px;background:var(--bg2);
@@ -330,7 +317,6 @@
       margin-top:8px;font-style:italic;
     }
 
-    /* ── TABLE ── */
     .table-wrap{
       border:1px solid var(--line);border-radius:12px;
       overflow:hidden;margin-top:16px;overflow-x:auto;
@@ -349,7 +335,6 @@
     tr:last-child td{border-bottom:none}
     td:first-child{color:var(--text-2);font-weight:500}
 
-    /* ── QUOTE ── */
     .quote{
       margin-top:16px;padding:14px 18px;
       border:1px solid rgba(26,58,107,0.08);border-radius:0;
@@ -359,7 +344,6 @@
       line-height:1.75;font-style:italic;max-width:600px;
     }
 
-    /* ── PAPER BLOCK ── */
     .paper-block{
       border:1px solid var(--line);border-radius:12px;
       overflow:hidden;background:var(--line);gap:1px;
@@ -380,7 +364,6 @@
       line-height:1.55;border-left:3px solid var(--accent);padding-left:12px;
     }
 
-    /* ── FLOW ANNOTATED ── */
     .flow-annotated{
       display:flex;flex-wrap:wrap;align-items:flex-start;
       gap:0;margin-top:16px;
@@ -396,7 +379,6 @@
       align-self:flex-start;
     }
 
-    /* ── PAGE FOOTER ── */
     .page-footer{
       border-top:1px solid var(--line);padding-top:20px;
       display:flex;justify-content:space-between;align-items:center;
@@ -415,12 +397,10 @@
     .footer-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
     .footer-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-    /* ── REVEAL ── */
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
 
-    /* ── RESPONSIVE ── */
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -512,7 +492,6 @@
 
     <main class="content">
 
-      <!-- HERO -->
       <section class="sec" id="overview" style="margin-bottom:40px">
         <div class="proj-eyebrow reveal">navigation axis · project 01</div>
         <h1 class="proj-title reveal">SOP Retrieval System</h1>
@@ -524,10 +503,10 @@
           <span class="chip">deployed</span>
         </div>
         <p class="proj-lead reveal">
-          Compliance-safe by design: a retrieval layer that makes scanned SOP archives searchable without touching validated source files — treating document accessibility as a structural HCI problem.
+          Across 20 users, retrieval time dropped from ~6 minutes to ~1 minute — shifting effort from navigation to interpretation. A compliance-safe retrieval layer makes scanned SOP archives searchable without touching validated source files.
         </p>
         <p class="proj-claim reveal">
-          This project does not measure responsibility outcomes directly, but isolates accessibility as an upstream condition shaping interpretive pathways.
+          Designed and implemented a metadata-driven retrieval system (~500 SOPs), including keyword indexing, interface development (Streamlit), and usability evaluation (N=20).
         </p>
         <div class="flow reveal" style="margin-bottom:24px">
           <span class="flow-tag on">retrieval difficulty</span>
@@ -545,7 +524,6 @@
         </div>
       </section>
 
-      <!-- META -->
       <div class="meta-row reveal">
         <div class="meta-cell">
           <div class="meta-label">Study</div>
@@ -555,7 +533,7 @@
         <div class="meta-cell">
           <div class="meta-label">Retrieval time</div>
           <div class="meta-num">6→1 min</div>
-          <div class="meta-desc">Observed reduction · informal timing · exploratory measure</div>
+          <div class="meta-desc">Observed reduction under exploratory conditions · not a controlled measurement</div>
         </div>
         <div class="meta-cell">
           <div class="meta-label">Adoption intent</div>
@@ -564,7 +542,6 @@
         </div>
       </div>
 
-      <!-- PROBLEM -->
       <section class="sec reveal" id="problem">
         <div class="sec-eyebrow">01</div>
         <h2 class="sec-title">Problem</h2>
@@ -588,7 +565,6 @@
         </div>
       </section>
 
-      <!-- METHOD -->
       <section class="sec reveal" id="method">
         <div class="sec-eyebrow">02</div>
         <h2 class="sec-title">Method</h2>
@@ -625,7 +601,6 @@
         </div>
       </section>
 
-      <!-- PROTOTYPE -->
       <section class="sec reveal" id="prototype">
         <div class="sec-eyebrow">03</div>
         <h2 class="sec-title">UI Prototype</h2>
@@ -660,7 +635,6 @@
         </div>
       </section>
 
-      <!-- AI LAYER -->
       <section class="sec reveal" id="ai-layer" style="margin-top:12px">
         <div class="sec-eyebrow">04</div>
         <h2 class="sec-title">AI Support Layer</h2>
@@ -680,12 +654,11 @@
         <div class="quote">Retrieval is only one component of procedural usability. Interpretive support is necessary to maintain reasoning openness in regulated environments.</div>
       </section>
 
-      <!-- STUDY -->
       <section class="sec reveal" id="study">
         <div class="sec-eyebrow">05</div>
         <h2 class="sec-title">Usability Study</h2>
         <hr class="sec-divider">
-        <p class="body-text strong">Participants initially relied on folder memory and trial-and-error file opening. The prototype enabled direct keyword-based retrieval — observed reduction in retrieval time (~6 → ~1 min). As retrieval effort decreased, participants allocated more attention to interpretation rather than navigation.</p>
+        <p class="body-text strong">Participants initially relied on folder memory and trial-and-error file opening. The prototype enabled direct keyword-based retrieval — with an observed reduction in retrieval time (~6 → ~1 min) under exploratory conditions. As retrieval effort decreased, participants allocated more attention to interpretation rather than navigation.</p>
         <div class="table-wrap">
           <table>
             <colgroup><col style="width:38%"><col style="width:16%"><col style="width:46%"></colgroup>
@@ -723,12 +696,12 @@
         <div class="quote">The strongest signal: ambiguity became more visible. The prototype helped separate user difficulty from structural difficulty in the archive itself.</div>
       </section>
 
-      <!-- FINDINGS -->
       <section class="sec reveal" id="findings">
         <div class="sec-eyebrow">06</div>
         <h2 class="sec-title">What This Revealed</h2>
         <hr class="sec-divider">
         <p class="body-text strong">Accessibility constraints shape how practitioners navigate and interpret under time pressure.</p>
+        <p class="body-text">In regulated environments, retrieval is not just access — it determines which procedures are seen, which are missed, and ultimately how decisions are justified.</p>
         <p class="body-text">Accessibility may function as an upstream condition — potentially influencing how responsibility is interpreted when retrieval fails or is delayed.</p>
         <div class="flow-annotated">
           <div class="flow-item">
@@ -754,7 +727,6 @@
         <p class="body-text" style="margin-top:14px;">Access constraints propagate into interpretive variation rather than directly determining outcomes. Responsibility is not measured — it emerges downstream as an interpretive construct shaped by judgment.</p>
       </section>
 
-      <!-- PAPER -->
       <section class="sec reveal" id="paper">
         <div class="sec-eyebrow">07</div>
         <h2 class="sec-title">Paper</h2>
@@ -843,7 +815,6 @@
         });
       }, 100);
 
-      // sidebar scroll-spy
       var sections = document.querySelectorAll('[id]');
       var navLinks = document.querySelectorAll('.side-nav a');
       window.addEventListener('scroll', function(){
