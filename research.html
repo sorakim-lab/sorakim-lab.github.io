@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Research — Sora Kim</title>
-<meta content="Research by Sora Kim on worker support, judgment, and accountability in regulated environments." name="description"/>
+<meta content="Research by Sora Kim on system design, judgment, and responsibility in regulated work." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
     }
     html.dark{
@@ -133,6 +134,8 @@
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
 
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .hero-grid{grid-template-columns:1fr}
       .grid2,.grid3,.grid4{grid-template-columns:1fr}
@@ -192,14 +195,14 @@
 <div class="wrap">
 <div class="page-header reveal">
 <div class="page-eyebrow">Research Program</div>
-<h1 class="page-h1">A research agenda on worker support in regulated systems.</h1>
-<p class="page-lead">I study how documentation systems, review workflows, and reasoning environments shape judgment, coordination, and accountability in high-stakes regulated systems.</p>
+<h1 class="page-h1">A research agenda on responsibility under constraint.</h1>
+<p class="page-lead">I study how documentation systems, review workflows, and reasoning environments shape judgment, coordination, and accountability in high-stakes regulated work — especially through navigation burden, premature closure, and accountability visibility gaps.</p>
 </div>
 <div class="hero-grid reveal">
 <div class="hero-left">
 <div class="page-eyebrow" style="margin-bottom:12px">Research identity</div>
-<h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">Designing better support under constraint.</h2>
-<p style="font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:20px">My core question is not whether regulation should be relaxed. It is how demanding, rule-bound work can be made more navigable for the people inside it — without collapsing judgment into automation or breaking formal constraints.</p>
+<h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">Understanding how responsibility is produced under constraint.</h2>
+<p style="font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:20px">My core question is not whether regulation should be relaxed. It is how demanding, rule-bound work organizes judgment, responsibility, and interpretive burden for the people inside it — and how those conditions can be redesigned without collapsing judgment into automation or breaking formal constraints.</p>
 <div class="pos-grid">
 <div class="pos-cell">
 <div class="pos-label">HCI</div>
@@ -219,17 +222,17 @@
 <div class="hero-right-cell">
 <div class="right-label">How I position the work</div>
 <div class="right-title">HCI at the center, STS as grounding.</div>
-<p class="right-text">The research program starts from a simple observation from QC practice: when regulated work becomes difficult, the outcome is often framed as an individual problem even when the underlying conditions are structural.</p>
+<p class="right-text">The research program starts from a simple observation from QC practice: when regulated work becomes difficult, structural conditions are often translated into individual responsibility problems.</p>
 </div>
 <div class="hero-right-cell">
 <div class="right-label">What this site shows</div>
-<div class="right-title">Six projects · five HCI papers · four STS foundations.</div>
-<p class="right-text">That is why the portfolio stays focused on work conditions and accountability. The HCI projects study mechanisms — navigation burden, premature closure, review opacity, traceability gaps. The STS papers explain why those mechanisms matter inside formal systems.</p>
+<div class="right-title">Six projects · five HCI papers · four STS manuscripts.</div>
+<p class="right-text">That is why the portfolio stays focused on work conditions and accountability. Across the site, three mechanisms recur: navigation burden, premature closure, and accountability visibility gaps. The HCI projects study those mechanisms directly; the STS papers explain why they matter inside formal systems.</p>
 </div>
 <div class="hero-right-cell">
 <div class="right-label">Scope</div>
 <div class="right-title">GMP is the empirical site — not the boundary.</div>
-<p class="right-text">The projects page shows six empirical case studies. The papers page shows how those cases scale into a broader argument about accountability, procedural cognition, and regulated worker support.</p>
+<p class="right-text">The projects page shows six empirical case studies. The papers page shows how those cases scale into a broader argument about accountability, procedural cognition, and responsibility in regulated systems.</p>
 </div>
 </div>
 </div>
@@ -242,8 +245,8 @@
 <div class="gcell accent">
 <div class="gcell-label">Main agenda</div>
 <div class="gcell-title">Human-centered systems for high-stakes procedural work</div>
-<p class="gcell-text">My research centers on how documentation, workflows, and support tools shape work in environments where people must act carefully under strong formal constraints. I approach these as HCI problems because interfaces and procedures help determine what becomes visible, actionable, and easy to justify.</p>
-<div class="gcell-foot">core orientation: designing systems that support judgment without flattening complexity</div>
+<p class="gcell-text">My research centers on how documentation, workflows, and intervention layers shape work in environments where people must act carefully under strong formal constraints. I approach these as HCI problems because interfaces and procedures help determine what becomes visible, actionable, and easy to justify.</p>
+<div class="gcell-foot">core orientation: redesigning systems that shape judgment without flattening complexity</div>
 </div>
 <div class="gcell">
 <div class="gcell-label">Supporting lens</div>
@@ -266,7 +269,7 @@
 <div class="gcell">
 <div class="gcell-label">Question 01</div>
 <div class="gcell-title">How do procedural systems shape judgment?</div>
-<p class="gcell-text">I ask how documentation structures, review formats, and workflow environments distribute interpretive burden across workers in regulated settings — and how that burden can be better supported without weakening regulatory structure.</p>
+<p class="gcell-text">I ask how documentation structures, review formats, and workflow environments distribute interpretive burden across workers in regulated settings — and how those conditions can be redesigned without weakening regulatory structure.</p>
 </div>
 <div class="gcell">
 <div class="gcell-label">Question 02</div>
@@ -276,7 +279,7 @@
 <div class="gcell">
 <div class="gcell-label">Question 03</div>
 <div class="gcell-title">How can support tools help without oversimplifying?</div>
-<p class="gcell-text">I explore external support layers, reasoning scaffolds, and interface interventions that improve navigation and causal reasoning while preserving interpretive openness and human judgment.</p>
+<p class="gcell-text">I explore external layers, reasoning scaffolds, and interface interventions that improve navigation and causal reasoning while preserving interpretive openness and human judgment.</p>
 </div>
 <div class="gcell">
 <div class="gcell-label">Question 04</div>

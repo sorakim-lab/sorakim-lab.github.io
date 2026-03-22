@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>About — Sora Kim</title>
-<meta content="About Sora Kim — HCI research on worker support in regulated systems, grounded in pharmaceutical quality control." name="description"/>
+<meta content="About Sora Kim — research on how system design shapes judgment and responsibility in regulated work, grounded in pharmaceutical quality control." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
     }
     html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}
@@ -132,6 +133,8 @@
     .js-ready .reveal.on{opacity:1;transform:none}
 
     /* RESPONSIVE */
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .hero-grid{grid-template-columns:1fr}
       .content-grid{grid-template-columns:1fr}
@@ -193,15 +196,15 @@
 <!-- PAGE HEADER -->
 <div class="page-header reveal">
 <div class="page-eyebrow">About</div>
-<h1 class="page-h1">Why regulated work became my HCI question.</h1>
-<p class="page-lead">I spent more than four years in pharmaceutical quality control working inside GMP systems — and watching colleagues struggle inside them too. Over time, the main question stopped being compliance alone. It became a question about work: when tasks are complex, pressured, and heavily documented, how can the people doing them be better supported?</p>
+<h1 class="page-h1">Why responsibility became my HCI question.</h1>
+<p class="page-lead">I spent more than four years in pharmaceutical quality control working inside GMP systems — and watching colleagues struggle inside them too. Over time, the central question stopped being compliance alone. It became a question about responsibility: when work is pressured, procedural, and heavily documented, how do systems shape what people can see, justify, and ultimately be held responsible for?</p>
 </div>
 <!-- HERO GRID -->
 <div class="hero-grid reveal">
 <div class="hero-left">
 <div class="page-eyebrow" style="margin-bottom:12px">Research identity</div>
 <h2 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">From QC practice to HCI research.</h2>
-<p style="font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:0">That question came directly from practice. I am not interested in arguing that regulation should disappear, or that formal requirements are the problem by themselves. Regulated systems matter. My research asks something narrower and more practical: how can we design better tools, workflows, and support conditions for the people working inside them?</p>
+<p style="font-size:14px;color:var(--text-3);line-height:1.75;margin-bottom:0">That question came directly from practice. I am not arguing that regulation should disappear, or that formal requirements are the problem by themselves. Regulated systems matter. My research asks something narrower and more practical: how do documents, workflows, and tools produce the conditions under which judgment and responsibility are assigned inside regulated work?</p>
 <div class="chip-row">
 <span class="chip">HCI</span>
 <span class="chip">regulatory UX</span>
@@ -224,7 +227,7 @@
 <div class="hero-right-cell">
 <div class="right-label">Orientation</div>
 <div class="right-title">HCI at the center, STS as grounding.</div>
-<p class="right-text">That practical question first pushed me toward STS writing. The conceptual papers ask how accountability gets organized, documented, and narrowed inside formal systems.</p>
+<p class="right-text">That practical question first pushed me toward STS writing. The conceptual papers ask how accountability gets organized, documented, and narrowed inside formal systems before anyone is judged as having failed.</p>
 </div>
 </div>
 </div>
@@ -234,36 +237,35 @@
 <div class="content-cell">
 <div class="cell-label">What I study</div>
 <div class="cell-title">Documents, workflows, and judgment</div>
-<p class="cell-text">The six HCI projects grew out of that same practical concern. I am not trying to weaken regulation. I am asking how everyday work can be better supported inside regulation — without bypassing formal constraints or replacing human judgment.</p>
+<p class="cell-text">The six HCI projects grew out of that same concern. I am not trying to weaken regulation. I am asking how everyday systems organize judgment and responsibility inside regulation — and how those conditions can be redesigned without bypassing formal constraints or replacing human judgment.</p>
 </div>
 <div class="content-cell">
 <div class="cell-label">Research approach</div>
 <div class="cell-title">I treat regulated environments as HCI problems.</div>
 <p class="cell-text">So I build external, non-invasive prototypes: retrieval layers, navigation tools, reasoning scaffolds, and visibility systems that surface burden earlier and make difficult work easier to navigate.</p>
-<p class="cell-text">The HCI side of my work asks what happens when documentation is hard to retrieve, links are hard to follow, review work is hard to see, or investigation reasoning closes too early.</p>
+<p class="cell-text">The HCI side of my work asks what happens when documentation is hard to retrieve, cross-references are hard to follow, review work is hard to see, or investigation reasoning closes too early.</p>
 <div class="cell-flow">human-centered systems → procedural cognition → workflow visibility → decision support</div>
 </div>
 <div class="content-cell" style="border-bottom:none">
 <div class="cell-label">How I work</div>
 <div class="cell-title">Close to real work, not abstracted away from it.</div>
 <p class="cell-text">The STS side asks how those same conditions shape accountability: what becomes visible as evidence, which explanations seem easiest to document and justify, and who ultimately carries the burden.</p>
-<p class="cell-text">Taken together, the program moves from lived QC experience to theory and back again — from workplace difficulty as an empirical problem to design as a way of improving the conditions under which judgments get made.</p>
+<p class="cell-text">Taken together, the program moves from lived QC experience to theory and back again — from workplace difficulty as an empirical problem to design as a way of improving the conditions under which judgments are made.</p>
 </div>
 </div>
 <div style="display:flex;flex-direction:column">
 <div class="content-cell">
 <div class="cell-label">At a glance</div>
 <div class="cell-title">Research snapshot</div>
-<p class="cell-text">My goal is not automated decision-making or softer standards. It is better support for human reasoning, navigation, and judgment in high-stakes systems where mistakes carry real consequences.</p>
+<p class="cell-text">My goal is not automated decision-making or softer standards. It is stronger conditions for human reasoning, navigation, and accountability in high-stakes systems where mistakes carry real consequences.</p>
 </div>
 <div class="human-note">
-<div class="cell-label">Small human note</div>
-<div class="human-title">Thoughtful systems, soft mornings, and work that stays human. ✨</div>
-<div class="human-line">☕ latte-powered starts</div>
-<div class="human-line">🥐 fresh bread and tiny rituals</div>
-<div class="human-line">🎬 Ratatouille on repeat, unapologetically</div>
-<div class="human-line">📚 books, cozy corners, and long thinking walks</div>
-<div class="human-footer">I think these things quietly shape how I design too: patience, clarity, warmth, and attention to the invisible structures behind everyday life.</div>
+<div class="cell-label">Program at a glance</div>
+<div class="human-title">Three recurring mechanisms organize the work.</div>
+<div class="human-line">01. navigation burden in dense document systems</div>
+<div class="human-line">02. premature closure in investigative reasoning</div>
+<div class="human-line">03. accountability visibility gaps in review workflows</div>
+<div class="human-footer">Across projects, I study how these conditions are produced by system design — and how support layers can improve reasoning without weakening regulation or replacing human judgment.</div>
 </div>
 </div>
 </div>
@@ -282,12 +284,12 @@
 <div class="approach-cell">
 <div class="approach-num">02</div>
 <div class="approach-title">Support judgment, not replace it</div>
-<p class="approach-text">Intellectually, I work between STS and HCI: STS helps me analyze how accountability is organized in formal systems; HCI lets me test how interfaces, workflows, and support layers might improve reasoning and working conditions on the ground.</p>
+<p class="approach-text">Intellectually, I work between STS and HCI: STS helps me analyze how accountability is organized in formal systems; HCI lets me test how interfaces, workflows, and support layers might improve working conditions on the ground.</p>
 </div>
 <div class="approach-cell">
 <div class="approach-num">03</div>
 <div class="approach-title">Keep accountability in view</div>
-<p class="approach-text">Across the portfolio, the through-line is simple: regulation stays, but the people inside regulated systems deserve tools and environments that are easier to work with.</p>
+<p class="approach-text">Across the portfolio, the through-line is simple: regulation stays, but the people inside regulated systems deserve environments that are easier to navigate and reason within.</p>
 </div>
 </div>
 </section>
@@ -312,7 +314,7 @@
 </div>
 <div class="snap-cell">
 <div class="snap-label">Papers</div>
-<p class="snap-val">5 HCI preprints · 4 STS manuscripts · 1 umbrella concept paper (Regulatory UX)</p>
+<p class="snap-val">5 HCI papers · 4 STS manuscripts across one linked research program</p>
 </div>
 <div class="snap-cell">
 <div class="snap-label">Tools</div>
@@ -320,7 +322,7 @@
 </div>
 <div class="snap-cell">
 <div class="snap-label">Contact</div>
-<p class="snap-val">sorakim.lab@gmail.com</p>
+<p class="snap-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f0c100d1e14161251131e1d3f18121e1613511c1012">[email&#160;protected]</a></p>
 </div>
 </div>
 </section>
@@ -331,9 +333,9 @@
 <div class="sec-title">Get in touch</div>
 </div>
 <div class="contact-stack">
-<a class="contact-row" href="mailto:sorakim.lab@gmail.com">
+<a class="contact-row" href="/cdn-cgi/l/email-protection#d5a6baa7b4bebcb8fbb9b4b795b2b8b4bcb9fbb6bab8">
 <span class="contact-kind">Email</span>
-<span class="contact-val">sorakim.lab@gmail.com</span>
+<span class="contact-val"><span class="__cf_email__" data-cfemail="ddaeb2afbcb6b4b0f3b1bcbf9dbab0bcb4b1f3beb2b0">[email&#160;protected]</span></span>
 </a>
 <a class="contact-row" href="https://github.com/sorakim-lab" rel="noopener" target="_blank">
 <span class="contact-kind">GitHub</span>
@@ -353,7 +355,7 @@
 </div>
 </div>
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -390,15 +392,4 @@
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
         });
-      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-      setTimeout(function(){
-        document.querySelectorAll('.reveal').forEach(function(el){
-          var r = el.getBoundingClientRect();
-          if(r.top < window.innerHeight){ el.classList.add('on'); }
-        });
-      }, 100);
-    })();
-  </script>
-</body>
-</html>
+      },{threshold:0, rootMargin:'0px 0px -20

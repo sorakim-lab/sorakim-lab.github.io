@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;
       --max:1120px;--nav-h:64px;--sidebar-w:200px;
     }
@@ -177,6 +178,8 @@
     .js-ready .reveal.on{opacity:1;transform:none}
 
     /* RESPONSIVE */
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -270,7 +273,7 @@
 <span class="chip">timed reflection</span>
 </div>
 <p class="proj-lead reveal">In this pilot, first responses at the earliest timepoint were typically single-cause explanations. With additional time, broader contributors began to appear. Closure may operate less like a fully deliberate choice than like the early default of a pressured investigation environment.</p>
-<p class="proj-claim reveal">This pilot provides the empirical basis for later intervention work by showing how single-cause reasoning can appear before broader contributors are explored — and why premature closure should be treated as a design problem as well as a cognitive one.</p>
+<p class="proj-claim reveal">This companion pilot provides the empirical basis for the later RCA scaffolder by showing how single-cause reasoning can appear before broader contributors are explored — and why premature closure should be treated as a system-design problem as well as a cognitive one.</p>
 <div class="flow reveal">
 <span class="flow-tag on">closure pressure</span>
 <span class="flow-arrow">→</span>
@@ -288,8 +291,8 @@
 <div class="meta-row reveal">
 <div class="meta-cell">
 <div class="meta-label">Participants</div>
-<div class="meta-num">pilot</div>
-<div class="meta-desc">Pilot reasoning study with timed reflection intervals</div>
+<div class="meta-num">20</div>
+<div class="meta-desc">Companion pilot for the later RCA intervention, using timed reflection intervals</div>
 </div>
 <div class="meta-cell">
 <div class="meta-label">Timepoints</div>
@@ -316,7 +319,8 @@
 <div class="sec-eyebrow">02</div>
 <h2 class="sec-title">Method</h2>
 <hr class="sec-divider"/>
-<p class="body-text">Participants received the same investigation-style case and explained the cause at three timepoints: immediately, after five minutes, and after ten minutes. The goal was to observe whether additional time changed the breadth, direction, or confidence of reasoning.</p>
+<p class="body-text">Participants (N=20) received the same investigation-style case and explained the cause at three timepoints: immediately, after five minutes, and after ten minutes. The goal was to observe whether additional time changed the breadth, direction, or confidence of reasoning.</p>
+<p class="body-text note">Participants were recruited from the same team, which may have inflated consistency of responses. No comparative baseline existed — results are observational and exploratory rather than statistically generalizable.</p>
 <p class="body-text" style="font-family:var(--mono);font-size:11px;color:var(--text-4);border-left:2px solid var(--line-soft);padding-left:12px;">Designed and conducted a timed pilot reasoning study, including task construction, response comparison across timepoints, and pattern coding of causal breadth and revision.</p>
 <div class="timeline">
 <div class="tcell">

@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>SOP Retrieval System — Sora Kim</title>
-<meta content="SOP Retrieval System — an external prototype showing how document accessibility shapes interpretation in regulated environments." name="description"/>
+<meta content="SOP Retrieval System — an external prototype showing how document accessibility shapes interpretation in regulated work." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -24,6 +24,7 @@
       --accent:#1a3a6b;
       --accent-soft:rgba(26,58,107,0.07);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;
       --max:1120px;
       --nav-h:64px;
@@ -402,6 +403,8 @@
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
 
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -498,7 +501,7 @@
 <span class="chip">deployed</span>
 </div>
 <p class="proj-lead reveal">When scanned SOP archives block search, workers lose time before judgment even begins. In pilot use, this external retrieval layer reduced exploratory retrieval time from about 6 minutes to about 1 minute — shifting effort away from file hunting and toward reading and interpretation.</p>
-<p class="proj-claim reveal">This project argues that document accessibility is an upstream condition on judgment: retrieval burden can create interpretive burden before any formal task error appears.</p>
+<p class="proj-claim reveal">This project argues that document accessibility is an upstream condition on judgment: retrieval burden can create interpretive burden before any formal task error appears, and before responsibility is later assigned.</p>
 <div class="flow reveal" style="margin-bottom:24px">
 <span class="flow-tag on">retrieval difficulty</span>
 <span class="flow-arrow">→</span>
@@ -596,6 +599,7 @@
 <div class="btn-row" style="margin-bottom:16px">
 <a class="btn primary" href="https://sora-sop-demo.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
 </div>
+<p class="body-text" style="margin-bottom:10px;">The walkthrough below shows keyword-based search in action — entering task terms rather than filenames, with results surfacing relevant SOPs directly.</p>
 <div class="screenshot-wrap">
 <div class="screenshot-label"><span class="screenshot-dot"></span>Search interface · demo video</div>
 <video autoplay="" loop="" muted="" playsinline="" preload="metadata">
@@ -628,8 +632,9 @@
 <p class="body-text">A conceptual extension that expands retrieval cues to make ambiguity more visible without replacing interpretation.</p>
 <p class="body-text note">Conceptual extension only — no separate usability study was conducted. Included as a design direction rather than an empirical claim.</p>
 <div class="btn-row" style="margin-bottom:16px">
-<a class="btn primary" href="https://sora-sop-accessibility-ai.streamlit.app/" rel="noopener" target="_blank">Open AI Layer ↗</a>
+<a class="btn primary" href="https://sop-accessibility-ai.streamlit.app/" rel="noopener" target="_blank">Open AI Layer ↗</a>
 </div>
+<p class="body-text" style="margin-bottom:10px;">The walkthrough below shows the AI layer expanding retrieval cues — surfacing related procedures and explaining why a result appeared, without resolving interpretation.</p>
 <div class="screenshot-wrap">
 <div class="screenshot-label"><span class="screenshot-dot"></span>AI support layer · demo video</div>
 <video autoplay="" loop="" muted="" playsinline="" preload="metadata">
@@ -644,7 +649,7 @@
 <h2 class="sec-title">Usability Study</h2>
 <hr class="sec-divider"/>
 <p class="body-text strong">Participants initially relied on folder memory and trial-and-error file opening. The prototype enabled more direct keyword-based retrieval — with an observed reduction in retrieval time (~6 → ~1 min) under exploratory conditions. As retrieval effort decreased, participants appeared to allocate more attention to document reading rather than navigation.</p>
-<p class="body-text note">These results are exploratory and session-based. They indicate usability promise, but do not by themselves establish long-term adoption, productivity effects, or downstream decision quality.</p>
+<p class="body-text note">N=20. Participants were recruited from the same team, which may have inflated usability and acceptance ratings. The absence of prior HCI tooling in GMP contexts also means there was no comparative baseline — participants had little to compare against. Results are exploratory and session-based; they indicate usability promise but do not establish long-term adoption, productivity effects, or downstream decision quality.</p>
 <div class="table-wrap">
 <table>
 <colgroup><col style="width:38%"/><col style="width:16%"/><col style="width:46%"/></colgroup>
@@ -652,7 +657,7 @@
 <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
 </thead>
 <tbody>
-<tr><td>Participants</td><td>pilot sample</td><td>Think-aloud · frequent procedural document users · daily search behavior</td></tr>
+<tr><td>Participants</td><td>N=20</td><td>Think-aloud · frequent procedural document users · daily search behavior</td></tr>
 <tr><td>Retrieval time</td><td>~6 → ~1 min</td><td>Observed reduction · informal timing · exploratory measure · not controlled measurement</td></tr>
 <tr><td>Ease of finding relevant sections</td><td>positive</td><td>Participants generally found the interface easy to use during the session</td></tr>
 <tr><td>Usefulness of titles / snippets</td><td>4.5/5</td><td>Result cues appeared to reduce early-stage uncertainty, though ambiguity was not eliminated</td></tr>

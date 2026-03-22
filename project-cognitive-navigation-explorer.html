@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Cognitive Navigation Explorer — Sora Kim</title>
-<meta content="Cognitive Navigation Explorer — a behavioral tracking prototype showing how navigation paths and loopbacks reveal document friction." name="description"/>
+<meta content="Cognitive Navigation Explorer — a behavioral tracking prototype showing how navigation paths and loopbacks reveal document friction and unresolved judgment demand." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;
       --max:1120px;--nav-h:64px;--sidebar-w:200px;
     }
@@ -188,6 +189,8 @@
     .js-ready .reveal.on{opacity:1;transform:none}
 
     /* RESPONSIVE */
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -300,7 +303,7 @@
 <div class="meta-row reveal">
 <div class="meta-cell">
 <div class="meta-label">Participants</div>
-<div class="meta-num">pilot</div>
+<div class="meta-num">20</div>
 <div class="meta-desc">GMP-experienced · OOS investigation background</div>
 </div>
 <div class="meta-cell">
@@ -432,7 +435,8 @@
 <div class="sec-eyebrow">04</div>
 <h2 class="sec-title">Usability Study</h2>
 <hr class="sec-divider"/>
-<p class="body-text strong">GMP-experienced practitioners with OOS investigation experience and daily procedural document use participated in a pilot evaluation. The post-task survey focused on document list clarity, content readability, cross-reference clarity, navigation awareness, and practical usefulness.</p>
+<p class="body-text strong">GMP-experienced practitioners with OOS investigation experience and daily procedural document use participated in a pilot evaluation (N=20). The post-task survey focused on document list clarity, content readability, cross-reference clarity, navigation awareness, and practical usefulness.</p>
+<p class="body-text note">Participants were recruited from the same team, which may have inflated usability and acceptance ratings. The absence of prior HCI tooling in GMP contexts means there was no comparative baseline — participants had little to compare against. Results are exploratory and session-based; they indicate design promise but do not establish long-term navigation outcomes.</p>
 <div class="grid2">
 <div class="gcell">
 <div class="gcell-label">First document opened</div>
@@ -450,6 +454,7 @@
 <h2 class="sec-title">Findings</h2>
 <hr class="sec-divider"/>
 <p class="body-text strong">Participants routinely revisited at least one document. The most common loopback pattern was Analyst Training → ELISA Test Method SOP → Method Validation → ELISA Test Method SOP → OOS Procedure. Usability ratings were positive, suggesting that the interface itself did not introduce additional friction. Participants often identified SOP structure, rather than the prototype interface, as the main source of navigation difficulty.</p>
+<p class="body-text note">N=20. Participants were recruited from the same team, which may have inflated acceptance ratings. No comparative baseline existed — participants had little prior HCI tooling to compare against.</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>

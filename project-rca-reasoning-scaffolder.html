@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;
       --max:1120px;--nav-h:64px;--sidebar-w:200px;
     }
@@ -170,6 +171,8 @@
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
 
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -266,7 +269,7 @@
 <span class="chip">deployed</span>
 </div>
 <p class="proj-lead reveal">Initial unsupported RCA reasoning often narrowed quickly under closure pressure. This scaffold was designed to keep multiple hypotheses visible longer so investigations do not settle too early on one explanation.</p>
-<p class="proj-claim reveal">This project tests whether interface scaffolding can keep causal reasoning open longer under closure pressure without automating the conclusion or displacing human judgment.</p>
+<p class="proj-claim reveal">This project tests whether interface scaffolding can keep causal reasoning open longer under closure pressure without automating the conclusion, flattening uncertainty, or displacing human judgment.</p>
 <div class="flow reveal">
 <span class="flow-tag on">closure pressure</span>
 <span class="flow-arrow">→</span>
@@ -395,7 +398,8 @@
 <p>Prompt investigators to review whether alternatives were considered before final attribution.</p>
 </div>
 </div>
-<div class="screenshot-wrap" style="margin-top:16px">
+<p class="body-text" style="margin-bottom:10px;">The walkthrough below shows the five-step scaffold in use: from case intake through hypothesis expansion, PAC detection, structured comparison, and pre-closure check.</p>
+<div class="screenshot-wrap" style="margin-top:0">
 <div class="screenshot-label"><span class="screenshot-dot"></span>Reasoning scaffold · demo</div>
 <video autoplay="" loop="" muted="" playsinline="" preload="metadata">
 <source src="assets/rc-1.mp4" type="video/mp4"/>
@@ -432,14 +436,14 @@
 <h2 class="sec-title">Comparative Study</h2>
 <hr class="sec-divider"/>
 <p class="body-text strong">Participants first converged on a single cause without support, then revisited the same case using the scaffold. Structured support was associated with broader reasoning and later closure.</p>
-<p class="body-text note">These results are exploratory and session-based. They indicate design promise, but they do not by themselves establish long-term investigation quality or downstream accountability outcomes.</p>
+<p class="body-text note">N=20. Participants were recruited from the same team, which may have inflated usability and acceptance ratings. The absence of prior HCI tooling in GMP contexts also means there was no comparative baseline — participants had little to compare against. Results are exploratory and session-based; they indicate design promise but do not establish long-term investigation quality or downstream accountability outcomes.</p>
 <div class="table-wrap">
 <table>
 <thead>
 <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
 </thead>
 <tbody>
-<tr><td>Participants</td><td>pilot sample</td><td>All had GMP investigation experience or close familiarity</td></tr>
+<tr><td>Participants</td><td>N=20</td><td>All had GMP investigation experience or close familiarity</td></tr>
 <tr><td>Ease of use</td><td>high</td><td>Post-task usability ratings indicated that the interface was generally perceived as clear and usable</td></tr>
 <tr><td>Perceived usefulness</td><td>positive</td><td>Participants generally found the scaffold helpful for keeping alternatives visible longer</td></tr>
 <tr><td>Reasoning broadening</td><td>most participants</td><td>Participants expanded beyond their initial single-cause explanation</td></tr>

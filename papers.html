@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Papers — Sora Kim</title>
-<meta content="Papers and manuscripts by Sora Kim on worker support, judgment, and accountability in regulated systems." name="description"/>
+<meta content="Papers and manuscripts by Sora Kim on judgment, responsibility, and accountability in regulated work." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
     }
     html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}
@@ -110,6 +111,8 @@
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.papers-grid{grid-template-columns:1fr}.paper-card.full{grid-column:auto}.sec-head{flex-direction:column;align-items:flex-start}.sec-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}}
     @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}.wrap{padding:32px 0 80px}.paper-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
@@ -156,13 +159,13 @@
 <div class="page-header reveal">
 <div class="page-eyebrow">Papers &amp; Manuscripts</div>
 <h1 class="page-h1">Papers &amp; Manuscripts</h1>
-<p class="page-lead">Five HCI preprints and four STS manuscripts on worker support, judgment, and accountability in regulated systems.</p>
+<p class="page-lead">Five HCI papers and four STS manuscripts on judgment, responsibility, and accountability in regulated work.</p>
 </div>
 <div class="hero-grid reveal">
 <div class="hero-left">
 <div class="page-eyebrow" style="margin-bottom:12px">What's here</div>
-<h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">One research program in two layers.</h2>
-<p style="font-size:14px;color:var(--text-3);line-height:1.75">The STS manuscripts develop the conceptual account of accountability, closure, and formal systems. The HCI papers test related questions empirically through prototypes and observations in pharmaceutical quality environments. Together they ask how work can be better supported inside regulation rather than outside it.</p>
+<h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">One research program, two layers.</h2>
+<p style="font-size:14px;color:var(--text-3);line-height:1.75">The STS manuscripts develop the conceptual account of accountability, closure, and formal systems. The HCI papers test related questions empirically through prototypes and observations in pharmaceutical quality environments. Together they ask how judgment and responsibility are shaped from within regulation rather than outside it.</p>
 </div>
 <div class="hero-right">
 <div class="hero-right-cell">
@@ -215,7 +218,7 @@
 </div>
 <div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
 <div class="paper-tagline">HCI paper · two-study paper · RCA Scaffolder + Premature Causal Convergence</div>
-<p class="paper-claim">Premature causal convergence can arise from investigation conditions, and scaffold design may help keep reasoning open longer.</p>
+<p class="paper-claim">Premature causal convergence can arise from investigation conditions, and scaffold design can help keep reasoning open longer before accountability narrows.</p>
 <p class="paper-support">Pilot observation of unassisted reasoning plus scaffold usability evaluation in pharmaceutical investigation workflows.</p>
 <div class="paper-meta">Preprint · 2026 · SSRN</div>
 <div class="paper-links">
@@ -287,7 +290,7 @@
 </div>
 <div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
 <div class="paper-tagline">HCI concept paper · umbrella framework · connects all six projects</div>
-<p class="paper-claim">Regulatory UX names a design space where usability, compliance, and accountability have to be considered together.</p>
+<p class="paper-claim">Regulatory UX names a design space where usability, compliance, and accountability have to be designed together.</p>
 <p class="paper-support">Conceptual synthesis connecting all six projects into a unified design argument about regulated documentation as active interaction environments.</p>
 <div class="paper-meta">Preprint · 2026 · SSRN</div>
 <div class="paper-links">
@@ -408,7 +411,7 @@
 </div>
 </section>
 <div class="page-footer reveal">
-<span class="footer-note">5 HCI preprints · 4 STS preprints · one research program</span>
+<span class="footer-note">5 HCI papers · 4 STS manuscripts · one research program</span>
 <div class="footer-nav">
 <a class="footer-btn" href="projects.html">← Projects</a>
 <a class="footer-btn" href="research.html">Research →</a>

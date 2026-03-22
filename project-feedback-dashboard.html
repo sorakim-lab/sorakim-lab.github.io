@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Smart Feedback &amp; Review Dashboard — Sora Kim</title>
-<meta content="Smart Feedback &amp; Review Dashboard — a workflow observability prototype for hidden review burden in regulated systems." name="description"/>
+<meta content="Smart Feedback &amp; Review Dashboard — a workflow observability prototype for hidden review burden in regulated work." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -17,6 +17,7 @@
       --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
       --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;
       --max:1120px;--nav-h:64px;--sidebar-w:200px;
     }
@@ -195,6 +196,8 @@
     .js-ready .reveal.on{opacity:1;transform:none}
 
     /* RESPONSIVE */
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .layout{grid-template-columns:1fr}
       .sidebar{display:none}
@@ -313,7 +316,7 @@
 <div class="meta-row reveal">
 <div class="meta-cell">
 <div class="meta-label">Participants</div>
-<div class="meta-num">pilot</div>
+<div class="meta-num">20</div>
 <div class="meta-desc">QA/QC-experienced · document review background</div>
 </div>
 <div class="meta-cell">
@@ -474,7 +477,8 @@
 <div class="sec-eyebrow">05</div>
 <h2 class="sec-title">Usability Study</h2>
 <hr class="sec-divider"/>
-<p class="body-text strong">Participants with QA/QC or regulated documentation experience took part in a pilot evaluation. The prototype was evaluated outside the live system — validated systems cannot freely adopt unvalidated interface changes.</p>
+<p class="body-text strong">Participants with QA/QC or regulated documentation experience took part in a pilot evaluation (N=20). The prototype was evaluated outside the live system — validated systems cannot freely adopt unvalidated interface changes.</p>
+<p class="body-text note">Participants were recruited from the same team, which may have inflated acceptance ratings. The absence of prior HCI tooling in GMP contexts means there was no comparative baseline — participants had little to compare against.</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
@@ -502,6 +506,7 @@
 <div class="gcell">
 <div class="gcell-label">Limitations</div>
 <ul class="bullets">
+<li>N=20, recruited from the same team — internal sample may have inflated acceptance ratings</li>
 <li>Synthetic dataset — findings require validation with real review records</li>
 <li>Some participants initially struggled to interpret clustering outputs without guidance</li>
 <li>Workflow-friction concept was conceptually unfamiliar, requiring onboarding</li>

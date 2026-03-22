@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sora Kim — HCI Researcher</title>
-<meta content="Sora Kim studies worker support, documentation, and reasoning in regulated systems." name="description"/>
+<title>Sora Kim — Judgment, Responsibility, and System Design</title>
+<meta content="Sora Kim studies how system design shapes judgment, responsibility, and accountability in regulated work." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -25,6 +25,7 @@
       --accent-soft:rgba(26,58,107,0.07);
       --accent-strong:rgba(26,58,107,0.12);
       --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+      --serif:var(--sans);
       --mono:'DM Mono',monospace;
       --max:1120px;
       --nav-h:64px;
@@ -203,7 +204,7 @@
       overflow:hidden;margin-bottom:2px;
       transition:border-color 200ms;
     }
-    .project-hero:hover{border-color:rgba(26,58,107,0.3)}
+    .project-hero:hover{border-color:rgba(26,58,107,0.34);box-shadow:0 16px 48px rgba(10,10,10,0.08)}
     html.dark .project-hero:hover{border-color:rgba(74,127,212,0.3)}
     .project-hero-left{padding:36px 40px;border-right:1px solid var(--line)}
     .project-hero-right{
@@ -358,6 +359,8 @@
     }
 
     /* ── RESPONSIVE ── */
+    
+    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){
       .hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}
       .portrait-frame{display:none}
@@ -433,8 +436,9 @@
 <div class="wrap">
 <div class="hero-inner">
 <div class="reveal">
+<div style="font-size:clamp(1rem,1.8vw,1.15rem);font-weight:700;color:var(--text);letter-spacing:-0.03em;margin-bottom:14px;">Sora Kim</div>
 <div class="hero-eyebrow">HCI Research · Pharmaceutical QC · Regulated Systems</div>
-<h1 class="hero-h1">Designing worker support for regulated systems.</h1>
+<h1 class="hero-h1">Responsibility is produced through system design.</h1>
 <div class="hero-subline">
 <span>who is held responsible</span>
                · 
@@ -442,8 +446,8 @@
                · 
               <span>what stays invisible</span>
 </div>
-<p class="hero-rq">"How do systems make some explanations, actions, and responsibilities easier to reach than others?"</p>
-<p class="hero-sub">I study how documentation, workflow design, and reasoning tools shape judgment, coordination, and worker support in regulated systems.</p>
+<p class="hero-rq">"How do regulated systems channel what people can see, justify, and be held responsible for?"</p>
+<p class="hero-sub">I study how documentation systems, workflows, and reasoning environments shape three recurring problems in regulated work: navigation burden, premature closure, and accountability visibility.</p>
 <div class="hero-actions">
 <a class="btn-fill" href="projects.html">View projects</a>
 <a class="btn-ghost" href="papers.html">Read papers</a>
@@ -467,7 +471,7 @@
 </div>
 <div class="metric">
 <div class="metric-num">20</div>
-<div class="metric-label">Up to 20 GMP<br/>participants per study</div>
+<div class="metric-label">Pilot studies<br/>N=20 per study</div>
 </div>
 <div class="metric">
 <div class="metric-num">5</div>
@@ -500,7 +504,7 @@
               Strong clarity and usefulness ratings
             </div>
 <div class="project-hero-claim">
-              "The system was making investigators stop thinking. We made that moment visible."
+              "The system was making investigators stop narrowing too early. The intervention was designed to keep comparison alive."
             </div>
 </div>
 </a>
@@ -541,13 +545,13 @@
 <a class="pr-papers reveal" href="papers.html">
 <div class="teaser-kicker">Papers</div>
 <div class="teaser-h">5 HCI papers<br/>4 STS foundations</div>
-<p class="teaser-p">Six HCI projects and linked papers examining navigation burden, premature causal convergence, and worker support in GMP-regulated environments.</p>
+<p class="teaser-p">Six HCI projects and linked papers examining navigation burden, premature closure, review opacity, and responsibility formation in GMP-regulated environments.</p>
 <div class="teaser-link">Go to papers →</div>
 </a>
 <a class="pr-research reveal" href="research.html">
 <div class="teaser-kicker">Research</div>
 <div class="teaser-h">HCI grounded in STS</div>
-<p class="teaser-p">The STS papers analyze how accountability is organized in formal systems. The HCI projects test how tools and workflows can better support workers inside those constraints.</p>
+<p class="teaser-p">The STS papers explain how accountability is organized in formal systems. The HCI projects test concrete interventions that reshape navigation, reasoning, and visibility inside those constraints.</p>
 <div class="teaser-link">Go to research →</div>
 </a>
 </div>
@@ -560,14 +564,14 @@
 <a class="about-card reveal" href="about.html">
 <div class="section-label">About</div>
 <div class="about-title">From regulated practice<br/>to research questions.</div>
-<p class="about-body">This research began in pharmaceutical QC after more than four years of watching colleagues — and myself — work through GMP systems where the demands were clear, but the sources of difficulty often were not.</p>
+<p class="about-body">This research began in pharmaceutical QC after more than four years of working through GMP systems where the demands were explicit, but the sources of difficulty were often hidden in documents, workflows, and review structures.</p>
 </a>
 <div class="contact-card reveal">
 <div class="section-label">Contact</div>
 <div class="contact-stack">
-<a class="contact-row" href="mailto:sorakim.lab@gmail.com">
+<a class="contact-row" href="/cdn-cgi/l/email-protection#e4978b96858f8d89ca888586a48389858d88ca878b89">
 <span class="contact-kind">Email</span>
-<span class="contact-val">sorakim.lab@gmail.com</span>
+<span class="contact-val"><span class="__cf_email__" data-cfemail="71021e03101a181c5f1d101331161c10181d5f121e1c">[email&#160;protected]</span></span>
 </a>
 <a class="contact-row" href="https://github.com/sorakim-lab" rel="noopener" target="_blank">
 <span class="contact-kind">GitHub</span>
@@ -587,11 +591,11 @@
 <div class="wrap">
 <div class="footer-inner">
 <a href="https://sorakim-lab.github.io" style="color:var(--accent);letter-spacing:0.02em;">sorakim-lab.github.io</a>
-<a href="mailto:sorakim.lab@gmail.com" style="color:var(--text-4);">sorakim.lab@gmail.com</a>
+<a href="/cdn-cgi/l/email-protection#50233f22313b393d7e3c313210373d31393c7e333f3d" style="color:var(--text-4);"><span class="__cf_email__" data-cfemail="d0a3bfa2b1bbb9bdfebcb1b290b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span></a>
 </div>
 </div>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function(){
       var root = document.documentElement;
       var stored = localStorage.getItem('theme');
@@ -626,15 +630,4 @@
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
         });
-      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-      setTimeout(function(){
-        document.querySelectorAll('.reveal').forEach(function(el){
-          var r = el.getBoundingClientRect();
-          if(r.top < window.innerHeight){ el.classList.add('on'); }
-        });
-      }, 100);
-    })();
-  </script>
-</body>
-</html>
+      },{threshold:0, rootMarg
