@@ -52,7 +52,7 @@
     .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
     .hamburger.open span:nth-child(2){opacity:0}
     .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-    .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);z-index:99;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);z-index:200;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
     .mobile-menu.open{display:flex}
     .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
     .mobile-menu a:hover{color:var(--accent)}
@@ -322,7 +322,7 @@
 </div>
 <div class="snap-cell">
 <div class="snap-label">Contact</div>
-<p class="snap-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f0c100d1e14161251131e1d3f18121e1613511c1012">[email&#160;protected]</a></p>
+<p class="snap-val"><a href="mailto:sorakim.lab@gmail.com">sorakim.lab@gmail.com</a></p>
 </div>
 </div>
 </section>
@@ -385,11 +385,19 @@
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
           });
-        });
-      }
-
-      var io = new IntersectionObserver(function(entries){
+         var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
         });
-      },{threshold:0, rootMargin:'0px 0px -20
+      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+      setTimeout(function(){
+        document.querySelectorAll('.reveal').forEach(function(el){
+          var r = el.getBoundingClientRect();
+          if(r.top < window.innerHeight){ el.classList.add('on'); }
+        });
+      }, 100);
+    })();
+  </script>
+</body>
+</html>
