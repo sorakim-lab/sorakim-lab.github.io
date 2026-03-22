@@ -629,6 +629,16 @@
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
         });
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+        });
       },{threshold:0, rootMargin:'0px 0px -20px 0px'});
       document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
       setTimeout(function(){
