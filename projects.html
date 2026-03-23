@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Projects — Sora Kim</title>
-<meta content="Six empirical HCI projects by Sora Kim on responsibility, reasoning, and procedural visibility in regulated work." name="description"/>
+<meta content="Seven empirical HCI projects by Sora Kim on responsibility, reasoning, and procedural visibility in regulated work." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
@@ -113,12 +112,11 @@
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
-    
-    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
-    @media(max-width:900px){.hero-stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){padding:22px 24px}.proj-grid{grid-template-columns:1fr}.page-h1{font-size:2.2rem}}
+    .page-h1,.proj-title,.sec-title,.axis-title{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
+    @media(max-width:900px){.hero-stats{grid-template-columns:repeat(2,1fr)}.proj-grid{grid-template-columns:1fr}.page-h1{font-size:2.2rem}}
     @media(max-width:600px){.wrap{width:calc(100% - 32px)}.nav-links{display:none}.hamburger{display:flex}.hero-stats{grid-template-columns:1fr}.axis-head{flex-direction:column;align-items:flex-start}.axis-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}.proj-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}.page-footer-inner{flex-direction:column;align-items:flex-start}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
-  </style>
+</style>
 </head>
 <body>
 <header class="nav">
@@ -165,29 +163,31 @@
 <h1 class="page-h1 reveal">How regulated systems constrain reasoning, redistribute accountability — and how design can intervene.</h1>
 <p class="page-sub reveal">Built from pharmaceutical QC practice. These projects examine how regulated systems narrow reasoning, shift interpretive burden, and shape what stays visible long enough to support accountable judgment — while keeping human judgment at the center.</p>
 <div class="hero-stats reveal">
-  <div class="stat">
-    <div class="stat-label">Projects</div>
-    <div class="stat-num">6</div>
-    <div class="stat-desc">Across two research axes</div>
-  </div>
-  <div class="stat">
-    <div class="stat-label">Scale</div>
-    <div class="stat-num">N=20</div>
-    <div class="stat-desc">GMP-constrained internal deployment</div>
-  </div>
-  <div class="stat">
-    <div class="stat-label">Satisfaction</div>
-    <div class="stat-num">5.0/5</div>
-    <div class="stat-desc">Across all six pilot deployments</div>
-  </div>
-  <div class="stat">
-    <div class="stat-label">Portfolio papers</div>
-    <div class="stat-num">9</div>
-    <div class="stat-desc">5 HCI papers · 4 STS manuscripts</div>
-  </div>
+<div class="stat">
+<div class="stat-label">Projects</div>
+<div class="stat-num">7</div>
+<div class="stat-desc">Across three research axes</div>
+</div>
+<div class="stat">
+<div class="stat-label">Scale</div>
+<div class="stat-num">N=20</div>
+<div class="stat-desc">GMP-constrained internal deployment</div>
+</div>
+<div class="stat">
+<div class="stat-label">Satisfaction</div>
+<div class="stat-num">5.0/5</div>
+<div class="stat-desc">Across all six pilot deployments</div>
+</div>
+<div class="stat">
+<div class="stat-label">Portfolio papers</div>
+<div class="stat-num">9</div>
+<div class="stat-desc">5 HCI papers · 4 STS manuscripts</div>
+</div>
 </div>
 </div>
 </section>
+
+<!-- AXIS 01 · REASONING -->
 <section class="axis-sec">
 <div class="wrap">
 <div class="axis-head reveal">
@@ -233,14 +233,16 @@
 </div>
 </div>
 </section>
-<section class="axis-sec" style="border-bottom:none">
+
+<!-- AXIS 02 · NAVIGATION -->
+<section class="axis-sec">
 <div class="wrap">
 <div class="axis-head reveal">
 <div class="axis-tag">axis 02 · navigation</div>
 <div class="axis-title">How regulated systems shape document navigation</div>
 </div>
 <div class="proj-grid reveal">
-<a class="proj-card" href="project-sop-accessibility.html" style="border-color:rgba(26,58,107,0.28);">
+<a class="proj-card" href="project-sop-accessibility.html">
 <div class="proj-top">
 <span class="proj-num">navigation · 01</span>
 <div class="chips">
@@ -258,7 +260,7 @@
 <span class="proj-arrow">→</span>
 </div>
 </a>
-<a class="proj-card" href="project-cross-reference.html" style="border-color:rgba(26,58,107,0.20);">
+<a class="proj-card" href="project-cross-reference.html">
 <div class="proj-top">
 <span class="proj-num">navigation · 02</span>
 <div class="chips">
@@ -315,11 +317,42 @@
 </div>
 </div>
 </section>
+
+<!-- AXIS 03 · LANGUAGE -->
+<section class="axis-sec" style="border-bottom:none">
+<div class="wrap">
+<div class="axis-head reveal">
+<div class="axis-tag">axis 03 · language</div>
+<div class="axis-title">How procedural language embeds judgment demands</div>
+</div>
+<div class="proj-grid reveal">
+<a class="proj-card" href="project-cf.html">
+<div class="proj-top">
+<span class="proj-num">language · 01</span>
+<div class="chips">
+<span class="chip">corpus study</span>
+<span class="chip chip-preprint">preprint</span>
+<span class="chip">N=500</span>
+</div>
+</div>
+<div class="proj-h">Cognitive Friction in Procedural Documentation</div>
+<p class="proj-insight">Procedural sentences embed structurally produced judgment demands through conditional branching, cross-references, exception structures, and discretionary qualifiers — concentrating interpretive burden at specific textual points.</p>
+<p class="proj-intervention">A rule-based corpus analysis that operationalizes cognitive friction as a measurable sentence-level property of procedural language, making structurally embedded judgment demands observable across regulatory and safety documentation genres.</p>
+<div class="proj-result">Conditional branching was the most prevalent friction feature (33.8%). 10.6% of sentences exhibited co-occurring features — structurally compounded judgment demand confirmed across naturally occurring sources independently.</div>
+<div class="proj-bottom">
+<span class="proj-meta">corpus analysis · rule-based annotation · python · github</span>
+<span class="proj-arrow">→</span>
+</div>
+</a>
+</div>
+</div>
+</section>
 </main>
+
 <footer class="page-footer">
 <div class="wrap">
 <div class="page-footer-inner">
-<span class="footer-note">6 projects · 2 research axes · one inquiry into accountable reasoning</span>
+<span class="footer-note">7 projects · 3 research axes · one inquiry into accountable reasoning</span>
 <div class="footer-nav">
 <a class="footer-btn" href="index.html">← Home</a>
 <a class="footer-btn" href="papers.html">Papers →</a>
@@ -327,6 +360,7 @@
 </div>
 </div>
 </footer>
+
 <script>
 (function(){
   var root = document.documentElement;
@@ -377,7 +411,6 @@
       if(r.top < window.innerHeight){ el.classList.add('on'); }
     });
   }, 100);
-  
 })();
 </script>
 </body>
