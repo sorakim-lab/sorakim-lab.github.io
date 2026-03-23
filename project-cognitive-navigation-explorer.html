@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cognitive Navigation Explorer — Sora Kim</title>
-<meta content="Cognitive Navigation Explorer — a behavioral tracking prototype showing how navigation paths and loopbacks reveal document friction and unresolved judgment demand." name="description"/>
+<title>Navigation Friction and Loopback Behavior — Sora Kim</title>
+<meta content="Navigation Friction and Loopback Behavior — a behavioral tracking prototype showing how navigation paths and loopbacks reveal document friction and unresolved judgment demand." name="description"/>
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -118,7 +118,7 @@
     .meta-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-bottom:56px}
     .meta-cell{background:var(--bg);padding:20px 22px}
     .meta-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
-    .meta-num{font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
+    .meta-num{font-size:1.15rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.2;margin-bottom:6px}
     .meta-desc{font-size:12px;color:var(--text-4);line-height:1.5}
 
     /* SECTIONS */
@@ -135,14 +135,14 @@
     .gcell{background:var(--bg);padding:18px 20px}
     .gcell-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px}
     .bullets{padding-left:16px}
-    .bullets li{font-size:13px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
+    .bullets li{font-size:14px;color:var(--text-3);line-height:1.7;margin-bottom:4px}
 
     /* STEPS */
     .steps{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;display:grid;margin-top:16px}
     .step{background:var(--bg);padding:18px 20px;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
     .step-n{font-family:var(--mono);font-size:1.2rem;font-weight:700;color:var(--accent);letter-spacing:-0.04em;padding-top:1px}
     .step-label{font-family:var(--mono);font-size:10px;color:var(--text-4);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px}
-    .step p{font-size:13px;color:var(--text-3);line-height:1.7}
+    .step p{font-size:14px;color:var(--text-3);line-height:1.7}
 
     /* CAROUSEL */
     .carousel-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:16px}
@@ -239,7 +239,7 @@
 </nav>
 <div class="nav-right">
 <button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
-<svg aria-hidden="true" viewbox="0 0 24 24">
+<svg aria-hidden="true" viewBox="0 0 24 24" style="pointer-events:none">
 <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
 <circle cx="12" cy="12" r="4"></circle>
 </svg>
@@ -264,7 +264,7 @@
 <div class="breadcrumb">
 <a href="index.html">home</a> /
         <a href="projects.html">projects</a> /
-        <span style="color:var(--text-2)">navigation explorer</span>
+        <span style="color:var(--text-2)">navigation friction</span>
 </div>
 <nav class="side-nav">
 <a class="active" href="#overview">Overview</a>
@@ -280,7 +280,7 @@
 <!-- HERO -->
 <section class="sec" id="overview" style="margin-bottom:40px">
 <div class="proj-eyebrow reveal">navigation axis · project 03</div>
-<h1 class="proj-title reveal">Cognitive Navigation Explorer</h1>
+<h1 class="proj-title reveal">Navigation Friction and Loopback Behavior</h1>
 <div class="proj-chips reveal">
 <span class="chip">document navigation</span>
 <span class="chip">loopback tracking</span>
@@ -289,7 +289,7 @@
 <span class="chip">streamlit</span>
 <span class="chip">deployed</span>
 </div>
-<p class="proj-lead reveal">Loopbacks are not simply user error — they can mark moments where the document system did not resolve a judgment demand on the first pass. This prototype tracks navigation paths, hesitation, and returns so hidden document friction becomes visible.</p>
+<p class="proj-lead reveal">Loopbacks signal unresolved judgment. They are not simply user error — they can mark moments where the document system did not resolve a judgment demand on the first pass. This prototype tracks navigation paths, hesitation, and returns so hidden document friction becomes visible.</p>
 <p class="proj-claim reveal">This project treats navigation behavior as analyzable evidence of document-structural friction, not merely inefficient searching.</p>
 <div class="flow reveal">
 <span class="flow-tag on">document structure</span>
@@ -298,7 +298,7 @@
 <span class="flow-arrow">→</span>
 <span class="flow-tag">loopback / hesitation</span>
 <span class="flow-arrow">→</span>
-<span class="flow-tag">investigation friction</span>
+<span class="flow-tag">observable friction</span>
 </div>
 <div class="btn-row reveal">
 <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
@@ -308,19 +308,19 @@
 <!-- META -->
 <div class="meta-row reveal">
 <div class="meta-cell">
-<div class="meta-label">Participants</div>
-<div class="meta-num">20</div>
+<div class="meta-label">Evaluation</div>
+<div class="meta-num">pilot</div>
 <div class="meta-desc">GMP-experienced · OOS investigation background</div>
 </div>
 <div class="meta-cell">
-<div class="meta-label">Loopback signal</div>
-<div class="meta-num">recurring</div>
+<div class="meta-label">Key signal</div>
+<div class="meta-num">loopback pattern</div>
 <div class="meta-desc">Loopback navigation appeared across all participant sessions</div>
 </div>
 <div class="meta-cell">
-<div class="meta-label">Ease of use</div>
-<div class="meta-num">high</div>
-<div class="meta-desc">Interface was rated highly usable across participants</div>
+<div class="meta-label">Adoption signal</div>
+<div class="meta-num">consistently positive</div>
+<div class="meta-desc">Interface usability was rated consistently positively across participants</div>
 </div>
 </div>
 <!-- PROBLEM -->
@@ -377,7 +377,7 @@
 <div class="step">
 <div class="step-n">04</div>
 <div>
-<div class="step-label">Usability study · pilot sample</div>
+<div class="step-label">Pilot study · evaluation</div>
 <p>Post-task survey measured navigation clarity, cross-reference usefulness, real-world utility, and collected qualitative feedback on confusion points and improvement suggestions.</p>
 </div>
 </div>
@@ -388,7 +388,7 @@
 <div class="sec-eyebrow">03</div>
 <h2 class="sec-title">Prototype</h2>
 <hr class="sec-divider"/>
-<p class="body-text">The Cognitive Navigation Explorer presents participants with a GMP document set and an OOS investigation scenario. As participants navigate, their movement is tracked in real time. At the end of the session, a results screen visualises the navigation path as a directed network graph — showing forward moves, cross-reference jumps, and loopbacks.</p>
+<p class="body-text">This navigation-tracking prototype presents participants with a GMP document set and an OOS investigation scenario. As participants navigate, their movement is tracked in real time. At the end of the session, a results screen visualises the navigation path as a directed network graph — showing forward moves, cross-reference jumps, and loopbacks.</p>
 <div class="btn-row" style="margin-bottom:16px">
 <a class="btn primary" href="https://cognitive-navigation-explorer.streamlit.app/" rel="noopener" target="_blank">Open Demo ↗</a>
 </div>
@@ -439,7 +439,7 @@
 <!-- STUDY -->
 <section class="sec reveal" id="study">
 <div class="sec-eyebrow">04</div>
-<h2 class="sec-title">Usability Study</h2>
+<h2 class="sec-title">Pilot Study</h2>
 <hr class="sec-divider"/>
 <p class="body-text strong">GMP-experienced practitioners with OOS investigation experience and daily procedural document use participated in a pilot evaluation (N=20). The post-task survey focused on document list clarity, content readability, cross-reference clarity, navigation awareness, and practical usefulness.</p>
 <p class="body-text note">Participants were recruited from the same team, which may have inflated usability and acceptance ratings. The absence of prior HCI tooling in GMP contexts means there was no comparative baseline — participants had little to compare against. Results are exploratory and session-based; they indicate design promise but do not establish long-term navigation outcomes.</p>
@@ -457,9 +457,10 @@
 <!-- FINDINGS -->
 <section class="sec reveal" id="findings">
 <div class="sec-eyebrow">05</div>
-<h2 class="sec-title">Findings</h2>
+<h2 class="sec-title">What This Revealed</h2>
 <hr class="sec-divider"/>
 <p class="body-text strong">Participants routinely revisited at least one document. The most common loopback pattern was Analyst Training → ELISA Test Method SOP → Method Validation → ELISA Test Method SOP → OOS Procedure. Usability ratings were positive, suggesting that the interface itself did not introduce additional friction. Participants often identified SOP structure, rather than the prototype interface, as the main source of navigation difficulty.</p>
+<p class="body-text">This suggests that navigation behavior is not only a usability trace, but a condition through which document structure shapes how responsibility is pursued.</p>
 <p class="body-text note">N=20. Participants were recruited from the same team, which may have inflated acceptance ratings. No comparative baseline existed — participants had little prior HCI tooling to compare against.</p>
 <div class="table-wrap">
 <table>
