@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -9,7 +8,7 @@
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Figtree:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
     :root {
       --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
@@ -54,11 +53,7 @@
     .mobile-menu.open{display:flex}
     .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
     .mobile-menu a:hover{color:var(--accent)}
-    .mobile-menu-cv{
-      margin-top:16px;
-      font-family:var(--mono);font-size:12px;
-      color:var(--text-4);letter-spacing:0.04em;
-    }
+    .mobile-menu-cv{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--text-4);letter-spacing:0.04em}
     .page-header{margin-bottom:48px}
     .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:16px}
     .page-h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
@@ -94,6 +89,7 @@
     .paper-link:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
     .paper-link.ssrn{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
     .paper-link.ssrn:hover{background:var(--accent);color:var(--bg)}
+    .paper-link.soon{border-color:var(--line);color:var(--text-4);background:var(--bg2);cursor:default;pointer-events:none}
     .abstract-btn{font-family:var(--mono);font-size:10px;padding:6px 12px;border:1px solid var(--line);margin-right:-1px;background:var(--bg);color:var(--text-3);cursor:pointer;transition:background 150ms,color 150ms,border-color 150ms}
     .abstract-btn:last-child{border-radius:0 8px 8px 0;margin-right:0}
     .abstract-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
@@ -116,12 +112,11 @@
     .reveal{opacity:1;transform:none}
     .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
     .js-ready .reveal.on{opacity:1;transform:none}
-    
-    .page-h1,.hero-h1,.proj-title,.sec-title,.axis-title,.gcell-title,.paper-title,.project-title,.right-title,.approach-title,.cell-title,.pos-title,.step-title,.box-title,.method-title,.detail-title,.metric-label{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
+    .page-h1,.paper-title,.right-title{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.papers-grid{grid-template-columns:1fr}.paper-card.full{grid-column:auto}.sec-head{flex-direction:column;align-items:flex-start}.sec-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}}
     @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}.wrap{padding:32px 0 80px}.paper-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
-  </style>
+</style>
 </head>
 <body>
 <header class="nav">
@@ -146,7 +141,7 @@
 <circle cx="12" cy="12" r="4"></circle>
 </svg>
 </button>
-<a class="cv-btn" href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+<a class="cv-btn" href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
 <button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
 <span></span><span></span><span></span>
 </button>
@@ -159,7 +154,7 @@
 <a href="papers.html">Papers</a>
 <a href="research.html">Research</a>
 <a href="about.html">About</a>
-<div class="mobile-menu-cv"><a href="assets/sora-kim-cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
+<div class="mobile-menu-cv"><a href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
 </nav>
 <div class="wrap">
 <div class="page-header reveal">
@@ -171,7 +166,7 @@
 <div class="hero-left">
 <div class="page-eyebrow" style="margin-bottom:12px">What's here</div>
 <h2 style="font-size:1.5rem;font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:14px">One research program, two layers.</h2>
-<p style="font-size:14px;color:var(--text-3);line-height:1.75">The core argument develops across three linked layers: empirical identification of constrained reasoning, conceptual explanation of responsibility convergence, and design-oriented intervention. The STS manuscripts explain how responsibility is organized, narrowed, and documented within formal systems; the HCI papers test those questions empirically through prototypes and observations in pharmaceutical quality environments. Together they ask how responsibility emerges, converges, and can be redesigned in high-stakes systems. Read as a set, the papers move from problem identification to conceptual explanation to intervention.</p>
+<p style="font-size:14px;color:var(--text-3);line-height:1.75">The core argument develops across three linked layers: empirical identification of constrained reasoning, conceptual explanation of responsibility convergence, and design-oriented intervention. The STS manuscripts explain how responsibility is organized, narrowed, and documented within formal systems; the HCI papers test those questions empirically through prototypes and observations in pharmaceutical quality environments. Together they ask how responsibility emerges, converges, and can be redesigned in high-stakes systems.</p>
 </div>
 <div class="hero-right">
 <div class="hero-right-cell">
@@ -186,6 +181,7 @@
 </div>
 </div>
 </div>
+
 <!-- HCI PAPERS -->
 <section class="sec reveal">
 <div class="sec-head">
@@ -193,20 +189,21 @@
 <div class="sec-title">Project-linked HCI paper set</div>
 </div>
 <div class="papers-grid">
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">paper 01</span>
 <div class="chips"><span class="chip">document usability</span><span class="chip">accessibility</span></div>
 </div>
-<div class="paper-title">SOP Accessibility and Compliance-Constrained Design</div>
+<div class="paper-title">From Retrieval to Reasoning: How SOP Accessibility Shapes Interpretation in Regulated Work</div>
 <div class="paper-tagline">HCI paper · project-linked · Procedural Visibility in SOP Navigation</div>
 <p class="paper-claim">Interpretive burden is produced at the point where retrieval and interpretation become structurally decoupled in regulated work.</p>
 <p class="paper-support">Shows that retrieval delays systematically shift effort from navigation to interpretation, increasing uncertainty before formal decision points. Connects the SOP accessibility prototype to a broader argument about compliance-constrained design.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
 <a class="paper-link" href="project-sop-accessibility.html">→ Project</a>
-<a class="paper-link" href="assets/hci_paper_01.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<a class="paper-link" href="assets/kim_sop_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
@@ -218,108 +215,115 @@
 </ul>
 </div>
 </div>
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">paper 02</span>
 <div class="chips"><span class="chip">reasoning support</span><span class="chip">investigation design</span></div>
 </div>
-<div class="paper-title">Reasoning Under Closure Pressure: Scaffolding Root Cause Analysis in Regulated Environments</div>
-<div class="paper-tagline">HCI paper · two-study paper · Expanding Causal Reasoning under Closure Pressure + Premature Convergence under Closure Pressure</div>
+<div class="paper-title">Keeping Alternatives Alive: A Comparison-Preserving Scaffold for Root Cause Analysis Under Closure Pressure</div>
+<div class="paper-tagline">HCI paper · two-study paper · Expanding Causal Reasoning + Premature Convergence under Closure Pressure</div>
 <p class="paper-claim">Premature causal convergence is not simply a reasoning failure, but a condition produced by investigation structure under closure pressure.</p>
-<p class="paper-support">Combines two complementary studies within a single paper: an empirical baseline of premature convergence (N=20) and a scaffolded intervention that preserves comparison longer before accountability narrows (N=20). Extends the observational pilot into a design response to closure pressure. This paper anchors the empirical core of the program.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<p class="paper-support">Combines two complementary studies: an empirical baseline of premature convergence (N=20) and a scaffolded intervention that preserves comparison longer before accountability narrows (N=20). 18/20 participants broadened causal reasoning; 15/20 reconsidered initial attribution after scaffolded comparison.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming) · Poster: CSCW 2026</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
 <a class="paper-link" href="project-rca-reasoning-scaffolder.html">→ RCA</a>
 <a class="paper-link" href="project-premature-causal-convergence.html">→ PCC</a>
-<a class="paper-link" href="assets/hci_paper_02.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<a class="paper-link" href="assets/kim_scaffolder_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
-<p>Combines two complementary studies within a single paper: a pilot observation of premature causal convergence in unassisted investigation reasoning (N=20), and a usability evaluation of a scaffold designed to counter it (N=20).</p>
+<p>Combines two complementary studies: a pilot observation of premature causal convergence in unassisted investigation reasoning (N=20), and a usability evaluation of a scaffold designed to counter it (N=20).</p>
 <ul>
 <li>Pilot: initial single-cause reasoning often shifted toward broader multi-factor explanations over time.</li>
-<li>Scaffold: many participants showed increased causal breadth, and several moved from person-centered explanations toward broader systemic ones.</li>
+<li>Scaffold: 18/20 participants broadened causal reasoning; 15/20 reconsidered the case more broadly after scaffolded comparison.</li>
 <li>Argument: investigation quality is partly a cognitive systems design problem, not only a training problem.</li>
 </ul>
 </div>
 </div>
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">paper 03</span>
 <div class="chips"><span class="chip">document navigation</span><span class="chip">traceability</span></div>
 </div>
-<div class="paper-title">Document Navigation as a Design Problem: Traceability and Behavioral Friction in GMP Environments</div>
+<div class="paper-title">When Documents Don't Connect: Traceability Burden and Loopback Behavior in GMP Document Navigation</div>
 <div class="paper-tagline">HCI paper · two-study paper · Cross-Reference Burden and Traceability Visibility + Navigation Friction and Loopback Behavior</div>
 <p class="paper-claim">Loopbacks and broken trace paths are structural signals of documentation burden, not merely traces of inefficient searching.</p>
-<p class="paper-support">Combines cross-reference visibility with behavioral tracking to show how navigation patterns reveal hidden structural burden. Builds from traceability failure toward a behavioral account of document friction. This paper provides supporting empirical evidence on how structural burden manifests in document systems.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<p class="paper-support">Combines cross-reference visibility with behavioral tracking to show how navigation patterns reveal hidden structural burden. 30–60% reduction in path reconstruction time; loopback frequency introduced as empirical measure of document-structural friction.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
 <a class="paper-link" href="project-cross-reference.html">→ Cross-ref</a>
 <a class="paper-link" href="project-cognitive-navigation-explorer.html">→ Navigation</a>
-<a class="paper-link" href="assets/hci_paper_03.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<a class="paper-link" href="assets/kim_navigation_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
 <p>Combines two studies: a metadata-driven cross-reference system addressing structural traceability gaps, and a behavioral navigation tracking prototype making invisible navigation friction observable.</p>
 <ul>
-<li>Cross-reference: task completion improved, document discovery increased, and path completion became more reliable during pilot evaluation.</li>
-<li>Navigation: consistent loopback patterns observed across participants · less experienced users identified SOP structure — not the interface — as the friction source.</li>
+<li>Cross-reference: 30–60% reduction in path reconstruction time; higher rates of complete chain reconstruction.</li>
+<li>Navigation: loopback behavior observed across all sessions — attributable to document structure rather than interface design.</li>
 </ul>
 </div>
 </div>
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">paper 04</span>
 <div class="chips"><span class="chip">workflow UX</span><span class="chip">observability</span></div>
 </div>
-<div class="paper-title">Workflow Friction and Observability in Deviation–CAPA Review Cycles</div>
-<div class="paper-tagline">HCI paper · project-linked · Making Review Friction Visible in Regulated Work</div>
+<div class="paper-title">Friction Before Failure: Making Review Burden Visible in Regulated Document Work</div>
+<div class="paper-tagline">HCI paper · project-linked · Review Burden and Workflow Visibility</div>
 <p class="paper-claim">Coordination failure is not only a communication problem, but a consequence of review burden remaining structurally unobservable.</p>
 <p class="paper-support">Shows how a visibility layer can externalize delay accumulation, comment burden, and review-loop formation before coordination breaks down. Extends the navigation papers into a workflow observability argument.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
 <a class="paper-link" href="project-feedback-dashboard.html">→ Project</a>
-<a class="paper-link" href="assets/hci_paper_04.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<a class="paper-link" href="assets/kim_observability_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
-<p>Examines review interaction, workflow friction, and observability in validated pharmaceutical quality review systems — developed from the Making Review Friction Visible in Regulated Work prototype.</p>
+<p>Examines review interaction, workflow friction, and observability in validated pharmaceutical quality review systems — developed from the Review Burden and Workflow Visibility prototype.</p>
 <ul>
 <li>Problem: quality review cycles are opaque — workload imbalance and delay accumulation are invisible until they have already become a problem.</li>
 <li>Participants consistently expressed adoption interest after reviewing the prototype interface.</li>
 </ul>
 </div>
 </div>
+
 <div class="paper-card full">
 <div class="paper-top">
 <span class="paper-num">paper 05 · umbrella</span>
 <div class="chips"><span class="chip hi">regulatory UX</span><span class="chip hi">concept paper</span></div>
 </div>
-<div class="paper-title">Regulatory UX: Toward a Human-Centered Framework for Compliance-Constrained Interaction</div>
-<div class="paper-tagline">HCI concept paper · umbrella framework · connects all seven projects</div>
+<div class="paper-title">How Regulated Systems Produce Responsibility: A Four-Layer Framework for Interaction Design</div>
+<div class="paper-tagline">HCI concept paper · umbrella framework · connects all projects</div>
 <p class="paper-claim">Regulatory UX names a design space in which usability, compliance, and accountability are not separate constraints, but co-produced design conditions.</p>
-<p class="paper-support">Synthesizes the six HCI projects into one design argument: regulated documentation systems are active interaction environments that shape search, reasoning, coordination, and closure. Connects the empirical papers into a single HCI research program.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<p class="paper-support">Synthesizes the HCI projects into one design argument: regulated documentation systems are active interaction environments that shape search, reasoning, coordination, and closure. Connects the empirical papers into a single HCI research program.</p>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
-<a class="paper-link" href="assets/hci_paper_05.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
+<a class="paper-link" href="assets/kim_regulatoryUX_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
 <p>Introduces Regulatory UX as an HCI research frame for worker interaction inside compliance-constrained systems, where procedural documents, audit workflows, and investigation structures shape navigation, cognition, and decision-making.</p>
 <ul>
 <li>Core argument: regulated documentation systems are not neutral containers — they are active interaction environments that shape how workers search, reason, and close investigations.</li>
-<li>Framework contribution: Regulatory UX names and structures a design space where usability, compliance, and accountability intersect.</li>
-<li>Connects all six projects as a coherent empirical program instantiating the Regulatory UX argument across multiple failure modes.</li>
+<li>Framework contribution: identifies four interdependent layers — accessibility, structure, coordination, and reasoning — at which system design shapes accountability conditions.</li>
+<li>Connects all projects as a coherent empirical program instantiating the Regulatory UX argument across multiple failure modes.</li>
 </ul>
 </div>
 </div>
+
 </div>
 </section>
+
 <hr class="divider"/>
+
 <!-- STS FOUNDATIONS -->
 <section class="sec reveal">
 <div class="sec-head">
@@ -328,21 +332,22 @@
 </div>
 <div class="sts-note">
 <div class="sts-intro">Theoretical infrastructure behind the HCI papers.</div>
-        These manuscripts draw on science and technology studies (STS) to explain how accountability, procedural cognition, and investigative closure operate in regulated sociotechnical systems — showing why the design problems the projects address are structurally produced, not accidental.
-      </div>
+These manuscripts draw on science and technology studies (STS) to explain how accountability, procedural cognition, and investigative closure operate in regulated sociotechnical systems — showing why the design problems the projects address are structurally produced, not accidental.
+</div>
 <div class="papers-grid">
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">AAC</span>
 <div class="chips"><span class="chip">anticipatory alignment</span><span class="chip">STS</span></div>
 </div>
-<div class="paper-title">Anticipated Accountability Convergence</div>
+<div class="paper-title">Anticipated Accountability Convergence: Structuring Responsibility Before Action</div>
 <div class="paper-tagline">STS conceptual manuscript</div>
 <p class="paper-claim">Accountability expectations are often set up before action through procedures, documentation, and evaluation rules.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
-<a class="paper-link" href="assets/kim-2026-aac.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
+<a class="paper-link" href="assets/kim_aac_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
@@ -353,19 +358,20 @@
 </ul>
 </div>
 </div>
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">CF</span>
 <div class="chips"><span class="chip">procedural texts</span><span class="chip">document architecture</span></div>
 </div>
-<div class="paper-title">Documenting Judgment: Cognitive Friction and Responsibility in Procedural Documentation</div>
+<div class="paper-title">Structuring Judgment Under Constraint: Cognitive Friction in Procedural Texts</div>
 <div class="paper-tagline">STS conceptual + empirical manuscript · pilot N=500 sentences</div>
 <p class="paper-claim">Procedural sentence structure can distribute interpretive burden and shape later judgment demands.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
-    <a class="paper-link" href="project-cf.html">→ Project</a>
-<a class="paper-link" href="assets/kim-2026-cf.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
+<a class="paper-link" href="project-cf.html">→ Project</a>
+<a class="paper-link" href="assets/kim_cf_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
@@ -376,6 +382,7 @@
 </ul>
 </div>
 </div>
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">RC</span>
@@ -384,42 +391,44 @@
 <div class="paper-title">Responsibility Convergence in Organizational Investigations</div>
 <div class="paper-tagline">STS conceptual manuscript</div>
 <p class="paper-claim">Organizational investigations often settle on individual responsibility even when failures are more distributed.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming)</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
-<a class="paper-link" href="assets/kim-2026-rc.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
+<a class="paper-link" href="assets/kim_rc_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
 <p>Explains why organizational investigations like root cause analysis often settle on identifiable actors even when failures are distributed across sociotechnical systems.</p>
 <ul>
 <li>Core mechanisms: procedural ambiguity, closure pressure, and a bias toward easily documentable accountability.</li>
-<li>HCI relevance: grounds Expanding Causal Reasoning under Closure Pressure — explains the structural conditions the scaffold is designed to counter.</li>
+<li>HCI relevance: grounds the closure pressure scaffold — explains the structural conditions the scaffold is designed to counter.</li>
 </ul>
 </div>
 </div>
+
 <div class="paper-card">
 <div class="paper-top">
 <span class="paper-num">PAC</span>
 <div class="chips"><span class="chip">AI mediation</span><span class="chip">temporal accountability</span></div>
 </div>
-<div class="paper-title">Premature Accountability Convergence</div>
-<div class="paper-tagline">STS conceptual manuscript</div>
+<div class="paper-title">Premature Accountability Convergence in Regulated Organizations</div>
+<div class="paper-tagline">STS conceptual + empirical manuscript · FDA Warning Letters N=50 · Abstract: 4S Toronto 2026</div>
 <p class="paper-claim">AI mediation can compress interpretive space too early, affecting how quickly responsibility settles.</p>
-<div class="paper-meta">Preprint · 2026 · SSRN</div>
+<div class="paper-meta">Preprint · 2026 · SSRN (forthcoming) · 4S Toronto 2026</div>
 <div class="paper-links">
-<a class="paper-link ssrn" href="[ssrn_link]" rel="noopener" target="_blank">SSRN ↗</a>
-<a class="paper-link" href="assets/kim-2026-pac.pdf" rel="noopener" target="_blank">PDF ↗</a>
+<span class="paper-link soon">SSRN coming soon</span>
+<a class="paper-link" href="assets/kim_pac_2026.pdf" rel="noopener" target="_blank">PDF ↗</a>
 <button class="abstract-btn" type="button">Abstract</button>
 </div>
 <div class="abstract-body">
-<p>Analyzes how AI-mediated representations reshape the timing and scope of accountability by compressing interpretive space and accelerating convergence within formal decision systems.</p>
+<p>Analyzes how AI-mediated representations reshape the timing and scope of accountability by compressing interpretive space and accelerating convergence within formal decision systems. Empirically grounded in FDA Warning Letter corpus (N=50, 160 violations, 2016–2025).</p>
 <ul>
 <li>Mechanisms: representational compression, epistemic authority amplification, temporal contraction of sensemaking.</li>
 <li>HCI relevance: directly grounds the AI extension of the RCA Reasoning Scaffolder — the scaffold is explicitly designed as a counter-PAC intervention.</li>
 </ul>
 </div>
 </div>
+
 </div>
 </section>
 
@@ -428,7 +437,7 @@
 <div class="sec-tag">Program contribution</div>
 <div class="sec-title">What holds the papers together</div>
 </div>
-<p class="section-text" style="max-width:760px">Across conceptual and empirical work, the papers contribute to a broader account of how responsibility is shaped and constrained by system design. The individual manuscripts differ in scale and method, but they all return to the same question: how formal systems narrow what can be seen, compared, and justified before responsibility is fixed.</p>
+<p style="max-width:760px;font-size:14px;color:var(--text-3);line-height:1.75">Across conceptual and empirical work, the papers contribute to a broader account of how responsibility is shaped and constrained by system design. The individual manuscripts differ in scale and method, but they all return to the same question: how formal systems narrow what can be seen, compared, and justified before responsibility is fixed.</p>
 </section>
 
 <div class="page-footer reveal">
@@ -439,61 +448,58 @@
 </div>
 </div>
 </div>
+
 <script>
-    (function(){
-      var root = document.documentElement;
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var isDark = stored ? stored === 'dark' : prefersDark;
-      root.classList.toggle('dark', isDark);
-      root.classList.add('js-ready');
-
-      var btn = document.getElementById('themeBtn');
-      if(btn) btn.addEventListener('click', function(){
-        isDark = !isDark;
-        root.classList.toggle('dark', isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+(function(){
+  var root = document.documentElement;
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = stored ? stored === 'dark' : prefersDark;
+  root.classList.toggle('dark', isDark);
+  root.classList.add('js-ready');
+  var btn = document.getElementById('themeBtn');
+  if(btn) btn.addEventListener('click', function(){
+    isDark = !isDark;
+    root.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if(hamburger && mobileMenu){
+    hamburger.addEventListener('click', function(){
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
       });
-
-      var hamburger = document.getElementById('hamburgerBtn');
-      var mobileMenu = document.getElementById('mobileMenu');
-      if(hamburger && mobileMenu){
-        hamburger.addEventListener('click', function(){
-          hamburger.classList.toggle('open');
-          mobileMenu.classList.toggle('open');
-          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-        });
-        mobileMenu.querySelectorAll('a').forEach(function(a){
-          a.addEventListener('click', function(){
-            hamburger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-          });
-        });
-      }
-
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
-        });
-      },{threshold:0, rootMargin:'0px 0px -20px 0px'});
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-      setTimeout(function(){
-        document.querySelectorAll('.reveal').forEach(function(el){
-          var r = el.getBoundingClientRect();
-          if(r.top < window.innerHeight){ el.classList.add('on'); }
-        });
-      }, 100);
-
-      document.querySelectorAll('.abstract-btn').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          var body = btn.closest('.paper-card').querySelector('.abstract-body');
-          var open = body.classList.toggle('open');
-          btn.classList.toggle('open', open);
-          btn.textContent = open ? 'Hide abstract' : 'Abstract';
-        });
-      });
-    })();
-  </script>
+    });
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:0, rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight){ el.classList.add('on'); }
+    });
+  }, 100);
+  document.querySelectorAll('.abstract-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var body = btn.closest('.paper-card').querySelector('.abstract-body');
+      var open = body.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide abstract' : 'Abstract';
+    });
+  });
+})();
+</script>
 </body>
 </html>
