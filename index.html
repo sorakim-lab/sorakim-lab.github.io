@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<p<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -8,14 +8,14 @@
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
   :root{
     --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
     --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
     --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#636369;--text-4:#9a9aa1;
     --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
-    --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
+    --sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;
     --mono:'DM Mono',monospace;
     --max:1120px;--nav-h:64px;
   }
@@ -64,39 +64,37 @@
   .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
   .mobile-menu a:hover{color:var(--accent)}
   .mobile-menu-cv{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--text-4);letter-spacing:0.04em}
-  .hero{padding:88px 0 70px;border-bottom:1px solid var(--line)}
-  .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) 318px;gap:42px;align-items:stretch}
-  .hero-copy{border:1px solid var(--line);border-radius:16px;padding:34px 34px 30px;box-shadow:0 8px 32px rgba(10,10,10,0.06);background:var(--panel)}
-  html.dark .hero-copy{box-shadow:0 8px 32px rgba(0,0,0,0.22)}
-  .hero-aside{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
-  .hero-name{font-size:clamp(1rem,1.8vw,1.16rem);font-weight:700;color:var(--text);letter-spacing:-0.03em;margin-bottom:12px}
-  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:18px}
-  .hero-h1{font-size:clamp(2.9rem,6.4vw,5.1rem);font-weight:800;line-height:1.01;letter-spacing:-0.05em;color:var(--text);margin-bottom:16px;max-width:10.4ch}
-  .hero-sub{font-size:16px;font-weight:400;color:var(--text-3);line-height:1.75;max-width:63ch}
+
+  /* ── HERO ── */
+  .hero{padding:88px 0 80px;border-bottom:1px solid var(--line)}
+  .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:start}
+  .hero-copy{padding:4px 0}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:20px}
+  .hero-h1{font-size:clamp(3rem,6.4vw,5.2rem);font-weight:800;line-height:1.01;letter-spacing:-0.05em;color:var(--text);margin-bottom:20px;max-width:11ch}
+  .hero-sub{font-size:16px;font-weight:400;color:var(--text-3);line-height:1.75;max-width:56ch}
   .hero-sub strong{color:var(--text-2);font-weight:600}
-  .hero-subline{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-  .hero-chip{font-family:var(--mono);font-size:11px;letter-spacing:0.03em;color:var(--text-3);padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg2)}
-  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
   .btn-fill{height:44px;padding:0 22px;background:var(--text);color:var(--bg);border-radius:10px;font-size:13px;font-weight:600;letter-spacing:-0.01em;transition:opacity 150ms;display:inline-flex;align-items:center;justify-content:center}
   .btn-fill:hover{opacity:0.84}
   .btn-ghost{height:44px;padding:0 22px;border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:500;color:var(--text-2);transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
   .btn-ghost:hover{border-color:var(--text-4);background:var(--bg2)}
-  .portrait-frame{aspect-ratio:4/4.9;background:var(--bg2);border-bottom:1px solid var(--line)}
+
+  /* aside: photo only + one line */
+  .hero-aside{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+  .portrait-frame{aspect-ratio:1/1.2;background:var(--bg2)}
   .portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(100%);transition:filter 300ms ease}
   .portrait-frame img:hover{filter:grayscale(0%)}
-  .aside-body{padding:18px 18px 20px}
-  .aside-kicker{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:8px}
-  .aside-claim{font-size:14px;line-height:1.75;color:var(--text-3);margin-bottom:14px}
-  .aside-stack{display:grid;gap:10px}
-  .aside-row{border-top:1px solid var(--line-soft);padding-top:10px}
-  .aside-row strong{display:block;font-size:12px;color:var(--text);margin-bottom:3px;letter-spacing:-0.01em}
-  .aside-row span{display:block;font-size:12px;color:var(--text-3);line-height:1.65}
-  .metrics{padding:38px 0 54px;border-bottom:1px solid var(--line)}
-  .metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
-  .metric{background:var(--panel);padding:24px 24px 22px}
-  .metric-num{font-size:13px;font-family:var(--mono);color:var(--accent);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:10px}
-  .metric-label{font-size:22px;font-weight:700;line-height:1.15;color:var(--text);letter-spacing:-0.03em;margin-bottom:6px}
-  .metric-note{font-size:12px;color:var(--text-3);line-height:1.7}
+  .aside-claim{padding:16px 18px;font-size:13px;color:var(--text-3);line-height:1.7;border-top:1px solid var(--line)}
+
+  /* ── METRICS strip ── */
+  .metrics{padding:0;border-bottom:1px solid var(--line)}
+  .metrics-strip{display:flex;gap:0;border-bottom:none}
+  .metric-item{flex:1;padding:22px 28px;border-right:1px solid var(--line)}
+  .metric-item:last-child{border-right:none}
+  .metric-num{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:6px}
+  .metric-val{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+
+  /* ── PROJECTS ── */
   .projects{padding:64px 0 58px;border-bottom:1px solid var(--line)}
   .projects-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
   .section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4)}
@@ -116,7 +114,6 @@
   .project-hero-claim{font-size:1.08rem;font-weight:700;color:var(--text);line-height:1.55;letter-spacing:-0.025em;margin-top:30px}
   .project-sub-list{display:grid;gap:1px;background:var(--line);border-radius:16px;overflow:hidden}
   .project-sub{display:grid;grid-template-columns:48px 1fr auto;gap:20px;align-items:center;padding:20px 24px;background:var(--panel);transition:background 150ms}
-  .project-sub:nth-child(2){padding-left:34px}
   .project-sub:hover{background:var(--bg2)}
   .project-sub .project-num{margin-bottom:0}
   .project-sub .project-title{font-size:1rem;font-weight:700;letter-spacing:-0.02em;color:var(--text);line-height:1.2;margin-bottom:4px}
@@ -127,14 +124,15 @@
   .tag-n{background:var(--bg2);color:var(--text-4);border:1px solid var(--line)}
   .project-arrow{font-size:13px;color:var(--text-4);transition:color 150ms,transform 150ms}
   .project-sub:hover .project-arrow{color:var(--accent);transform:translateX(3px)}
+
+  /* ── PR / BOTTOM ── */
   .section{padding:58px 0;border-bottom:1px solid var(--line)}
   .pr-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:12px;align-items:start}
-  .pr-papers{border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--panel);transition:border-color 180ms,transform 180ms}
+  .pr-papers{border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--panel);transition:border-color 180ms}
   .pr-papers:hover{border-color:var(--text-4)}
   .pr-research{border:1px solid var(--accent);border-radius:16px;padding:32px;background:linear-gradient(160deg,var(--accent-strong) 0%,var(--accent-soft) 40%,transparent 75%),var(--panel);transition:border-color 180ms,transform 180ms,box-shadow 180ms;box-shadow:0 6px 28px rgba(26,58,107,0.08)}
   html.dark .pr-research{box-shadow:0 6px 28px rgba(74,127,212,0.10)}
   .pr-research:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(26,58,107,0.13)}
-  html.dark .pr-research:hover{box-shadow:0 12px 40px rgba(74,127,212,0.16)}
   .teaser-kicker{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px}
   .pr-research .teaser-kicker{color:var(--accent);opacity:0.9}
   .teaser-h{font-size:1.4rem;font-weight:700;letter-spacing:-0.04em;color:var(--text);line-height:1.1;margin-bottom:10px}
@@ -145,7 +143,7 @@
   .pr-research .teaser-link{color:var(--accent);font-size:12px}
   .bottom-grid{display:grid;grid-template-columns:1.18fr 0.82fr;gap:12px}
   .about-card,.contact-card{border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--panel)}
-  .about-title{font-size:1.34rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.2;margin-top:8px}
+  .about-title{font-size:1.2rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);line-height:1.3;margin-top:8px}
   .about-body{font-size:14px;color:var(--text-3);line-height:1.84;margin-top:10px}
   .contact-stack{display:grid;gap:8px;margin-top:12px}
   .contact-row{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:10px;padding:11px 14px;transition:border-color 150ms,background 150ms}
@@ -158,8 +156,28 @@
   .reveal{opacity:1;transform:none}
   .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
   .js-ready .reveal.on{opacity:1;transform:none}
-  @media(max-width:900px){.hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}.project-hero{grid-template-columns:1fr}.project-hero-left{border-right:none;border-bottom:1px solid var(--line)}.metrics-grid{grid-template-columns:repeat(3,1fr)}.hero{padding:72px 0 56px}.hero-h1{max-width:12ch}}
-  @media(max-width:600px){.contact-row{align-items:flex-start;gap:14px}.contact-val{max-width:58%;text-align:right}.wrap{width:calc(100% - 32px)}.nav-links{display:none}.hamburger{display:flex}.project-sub:nth-child(2){padding-left:24px}.project-hero-left,.project-hero-right,.pr-papers,.pr-research,.about-card,.contact-card{padding:24px}.hero-copy{padding:24px}.aside-body{padding:16px}.hero-h1{font-size:2.45rem}.hero-sub{font-size:15px}.metrics-grid{grid-template-columns:1fr}.section-title{font-size:1.5rem}.teaser-h{font-size:1.2rem}.pr-research .teaser-h{font-size:1.46rem}.footer-inner{flex-direction:column;align-items:flex-start;gap:6px}}
+  @media(max-width:900px){
+    .hero-inner,.pr-grid,.bottom-grid{grid-template-columns:1fr}
+    .project-hero{grid-template-columns:1fr}
+    .project-hero-left{border-right:none;border-bottom:1px solid var(--line)}
+    .metrics-strip{flex-wrap:wrap}
+    .metric-item{flex:1 1 33%}
+    .hero{padding:72px 0 56px}
+  }
+  @media(max-width:600px){
+    .wrap{width:calc(100% - 32px)}
+    .nav-links{display:none}
+    .hamburger{display:flex}
+    .project-hero-left,.project-hero-right,.pr-papers,.pr-research,.about-card,.contact-card{padding:24px}
+    .hero-h1{font-size:2.6rem}
+    .hero-sub{font-size:15px}
+    .metric-item{flex:1 1 100%;border-right:none;border-bottom:1px solid var(--line)}
+    .metric-item:last-child{border-bottom:none}
+    .section-title{font-size:1.5rem}
+    .teaser-h{font-size:1.2rem}
+    .pr-research .teaser-h{font-size:1.46rem}
+    .footer-inner{flex-direction:column;align-items:flex-start;gap:6px}
+  }
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -204,77 +222,54 @@
 </nav>
 
 <main>
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-inner">
         <div class="hero-copy reveal">
-          <div class="hero-name">Sora Kim</div>
-          <div class="hero-eyebrow">HCI · STS · AI & Accountability in Regulated Work</div>
+          <div class="hero-eyebrow">HCI · STS · Accountability in Regulated Systems</div>
           <h1 class="hero-h1">Responsibility converges under pressure.</h1>
           <p class="hero-sub">
-            In regulated investigations, responsibility often settles too early. I study how <strong>documentation, workflow, and AI-supported scaffolds shape which explanations stay visible</strong> before closure settles.
+            I study how <strong>documentation, workflow, and AI scaffolds shape which explanations stay visible</strong> before responsibility settles in regulated systems.
           </p>
-          <div class="hero-subline">
-            <span class="hero-chip">responsibility convergence</span>
-            <span class="hero-chip">premature closure</span>
-            <span class="hero-chip">AI reasoning support</span>
-            <span class="hero-chip">regulated systems</span>
-          </div>
           <div class="hero-actions">
             <a class="btn-fill" href="projects.html">View projects</a>
             <a class="btn-ghost" href="papers.html">Read papers</a>
           </div>
         </div>
-
         <div class="hero-aside reveal">
           <div class="portrait-frame">
             <img alt="Portrait of Sora Kim" src="assets/sora-kim.jpg"/>
           </div>
-          <div class="aside-body">
-            <div class="aside-kicker">Research framing</div>
-            <p class="aside-claim">Responsibility is not given — it is produced through system structure under constraint.</p>
-            <div class="aside-stack">
-              <div class="aside-row">
-                <strong>Empirical anchor</strong>
-                <span>GMP root cause investigations</span>
-              </div>
-              <div class="aside-row">
-                <strong>Core mechanism</strong>
-                <span>Closure pressure narrows causal reasoning before alternatives can be compared</span>
-              </div>
-              <div class="aside-row">
-                <strong>AI direction</strong>
-                <span>Scaffolds that preserve comparison, not accelerate paperwork</span>
-              </div>
-            </div>
+          <div class="aside-claim">
+            Responsibility is not given — it is produced through system structure under constraint.
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- METRICS strip -->
   <section class="metrics">
     <div class="wrap">
-      <div class="metrics-grid reveal">
-        <div class="metric">
+      <div class="metrics-strip reveal">
+        <div class="metric-item">
           <div class="metric-num">Research program</div>
-          <div class="metric-label">5 HCI + 4 STS papers</div>
-          <div class="metric-note">One linked inquiry into how responsibility is produced, narrowed, and redesigned in regulated work.</div>
+          <div class="metric-val">5 HCI · 5 STS papers</div>
         </div>
-        <div class="metric">
+        <div class="metric-item">
           <div class="metric-num">Empirical basis</div>
-          <div class="metric-label">GMP practitioners · N=20 per study</div>
-          <div class="metric-note">Practitioner-based studies in pharmaceutical GMP investigation contexts, grounded in real quality system work.</div>
+          <div class="metric-val">N=20 per study · GMP practitioners</div>
         </div>
-        <div class="metric">
+        <div class="metric-item">
           <div class="metric-num">Design contribution</div>
-          <div class="metric-label">5 deployed prototypes</div>
-          <div class="metric-note">AI as counter-convergence infrastructure — widening accountable reasoning, not compressing it.</div>
+          <div class="metric-val">5 deployed prototypes</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section class="projects">
     <div class="wrap">
       <div class="projects-head reveal">
@@ -333,25 +328,27 @@
     </div>
   </section>
 
+  <!-- PAPERS + RESEARCH -->
   <section class="section">
     <div class="wrap">
       <div class="pr-grid">
         <a class="pr-papers reveal" href="papers.html">
           <div class="teaser-kicker">Papers</div>
           <div class="teaser-h">HCI papers and STS foundations</div>
-          <p class="teaser-p">5 HCI preprints and 4 STS manuscripts on responsibility convergence, procedural visibility, and AI-supported reasoning.</p>
+          <p class="teaser-p">5 HCI preprints and 5 STS manuscripts on responsibility convergence, procedural visibility, and AI-supported reasoning.</p>
           <div class="teaser-link">Go to papers →</div>
         </a>
         <a class="pr-research reveal" href="research.html">
           <div class="teaser-kicker">Research</div>
           <div class="teaser-h">How sociotechnical systems organize responsibility — and how AI can intervene</div>
-          <p class="teaser-p">STS theory explains why accountability narrows. HCI prototypes test how to reopen it — from retrieval support to AI-assisted reasoning scaffolds.</p>
+          <p class="teaser-p">STS theory explains why accountability narrows. HCI prototypes test how to reopen it.</p>
           <div class="teaser-link">Go to research →</div>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- ABOUT + CONTACT -->
   <section class="section">
     <div class="wrap">
       <div class="bottom-grid">
@@ -370,7 +367,7 @@
             </a>
             <a class="contact-row" href="research.html">
               <span class="contact-kind">Focus</span>
-              <span class="contact-val">responsibility · GMP · AI scaffolds</span>
+              <span class="contact-val">responsibility · regulated systems · AI scaffolds</span>
             </a>
             <a class="contact-row" href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">
               <span class="contact-kind">CV</span>
@@ -394,54 +391,54 @@
 
 <script>
 (function(){
-  var root = document.documentElement;
-  var themeBtn = document.getElementById('themeBtn');
-  var hamburgerBtn = document.getElementById('hamburgerBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-  try {
-    var savedTheme = localStorage.getItem('theme');
-    if(savedTheme === 'dark') root.classList.add('dark');
-    else if(savedTheme === 'light') root.classList.remove('dark');
+  var root=document.documentElement;
+  var themeBtn=document.getElementById('themeBtn');
+  var hamburgerBtn=document.getElementById('hamburgerBtn');
+  var mobileMenu=document.getElementById('mobileMenu');
+  try{
+    var saved=localStorage.getItem('theme');
+    if(saved==='dark') root.classList.add('dark');
+    else if(saved==='light') root.classList.remove('dark');
     else if(window.matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark');
-  } catch(e){}
+  }catch(e){}
   if(themeBtn){
-    themeBtn.addEventListener('click', function(){
+    themeBtn.addEventListener('click',function(){
       root.classList.toggle('dark');
-      try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch(e){}
+      try{localStorage.setItem('theme',root.classList.contains('dark')?'dark':'light');}catch(e){}
     });
   }
-  if(hamburgerBtn && mobileMenu){
-    hamburgerBtn.addEventListener('click', function(){
+  if(hamburgerBtn&&mobileMenu){
+    hamburgerBtn.addEventListener('click',function(){
       hamburgerBtn.classList.toggle('open');
       mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
     });
     mobileMenu.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
+      link.addEventListener('click',function(){
         hamburgerBtn.classList.remove('open');
         mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
+        document.body.style.overflow='';
       });
     });
   }
   document.body.classList.add('js-ready');
-  var reveals = document.querySelectorAll('.reveal');
+  var reveals=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){ entry.target.classList.add('on'); observer.unobserve(entry.target); }
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('on');observer.unobserve(e.target);}
       });
-    }, {threshold:0, rootMargin:'0px 0px -20px 0px'});
-    reveals.forEach(function(el){ observer.observe(el); });
-  } else {
-    reveals.forEach(function(el){ el.classList.add('on'); });
+    },{threshold:0,rootMargin:'0px 0px -20px 0px'});
+    reveals.forEach(function(el){observer.observe(el);});
+  }else{
+    reveals.forEach(function(el){el.classList.add('on');});
   }
   setTimeout(function(){
     reveals.forEach(function(el){
-      var r = el.getBoundingClientRect();
-      if(r.top < window.innerHeight){ el.classList.add('on'); }
+      var r=el.getBoundingClientRect();
+      if(r.top<window.innerHeight){el.classList.add('on');}
     });
-  }, 100);
+  },100);
 })();
 </script>
 </body>
