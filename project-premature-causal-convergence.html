@@ -10,14 +10,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-  :root{
-    --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
-    --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
-    --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
-    --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
-    --sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;
-    --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;--sidebar-w:200px;
-  }
+  :root{--bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;--line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);--text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;--accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;--mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;--sidebar-w:200px;}
   html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10)}
   @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10)}}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -315,11 +308,11 @@
       </div>
     </div>
     <div class="companion" style="margin-top:16px">
-      <div class="companion-label">Companion project</div>
+      <div class="companion-label">Companion project — two-study paper</div>
       <div class="companion-title">Expanding Causal Reasoning under Closure Pressure</div>
       <div class="companion-text">The companion project translates this observation into a structured interface intervention. In the scaffold study, many participants considered new causes after using the tool — suggesting that the convergence observed here may be at least partly addressable through design.</div>
       <div class="btn-row">
-        <a class="btn primary" href="project-rca-reasoning-scaffolder.html">View RCA Scaffolder →</a>
+        <a class="btn primary" href="project-rca-reasoning-scaffolder.html">View RCA Scaffolder</a>
       </div>
     </div>
   </section>
@@ -338,6 +331,10 @@
       <div class="paper-row">
         <div class="paper-row-label">What it does</div>
         <div class="paper-row-content">Provides the observational component of a larger two-study paper on reasoning under closure pressure — establishing an empirical baseline for convergence behavior in unassisted RCA reasoning before the scaffold intervention.</div>
+      </div>
+      <div class="paper-row">
+        <div class="paper-row-label">Part of</div>
+        <div class="paper-row-content">Two-study paper paired with the <a href="project-rca-reasoning-scaffolder.html" style="text-decoration:underline;color:var(--accent)">Expanding Causal Reasoning under Closure Pressure</a> project.</div>
       </div>
       <div class="paper-row">
         <div class="paper-row-label">Status</div>
@@ -368,8 +365,7 @@
 <script>
 (function(){
   var root=document.documentElement,stored=localStorage.getItem('theme'),prefersDark=window.matchMedia('(prefers-color-scheme:dark)').matches,isDark=stored?stored==='dark':prefersDark;
-  root.classList.toggle('dark',isDark);
-  root.classList.add('js-ready');
+  root.classList.toggle('dark',isDark);root.classList.add('js-ready');
   var btn=document.getElementById('themeBtn');
   if(btn)btn.addEventListener('click',function(){isDark=!isDark;root.classList.toggle('dark',isDark);localStorage.setItem('theme',isDark?'dark':'light');});
   var hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu');
