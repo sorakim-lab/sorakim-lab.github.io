@@ -69,17 +69,18 @@
   .axis-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:7px 12px;border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);border-radius:8px 0 0 8px;white-space:nowrap}
   .axis-title{font-size:14px;font-weight:400;letter-spacing:-0.01em;padding:7px 16px;border:1px solid var(--line);border-left:none;border-radius:0 8px 8px 0;color:var(--text-3);background:transparent}
   .proj-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
-  .proj-card{background:var(--panel);padding:24px;display:flex;flex-direction:column;transition:background 150ms;cursor:pointer}
+  /* card — no <a> wrapper, link lives on title */
+  .proj-card{background:var(--panel);padding:24px;display:flex;flex-direction:column;transition:background 150ms}
   .proj-card:hover{background:var(--bg2)}
   .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
   .proj-num{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.08em;text-transform:uppercase;padding-top:2px;flex-shrink:0}
   .chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
   .chip{font-family:var(--mono);font-size:10px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
   .chip-preprint{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:500}
-  .proj-h{font-size:1.1rem;font-weight:700;letter-spacing:-0.025em;line-height:1.25;margin-bottom:10px;color:var(--text)}
+  .proj-h{font-size:1.1rem;font-weight:700;letter-spacing:-0.025em;line-height:1.25;margin-bottom:10px;color:var(--text);transition:color 150ms}
+  .proj-h:hover{color:var(--accent)}
   .proj-insight{font-size:13.5px;font-weight:500;color:var(--text-2);line-height:1.7}
   .proj-result{font-family:var(--mono);font-size:10px;color:var(--accent);line-height:1.65;padding:7px 0 7px 12px;border-left:2px solid var(--accent);margin:12px 0}
-  /* expandable intervention */
   .proj-expand{overflow:hidden;max-height:0;transition:max-height 350ms cubic-bezier(.2,.7,0,1),opacity 300ms;opacity:0}
   .proj-card.open .proj-expand{max-height:300px;opacity:1}
   .proj-intervention{font-size:13px;color:var(--text-3);line-height:1.75;padding-top:10px;border-top:1px solid var(--line-soft)}
@@ -87,7 +88,7 @@
   .proj-meta{font-family:var(--mono);font-size:10px;color:var(--text-4)}
   .proj-toggle{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;transition:color 150ms;display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid var(--line);border-radius:5px;padding:4px 8px;cursor:pointer}
   .proj-toggle:hover{color:var(--accent);border-color:var(--accent)}
-  .proj-toggle-icon{transition:transform 300ms;display:inline-block;font-style:normal}
+  .proj-toggle-icon{transition:transform 300ms;display:inline-block}
   .proj-card.open .proj-toggle-icon{transform:rotate(45deg)}
   .page-footer{padding:40px 0 60px}
   .page-footer-inner{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
@@ -181,8 +182,8 @@
       <div class="axis-tag">axis 01 · reasoning</div>
       <div class="axis-title">How regulated systems shape causal reasoning</div>
     </div>
-          <div class="proj-grid reveal">
-      <div class="proj-card" href="project-rca-reasoning-scaffolder.html">
+    <div class="proj-grid reveal">
+      <div class="proj-card">
         <div class="proj-top">
           <span class="proj-num">reasoning · 01</span>
           <div class="chips">
@@ -191,7 +192,7 @@
             <span class="chip">Deployed</span>
           </div>
         </div>
-        <div class="proj-h">Expanding Causal Reasoning under Closure Pressure</div>
+        <a class="proj-h" href="project-rca-reasoning-scaffolder.html">Expanding Causal Reasoning under Closure Pressure →</a>
         <p class="proj-insight">Closure pressure compresses accountable interpretation before broader contributors can be compared — not because investigators reason poorly, but because investigation structure forecloses alternatives early.</p>
         <div class="proj-result">18/20 broadened causal reasoning · 15/20 reconsidered initial attribution · CSCW 2026 poster under review</div>
         <div class="proj-expand">
@@ -202,7 +203,7 @@
           <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
         </div>
       </div>
-      <div class="proj-card" href="project-premature-causal-convergence.html">
+      <div class="proj-card">
         <div class="proj-top">
           <span class="proj-num">reasoning · 02</span>
           <div class="chips">
@@ -210,7 +211,7 @@
             <span class="chip">timed reflection</span>
           </div>
         </div>
-        <div class="proj-h">Premature Convergence under Closure Pressure</div>
+        <a class="proj-h" href="project-premature-causal-convergence.html">Premature Convergence under Closure Pressure →</a>
         <p class="proj-insight">Early closure is not always deliberate — time pressure and the need for a quickly documentable explanation push reasoning toward a single cause before alternatives are compared.</p>
         <div class="proj-result">Explanations broadened beyond initial single-cause account across the majority of sessions</div>
         <div class="proj-expand">
@@ -233,7 +234,7 @@
       <div class="axis-title">How regulated systems shape document navigation</div>
     </div>
     <div class="proj-grid reveal">
-      <a class="proj-card" href="project-sop-accessibility.html">
+      <div class="proj-card">
         <div class="proj-top">
           <span class="proj-num">navigation · 01</span>
           <div class="chips">
@@ -242,16 +243,18 @@
             <span class="chip">Deployed</span>
           </div>
         </div>
-        <div class="proj-h">Procedural Visibility in SOP Navigation</div>
+        <a class="proj-h" href="project-sop-accessibility.html">Procedural Visibility in SOP Navigation →</a>
         <p class="proj-insight">Document inaccessibility creates interpretive burden upstream of formal error — retrieval difficulty becomes judgment difficulty before any mistake is recorded.</p>
-        <p class="proj-intervention">An external retrieval layer that makes scanned SOP archives searchable without altering validated source files, increasing procedural visibility at the point of need.</p>
         <div class="proj-result">Retrieval time ~6 min → ~1 min · surfaced invisible onboarding labor upstream of quality records</div>
+        <div class="proj-expand">
+          <p class="proj-intervention">An external retrieval layer that makes scanned SOP archives searchable without altering validated source files, increasing procedural visibility at the point of need.</p>
+        </div>
         <div class="proj-bottom">
           <span class="proj-meta">document UX · retrieval · streamlit · python</span>
-          <span class="proj-arrow">→</span>
+          <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
         </div>
-      </a>
-      <a class="proj-card" href="project-cross-reference.html">
+      </div>
+      <div class="proj-card">
         <div class="proj-top">
           <span class="proj-num">navigation · 02</span>
           <div class="chips">
@@ -260,16 +263,18 @@
             <span class="chip">Deployed</span>
           </div>
         </div>
-        <div class="proj-h">Cross-Reference Visibility and Traceability</div>
+        <a class="proj-h" href="project-cross-reference.html">Cross-Reference Visibility and Traceability →</a>
         <p class="proj-insight">Traceability gaps are not merely maintenance defects — they redistribute hidden connective labor onto practitioners reconstructing accountability paths under time pressure.</p>
-        <p class="proj-intervention">A traceability layer that makes document linkage, broken paths, and lifecycle mismatches visible across document networks without modifying validated systems.</p>
         <div class="proj-result">30–60% reduction in path reconstruction time · loopback frequency introduced as measure of document-structural friction</div>
+        <div class="proj-expand">
+          <p class="proj-intervention">A traceability layer that makes document linkage, broken paths, and lifecycle mismatches visible across document networks without modifying validated systems.</p>
+        </div>
         <div class="proj-bottom">
           <span class="proj-meta">traceability · networkx · metadata mapping · streamlit · python</span>
-          <span class="proj-arrow">→</span>
+          <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
         </div>
-      </a>
-      <a class="proj-card" href="project-cognitive-navigation-explorer.html">
+      </div>
+      <div class="proj-card">
         <div class="proj-top">
           <span class="proj-num">navigation · 03</span>
           <div class="chips">
@@ -278,16 +283,18 @@
             <span class="chip">Deployed</span>
           </div>
         </div>
-        <div class="proj-h">Navigation Friction and Loopback Behavior</div>
+        <a class="proj-h" href="project-cognitive-navigation-explorer.html">Navigation Friction and Loopback Behavior →</a>
         <p class="proj-insight">Loopbacks are not user error — they mark moments where document structure failed to resolve a judgment demand on the first pass.</p>
-        <p class="proj-intervention">A behavioral tracking prototype that captures navigation paths, hesitation, and cross-reference jumps to make otherwise invisible document friction observable across sessions.</p>
         <div class="proj-result">Loopback behavior observed across all sessions — attributable to document structure rather than interface design</div>
+        <div class="proj-expand">
+          <p class="proj-intervention">A behavioral tracking prototype that captures navigation paths, hesitation, and cross-reference jumps to make otherwise invisible document friction observable across sessions.</p>
+        </div>
         <div class="proj-bottom">
           <span class="proj-meta">loopback tracking · behavioral data · streamlit · python</span>
-          <span class="proj-arrow">→</span>
+          <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
         </div>
-      </a>
-      <a class="proj-card" href="project-feedback-dashboard.html">
+      </div>
+      <div class="proj-card">
         <div class="proj-top">
           <span class="proj-num">navigation · 04</span>
           <div class="chips">
@@ -296,20 +303,20 @@
             <span class="chip">Deployed</span>
           </div>
         </div>
-        <div class="proj-h">Review Burden and Workflow Visibility</div>
+        <a class="proj-h" href="project-feedback-dashboard.html">Review Burden and Workflow Visibility →</a>
         <p class="proj-insight">Coordination breakdown is produced gradually when review burden stays invisible until delay has already accumulated — the problem is structural, not behavioral.</p>
-        <p class="proj-intervention">A workflow visibility layer that makes review delays, revision loops, and feedback burden legible before coordination breaks down, without modifying validated systems.</p>
         <div class="proj-result">Review delays, revision loops, and feedback burden rendered visible across sessions · participants expressed adoption interest</div>
+        <div class="proj-expand">
+          <p class="proj-intervention">A workflow visibility layer that makes review delays, revision loops, and feedback burden legible before coordination breaks down, without modifying validated systems.</p>
+        </div>
         <div class="proj-bottom">
           <span class="proj-meta">workflow friction · TF-IDF · dashboard · streamlit · python</span>
-          <span class="proj-arrow">→</span>
+          <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- AXIS 03 제거됨 -->
 </main>
 
 <footer class="page-footer">
