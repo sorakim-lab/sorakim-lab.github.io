@@ -8,409 +8,332 @@
 <link href="assets/favicon-light.png" media="(prefers-color-scheme: light)" rel="icon" type="image/png"/>
 <link href="assets/favicon-dark.png" media="(prefers-color-scheme: dark)" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-    :root {
-      --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
-      --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
-      --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
-      --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
-      --sans:'Figtree',-apple-system,'Apple SD Gothic Neo',sans-serif;
-      --serif:var(--sans);
-      --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
-    }
-    html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}
-    @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
-    button{font:inherit;background:none;border:none;cursor:pointer}
-    .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
-    .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
-    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
-    .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
-    html.dark .nav-icon{content:url(assets/favicon-dark.png)}
-    @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
-    .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
-    .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
-    .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
-    .nav-links a:hover,.nav-links a.active{color:var(--text)}
-    .nav-links a.active{font-weight:600}
-    .nav-right{display:flex;align-items:center;gap:8px}
-    .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
-    .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
-    .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
-    .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
-    .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px;transition:border-color 150ms}
-    .hamburger:hover{border-color:var(--text-3)}
-    .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
-    .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-    .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:200;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
-    .mobile-menu.open{display:flex}
-    .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
-    .mobile-menu a:hover{color:var(--accent)}
-    .mobile-menu-cv{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--text-4)}
-    .page-header{padding:64px 0 56px;border-bottom:1px solid var(--line)}
-    .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:16px}
-    .page-h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.05;margin-bottom:16px}
-    .page-sub{font-size:15px;font-weight:300;color:var(--text-3);line-height:1.7;margin-bottom:40px;border-left:3px solid var(--accent);padding-left:16px}
-    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
-    .stat{background:var(--bg);padding:22px 24px}
-    .stat:nth-child(2){background:var(--accent-soft)}
-    .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:8px}
-    .stat:nth-child(2) .stat-label{color:var(--accent);opacity:0.7}
-    .stat-num{font-size:2.4rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:4px}
-    .stat:nth-child(2) .stat-num{color:var(--accent)}
-    .stat-desc{font-size:12px;color:var(--text-4);line-height:1.5}
-    .axis-sec{padding:64px 0 56px;border-bottom:1px solid var(--line)}
-    .axis-head{display:flex;align-items:center;gap:0;margin-bottom:28px}
-    .axis-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:8px 14px;border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);border-radius:8px 0 0 8px;display:flex;align-items:center;white-space:nowrap}
-    .axis-title{font-size:15px;font-weight:400;letter-spacing:-0.01em;padding:8px 18px;border:1px solid rgba(0,0,0,0.025);border-left:none;border-radius:0 8px 8px 0;display:flex;align-items:center;flex:1;background:transparent;color:var(--text-3)}
-    .proj-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
-    .proj-card{background:var(--panel);padding:26px;display:flex;flex-direction:column;transition:background 150ms,color 150ms}
-    .proj-card:hover{background:rgba(10,10,10,0.78);color:#f0f0f0}
-    .proj-card:hover .proj-num{color:rgba(255,255,255,0.38)}
-    .proj-card:hover .proj-insight{color:rgba(255,255,255,0.92)}
-    .proj-card:hover .proj-intervention{color:rgba(255,255,255,0.55)}
-    .proj-card:hover .proj-result{color:rgba(255,255,255,0.55);border-color:rgba(255,255,255,0.2)}
-    .proj-card:hover .chip{color:rgba(255,255,255,0.55);border-color:rgba(255,255,255,0.2)}
-    .proj-card:hover .chip-preprint{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.4)}
-    .proj-card:hover .proj-meta{color:rgba(255,255,255,0.4)}
-    .proj-card:hover .proj-arrow{color:rgba(255,255,255,0.9)}
-    .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
-    .proj-num{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.08em;text-transform:uppercase;padding-top:2px;flex-shrink:0}
-    .chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-    .chip{font-family:var(--mono);font-size:10px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
-    .chip-preprint{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:500}
-    .proj-h{font-size:1.15rem;font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:16px}
-    .proj-insight{font-size:14px;font-weight:500;color:var(--text-2);line-height:1.7;margin-bottom:0}
-    .proj-intervention{font-size:14px;color:var(--text-3);line-height:1.7;margin-top:10px;margin-bottom:14px;padding-top:10px;border-top:1px solid var(--line-soft);flex:1}
-    .proj-result{font-family:var(--mono);font-size:10px;color:var(--text-3);line-height:1.65;padding:8px 0 8px 14px;border-left:3px solid var(--accent);margin-bottom:14px;margin-top:4px}
-    .proj-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
-    .proj-meta{font-family:var(--mono);font-size:10px;color:var(--text-4)}
-    .proj-arrow{font-size:14px;color:var(--text-4);transition:transform 150ms}
-    .proj-card:hover .proj-arrow{transform:translateX(3px)}
-    html.dark .proj-card:hover{background:rgba(255,255,255,0.07);color:var(--text)}
-    html.dark .proj-card:hover .proj-num{color:var(--text-4)}
-    html.dark .proj-card:hover .proj-insight{color:var(--text)}
-    html.dark .proj-card:hover .proj-intervention{color:var(--text-3)}
-    html.dark .proj-card:hover .proj-result{color:var(--text-3);border-color:var(--accent)}
-    html.dark .proj-card:hover .chip{color:var(--text-4);border-color:var(--line)}
-    html.dark .proj-card:hover .proj-meta{color:var(--text-4)}
-    html.dark .proj-card:hover .proj-arrow{color:var(--text)}
-    .page-footer{padding:40px 0 60px}
-    .page-footer-inner{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-    .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
-    .footer-nav{display:flex;gap:8px}
-    .footer-btn{height:34px;padding:0 16px;border:1px solid var(--line);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;transition:border-color 150ms,background 150ms,color 150ms}
-    .footer-btn:hover{border-color:var(--text-3);background:var(--bg2);color:var(--text)}
-    .reveal{opacity:1;transform:none}
-    .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
-    .js-ready .reveal.on{opacity:1;transform:none}
-    .page-h1,.proj-title,.sec-title,.axis-title{font-family:var(--sans);letter-spacing:-0.03em;font-weight:700}
-    @media(max-width:900px){.hero-stats{grid-template-columns:repeat(2,1fr)}.proj-grid{grid-template-columns:1fr}.page-h1{font-size:2.2rem}}
-    @media(max-width:600px){.wrap{width:calc(100% - 32px)}.nav-links{display:none}.hamburger{display:flex}.hero-stats{grid-template-columns:1fr}.axis-head{flex-direction:column;align-items:flex-start}.axis-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}.proj-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}.page-footer-inner{flex-direction:column;align-items:flex-start}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
+  :root{
+    --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
+    --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
+    --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
+    --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--accent-strong:rgba(26,58,107,0.12);
+    --sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;
+    --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;
+  }
+  html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}
+  @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10);--accent-strong:rgba(74,127,212,0.16)}}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text-2);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font:inherit;background:none;border:none;cursor:pointer}
+  .wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto}
+  .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%)}
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin:0 auto}
+  .nav-icon{width:18px;height:18px;object-fit:contain;content:url(assets/favicon-light.png);flex-shrink:0}
+  html.dark .nav-icon{content:url(assets/favicon-dark.png)}
+  @media(prefers-color-scheme:dark){.nav-icon{content:url(assets/favicon-dark.png)}}
+  .brand-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.03em}
+  .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+  .nav-links a{font-size:13px;color:var(--text-3);letter-spacing:-0.01em;transition:color 150ms}
+  .nav-links a:hover,.nav-links a.active{color:var(--text)}
+  .nav-links a.active{font-weight:600}
+  .nav-right{display:flex;align-items:center;gap:8px}
+  .theme-btn{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:border-color 150ms,color 150ms}
+  .theme-btn:hover{border-color:var(--text-3);color:var(--text)}
+  .theme-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .cv-btn{height:34px;padding:0 14px;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--text-2);font-family:var(--mono);letter-spacing:0.02em;transition:border-color 150ms,background 150ms;display:inline-flex;align-items:center;justify-content:center}
+  .cv-btn:hover{border-color:var(--text-3);background:var(--bg2)}
+  .hamburger{display:none;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;align-items:center;justify-content:center;color:var(--text-3);cursor:pointer;flex-direction:column;gap:4px;transition:border-color 150ms}
+  .hamburger:hover{border-color:var(--text-3)}
+  .hamburger span{display:block;width:14px;height:1.5px;background:currentColor;border-radius:2px;transition:transform 250ms ease,opacity 250ms ease}
+  .hamburger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+  .mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 97%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:200;padding:32px 24px;flex-direction:column;gap:8px;border-top:1px solid var(--line)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-size:1.5rem;font-weight:700;letter-spacing:-0.03em;color:var(--text);padding:12px 0;border-bottom:1px solid var(--line-soft);transition:color 150ms}
+  .mobile-menu a:hover{color:var(--accent)}
+  .mobile-menu-cv{margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--text-4)}
+  .page-header{padding:64px 0 56px;border-bottom:1px solid var(--line)}
+  .page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-4);text-transform:uppercase;margin-bottom:16px}
+  .page-h1{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1.08;margin-bottom:16px}
+  .page-sub{font-size:15px;font-weight:400;color:var(--text-3);line-height:1.75;margin-bottom:40px;max-width:72ch}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
+  .stat{background:var(--bg);padding:20px 22px}
+  .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-4);margin-bottom:6px}
+  .stat-num{font-size:2rem;font-weight:800;letter-spacing:-0.05em;color:var(--text);line-height:1;margin-bottom:3px}
+  .stat-desc{font-size:12px;color:var(--text-4);line-height:1.5}
+  .axis-sec{padding:56px 0;border-bottom:1px solid var(--line)}
+  .axis-sec:last-of-type{border-bottom:none}
+  .axis-head{display:flex;align-items:center;gap:0;margin-bottom:24px}
+  .axis-tag{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);padding:7px 12px;border:1px solid rgba(26,58,107,0.18);background:var(--accent-soft);border-radius:8px 0 0 8px;white-space:nowrap}
+  .axis-title{font-size:14px;font-weight:400;letter-spacing:-0.01em;padding:7px 16px;border:1px solid var(--line);border-left:none;border-radius:0 8px 8px 0;color:var(--text-3);background:transparent}
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line);gap:1px}
+  .proj-card{background:var(--panel);padding:24px;display:flex;flex-direction:column;transition:background 150ms;cursor:pointer}
+  .proj-card:hover{background:var(--bg2)}
+  .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .proj-num{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.08em;text-transform:uppercase;padding-top:2px;flex-shrink:0}
+  .chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+  .chip{font-family:var(--mono);font-size:10px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--text-4);letter-spacing:0.03em}
+  .chip-preprint{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:500}
+  .proj-h{font-size:1.1rem;font-weight:700;letter-spacing:-0.025em;line-height:1.25;margin-bottom:10px;color:var(--text)}
+  .proj-insight{font-size:13.5px;font-weight:500;color:var(--text-2);line-height:1.7}
+  .proj-result{font-family:var(--mono);font-size:10px;color:var(--accent);line-height:1.65;padding:7px 0 7px 12px;border-left:2px solid var(--accent);margin:12px 0}
+  /* expandable intervention */
+  .proj-expand{overflow:hidden;max-height:0;transition:max-height 350ms cubic-bezier(.2,.7,0,1),opacity 300ms;opacity:0}
+  .proj-card.open .proj-expand{max-height:300px;opacity:1}
+  .proj-intervention{font-size:13px;color:var(--text-3);line-height:1.75;padding-top:10px;border-top:1px solid var(--line-soft)}
+  .proj-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+  .proj-meta{font-family:var(--mono);font-size:10px;color:var(--text-4)}
+  .proj-toggle{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em;transition:color 150ms;display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid var(--line);border-radius:5px;padding:4px 8px;cursor:pointer}
+  .proj-toggle:hover{color:var(--accent);border-color:var(--accent)}
+  .proj-toggle-icon{transition:transform 300ms;display:inline-block;font-style:normal}
+  .proj-card.open .proj-toggle-icon{transform:rotate(45deg)}
+  .page-footer{padding:40px 0 60px}
+  .page-footer-inner{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .footer-note{font-family:var(--mono);font-size:10px;color:var(--text-4);letter-spacing:0.04em}
+  .footer-nav{display:flex;gap:8px}
+  .footer-btn{height:34px;padding:0 16px;border:1px solid var(--line);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:0.04em;display:inline-flex;align-items:center;justify-content:center;transition:border-color 150ms,background 150ms,color 150ms}
+  .footer-btn:hover{border-color:var(--text-3);background:var(--bg2);color:var(--text)}
+  .reveal{opacity:1;transform:none}
+  .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
+  .js-ready .reveal.on{opacity:1;transform:none}
+  @media(max-width:900px){.hero-stats{grid-template-columns:repeat(2,1fr)}.proj-grid{grid-template-columns:1fr}.page-h1{font-size:2rem}}
+  @media(max-width:600px){.wrap{width:calc(100% - 32px)}.nav-links{display:none}.hamburger{display:flex}.hero-stats{grid-template-columns:1fr}.axis-head{flex-direction:column;align-items:flex-start}.axis-title{border-left:1px solid var(--line);border-radius:0 0 8px 8px;margin-top:-1px}.proj-top{flex-direction:column;gap:8px}.chips{justify-content:flex-start}.page-footer-inner{flex-direction:column;align-items:flex-start}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <header class="nav">
 <div class="nav-inner">
-<a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
-<img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
-<span class="brand-name">Sora Kim</span>
-</a>
-<nav aria-label="Primary">
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a class="active" href="projects.html">Projects</a></li>
-<li><a href="papers.html">Papers</a></li>
-<li><a href="research.html">Research</a></li>
-<li><a href="about.html">About</a></li>
-</ul>
-</nav>
-<div class="nav-right">
-<button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
-<svg aria-hidden="true" viewBox="0 0 24 24" style="pointer-events:none">
-<path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-<circle cx="12" cy="12" r="4"></circle>
-</svg>
-</button>
-<a class="cv-btn" href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
-<button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
-<span></span><span></span><span></span>
-</button>
-</div>
+  <a aria-label="Sora Kim home" href="index.html" style="display:flex;align-items:center;gap:8px;">
+    <img alt="" aria-hidden="true" class="nav-icon" src="assets/favicon-light.png"/>
+    <span class="brand-name">Sora Kim</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="projects.html">Projects</a></li>
+      <li><a href="papers.html">Papers</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <button aria-label="Toggle theme" class="theme-btn" id="themeBtn">
+      <svg aria-hidden="true" viewBox="0 0 24 24" style="pointer-events:none">
+        <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        <circle cx="12" cy="12" r="4"></circle>
+      </svg>
+    </button>
+    <a class="cv-btn" href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a>
+    <button aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </div>
 </header>
+
 <nav aria-label="Mobile navigation" class="mobile-menu" id="mobileMenu">
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="papers.html">Papers</a>
-<a href="research.html">Research</a>
-<a href="about.html">About</a>
-<div class="mobile-menu-cv"><a href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="papers.html">Papers</a>
+  <a href="research.html">Research</a>
+  <a href="about.html">About</a>
+  <div class="mobile-menu-cv"><a href="assets/sora_kim_cv.pdf" rel="noopener" target="_blank">CV.pdf ↗</a></div>
 </nav>
+
 <main>
 <section class="page-header">
-<div class="wrap">
-<div class="page-eyebrow reveal">Research Projects</div>
-<h1 class="page-h1 reveal">How regulated systems constrain reasoning, redistribute accountability — and how design can intervene.</h1>
-<p class="page-sub reveal">Built from pharmaceutical QC practice. These projects examine how regulated systems narrow reasoning, shift interpretive burden, and shape what stays visible long enough to support accountable judgment — while keeping human judgment at the center.</p>
-<div class="hero-stats reveal">
-<div class="stat">
-<div class="stat-label">Projects</div>
-<div class="stat-num">7</div>
-<div class="stat-desc">Across three research axes</div>
-</div>
-<div class="stat">
-<div class="stat-label">Scale</div>
-<div class="stat-num">N=20</div>
-<div class="stat-desc">GMP-constrained internal deployment</div>
-</div>
-<div class="stat">
-<div class="stat-label">Satisfaction</div>
-<div class="stat-num">5.0/5</div>
-<div class="stat-desc">Across all six pilot deployments</div>
-</div>
-<div class="stat">
-<div class="stat-label">Portfolio papers</div>
-<div class="stat-num">9</div>
-<div class="stat-desc">5 HCI papers · 4 STS manuscripts</div>
-</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="page-eyebrow reveal">Research Projects</div>
+    <h1 class="page-h1 reveal">How regulated systems constrain reasoning and redistribute accountability — and how design can intervene.</h1>
+    <p class="page-sub reveal">Seven empirical projects examining how regulated systems narrow reasoning, shift interpretive burden, and shape what stays visible long enough to support accountable judgment.</p>
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <div class="stat-label">Projects</div>
+        <div class="stat-num">6</div>
+        <div class="stat-desc">Across two research axes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Scale</div>
+        <div class="stat-num">N=20</div>
+        <div class="stat-desc">GMP-constrained, NDA-compliant</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Satisfaction</div>
+        <div class="stat-num">5.0 / 5</div>
+        <div class="stat-desc">Across all pilot deployments</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Portfolio papers</div>
+        <div class="stat-num">10</div>
+        <div class="stat-desc">5 HCI papers · 5 STS manuscripts</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- AXIS 01 · REASONING -->
 <section class="axis-sec">
-<div class="wrap">
-<div class="axis-head reveal">
-<div class="axis-tag">axis 01 · reasoning</div>
-<div class="axis-title">How regulated systems shape causal reasoning</div>
-</div>
-<div class="proj-grid reveal">
-<a class="proj-card" href="project-rca-reasoning-scaffolder.html">
-<div class="proj-top">
-<span class="proj-num">reasoning · 01</span>
-<div class="chips">
-<span class="chip">pilot study</span>
-<span class="chip chip-preprint">preprint</span>
-<span class="chip">Deployed</span>
-</div>
-</div>
-<div class="proj-h">Expanding Causal Reasoning under Closure Pressure</div>
-<p class="proj-insight">Premature causal convergence in GMP investigations can be shaped by closure pressure: reasoning may narrow before alternative contributors are fully explored.</p>
-<p class="proj-intervention">A structured reasoning intervention that keeps alternative explanations visible long enough to delay premature convergence without automating the conclusion. This project serves as the intervention component of a larger two-study paper developed together with the companion premature convergence study.</p>
-<div class="proj-result">Scaffolded use delayed closure and expanded the range of comparable explanations. Forms the intervention half of a broader research program on how responsibility converges under closure pressure.</div>
-<div class="proj-bottom">
-<span class="proj-meta">reasoning design · PAC counter-design · streamlit · python</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-<a class="proj-card" href="project-premature-causal-convergence.html">
-<div class="proj-top">
-<span class="proj-num">reasoning · 02</span>
-<div class="chips">
-<span class="chip">pilot study</span>
-<span class="chip">timed reflection</span>
-</div>
-</div>
-<div class="proj-h">Premature Convergence under Closure Pressure</div>
-<p class="proj-insight">Early closure is not always deliberate; time pressure and the need for a quickly documentable explanation can push reasoning toward a single cause.</p>
-<p class="proj-intervention">A companion empirical study examining how single-cause reasoning broadens when investigators are given more time and interpretive space before closure. This project serves as the observational component of the same two-study paper as the RCA scaffolder intervention.</p>
-<div class="proj-result">Given more time and interpretive space, explanations broadened beyond an initial single-cause account. Forms the observational half of a broader research program on how responsibility converges under closure pressure.</div>
-<div class="proj-bottom">
-<span class="proj-meta">closure pressure · time-based observation · pilot</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-</div>
-</div>
+  <div class="wrap">
+    <div class="axis-head reveal">
+      <div class="axis-tag">axis 01 · reasoning</div>
+      <div class="axis-title">How regulated systems shape causal reasoning</div>
+    </div>
+          <div class="proj-grid reveal">
+      <div class="proj-card" href="project-rca-reasoning-scaffolder.html">
+        <div class="proj-top">
+          <span class="proj-num">reasoning · 01</span>
+          <div class="chips">
+            <span class="chip">pilot study</span>
+            <span class="chip chip-preprint">preprint</span>
+            <span class="chip">Deployed</span>
+          </div>
+        </div>
+        <div class="proj-h">Expanding Causal Reasoning under Closure Pressure</div>
+        <p class="proj-insight">Closure pressure compresses accountable interpretation before broader contributors can be compared — not because investigators reason poorly, but because investigation structure forecloses alternatives early.</p>
+        <div class="proj-result">18/20 broadened causal reasoning · 15/20 reconsidered initial attribution · CSCW 2026 poster under review</div>
+        <div class="proj-expand">
+          <p class="proj-intervention">A structured reasoning scaffold that keeps alternative explanations visible long enough to delay premature convergence, without automating the conclusion. Intervention half of a two-study paper with the companion premature convergence study.</p>
+        </div>
+        <div class="proj-bottom">
+          <span class="proj-meta">reasoning design · PAC counter-design · streamlit · python</span>
+          <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
+        </div>
+      </div>
+      <div class="proj-card" href="project-premature-causal-convergence.html">
+        <div class="proj-top">
+          <span class="proj-num">reasoning · 02</span>
+          <div class="chips">
+            <span class="chip">pilot study</span>
+            <span class="chip">timed reflection</span>
+          </div>
+        </div>
+        <div class="proj-h">Premature Convergence under Closure Pressure</div>
+        <p class="proj-insight">Early closure is not always deliberate — time pressure and the need for a quickly documentable explanation push reasoning toward a single cause before alternatives are compared.</p>
+        <div class="proj-result">Explanations broadened beyond initial single-cause account across the majority of sessions</div>
+        <div class="proj-expand">
+          <p class="proj-intervention">Observational study examining how single-cause reasoning broadens when investigators are given more time and interpretive space. Observational half of the same two-study paper.</p>
+        </div>
+        <div class="proj-bottom">
+          <span class="proj-meta">closure pressure · time-based observation · pilot</span>
+          <button class="proj-toggle" onclick="this.closest('.proj-card').classList.toggle('open')"><span class="proj-toggle-icon">+</span> details</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- AXIS 02 · NAVIGATION -->
 <section class="axis-sec">
-<div class="wrap">
-<div class="axis-head reveal">
-<div class="axis-tag">axis 02 · navigation</div>
-<div class="axis-title">How regulated systems shape document navigation</div>
-</div>
-<div class="proj-grid reveal">
-<a class="proj-card" href="project-sop-accessibility.html">
-<div class="proj-top">
-<span class="proj-num">navigation · 01</span>
-<div class="chips">
-<span class="chip">pilot study</span>
-<span class="chip chip-preprint">preprint</span>
-<span class="chip">Deployed</span>
-</div>
-</div>
-<div class="proj-h">Procedural Visibility in SOP Navigation</div>
-<p class="proj-insight">Document inaccessibility creates interpretive burden upstream of formal error, turning retrieval difficulty into later judgment difficulty and narrowing what can be compared in practice.</p>
-<p class="proj-intervention">An external retrieval intervention that makes scanned SOP archives searchable without altering validated systems, increasing procedural visibility without changing validated workflows. This project contributes an upstream access layer to the broader program on how constrained systems shape interpretation before responsibility is assigned.</p>
-<div class="proj-result">The intervention reduced the time required to access comparison-relevant procedures, making them more immediately comparable at the point of need.</div>
-<div class="proj-bottom">
-<span class="proj-meta">document UX · retrieval · streamlit · python</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-<a class="proj-card" href="project-cross-reference.html">
-<div class="proj-top">
-<span class="proj-num">navigation · 02</span>
-<div class="chips">
-<span class="chip">pilot study</span>
-<span class="chip chip-preprint">preprint</span>
-<span class="chip">Deployed</span>
-</div>
-</div>
-<div class="proj-h">Cross-Reference Visibility and Traceability</div>
-<p class="proj-insight">Traceability gaps are not merely maintenance defects; they redistribute hidden connective labor onto practitioners.</p>
-<p class="proj-intervention">A traceability intervention that makes document linkage, broken paths, and lifecycle mismatches visible across document networks. This project contributes evidence on how hidden connective labor shapes accountability reconstruction across formal documentation systems.</p>
-<div class="proj-result">Cross-reference visibility made document paths more directly traceable at the point of use.</div>
-<div class="proj-bottom">
-<span class="proj-meta">traceability · networkx · metadata mapping · streamlit · python</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-<a class="proj-card" href="project-cognitive-navigation-explorer.html">
-<div class="proj-top">
-<span class="proj-num">navigation · 03</span>
-<div class="chips">
-<span class="chip">pilot study</span>
-<span class="chip chip-preprint">preprint</span>
-<span class="chip">Deployed</span>
-</div>
-</div>
-<div class="proj-h">Navigation Friction and Loopback Behavior</div>
-<p class="proj-insight">Loopbacks are not simply user error; they can mark moments where document structure failed to resolve a judgment demand on the first pass.</p>
-<p class="proj-intervention">A behavioral observation intervention that captures navigation paths, hesitation, and cross-reference jumps to make otherwise hidden document friction observable. This project contributes behavioral evidence on where procedural judgment remains unresolved inside document systems.</p>
-<div class="proj-result">Loopbacks surfaced structural friction and moments of navigation hesitation across sessions.</div>
-<div class="proj-bottom">
-<span class="proj-meta">loopback tracking · behavioral data · streamlit · python</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-<a class="proj-card" href="project-feedback-dashboard.html">
-<div class="proj-top">
-<span class="proj-num">navigation · 04</span>
-<div class="chips">
-<span class="chip">pilot study</span>
-<span class="chip chip-preprint">preprint</span>
-<span class="chip">Deployed</span>
-</div>
-</div>
-<div class="proj-h">Review Burden and Workflow Visibility</div>
-<p class="proj-insight">Coordination breakdown is produced gradually when review burden stays invisible until delay has already accumulated.</p>
-<p class="proj-intervention">A workflow visibility intervention that makes review delays, revision loops, and feedback burden legible without modifying validated systems. This project contributes coordination-level evidence on how hidden review work shapes accountability conditions before breakdown becomes visible.</p>
-<div class="proj-result">The dashboard rendered review delays, revision loops, and feedback burden more legible across sessions.</div>
-<div class="proj-bottom">
-<span class="proj-meta">workflow friction · TF-IDF · dashboard · streamlit · python</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-</div>
-</div>
+  <div class="wrap">
+    <div class="axis-head reveal">
+      <div class="axis-tag">axis 02 · navigation</div>
+      <div class="axis-title">How regulated systems shape document navigation</div>
+    </div>
+    <div class="proj-grid reveal">
+      <a class="proj-card" href="project-sop-accessibility.html">
+        <div class="proj-top">
+          <span class="proj-num">navigation · 01</span>
+          <div class="chips">
+            <span class="chip">pilot study</span>
+            <span class="chip chip-preprint">preprint</span>
+            <span class="chip">Deployed</span>
+          </div>
+        </div>
+        <div class="proj-h">Procedural Visibility in SOP Navigation</div>
+        <p class="proj-insight">Document inaccessibility creates interpretive burden upstream of formal error — retrieval difficulty becomes judgment difficulty before any mistake is recorded.</p>
+        <p class="proj-intervention">An external retrieval layer that makes scanned SOP archives searchable without altering validated source files, increasing procedural visibility at the point of need.</p>
+        <div class="proj-result">Retrieval time ~6 min → ~1 min · surfaced invisible onboarding labor upstream of quality records</div>
+        <div class="proj-bottom">
+          <span class="proj-meta">document UX · retrieval · streamlit · python</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </a>
+      <a class="proj-card" href="project-cross-reference.html">
+        <div class="proj-top">
+          <span class="proj-num">navigation · 02</span>
+          <div class="chips">
+            <span class="chip">pilot study</span>
+            <span class="chip chip-preprint">preprint</span>
+            <span class="chip">Deployed</span>
+          </div>
+        </div>
+        <div class="proj-h">Cross-Reference Visibility and Traceability</div>
+        <p class="proj-insight">Traceability gaps are not merely maintenance defects — they redistribute hidden connective labor onto practitioners reconstructing accountability paths under time pressure.</p>
+        <p class="proj-intervention">A traceability layer that makes document linkage, broken paths, and lifecycle mismatches visible across document networks without modifying validated systems.</p>
+        <div class="proj-result">30–60% reduction in path reconstruction time · loopback frequency introduced as measure of document-structural friction</div>
+        <div class="proj-bottom">
+          <span class="proj-meta">traceability · networkx · metadata mapping · streamlit · python</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </a>
+      <a class="proj-card" href="project-cognitive-navigation-explorer.html">
+        <div class="proj-top">
+          <span class="proj-num">navigation · 03</span>
+          <div class="chips">
+            <span class="chip">pilot study</span>
+            <span class="chip chip-preprint">preprint</span>
+            <span class="chip">Deployed</span>
+          </div>
+        </div>
+        <div class="proj-h">Navigation Friction and Loopback Behavior</div>
+        <p class="proj-insight">Loopbacks are not user error — they mark moments where document structure failed to resolve a judgment demand on the first pass.</p>
+        <p class="proj-intervention">A behavioral tracking prototype that captures navigation paths, hesitation, and cross-reference jumps to make otherwise invisible document friction observable across sessions.</p>
+        <div class="proj-result">Loopback behavior observed across all sessions — attributable to document structure rather than interface design</div>
+        <div class="proj-bottom">
+          <span class="proj-meta">loopback tracking · behavioral data · streamlit · python</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </a>
+      <a class="proj-card" href="project-feedback-dashboard.html">
+        <div class="proj-top">
+          <span class="proj-num">navigation · 04</span>
+          <div class="chips">
+            <span class="chip">pilot study</span>
+            <span class="chip chip-preprint">preprint</span>
+            <span class="chip">Deployed</span>
+          </div>
+        </div>
+        <div class="proj-h">Review Burden and Workflow Visibility</div>
+        <p class="proj-insight">Coordination breakdown is produced gradually when review burden stays invisible until delay has already accumulated — the problem is structural, not behavioral.</p>
+        <p class="proj-intervention">A workflow visibility layer that makes review delays, revision loops, and feedback burden legible before coordination breaks down, without modifying validated systems.</p>
+        <div class="proj-result">Review delays, revision loops, and feedback burden rendered visible across sessions · participants expressed adoption interest</div>
+        <div class="proj-bottom">
+          <span class="proj-meta">workflow friction · TF-IDF · dashboard · streamlit · python</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- AXIS 03 · LANGUAGE -->
-<section class="axis-sec" style="border-bottom:none">
-<div class="wrap">
-<div class="axis-head reveal">
-<div class="axis-tag">axis 03 · language</div>
-<div class="axis-title">How procedural language embeds judgment demands</div>
-</div>
-<div class="proj-grid reveal">
-<a class="proj-card" href="project-cf.html">
-<div class="proj-top">
-<span class="proj-num">language · 01</span>
-<div class="chips">
-<span class="chip">corpus study</span>
-<span class="chip chip-preprint">preprint</span>
-<span class="chip">N=500</span>
-</div>
-</div>
-<div class="proj-h">Cognitive Friction in Procedural Documentation</div>
-<p class="proj-insight">Procedural sentences embed structurally produced judgment demands through conditional branching, cross-references, exception structures, and discretionary qualifiers — concentrating interpretive burden at specific textual points.</p>
-<p class="proj-intervention">A rule-based corpus analysis that operationalizes cognitive friction as a measurable sentence-level property of procedural language, making structurally embedded judgment demands observable across regulatory and safety documentation genres.</p>
-<div class="proj-result">Conditional branching was the most prevalent friction feature (33.8%). 10.6% of sentences exhibited co-occurring features — structurally compounded judgment demand confirmed across naturally occurring sources independently.</div>
-<div class="proj-bottom">
-<span class="proj-meta">corpus analysis · rule-based annotation · python · github</span>
-<span class="proj-arrow">→</span>
-</div>
-</a>
-</div>
-</div>
-</section>
+<!-- AXIS 03 제거됨 -->
 </main>
 
 <footer class="page-footer">
-<div class="wrap">
-<div class="page-footer-inner">
-<span class="footer-note">7 projects · 3 research axes · one inquiry into accountable reasoning</span>
-<div class="footer-nav">
-<a class="footer-btn" href="index.html">← Home</a>
-<a class="footer-btn" href="papers.html">Papers →</a>
-</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="page-footer-inner">
+      <span class="footer-note">6 projects · 2 research axes · one inquiry into accountable reasoning</span>
+      <div class="footer-nav">
+        <a class="footer-btn" href="index.html">← Home</a>
+        <a class="footer-btn" href="papers.html">Papers →</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
 (function(){
-  var root = document.documentElement;
-  var themeBtn = document.getElementById('themeBtn');
-  var hamburgerBtn = document.getElementById('hamburgerBtn');
-  var mobileMenu = document.getElementById('mobileMenu');
-  try {
-    var savedTheme = localStorage.getItem('theme');
-    if(savedTheme === 'dark') root.classList.add('dark');
-    else if(savedTheme === 'light') root.classList.remove('dark');
-    else if(window.matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark');
-  } catch(e){}
-  if(themeBtn){
-    themeBtn.addEventListener('click', function(){
-      root.classList.toggle('dark');
-      try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch(e){}
-    });
-  }
-  if(hamburgerBtn && mobileMenu){
-    hamburgerBtn.addEventListener('click', function(){
-      hamburgerBtn.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-    mobileMenu.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        hamburgerBtn.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
+  var root=document.documentElement,themeBtn=document.getElementById('themeBtn'),hamburgerBtn=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu');
+  try{var s=localStorage.getItem('theme');if(s==='dark')root.classList.add('dark');else if(s==='light')root.classList.remove('dark');else if(window.matchMedia('(prefers-color-scheme: dark)').matches)root.classList.add('dark');}catch(e){}
+  if(themeBtn)themeBtn.addEventListener('click',function(){root.classList.toggle('dark');try{localStorage.setItem('theme',root.classList.contains('dark')?'dark':'light');}catch(e){}});
+  if(hamburgerBtn&&mobileMenu){hamburgerBtn.addEventListener('click',function(){hamburgerBtn.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){hamburgerBtn.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';});});}
   document.body.classList.add('js-ready');
-  var reveals = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){ entry.target.classList.add('on'); observer.unobserve(entry.target); }
-      });
-    }, {threshold:0, rootMargin:'0px 0px -20px 0px'});
-    reveals.forEach(function(el){ observer.observe(el); });
-  } else {
-    reveals.forEach(function(el){ el.classList.add('on'); });
-  }
-  setTimeout(function(){
-    reveals.forEach(function(el){
-      var r = el.getBoundingClientRect();
-      if(r.top < window.innerHeight){ el.classList.add('on'); }
-    });
-  }, 100);
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:0,rootMargin:'0px 0px -20px 0px'});reveals.forEach(function(el){obs.observe(el);});}else{reveals.forEach(function(el){el.classList.add('on');});}
+  setTimeout(function(){reveals.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight)el.classList.add('on');});},100);
 })();
 </script>
 </body>
