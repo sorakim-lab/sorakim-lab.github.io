@@ -10,14 +10,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-  :root{
-    --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
-    --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
-    --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
-    --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
-    --sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;
-    --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;--sidebar-w:200px;
-  }
+  :root{--bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;--line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);--text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;--accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;--mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;--sidebar-w:200px;}
   html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10)}
   @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10)}}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -247,14 +240,14 @@
       <div class="meta-desc">GMP-constrained internal deployment</div>
     </div>
     <div class="meta-cell">
-      <div class="meta-label">Key signal</div>
-      <div class="meta-val">Friction visible</div>
-      <div class="meta-desc">Hidden delay patterns and bottlenecks became more interpretable</div>
+      <div class="meta-label">Usability</div>
+      <div class="meta-val">5.0 / 5</div>
+      <div class="meta-desc">Both components · checklist immediate · pattern detection required initial orientation</div>
     </div>
     <div class="meta-cell">
       <div class="meta-label">Adoption signal</div>
-      <div class="meta-val">Consistently positive</div>
-      <div class="meta-desc">Stated willingness to use in real review contexts</div>
+      <div class="meta-val">20 / 20</div>
+      <div class="meta-desc">All participants expressed adoption intent across both components</div>
     </div>
   </div>
 
@@ -311,7 +304,7 @@
         <div class="step-n">04</div>
         <div>
           <div class="step-label">Pilot study · evaluation</div>
-          <p>Prototype feedback session with QA/QC-experienced participants to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
+          <p>Prototype feedback session with N=20 QA/QC-experienced participants to assess clarity, interpretability, interface organization, and perceived usefulness.</p>
         </div>
       </div>
     </div>
@@ -409,30 +402,33 @@
       <table>
         <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
         <tbody>
-          <tr><td>Purpose clarity</td><td>Positive</td><td>Interface intent was immediately clear to QA/QC participants</td></tr>
-          <tr><td>Friction visibility</td><td>Positive</td><td>Delay patterns and bottlenecks became easier to observe</td></tr>
-          <tr><td>Checklist clarity</td><td>High</td><td>Highest-rated feature — pre-review scaffold felt natural and usable</td></tr>
-          <tr><td>Simulation clarity</td><td>Positive</td><td>Reviewer simulation understood as a reflection aid, not a predictor</td></tr>
-          <tr><td>Adoption intent</td><td>Positive</td><td>Consistently positive willingness to use in real review contexts</td></tr>
+          <tr><td>Purpose clarity</td><td>5.0 / 5</td><td>Interface intent was immediately clear to QA/QC participants</td></tr>
+          <tr><td>Friction visibility</td><td>5.0 / 5</td><td>Delay patterns and bottlenecks became easier to observe</td></tr>
+          <tr><td>Checklist usability</td><td>5.0 / 5</td><td>Highest immediate accessibility — no conceptual reorientation required · solves a problem practitioners already recognize</td></tr>
+          <tr><td>Pattern detection usability</td><td>5.0 / 5</td><td>Required initial orientation to interpret · once demonstrated, rated equivalent to checklist · addresses a problem practitioners had not previously had tools to name</td></tr>
+          <tr><td>Simulation clarity</td><td>5.0 / 5</td><td>Reviewer simulation understood as a reflection aid, not a predictor</td></tr>
+          <tr><td>Adoption intent</td><td>20 / 20</td><td>All participants expressed willingness to use in real review contexts</td></tr>
+          <tr><td>Friction visibility endorsed</td><td>20 / 20</td><td>All participants endorsed the concept that review burden deserves structured visibility once demonstrated</td></tr>
         </tbody>
       </table>
     </div>
     <p class="body-text note" style="margin-top:12px">Results showed relatively low variance across participants, which may reflect genuine agreement but also suggests possible response bias in a small, conceptually aligned sample.</p>
-    <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that review friction deserves structured visibility was unfamiliar to most participants.</div>
+    <div class="quote">The main adoption barrier was conceptual, not interactional. The checklist was immediately useful because it solves a recognized problem; the pattern detection layer required orientation because it names a problem practitioners had not previously been able to see — but both arrived at the same ratings once demonstrated.</div>
   </section>
 
   <section class="sec reveal" id="findings">
     <div class="sec-eyebrow">06</div>
     <h2 class="sec-title">What This Revealed</h2>
     <hr class="sec-divider"/>
-    <p class="body-text strong">Review friction is not simply inefficiency — it is a structurally hidden form of work that shapes coordination and accountability before delays become officially legible. This prototype provides initial evidence that friction visibility is achievable without automating reviewer judgment.</p>
-    <p class="body-text">Participants did not struggle with the interface itself. The workflow-friction concept initially felt unfamiliar — pointing toward adoption barriers being conceptual rather than interactional. The next design challenge is making the value of friction visibility legible to users trained to absorb review load silently.</p>
-    <div class="grid2" style="margin-bottom:20px">      <div class="gcell">
+    <p class="body-text strong">Review friction is not simply inefficiency — it is a structurally hidden form of work that shapes coordination and accountability before delays become officially legible. All 20 participants rated both components 5.0/5 and expressed adoption intent. The central finding is a dissociation: the checklist was immediately accessible, while the pattern detection layer required initial orientation — yet both arrived at equivalent ratings. Usefulness and immediate legibility are not the same thing.</p>
+    <p class="body-text">Participants did not struggle with the interface itself. The workflow-friction concept initially felt unfamiliar for the pattern detection layer — pointing toward adoption barriers being conceptual rather than interactional. The implication is that making friction visible requires building a new problem category, not just a new interface.</p>
+    <div class="grid2" style="margin-bottom:20px">
+      <div class="gcell">
         <div class="gcell-label">Limitations</div>
         <ul class="bullets">
           <li>N=20, same-team recruitment may have inflated acceptance ratings</li>
           <li>Synthetic dataset — requires validation with real review records</li>
-          <li>Workflow-friction concept required onboarding for some participants</li>
+          <li>Pattern detection concept required onboarding before full use</li>
         </ul>
       </div>
       <div class="gcell">
@@ -441,10 +437,10 @@
           <li>External layer — operates without modifying validated systems</li>
           <li>Non-automation principle — surfaces patterns, preserves human discretion</li>
           <li>Judgment-preserving design in compliance-constrained environments</li>
+          <li>Dissociation finding: usefulness ≠ immediate legibility</li>
         </ul>
       </div>
     </div>
-
   </section>
 
   <section class="sec reveal" id="paper">
@@ -460,7 +456,7 @@
       </div>
       <div class="paper-row">
         <div class="paper-row-label">What it does</div>
-        <div class="paper-row-content">Provides initial evidence that review friction, comment burden, and revision loops can be surfaced through a computational support prototype — and that AI can serve as a pattern-detection layer rather than a decision-automation system.</div>
+        <div class="paper-row-content">Provides initial evidence that review friction, comment burden, and revision loops can be surfaced through a computational support prototype — and that AI can serve as a pattern-detection layer rather than a decision-automation system. Central empirical finding: usefulness and immediate legibility are not the same thing.</div>
       </div>
       <div class="paper-row">
         <div class="paper-row-label">Status</div>
@@ -501,7 +497,6 @@
   setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight)el.classList.add('on');});},100);
   var secs=document.querySelectorAll('[id]'),links=document.querySelectorAll('.side-nav a');
   window.addEventListener('scroll',function(){var y=window.scrollY+100;secs.forEach(function(s){if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){links.forEach(function(l){l.classList.remove('active');if(l.getAttribute('href')==='#'+s.id)l.classList.add('active');});}});});
-  // Carousel
   var slides=document.querySelectorAll('.carousel-slide'),counter=document.getElementById('counter'),current=0;
   function showSlide(n){slides[current].classList.remove('active');current=(n+slides.length)%slides.length;slides[current].classList.add('active');if(counter)counter.textContent=(current+1)+' / '+slides.length;}
   var prevBtn=document.getElementById('prevBtn'),nextBtn=document.getElementById('nextBtn');
