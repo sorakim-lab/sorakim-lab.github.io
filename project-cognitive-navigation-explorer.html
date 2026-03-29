@@ -10,14 +10,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-  :root{
-    --bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;
-    --line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);
-    --text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;
-    --accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);
-    --sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;
-    --mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;--sidebar-w:200px;
-  }
+  :root{--bg:#ffffff;--bg2:#f5f5f7;--panel:#ffffff;--line:rgba(0,0,0,0.08);--line-soft:rgba(0,0,0,0.05);--text:#0a0a0a;--text-2:#1c1c1e;--text-3:#6e6e73;--text-4:#aeaeb2;--accent:#1a3a6b;--accent-soft:rgba(26,58,107,0.07);--sans:'Plus Jakarta Sans',-apple-system,'Apple SD Gothic Neo',sans-serif;--mono:'DM Mono',monospace;--max:1120px;--nav-h:64px;--sidebar-w:200px;}
   html.dark{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10)}
   @media(prefers-color-scheme:dark){:root{--bg:#000000;--bg2:#111111;--panel:#1c1c1e;--line:rgba(255,255,255,0.09);--line-soft:rgba(255,255,255,0.05);--text:#f5f5f7;--text-2:#e5e5ea;--text-3:#8e8e93;--text-4:#48484a;--accent:#4a7fd4;--accent-soft:rgba(74,127,212,0.10)}}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -237,8 +230,8 @@
     </div>
     <div class="meta-cell">
       <div class="meta-label">Key signal</div>
-      <div class="meta-val">Loopbacks across all sessions</div>
-      <div class="meta-desc">Loopback navigation appeared in every participant session</div>
+      <div class="meta-val">avg ~5 loopbacks / session</div>
+      <div class="meta-desc">Range 2–3 (experienced) to 7–10 (novice) · all 20 sessions</div>
     </div>
     <div class="meta-cell">
       <div class="meta-label">Friction source</div>
@@ -373,7 +366,7 @@
       </div>
       <div class="gcell">
         <div class="gcell-label">Experience vs. navigation difficulty</div>
-        <p class="body-text" style="margin:0;font-size:13px;">Participants with 5+ years GMP experience reported no confusion about navigation direction. Less experienced participants reported difficulty identifying which document to navigate to next, but generally attributed this to SOP structure ambiguity rather than to the prototype interface.</p>
+        <p class="body-text" style="margin:0;font-size:13px;">Participants with 5+ years GMP experience (3 of 20) averaged 2–3 loopbacks and reported no confusion about navigation direction. Intermediate participants (14 of 20) averaged 4–6 loopbacks. Less experienced participants (3 of 20) averaged 7–10 loopbacks and reported difficulty identifying which document to navigate to next — but generally attributed this to SOP structure ambiguity rather than to the prototype interface.</p>
       </div>
     </div>
   </section>
@@ -382,17 +375,17 @@
     <div class="sec-eyebrow">05</div>
     <h2 class="sec-title">What This Revealed</h2>
     <hr class="sec-divider"/>
-    <p class="body-text strong">Loopback behavior appeared in every session. The most common pattern — Analyst Training → ELISA SOP → Method Validation → ELISA SOP → OOS Procedure — suggests that the document system itself did not resolve judgment demands on the first pass. Usability ratings were positive throughout, confirming that the friction was structural, not interfacial.</p>
+    <p class="body-text strong">Loopback behavior appeared in every session (mean ~5 loopbacks/session). The most common pattern — Analyst Training → ELISA SOP → Method Validation → ELISA SOP → OOS Procedure — suggests that the document system itself did not resolve judgment demands on the first pass. Usability ratings were 5.0/5 throughout, confirming that the friction was structural, not interfacial.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr></thead>
         <tbody>
-          <tr><td>Document list clarity</td><td>High</td><td>Interface list was rated highly legible across participants</td></tr>
-          <tr><td>Content readability</td><td>High</td><td>Synthetic documents were generally experienced as realistic and easy to follow</td></tr>
-          <tr><td>Cross-reference clarity</td><td>High</td><td>Navigable cross-references were rated as useful during task completion</td></tr>
-          <tr><td>Navigation awareness</td><td>High</td><td>Participants reported being able to track where they were in the document set</td></tr>
-          <tr><td>Real-world usefulness</td><td>High</td><td>Participants rated the tool highly for potential GMP-related use</td></tr>
-          <tr><td>Loopback occurrence</td><td>Observed across all sessions</td><td>Loopback navigation appeared repeatedly — suggesting a structural rather than isolated behavioral pattern</td></tr>
+          <tr><td>Document list clarity</td><td>5.0 / 5</td><td>Mean Likert rating · interface list was rated highly legible across participants</td></tr>
+          <tr><td>Content readability</td><td>5.0 / 5</td><td>Mean Likert rating · synthetic documents were generally experienced as realistic and easy to follow</td></tr>
+          <tr><td>Cross-reference clarity</td><td>5.0 / 5</td><td>Mean Likert rating · navigable cross-references were rated as useful during task completion</td></tr>
+          <tr><td>Navigation awareness</td><td>5.0 / 5</td><td>Mean Likert rating · participants reported being able to track where they were in the document set</td></tr>
+          <tr><td>Real-world usefulness</td><td>5.0 / 5</td><td>Mean Likert rating · participants rated the tool highly for potential GMP-related use</td></tr>
+          <tr><td>Loopback occurrence</td><td>avg ~5 / session</td><td>Range 2–3 (experienced) to 7–10 (novice) · all 20 sessions · attributable to document structure not interface</td></tr>
           <tr><td>Source of confusion</td><td>SOP structure (not interface)</td><td>Less experienced participants attributed friction to document design, not the prototype</td></tr>
         </tbody>
       </table>
