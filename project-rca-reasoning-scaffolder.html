@@ -117,7 +117,7 @@
   td{padding:11px 14px;font-size:14px;color:var(--text-3);border-bottom:1px solid var(--line-soft);line-height:1.5}
   tr:last-child td{border-bottom:none}
   td:first-child{color:var(--text-2);font-weight:500}
-  .finding-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
+  .finding-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);gap:1px;margin-top:16px}
   .finding{background:var(--bg);padding:20px}
   .finding-n{font-size:2.2rem;font-weight:800;letter-spacing:-0.05em;color:var(--accent);line-height:1;margin-bottom:6px}
   .finding-d{font-size:13px;color:var(--text-3);line-height:1.55}
@@ -137,8 +137,8 @@
   .reveal{opacity:1;transform:none}
   .js-ready .reveal{opacity:0;transform:translateY(12px);transition:opacity 550ms cubic-bezier(.2,.7,0,1),transform 550ms cubic-bezier(.2,.7,0,1)}
   .js-ready .reveal.on{opacity:1;transform:none}
-  @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.content{padding:40px 32px 80px;max-width:100%}.meta-row{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.proto-steps{grid-template-columns:repeat(2,1fr)}.finding-row{grid-template-columns:1fr}.paper-row{grid-template-columns:1fr}}
-  @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}.content{padding:32px 20px 60px}.meta-row{grid-template-columns:1fr}.proto-steps{grid-template-columns:1fr}.flow{flex-direction:column;align-items:flex-start}}
+  @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.content{padding:40px 32px 80px;max-width:100%}.meta-row{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.proto-steps{grid-template-columns:repeat(2,1fr)}.finding-row{grid-template-columns:1fr 1fr}.paper-row{grid-template-columns:1fr}}
+  @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}.content{padding:32px 20px 60px}.meta-row{grid-template-columns:1fr}.proto-steps{grid-template-columns:1fr}.finding-row{grid-template-columns:1fr}.flow{flex-direction:column;align-items:flex-start}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
@@ -303,8 +303,8 @@
       <div class="step">
         <div class="step-n">04</div>
         <div>
-          <div class="step-label">Comparative evaluation · think-aloud protocol · pilot sample</div>
-          <p>Compared participants' initial causal interpretations with post-scaffold reasoning, observing whether structured support changed breadth of explanation, confidence, and closure timing.</p>
+          <div class="step-label">Comparative evaluation · think-aloud protocol · N=20</div>
+          <p>Compared participants' initial causal interpretations with post-scaffold reasoning, observing whether structured support changed breadth of explanation, confidence, and closure timing. Participant pool shared with Study 1 to ensure consistent GMP baseline familiarity.</p>
         </div>
       </div>
     </div>
@@ -375,7 +375,6 @@
         <p class="body-text" style="margin:0;font-size:14px;">AI is introduced not to suggest causes but to reopen possibility. The model's role is to expand, not compress — preserving human interpretive authority while countering PAC rather than intensifying it.</p>
       </div>
     </div>
-    <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that investigation reasoning deserves structured support was unfamiliar.</div>
   </section>
 
   <section class="sec reveal" id="study">
@@ -383,30 +382,32 @@
     <h2 class="sec-title">Study</h2>
     <hr class="sec-divider"/>
     <p class="body-text strong">Participants first converged on a single cause without support, then revisited the same case using the scaffold. Structured support was associated with broader reasoning and later closure.</p>
-    <p class="body-text note">N=20. Participants were recruited from the same team, which may have inflated usability and acceptance ratings. Results are exploratory and session-based; they indicate design promise but do not establish long-term investigation quality or downstream accountability outcomes.</p>
+    <p class="body-text note">N=20. Same participant pool as Study 1, which ensures consistent GMP baseline but introduces potential carry-over effects. Results are exploratory and session-based; they indicate design promise but do not establish long-term investigation quality or downstream accountability outcomes.</p>
     <div class="table-wrap">
       <table>
         <thead>
           <tr><th>Measure</th><th>Result</th><th>Interpretation</th></tr>
         </thead>
         <tbody>
-          <tr><td>Participants</td><td>N=20</td><td>All had GMP investigation experience or close familiarity</td></tr>
-          <tr><td>Ease of use</td><td>High</td><td>Interface generally perceived as clear and usable</td></tr>
+          <tr><td>Participants</td><td>N=20</td><td>All had direct GMP deviation investigation experience</td></tr>
+          <tr><td>Ease of use</td><td>5.0 / 5</td><td>Mean Likert rating across ease of use, helpfulness, and clarity</td></tr>
+          <tr><td>Initial confidence (Study 1)</td><td>1.0 / 5 avg</td><td>Uniform across experience levels — convergence reflects institutional pressure, not certainty</td></tr>
           <tr><td>Reasoning broadening</td><td>18 / 20</td><td>Participants expanded beyond their initial single-cause explanation</td></tr>
-          <tr><td>Changed causal view</td><td>15 / 20</td><td>Structured support led many participants to reconsider the case more broadly</td></tr>
+          <tr><td>Reconsidered attribution</td><td>15 / 20</td><td>Structured support led participants to reconsider initial causal account</td></tr>
+          <tr><td>Systemic shift</td><td>12 / 15</td><td>Of those who reconsidered, shifted from person-centered to systemic or procedural explanation</td></tr>
           <tr><td>Delayed closure</td><td>Observed across sessions</td><td>Participants maintained more than one hypothesis during scaffold use</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="quote">The main adoption barrier was conceptual, not interactional — the interface was clear, but the idea that investigation reasoning deserves structured support was unfamiliar.</div>
+    <div class="quote">All 20 participants expressed intent to use the scaffold — and all 20 raised the same concern: whether a GMP organization would deploy a tool that makes investigation reasoning visible in the audit trail.</div>
   </section>
 
   <section class="sec reveal" id="findings">
     <div class="sec-eyebrow">06</div>
     <h2 class="sec-title">What This Revealed</h2>
     <hr class="sec-divider"/>
-    <p class="body-text strong">Investigation environments do not simply record reasoning — they also help shape it. Under closure pressure, participants often moved quickly toward one accountable explanation even when broader contributors remained plausible.</p>
-    <p class="body-text">Participants with the most GMP experience showed little reasoning change, suggesting the scaffold may be most useful when investigation habits are still forming or when users are more open to structured comparison.</p>
+    <p class="body-text strong">Investigation environments do not simply record reasoning — they also help shape it. Under closure pressure, participants often moved quickly toward one accountable explanation even when broader contributors remained plausible. Initial confidence averaged 1/5 across all participants regardless of experience level, suggesting early convergence reflects institutional pressure rather than genuine epistemic certainty.</p>
+    <p class="body-text">Participants who had initially selected procedural or systemic causes showed less attribution change, consistent with the interpretation that the scaffold's primary effect is on investigators who have prematurely converged on person-centered accounts.</p>
     <div class="finding-row">
       <div class="finding">
         <div class="finding-n">18/20</div>
@@ -414,11 +415,15 @@
       </div>
       <div class="finding">
         <div class="finding-n">15/20</div>
-        <div class="finding-d">reconsidered the case more broadly after scaffolded comparison</div>
+        <div class="finding-d">reconsidered initial attribution after scaffolded comparison</div>
       </div>
       <div class="finding">
-        <div class="finding-n">observed</div>
-        <div class="finding-d">closure was delayed compared to unsupported reasoning</div>
+        <div class="finding-n">12/15</div>
+        <div class="finding-d">shifted from person-centered to systemic or procedural explanation</div>
+      </div>
+      <div class="finding">
+        <div class="finding-n">20/20</div>
+        <div class="finding-d">identified organizational transparency as a structural barrier to deployment</div>
       </div>
     </div>
     <p class="body-text" style="margin-top:16px;">Building on the baseline established in the companion pilot study, this scaffold demonstrates that design can delay premature convergence by keeping alternative contributors visible long enough for accountable comparison.</p>
